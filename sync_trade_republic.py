@@ -120,7 +120,7 @@ def download_trade_republic_docs(logger, dry_run=False):
         pytr_path = PYTR_BIN if PYTR_BIN.exists() else "pytr"
         
         result = subprocess.run(
-            [str(pytr_path), "dl_docs", "--output", str(TR_DOWNLOAD_DIR), "--last_days", "2"],
+            [str(pytr_path), "dl_docs", str(TR_DOWNLOAD_DIR), "--last_days", "2"],
             capture_output=True,
             text=True,
             timeout=PYTR_TIMEOUT
@@ -129,8 +129,9 @@ def download_trade_republic_docs(logger, dry_run=False):
         if result.returncode != 0:
             stderr = result.stderr.lower()
             
-            # Detectar errores de autenticación
-            if any(keyword in stderr for keyword in ["login", "authenticate", "auth", "code", "sms", "expired", "device reset"]):
+            # Detectar errores de autenticación (frases específicas para evitar falsos positivos)
+            auth_error_phrases = ["login required", "session expired", "device reset", "please login", "not authenticated", "unauthorized"]
+            if any(phrase in stderr for phrase in auth_error_phrases):
                 logger.error("Auth error detectado en pytr stderr")
                 raise AuthenticationError(f"pytr requiere reautenticación (ejecutar: pytr login)")
             
