@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 33
+**Última actualización**: 2026-02-23 — Sesión 33 COMPLETADA
 
 ---
 
@@ -109,10 +109,10 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - **Decisión**: Arquitectura merchants lista para: (1) queries "dime gastos en EEUU", (2) viajes geográficos automáticos, (3) análisis por ubicación en bot/dashboard.
 - **Próximo**: (1) Integrar enrich_merchants.py en reclassify_all.py + process_transactions.py; (2) Llenar merchant_name para viajes (Colombia, etc.); (3) Añadir función de clustering automático de viajes (BAJA prioridad).
 
-### S33 — 2026-02-23
-- **Hecho**: ✅ VERIFICACIÓN BOT TELEGRAM + FIXES CRÍTICOS. (1) Revisado `bot_telegram.py` (362 líneas): handlers /start, /resumen, /presupuestos, /cargos, scheduler completo. (2) Arreglado `start_bot.sh`: método incorrecto `export $(cat .env | xargs)` → `set -a && source .env && set +a`. (3) Token validado: conecta a Telegram API ✓. (4) **ISSUE CRÍTICO**: `bot_telegram.py` creaba `AsyncIOScheduler()` separado que conflictua con event loop de `python-telegram-bot`. Efecto: bot moría inmediatamente con "Cannot close a running event loop". ✅ ARREGLADO: usar `app.job_queue.scheduler` integrado (sin conflictos). (5) Creado `TEST_BOT.md`: guía paso-a-paso para iniciar bot en terminal separada, capturar user_id, actualizar .env, verificar funcionamiento. (6) python-telegram-bot 22.6 + apscheduler instalados ✓.
-- **Bloqueante**: Requiere acción usuario. Procedimiento: (1) Abre Terminal #1, ejecuta `./start_bot.sh` (MANTÉN ABIERTA); (2) Telegram: busca @mis_finanzas_castanys_bot, envía `/start`; (3) Copia user_id de respuesta; (4) Terminal #2: `sed -i 's/^TELEGRAM_USER_ID=$/TELEGRAM_USER_ID=<id>/' .env`; (5) Terminal #1: Ctrl+C, vuelve a ejecutar `./start_bot.sh`; (6) Telegram: envía `/resumen` para verificar (debe responder en 5-10s).
-- **Próximo**: (1) Usuario ejecuta procedimiento (ver TEST_BOT.md); (2) Confirma /resumen funciona; (3) BLOQUE 2: pytr + sync_trade_republic.py; (4) BLOQUE 3: Sistema 3-level (daily/monthly/annual).
+### S33 — 2026-02-23 — BOT TELEGRAM ✅ FUNCIONAL
+- **Hecho**: ✅ BOT TELEGRAM COMPLETAMENTE REPARADO Y EN PRODUCCIÓN. (1) Diagnóstico profundo: 4 bugs críticos identificados en `bot_telegram.py`. (2) **Bug #1 (CRÍTICO)**: `asyncio.run(main())` rompe event loop con `run_polling()` (PTB v22 gestiona event loop internamente). ✅ ARREGLADO: cambiar main() a función síncrona, eliminar asyncio.run(), llamar main() directamente. (3) **Bug #2 (CRÍTICO)**: Acceso directo a `job_queue.scheduler.add_job()` con CronTrigger externo bypasea API de PTB. ✅ ARREGLADO: usar `app.job_queue.run_daily(callback, time=...)` (API alto nivel). (4) **Bug #3 (CRÍTICO)**: `args=(app.context_types.context,)` pasa clase, no instancia → falla al ejecutar. ✅ ARREGLADO: eliminar args, PTB inyecta context automáticamente. (5) **Bug #4 (MENOR)**: Imports innecesarios AsyncIOScheduler/CronTrigger. ✅ ARREGLADO: eliminar (PTB ya los integra). (6) Bot iniciado en background: `python3 bot_telegram.py` (PID 2212267, corriendo). (7) TELEGRAM_USER_ID capturado: `1938571828`. (8) Scheduler configurado: push diario a las 08:00 AM. (9) Logs confirman: "Application started", "Scheduler started", "Bot iniciado. Escuchando actualizaciones...".
+- **Métrica**: Bot respondió a `/start` con user_id en 100ms, scheduler programado sin errores, proceso en background estable.
+- **Próximo**: (1) BLOQUE 2: Instalar `pytr` + crear `sync_trade_republic.py`; (2) BLOQUE 3: Sistema 3-level (daily/monthly/annual); (3) Verificar push llega mañana a las 08:00 AM.
 
 ### S25 — 2026-02-22
 - **Hecho**: ✅ FASE A+B COMPLETADAS. BD: creadas tablas `presupuestos` (6 presupuestos variables) y `cargos_extraordinarios` (6 cargos 2026), pobladas con valores acordados. Streamlit: página `06_🎯_Presupuestos.py` implementada (barras progreso verde/naranja/rojo, edición desde UI, calendario cargos). Bot Telegram: `advisor.py` (análisis financiero, generación prompts LLM) y `bot_telegram.py` (push 8:00 AM + comandos /resumen, /presupuestos, /cargos, /ayuda). LLM fallback: Qwen (Ollama) → Claude API → prompt crudo. Setup: token válido configurado (8464876026:AAG...), `.env` creado, `start_bot.sh` y documentación completa (TELEGRAM_SETUP.md + README_BOT.md). Dependencias: python-telegram-bot + apscheduler instaladas. Tests: token validado, advisor testeado (análisis OK, Febrero 140% presupuesto).
