@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 35 COMPLETADA
+**Última actualización**: 2026-02-23 — Sesión 36 COMPLETADA
 
 ---
 
@@ -134,6 +134,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - **Métrica**: sync_trade_republic.py: 395 líneas. bot_telegram.py: +30 líneas (import + integración en push_diario). pytr v0.4.6 instalado y verificado.
 - **Decisión**: Usuario ejecutará manualmente `pytr login` la primera vez (requiere SMS/app code). Después, sync automático diario a las 12:00 junto con push diario.
 - **Próximo**: (1) Esperar a mañana 12:00 para verificar que sync se ejecuta automáticamente; (2) Usuario ejecuta `pytr login` cuando vea notificación "Trade Republic: Necesitas Reautenticar"; (3) Verificar que PDFs nuevos se descargan y procesan correctamente.
+
+### S36 — 2026-02-23 — BLOQUE 2: CORREGIR 3 BUGS CRÍTICOS EN SYNC_TRADE_REPUBLIC.PY ✅ COMPLETADO
+- **Hecho**: ✅ 3 BUGS CRÍTICOS CORREGIDOS Y VERIFICADOS. (1) **Bug #1 (CRÍTICO)**: `find_new_account_statements()` usando lógica rota para deduplicar por nombres. Los PDFs en `procesados/` tienen timestamp → la comparación `rsplit("_", 1)[0]` NUNCA coincidía → TODOS parecían nuevos siempre. **SOLUCIÓN**: Eliminar lógica de deduplicación por nombre. Devolver TODOS los PDFs "Extracto de cuenta" de `tr_download/`. El pipeline deduplica automáticamente por hash SHA256 (mecanismo correcto). (2) **Bug #2 (MEDIO)**: En `process_with_pipeline()` línea 272 se llamaba a `find_new_account_statements(logger)` DESPUÉS de mover los PDFs → siempre devolvía 0. **SOLUCIÓN**: Pasar `len(moved_pdfs)` como parámetro `pdfs_procesados` a `process_with_pipeline()`. (3) **Bug #3 (MEDIO)**: pytr sin `--last_days`, descargaba TODOS los docs desde el inicio. **SOLUCIÓN**: Añadir `--last_days 2` para descargar solo últimos 2 días (uso diario seguro). (4) **BONUS**: Resolver ruta pytr desde venv. El bot no encontraba `pytr` en PATH → búsqueda en `VENV_DIR/bin/pytr` primero, fallback a `pytr` del sistema. Ahora compatible con ejecución desde bot. (5) **Bot reiniciado**: PID 2304780. Logs sin errores, scheduler registrado. (6) **Tests dry-run**: ✅ PASAN. Detecta pytr v0.4.6, simula descarga, reporta correctamente.
+- **Métrica**: sync_trade_republic.py: 431 líneas (↑36). Bot PID 2304780. Tests dry-run ✅. Cobertura: deduplicación automática (hash), límite 2 días (daily safe), resolución venv pytr ✅.
+- **Decisión**: Bugs #1-#3 solucionados. Sistema de sync automático diario ahora íntegro (sin deduplicación fallida, sin reportes 0-PDFs, sin downloads innecesarios).
+- **Próximo**: (1) Usuario ejecuta `pytr login` cuando necesario (sesión expirada); (2) Esperar a mañana 12:00 para verificar sync + push diario automático; (3) Verificar PDFs nuevos se descargan, procesan y nuevas txs se registran en BD.
 
 ### S34 — 2026-02-23 — BLOQUE 3: SISTEMA 3-LEVEL DE MENSAJES ✅ COMPLETADO
 - **Hecho**: ✅ SISTEMA 3-LEVEL DE MENSAJES IMPLEMENTADO Y EN PRODUCCIÓN. (1) **Nuevas funciones en advisor.py**: 
