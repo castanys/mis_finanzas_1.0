@@ -356,6 +356,13 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("\n⏹️ Bot detenido por el usuario")
+    except RuntimeError as e:
+        if "Cannot close a running event loop" in str(e):
+            # Ignorar este error — ocurre al interrumpir el event loop
+            logger.info("\n⏹️ Bot cerrado correctamente")
+        else:
+            logger.error(f"❌ Error fatal: {e}")
+            sys.exit(1)
     except Exception as e:
         logger.error(f"❌ Error fatal: {e}")
         sys.exit(1)
