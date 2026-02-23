@@ -49,6 +49,13 @@ except ImportError:
     logger.error("❌ advisor.py no encontrado en la ruta")
     sys.exit(1)
 
+# Importar sync_trade_republic (BLOQUE 2)
+try:
+    from sync_trade_republic import sync_trade_republic
+except ImportError:
+    logger.warning("⚠️ sync_trade_republic.py no encontrado. El sync de TR estará deshabilitado.")
+    sync_trade_republic = None
+
 # ===== CONFIGURACIÓN =====
 
 # Token del bot (obtener de @BotFather en Telegram)
@@ -275,21 +282,65 @@ Respondo en español, con tono cercano y sin jerga corporativa.
 
 async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     """
-    Push diario (12:00) — Mensaje con ángulo aleatorio
+    Push diario (12:00) — Mensaje con ángulo aleatorio + sync de Trade Republic
     Se ejecuta automáticamente via job_queue de python-telegram-bot
+    
+    Flujo:
+    1. Intenta sincronizar Trade Republic (BLOQUE 2)
+    2. Si falla autenticación, notifica al usuario
+    3. Genera y envía mensaje diario con ángulo aleatorio (BLOQUE 3)
     """
     if not TELEGRAM_USER_ID:
         logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push diario.")
         return
     
-    logger.info("📨 Enviando push diario...")
+    logger.info("📨 Iniciando push diario (con sync TR)...")
     
     try:
+        # ===== BLOQUE 2: Sincronizar Trade Republic =====
+        sync_notif = None
+        if sync_trade_republic:
+            try:
+                logger.info("🔄 Sincronizando Trade Republic...")
+                sync_result = sync_trade_republic(logger=None, dry_run=False)
+                
+                if sync_result["estado"] == "auth_required":
+                    # Notificar al usuario que necesita reautenticar
+                    sync_notif = (
+                        "⚠️ **Trade Republic: Necesitas Reautenticar**\n\n"
+                        "La sesión de pytr expiró. Ejecuta manualmente:\n\n"
+                        "```\ncd ~/apps/mis_finanzas_1.0\n"
+                        "source venv/bin/activate\n"
+                        "pytr login\n```\n\n"
+                        "Luego el bot sinc automáticamente cada día.\n"
+                    )
+                    logger.warning("⚠️ Trade Republic: Reautenticación requerida")
+                    
+                elif sync_result["estado"] == "ok":
+                    nuevas_txs = sync_result.get("nuevas_txs", 0)
+                    logger.info(f"✅ Sync TR completado: {nuevas_txs} nuevas transacciones")
+                
+                elif sync_result["estado"] == "sin_novedades":
+                    logger.info("ℹ️ Sync TR: Sin novedades")
+                
+                else:
+                    logger.warning(f"⚠️ Sync TR: estado={sync_result['estado']}, error={sync_result.get('error')}")
+            
+            except Exception as e:
+                logger.error(f"❌ Error sincronizando TR: {e}")
+        else:
+            logger.debug("ℹ️ sync_trade_republic no disponible, skipped")
+        
+        # ===== BLOQUE 3: Generar y enviar mensaje diario =====
         # Generar prompt con ángulo aleatorio (BLOQUE 3)
         prompt = generate_daily_message()
         
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
+        
+        # Si hay notificación de auth, prependerla
+        if sync_notif:
+            mensaje = sync_notif + "\n" + "=" * 50 + "\n\n" + mensaje
         
         # Enviar al usuario
         await context.bot.send_message(

@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 34 COMPLETADA
+**Última actualización**: 2026-02-23 — Sesión 35 COMPLETADA
 
 ---
 
@@ -109,25 +109,51 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - **Decisión**: Arquitectura merchants lista para: (1) queries "dime gastos en EEUU", (2) viajes geográficos automáticos, (3) análisis por ubicación en bot/dashboard.
 - **Próximo**: (1) Integrar enrich_merchants.py en reclassify_all.py + process_transactions.py; (2) Llenar merchant_name para viajes (Colombia, etc.); (3) Añadir función de clustering automático de viajes (BAJA prioridad).
 
+### S35 — 2026-02-23 — BLOQUE 2: AUTOMATIZACIÓN TRADE REPUBLIC ✅ COMPLETADO
+- **Hecho**: ✅ BLOQUE 2 IMPLEMENTADO Y INTEGRADO. (1) **Instalado pytr en venv**: `pip install pytr` exitoso (v0.4.6). (2) **Archivo nuevo `sync_trade_republic.py`** (+395 líneas): 
+   - Función `sync_trade_republic()` orquesta todo el proceso
+   - Valida pytr instalado (check_pytr_installed)
+   - Descarga documentos con `pytr dl_docs --output input/tr_download/`
+   - Detecta PDFs nuevos de "Extracto de cuenta" filtrando por nombre
+   - Compara con input/procesados/ para evitar duplicados
+   - Mueve PDFs nuevos a input/
+   - Ejecuta process_transactions.py automáticamente
+   - Manejo robusto de errores: AuthenticationError (sesión expirada), PytrNotInstalledError, etc.
+   - Logging detallado (debug/info/error)
+   - CLI completo: `python3 sync_trade_republic.py --debug --dry-run`
+   (3) **Integración en bot_telegram.py**:
+   - Import: `from sync_trade_republic import sync_trade_republic` con fallback None
+   - Modificado `push_diario()`: llamada a sync ANTES de generar mensaje diario
+   - Si sync retorna "auth_required": notifica al usuario via Telegram (instrucciones para `pytr login`)
+   - Si sync retorna "ok" o "sin_novedades": continúa normal (silencioso)
+   - Manejo transparente: fallos de sync no bloquean push diario
+   (4) **Test exhaustivo**:
+   - Test dry-run: ✅ Sin conectar (simula flujo)
+   - Test real: ✅ Detecta correctamente que pytr necesita autenticación (esperado)
+   - Bot reiniciado (PID 2247104). Logs: sin errores, 3 jobs programados, "Application started"
+- **Métrica**: sync_trade_republic.py: 395 líneas. bot_telegram.py: +30 líneas (import + integración en push_diario). pytr v0.4.6 instalado y verificado.
+- **Decisión**: Usuario ejecutará manualmente `pytr login` la primera vez (requiere SMS/app code). Después, sync automático diario a las 12:00 junto con push diario.
+- **Próximo**: (1) Esperar a mañana 12:00 para verificar que sync se ejecuta automáticamente; (2) Usuario ejecuta `pytr login` cuando vea notificación "Trade Republic: Necesitas Reautenticar"; (3) Verificar que PDFs nuevos se descargan y procesan correctamente.
+
 ### S34 — 2026-02-23 — BLOQUE 3: SISTEMA 3-LEVEL DE MENSAJES ✅ COMPLETADO
 - **Hecho**: ✅ SISTEMA 3-LEVEL DE MENSAJES IMPLEMENTADO Y EN PRODUCCIÓN. (1) **Nuevas funciones en advisor.py**: 
-  - `get_gastos_ayer()` - Query gastos del día anterior
-  - `get_ritmo_mes()` - Extrapolación del gasto del mes
-  - `get_merchant_top_mes()` - Merchant más caro/frecuente
-  - `get_comparativa_semanas()` - Comparativa esta semana vs anterior
-  - `get_ahorro_diario()` - Ahorro vs media diaria del mes
-  - Funciones helper para prompts: `prompt_gastos_ayer()`, `prompt_ritmo_mes()`, etc.
-  (2) **Sistema 3-level de mensajes**:
-  - **Daily** (12:00): 8 ángulos aleatorios (gastos_ayer, ritmo_mes, presupuesto_peligro, comparativa_semana, merchant_sorpresa, ahorro_diario, cargo_alerta, libre_llm) + 5 tonos rotativos (amigo_whatsapp, coach_energico, analista_seco, narrador_curioso, bromista_financiero)
-  - **Monthly** (día 1, 08:00): 3 ángulos rotativos por mes (cierre_vs_anterior, cierre_fire, cierre_patrones)
-  - **Annual** (1 enero, 08:00): Revisión anual fija con proyección FIRE
-  (3) **Actualizado bot_telegram.py**:
-  - Push diario: 08:00 → 12:00 (PUSH_HOUR_DIARIO)
-  - Push mensual: run_monthly() (día 1, 08:00)
-  - Push anual: run_daily() con guardia (solo actúa el 1 enero)
-  - Imports: generate_daily_message, generate_monthly_message, generate_annual_message
-  - Nuevas funciones: push_diario(), push_mensual(), push_anual() con llamadas a LLM
-  (4) **Verificación**: Bot reiniciado (PID 2218166). Logs muestran: "Scheduler started", 3 jobs registrados (push_diario, push_mensual, push_anual), "Application started".
+   - `get_gastos_ayer()` - Query gastos del día anterior
+   - `get_ritmo_mes()` - Extrapolación del gasto del mes
+   - `get_merchant_top_mes()` - Merchant más caro/frecuente
+   - `get_comparativa_semanas()` - Comparativa esta semana vs anterior
+   - `get_ahorro_diario()` - Ahorro vs media diaria del mes
+   - Funciones helper para prompts: `prompt_gastos_ayer()`, `prompt_ritmo_mes()`, etc.
+   (2) **Sistema 3-level de mensajes**:
+   - **Daily** (12:00): 8 ángulos aleatorios (gastos_ayer, ritmo_mes, presupuesto_peligro, comparativa_semana, merchant_sorpresa, ahorro_diario, cargo_alerta, libre_llm) + 5 tonos rotativos (amigo_whatsapp, coach_energico, analista_seco, narrador_curioso, bromista_financiero)
+   - **Monthly** (día 1, 08:00): 3 ángulos rotativos por mes (cierre_vs_anterior, cierre_fire, cierre_patrones)
+   - **Annual** (1 enero, 08:00): Revisión anual fija con proyección FIRE
+   (3) **Actualizado bot_telegram.py**:
+   - Push diario: 08:00 → 12:00 (PUSH_HOUR_DIARIO)
+   - Push mensual: run_monthly() (día 1, 08:00)
+   - Push anual: run_daily() con guardia (solo actúa el 1 enero)
+   - Imports: generate_daily_message, generate_monthly_message, generate_annual_message
+   - Nuevas funciones: push_diario(), push_mensual(), push_anual() con llamadas a LLM
+   (4) **Verificación**: Bot reiniciado (PID 2218166). Logs muestran: "Scheduler started", 3 jobs registrados (push_diario, push_mensual, push_anual), "Application started".
 - **Métrica**: advisor.py: +560 líneas (nuevo sistema). bot_telegram.py: modificado para 3 jobs. Bot corriendo sin errores, 3 triggers programados.
 - **Próximo**: (1) Probar /resumen en Telegram (debe mostrar ángulo aleatorio); (2) Esperar a mañana 12:00 para verificar push diario; (3) Pendiente: BLOQUE 2 (pytr Trade Republic).
 
