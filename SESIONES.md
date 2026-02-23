@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 31
+**Última actualización**: 2026-02-23 — Sesión 32
 
 ---
 
@@ -73,6 +73,11 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S32 — 2026-02-23
+- **Hecho**: ✅ MEJORAS PÁGINA 07 (GEOGRAFÍA) — MAPA COMPLETADAS. (1) Cambio go.Scattergeo → go.Scattermap con OpenStreetMap tiles: línea 204 editada, configuración geo→mapbox con style 'open-street-map', center=(40, 0), zoom=2. (2) Filtrado merchants online/virtuales: añadida lógica en `get_merchants_para_mapa()` en advisor.py (línea ~628-642) excluyendo cat1 ('Suscripciones', 'Transferencia') y 25 merchants virtuales conocidos (RAKUTEN, PAYPAL, GOOGLE, NETFLIX, SPOTIFY, etc). Resultado: 636→626 merchants visibles. (3) Enriquecimiento masivo de merchants: creado script `enrich_unregistered_merchants.py` que extrae 1,497 merchants únicos de transacciones NO registrados en tabla merchants, los inserta, y los enriquece con Google Places API. Resultado: 754 merchants (742 coords) → 2,251 merchants (1,221 coords). Transacciones geolocalizadas: ~1,500 → 2,420 txs (+62% cobertura). Google Places API: ~1,500 llamadas, coste estimado ~15€. (4) Streamlit reiniciado: Página 07 ahora usa Scattermap con 626 merchants filtrados y 2,420 txs sin suscripciones/transferencias virtuales.
+- **Decisión**: Página 07 mejorada con mayor cobertura geográfica, visual más detallado (OpenStreetMap) y sin ruido de merchants virtuales.
+- **Próximo**: (1) Verificar mapa en Streamlit desde Windows (192.168.50.41:8502); (2) Análisis de clustering automático de viajes; (3) Alternativas a pytr Trade Republic.
 
 ### S31 — 2026-02-23
 - **Hecho**: ✅ PÁGINA 07 (GEOGRAFÍA) VALIDADA Y LISTA. (1) Verificada estructura: 516 líneas, componentes Streamlit (KPIs, mapa scatter_geo, tabla países, PyDeck). (2) Validadas funciones de advisor.py: `get_resumen_geografico()` y `get_gastos_por_ubicacion()` funcionan correctamente. (3) Instaladas dependencias (venv): streamlit, plotly, pydeck. (4) Tests exhaustivos: todos pasaron. Cobertura de datos: 24 países, 35.221€ total, 742 merchants geolocalizados, 6.731 transacciones. (5) Streamlit arranca sin errores (localhost:8502).
