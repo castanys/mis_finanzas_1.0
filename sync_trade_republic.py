@@ -252,23 +252,25 @@ def process_with_pipeline(logger, pdfs_procesados=0, dry_run=False):
             logger.error(f"process_transactions.py falló: {result.stderr[:300]}")
             return {"nuevas_txs": 0, "pdfs_procesados": 0}
         
-        # Parsear output para extraer "Nuevos: X"
+        # Parsear output para extraer "Total procesado: X transacciones nuevas"
         stdout = result.stdout
         logger.debug(f"Pipeline output:\n{stdout[:500]}")
         
-        # Buscar patron "Nuevos: X" o similar
+        # Buscar línea "Total procesado: X transacciones nuevas"
         nuevas_txs = 0
         for line in stdout.split('\n'):
-            if 'Nuevos:' in line or 'nuevos' in line.lower():
-                # Intentar extraer número
+            if 'Total procesado:' in line:
+                # Intentar extraer número entre "Total procesado:" y "transacciones"
                 try:
-                    parts = line.split(':')
+                    # Ej: "[2026-02-23 22:29:32] [INFO    ] [finsense] Total procesado: 0 transacciones nuevas"
+                    parts = line.split('Total procesado:')
                     if len(parts) > 1:
                         num_str = parts[1].strip().split()[0]
                         nuevas_txs = int(num_str)
                         logger.debug(f"Extractadas {nuevas_txs} nuevas txs del output")
                         break
-                except (ValueError, IndexError):
+                except (ValueError, IndexError) as e:
+                    logger.warning(f"Error parseando 'Total procesado': {e}")
                     pass
         
         logger.info(f"✓ Pipeline completado. Nuevas transacciones: {nuevas_txs}")
