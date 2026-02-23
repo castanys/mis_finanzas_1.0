@@ -1,8 +1,9 @@
 """
 bot_telegram.py — Bot de Telegram para seguimiento financiero
 Versión corregida para python-telegram-bot v22.x
-Envía push diario + responde consultas on-demand
+Envía push diario (12:00) + mensual (día 1, 8:00) + anual (1 enero, 8:00) + responde consultas on-demand
 Integración con advisor.py para análisis y LLM (Qwen/Claude)
+Sistema 3-level de mensajes con ángulos aleatorios (BLOQUE 3)
 """
 
 import os
@@ -39,7 +40,10 @@ try:
         obtener_mensaje_para_bot,
         obtener_contexto_json,
         get_mes_nombre,
-        analizar_presupuestos
+        analizar_presupuestos,
+        generate_daily_message,
+        generate_monthly_message,
+        generate_annual_message
     )
 except ImportError:
     logger.error("❌ advisor.py no encontrado en la ruta")
@@ -60,9 +64,11 @@ TELEGRAM_USER_ID = os.getenv("TELEGRAM_USER_ID", None)
 if not TELEGRAM_USER_ID:
     logger.warning("⚠️ TELEGRAM_USER_ID no configurado (se pedirá al usar /start)")
 
-# Hora del push automático (defecto: 8:00 AM)
-PUSH_HOUR = int(os.getenv("PUSH_HOUR", "8"))
-PUSH_MINUTE = int(os.getenv("PUSH_MINUTE", "0"))
+# Horas del push automático (BLOQUE 3: Sistema 3-level)
+PUSH_HOUR_DIARIO = int(os.getenv("PUSH_HOUR_DIARIO", "12"))
+PUSH_MINUTE_DIARIO = int(os.getenv("PUSH_MINUTE_DIARIO", "0"))
+PUSH_HOUR_MENSUAL = int(os.getenv("PUSH_HOUR_MENSUAL", "8"))
+PUSH_MINUTE_MENSUAL = int(os.getenv("PUSH_MINUTE_MENSUAL", "0"))
 
 # ===== FUNCIONES DE LLM =====
 
@@ -131,9 +137,10 @@ async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 Hola {user_name} 👋
 
 Soy tu asesor financiero de Telegram. Puedo:
-- 📅 Enviarte un análisis diario a las {PUSH_HOUR:02d}:{PUSH_MINUTE:02d} AM
-- 📊 Responder preguntas sobre tu situación financiera
-- 💰 Recordarte cargos extraordinarios próximos
+- 📅 Enviarte análisis cada día a las {PUSH_HOUR_DIARIO:02d}:{PUSH_MINUTE_DIARIO:02d} (contenido variado)
+- 📊 Cierre mensual el día 1 a las {PUSH_HOUR_MENSUAL:02d}:{PUSH_MINUTE_MENSUAL:02d}
+- 🎯 Revisión anual el 1 de enero
+- 💬 Responder preguntas on-demand
 
 **Comandos disponibles:**
 /resumen — Análisis del mes actual
@@ -151,15 +158,15 @@ Soy tu asesor financiero de Telegram. Puedo:
     await update.message.reply_text(message)
 
 async def resumen_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Maneja /resumen — envía análisis del mes actual"""
+    """Maneja /resumen — envía análisis del mes actual (usa nuevo sistema)"""
     user_name = update.effective_user.first_name or "Usuario"
     logger.info(f"📊 /resumen solicitado por {user_name}")
     
     await update.message.reply_text("⏳ Analizando tu situación financiera...")
     
     try:
-        # Generar prompt
-        prompt = obtener_mensaje_para_bot()
+        # Generar prompt con sistema 3-level (elegir diario)
+        prompt = generate_daily_message()
         
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
@@ -243,16 +250,20 @@ async def cargos_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def ayuda_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Maneja /ayuda"""
-    mensaje = """
+    mensaje = f"""
 **Comandos Disponibles:**
 
-/resumen — Análisis completo del mes actual con recomendaciones
+/resumen — Análisis completo del mes con ángulo aleatorio
 /presupuestos — Estado de presupuestos por categoría
 /cargos — Cargos extraordinarios próximos
 /ayuda — Ver este mensaje
 
 **Sobre este bot:**
-Soy tu asesor financiero. Cada día a las 08:00 AM te envío un análisis personalizado de tu situación.
+Soy tu asesor financiero. Te envío análisis en 3 cadencias:
+
+📅 **Diario ({PUSH_HOUR_DIARIO:02d}:{PUSH_MINUTE_DIARIO:02d})**: Contenido variado (gastos, ritmo, merchant, etc.)
+📊 **Mensual (día 1, {PUSH_HOUR_MENSUAL:02d}:{PUSH_MINUTE_MENSUAL:02d})**: Cierre del mes anterior
+🎯 **Anual (1 enero)**: Revisión del año
 
 Respondo en español, con tono cercano y sin jerga corporativa.
 
@@ -260,22 +271,22 @@ Respondo en español, con tono cercano y sin jerga corporativa.
 """
     await update.message.reply_text(mensaje)
 
-# ===== PUSH AUTOMÁTICO DIARIO =====
+# ===== PUSH AUTOMÁTICO (SISTEMA 3-LEVEL) =====
 
 async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     """
-    Tarea programada: envía push a las hora configurada (defecto 8:00 AM)
+    Push diario (12:00) — Mensaje con ángulo aleatorio
     Se ejecuta automáticamente via job_queue de python-telegram-bot
     """
     if not TELEGRAM_USER_ID:
-        logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push.")
+        logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push diario.")
         return
     
     logger.info("📨 Enviando push diario...")
     
     try:
-        # Generar prompt
-        prompt = obtener_mensaje_para_bot()
+        # Generar prompt con ángulo aleatorio (BLOQUE 3)
+        prompt = generate_daily_message()
         
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
@@ -287,12 +298,84 @@ async def push_diario(context: ContextTypes.DEFAULT_TYPE):
             parse_mode="Markdown"
         )
         
-        logger.info(f"✅ Push enviado a {TELEGRAM_USER_ID}")
+        logger.info(f"✅ Push diario enviado a {TELEGRAM_USER_ID}")
     
     except TelegramError as e:
-        logger.error(f"❌ Error enviando push (Telegram): {e}")
+        logger.error(f"❌ Error enviando push diario (Telegram): {e}")
     except Exception as e:
-        logger.error(f"❌ Error enviando push: {e}")
+        logger.error(f"❌ Error enviando push diario: {e}")
+
+
+async def push_mensual(context: ContextTypes.DEFAULT_TYPE):
+    """
+    Push mensual (día 1, 8:00) — Cierre del mes anterior
+    Se ejecuta automáticamente via job_queue de python-telegram-bot
+    """
+    if not TELEGRAM_USER_ID:
+        logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push mensual.")
+        return
+    
+    logger.info("📨 Enviando push mensual...")
+    
+    try:
+        # Generar prompt mensual con ángulo rotativo (BLOQUE 3)
+        prompt = generate_monthly_message()
+        
+        # Llamar al LLM
+        mensaje = generar_mensaje_con_llm(prompt)
+        
+        # Enviar al usuario
+        await context.bot.send_message(
+            chat_id=int(TELEGRAM_USER_ID),
+            text=mensaje,
+            parse_mode="Markdown"
+        )
+        
+        logger.info(f"✅ Push mensual enviado a {TELEGRAM_USER_ID}")
+    
+    except TelegramError as e:
+        logger.error(f"❌ Error enviando push mensual (Telegram): {e}")
+    except Exception as e:
+        logger.error(f"❌ Error enviando push mensual: {e}")
+
+
+async def push_anual(context: ContextTypes.DEFAULT_TYPE):
+    """
+    Push anual (1 enero, 8:00) — Revisión del año anterior
+    Se ejecuta automáticamente via job_queue de python-telegram-bot
+    """
+    if not TELEGRAM_USER_ID:
+        logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push anual.")
+        return
+    
+    # Solo ejecutar si es 1 de enero
+    hoy = datetime.now()
+    if hoy.month != 1 or hoy.day != 1:
+        return
+    
+    logger.info("📨 Enviando push anual...")
+    
+    try:
+        # Generar prompt anual (BLOQUE 3)
+        prompt = generate_annual_message()
+        
+        # Llamar al LLM
+        mensaje = generar_mensaje_con_llm(prompt)
+        
+        # Enviar al usuario
+        await context.bot.send_message(
+            chat_id=int(TELEGRAM_USER_ID),
+            text=mensaje,
+            parse_mode="Markdown"
+        )
+        
+        logger.info(f"✅ Push anual enviado a {TELEGRAM_USER_ID}")
+    
+    except TelegramError as e:
+        logger.error(f"❌ Error enviando push anual (Telegram): {e}")
+    except Exception as e:
+        logger.error(f"❌ Error enviando push anual: {e}")
+
 
 async def mensaje_generico(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Maneja mensajes genéricos"""
@@ -305,7 +388,7 @@ async def mensaje_generico(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     """Inicia el bot con handlers y scheduler — función síncrona"""
     
-    logger.info("🚀 Iniciando bot de Telegram...")
+    logger.info("🚀 Iniciando bot de Telegram (BLOQUE 3: Sistema 3-level)...")
     
     # Crear aplicación
     app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
@@ -318,19 +401,37 @@ def main():
     app.add_handler(CommandHandler("ayuda", ayuda_handler))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, mensaje_generico))
     
-    # Configurar scheduler para push diario usando job_queue de python-telegram-bot
+    # Configurar scheduler para push automático usando job_queue de python-telegram-bot
     if TELEGRAM_USER_ID:
-        # Usar la API de alto nivel de job_queue
-        hora_push = time(hour=PUSH_HOUR, minute=PUSH_MINUTE)
+        # Push diario a las 12:00
+        hora_push_diario = time(hour=PUSH_HOUR_DIARIO, minute=PUSH_MINUTE_DIARIO)
         app.job_queue.run_daily(
             callback=push_diario,
-            time=hora_push,
+            time=hora_push_diario,
             name="push_diario"
         )
+        logger.info(f"📅 Push diario programado a las {PUSH_HOUR_DIARIO:02d}:{PUSH_MINUTE_DIARIO:02d}")
         
-        logger.info(f"📅 Push diario programado a las {PUSH_HOUR:02d}:{PUSH_MINUTE:02d}")
+        # Push mensual el día 1 del mes a las 8:00
+        hora_push_mensual = time(hour=PUSH_HOUR_MENSUAL, minute=PUSH_MINUTE_MENSUAL)
+        app.job_queue.run_monthly(
+            callback=push_mensual,
+            when=hora_push_mensual,
+            day=1,
+            name="push_mensual"
+        )
+        logger.info(f"📅 Push mensual programado para el día 1 a las {PUSH_HOUR_MENSUAL:02d}:{PUSH_MINUTE_MENSUAL:02d}")
+        
+        # Push anual el 1 de enero (ejecutar diariamente pero solo actúa el 1 de enero)
+        hora_push_anual = time(hour=PUSH_HOUR_MENSUAL, minute=PUSH_MINUTE_MENSUAL)
+        app.job_queue.run_daily(
+            callback=push_anual,
+            time=hora_push_anual,
+            name="push_anual"
+        )
+        logger.info(f"📅 Push anual programado para el 1 de enero a las {PUSH_HOUR_MENSUAL:02d}:{PUSH_MINUTE_MENSUAL:02d}")
     else:
-        logger.warning("⚠️ No se configuró push automático (falta TELEGRAM_USER_ID)")
+        logger.warning("⚠️ No se configuraron pushes automáticos (falta TELEGRAM_USER_ID)")
     
     # Iniciar bot
     logger.info("✅ Bot iniciado. Escuchando actualizaciones...")

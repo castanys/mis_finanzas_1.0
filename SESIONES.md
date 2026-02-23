@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 33 COMPLETADA
+**Última actualización**: 2026-02-23 — Sesión 34 COMPLETADA
 
 ---
 
@@ -108,6 +108,28 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - **Hecho**: SISTEMA DE MERCHANTS CON GEOGRAFÍA IMPLEMENTADO. (1) Arreglados 18 `cat2=''` en merchants.py: 7 restaurantes Cartagena/Murcia con tipos correctos (Restaurante/Bar), reprocesamiento 12 txs afectadas ✅. (2) Tabla `merchants` creada en finsense.db (16 campos: place_id, address, city, country, lat, lng, cat1, cat2, confidence, source, search_scope, etc). Migración: 754 merchants desde merchant_cache.db + merchants_places.json. (3) Columna `merchant_name` añadida a transacciones. Pobladas 3,159 txs con merchant_name via extract_merchant(). (4) google_places.py reescrito QUERY-FIRST: búsqueda sin scope previo, luego amplía (cartagena→murcia→spain→europe→global). Extrae address completa, city, country desde `formatted_address`. 7 merchants enriquecidos desde Google Places (Murcia, Granada, México, Suiza). (5) Funciones en advisor.py: `get_gastos_por_ubicacion(country, city, fecha_ini, fecha_fin)` + `get_gastos_viaje(nombre)` para queries geográficas. Tests: España 40,80€ (2 txs), México 34,88€, Suiza 3,14€, Colombia 0€ (txs sin merchant aún).
 - **Decisión**: Arquitectura merchants lista para: (1) queries "dime gastos en EEUU", (2) viajes geográficos automáticos, (3) análisis por ubicación en bot/dashboard.
 - **Próximo**: (1) Integrar enrich_merchants.py en reclassify_all.py + process_transactions.py; (2) Llenar merchant_name para viajes (Colombia, etc.); (3) Añadir función de clustering automático de viajes (BAJA prioridad).
+
+### S34 — 2026-02-23 — BLOQUE 3: SISTEMA 3-LEVEL DE MENSAJES ✅ COMPLETADO
+- **Hecho**: ✅ SISTEMA 3-LEVEL DE MENSAJES IMPLEMENTADO Y EN PRODUCCIÓN. (1) **Nuevas funciones en advisor.py**: 
+  - `get_gastos_ayer()` - Query gastos del día anterior
+  - `get_ritmo_mes()` - Extrapolación del gasto del mes
+  - `get_merchant_top_mes()` - Merchant más caro/frecuente
+  - `get_comparativa_semanas()` - Comparativa esta semana vs anterior
+  - `get_ahorro_diario()` - Ahorro vs media diaria del mes
+  - Funciones helper para prompts: `prompt_gastos_ayer()`, `prompt_ritmo_mes()`, etc.
+  (2) **Sistema 3-level de mensajes**:
+  - **Daily** (12:00): 8 ángulos aleatorios (gastos_ayer, ritmo_mes, presupuesto_peligro, comparativa_semana, merchant_sorpresa, ahorro_diario, cargo_alerta, libre_llm) + 5 tonos rotativos (amigo_whatsapp, coach_energico, analista_seco, narrador_curioso, bromista_financiero)
+  - **Monthly** (día 1, 08:00): 3 ángulos rotativos por mes (cierre_vs_anterior, cierre_fire, cierre_patrones)
+  - **Annual** (1 enero, 08:00): Revisión anual fija con proyección FIRE
+  (3) **Actualizado bot_telegram.py**:
+  - Push diario: 08:00 → 12:00 (PUSH_HOUR_DIARIO)
+  - Push mensual: run_monthly() (día 1, 08:00)
+  - Push anual: run_daily() con guardia (solo actúa el 1 enero)
+  - Imports: generate_daily_message, generate_monthly_message, generate_annual_message
+  - Nuevas funciones: push_diario(), push_mensual(), push_anual() con llamadas a LLM
+  (4) **Verificación**: Bot reiniciado (PID 2218166). Logs muestran: "Scheduler started", 3 jobs registrados (push_diario, push_mensual, push_anual), "Application started".
+- **Métrica**: advisor.py: +560 líneas (nuevo sistema). bot_telegram.py: modificado para 3 jobs. Bot corriendo sin errores, 3 triggers programados.
+- **Próximo**: (1) Probar /resumen en Telegram (debe mostrar ángulo aleatorio); (2) Esperar a mañana 12:00 para verificar push diario; (3) Pendiente: BLOQUE 2 (pytr Trade Republic).
 
 ### S33 — 2026-02-23 — BOT TELEGRAM ✅ FUNCIONAL
 - **Hecho**: ✅ BOT TELEGRAM COMPLETAMENTE REPARADO Y EN PRODUCCIÓN. (1) Diagnóstico profundo: 4 bugs críticos identificados en `bot_telegram.py`. (2) **Bug #1 (CRÍTICO)**: `asyncio.run(main())` rompe event loop con `run_polling()` (PTB v22 gestiona event loop internamente). ✅ ARREGLADO: cambiar main() a función síncrona, eliminar asyncio.run(), llamar main() directamente. (3) **Bug #2 (CRÍTICO)**: Acceso directo a `job_queue.scheduler.add_job()` con CronTrigger externo bypasea API de PTB. ✅ ARREGLADO: usar `app.job_queue.run_daily(callback, time=...)` (API alto nivel). (4) **Bug #3 (CRÍTICO)**: `args=(app.context_types.context,)` pasa clase, no instancia → falla al ejecutar. ✅ ARREGLADO: eliminar args, PTB inyecta context automáticamente. (5) **Bug #4 (MENOR)**: Imports innecesarios AsyncIOScheduler/CronTrigger. ✅ ARREGLADO: eliminar (PTB ya los integra). (6) Bot iniciado en background: `python3 bot_telegram.py` (PID 2212267, corriendo). (7) TELEGRAM_USER_ID capturado: `1938571828`. (8) Scheduler configurado: push diario a las 08:00 AM. (9) Logs confirman: "Application started", "Scheduler started", "Bot iniciado. Escuchando actualizaciones...".

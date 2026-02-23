@@ -734,3 +734,689 @@ if __name__ == "__main__":
             print(f"- {cargo['descripcion']}: €{cargo['importe']:.2f} ({cargo['fecha_cargo']})")
     else:
         print("Sin cargos próximos")
+
+
+# ===== SISTEMA 3-LEVEL DE MENSAJES (BLOQUE 3) =====
+
+# Pool de tonos rotativos para mensajes diarios
+TONOS_DISPONIBLES = [
+    "amigo_whatsapp",      # Directo, sin florituras
+    "coach_energico",      # Motivador, con sugerencias
+    "analista_seco",       # Bloomberg terminal, solo hechos
+    "narrador_curioso",    # Cuenta datos como historias
+    "bromista_financiero"  # Incluye chiste sobre dinero
+]
+
+# Pool de ángulos para push diario (aleatorio cada día)
+ANGULOS_DIARIOS = [
+    "gastos_ayer",         # Desglose de ayer
+    "ritmo_mes",          # Extrapolación del mes
+    "presupuesto_peligro", # Categoría en riesgo
+    "comparativa_semana",  # Esta semana vs semana anterior
+    "merchant_sorpresa",   # Merchant más caro/frecuente
+    "ahorro_diario",       # Ahorro de ayer vs media
+    "cargo_alerta",        # Cargas extraordinarias próximas
+    "libre_llm"           # El LLM elige qué contar
+]
+
+# Pool de ángulos para push mensual (rotación por mes)
+ANGULOS_MENSUALES = [
+    "cierre_vs_anterior",  # Comparativa vs mes anterior
+    "cierre_fire",         # Proyección FIRE
+    "cierre_patrones"      # Patrones y revelaciones
+]
+
+
+def get_gastos_ayer() -> Dict:
+    """Obtiene gastos del día anterior con desglose por categoría"""
+    try:
+        ayer = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        cursor.execute(f"""
+            SELECT cat1, cat2, SUM(importe) as total, COUNT(*) as num_tx
+            FROM transacciones
+            WHERE tipo = 'GASTO' AND fecha = '{ayer}'
+            GROUP BY cat1, cat2
+            ORDER BY total DESC
+        """)
+        
+        gastos = []
+        total = 0
+        for row in cursor.fetchall():
+            cat1, cat2, monto, num_tx = row
+            monto = abs(monto)
+            gastos.append({
+                'cat1': cat1,
+                'cat2': cat2,
+                'monto': monto,
+                'num_tx': num_tx
+            })
+            total += monto
+        
+        conn.close()
+        return {
+            'fecha': ayer,
+            'total': total,
+            'gastos': gastos,
+            'num_transacciones': sum(g['num_tx'] for g in gastos)
+        }
+    
+    except Exception as e:
+        print(f"❌ Error obteniendo gastos de ayer: {e}", file=sys.stderr)
+        return {'fecha': None, 'total': 0, 'gastos': [], 'num_transacciones': 0}
+
+
+def get_ritmo_mes() -> Dict:
+    """Extrapola el ritmo de gasto del mes en curso"""
+    try:
+        stats = analizar_presupuestos()
+        dias_transcurridos = 28 - stats['dias_restantes']
+        
+        if dias_transcurridos == 0:
+            return {'dias_transcurridos': 0, 'extrapolacion': None}
+        
+        gasto_diario_promedio = stats['total_gasto'] / dias_transcurridos if dias_transcurridos > 0 else 0
+        extrapolacion_mes = gasto_diario_promedio * 28  # Asumir mes de 28 días
+        presupuesto_total = stats['total_presupuesto']
+        
+        estado = "bien" if extrapolacion_mes <= presupuesto_total else "mal"
+        diferencia = abs(extrapolacion_mes - presupuesto_total)
+        
+        return {
+            'dias_transcurridos': dias_transcurridos,
+            'gasto_actual': stats['total_gasto'],
+            'gasto_diario_promedio': gasto_diario_promedio,
+            'extrapolacion_mes': extrapolacion_mes,
+            'presupuesto_total': presupuesto_total,
+            'estado': estado,
+            'diferencia': diferencia
+        }
+    
+    except Exception as e:
+        print(f"❌ Error calculando ritmo del mes: {e}", file=sys.stderr)
+        return {}
+
+
+def get_merchant_top_mes() -> Dict:
+    """Obtiene el merchant más caro/frecuente del mes en curso"""
+    try:
+        year, month = get_current_month_year()
+        periodo = f"{year}-{month:02d}"
+        
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Por gasto total
+        cursor.execute(f"""
+            SELECT merchant_name, SUM(importe) as total, COUNT(*) as num_tx
+            FROM transacciones
+            WHERE tipo = 'GASTO' AND strftime('%Y-%m', fecha) = '{periodo}'
+              AND merchant_name IS NOT NULL
+            GROUP BY merchant_name
+            ORDER BY total DESC
+            LIMIT 1
+        """)
+        
+        row_caro = cursor.fetchone()
+        merchant_caro = None
+        if row_caro:
+            merchant_caro = {
+                'name': row_caro[0],
+                'total': abs(row_caro[1]),
+                'num_tx': row_caro[2],
+                'tipo': 'más caro'
+            }
+        
+        # Por frecuencia
+        cursor.execute(f"""
+            SELECT merchant_name, SUM(importe) as total, COUNT(*) as num_tx
+            FROM transacciones
+            WHERE tipo = 'GASTO' AND strftime('%Y-%m', fecha) = '{periodo}'
+              AND merchant_name IS NOT NULL
+            GROUP BY merchant_name
+            ORDER BY num_tx DESC
+            LIMIT 1
+        """)
+        
+        row_frecuente = cursor.fetchone()
+        merchant_frecuente = None
+        if row_frecuente:
+            merchant_frecuente = {
+                'name': row_frecuente[0],
+                'total': abs(row_frecuente[1]),
+                'num_tx': row_frecuente[2],
+                'tipo': 'más frecuente'
+            }
+        
+        conn.close()
+        
+        # Elegir cuál reportar (el más caro por defecto)
+        merchant = merchant_caro or merchant_frecuente
+        return merchant if merchant else {}
+    
+    except Exception as e:
+        print(f"❌ Error obteniendo merchant top: {e}", file=sys.stderr)
+        return {}
+
+
+def get_comparativa_semanas() -> Dict:
+    """Compara gastos de esta semana vs la misma semana del mes anterior"""
+    try:
+        hoy = datetime.now()
+        num_semana_actual = hoy.isocalendar()[1]
+        semana_anterior_inicio = hoy - timedelta(days=7)
+        semana_anterior_fin = hoy
+        
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Gastos esta semana (últimos 7 días)
+        cursor.execute("""
+            SELECT SUM(importe) as total, COUNT(*) as num_tx
+            FROM transacciones
+            WHERE tipo = 'GASTO'
+              AND fecha >= date('now', '-7 days')
+        """)
+        row_actual = cursor.fetchone()
+        gasto_esta_semana = abs(row_actual[0]) if row_actual[0] else 0
+        num_tx_esta = row_actual[1] if row_actual else 0
+        
+        # Gastos hace 7-14 días (semana anterior)
+        cursor.execute("""
+            SELECT SUM(importe) as total, COUNT(*) as num_tx
+            FROM transacciones
+            WHERE tipo = 'GASTO'
+              AND fecha BETWEEN date('now', '-14 days') AND date('now', '-7 days')
+        """)
+        row_anterior = cursor.fetchone()
+        gasto_semana_anterior = abs(row_anterior[0]) if row_anterior[0] else 0
+        num_tx_anterior = row_anterior[1] if row_anterior else 0
+        
+        conn.close()
+        
+        diferencia = gasto_esta_semana - gasto_semana_anterior
+        pct_cambio = (diferencia / gasto_semana_anterior * 100) if gasto_semana_anterior > 0 else 0
+        tendencia = "↑" if diferencia > 0 else "↓" if diferencia < 0 else "="
+        
+        return {
+            'gasto_esta_semana': gasto_esta_semana,
+            'gasto_semana_anterior': gasto_semana_anterior,
+            'diferencia': diferencia,
+            'pct_cambio': pct_cambio,
+            'tendencia': tendencia,
+            'num_tx_esta': num_tx_esta,
+            'num_tx_anterior': num_tx_anterior
+        }
+    
+    except Exception as e:
+        print(f"❌ Error comparando semanas: {e}", file=sys.stderr)
+        return {}
+
+
+def get_ahorro_diario() -> Dict:
+    """Calcula el ahorro de ayer vs media diaria del mes"""
+    try:
+        # Ahorro de ayer (nómina - gastos)
+        ayer = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Gastos de ayer
+        cursor.execute(f"""
+            SELECT SUM(importe) FROM transacciones
+            WHERE tipo = 'GASTO' AND fecha = '{ayer}'
+        """)
+        gastos_ayer = abs(cursor.fetchone()[0] or 0)
+        
+        # Ingresos de ayer
+        cursor.execute(f"""
+            SELECT SUM(importe) FROM transacciones
+            WHERE tipo = 'INGRESO' AND fecha = '{ayer}'
+        """)
+        ingresos_ayer = cursor.fetchone()[0] or 0
+        ahorro_ayer = ingresos_ayer - gastos_ayer
+        
+        # Media diaria del mes
+        year, month = get_current_month_year()
+        periodo = f"{year}-{month:02d}"
+        
+        cursor.execute(f"""
+            SELECT 
+                SUM(CASE WHEN tipo = 'INGRESO' THEN importe ELSE 0 END) as ingresos,
+                SUM(CASE WHEN tipo = 'GASTO' THEN ABS(importe) ELSE 0 END) as gastos
+            FROM transacciones
+            WHERE strftime('%Y-%m', fecha) = '{periodo}'
+        """)
+        row = cursor.fetchone()
+        ingresos_mes = row[0] or 0
+        gastos_mes = row[1] or 0
+        
+        dias_transcurridos = 28 - get_dias_para_fin_mes()
+        media_diaria = (ingresos_mes - gastos_mes) / dias_transcurridos if dias_transcurridos > 0 else 0
+        
+        conn.close()
+        
+        diferencia_vs_media = ahorro_ayer - media_diaria
+        estado = "por encima" if diferencia_vs_media > 0 else "por debajo"
+        
+        return {
+            'fecha': ayer,
+            'ahorro_ayer': ahorro_ayer,
+            'media_diaria_mes': media_diaria,
+            'diferencia_vs_media': diferencia_vs_media,
+            'estado': estado
+        }
+    
+    except Exception as e:
+        print(f"❌ Error calculando ahorro diario: {e}", file=sys.stderr)
+        return {}
+
+
+def prompt_gastos_ayer(datos: Dict) -> str:
+    """Genera prompt para ángulo: gastos_ayer"""
+    if not datos['gastos']:
+        return "Ayer no hubo gastos. ¡Excelente día! 🎉"
+    
+    desglose = "\n".join([
+        f"  • {g['cat1']}/{g['cat2']}: €{g['monto']:.2f} ({g['num_tx']} transacciones)"
+        for g in datos['gastos'][:5]  # Top 5
+    ])
+    
+    return f"""Gastos de ayer ({datos['fecha']}): €{datos['total']:.2f}
+
+Desglose:
+{desglose}
+
+Total: {datos['num_transacciones']} transacciones"""
+
+
+def prompt_ritmo_mes(datos: Dict) -> str:
+    """Genera prompt para ángulo: ritmo_mes"""
+    if not datos:
+        return "No hay datos suficientes del mes."
+    
+    dias_falta = 28 - datos['dias_transcurridos']
+    return f"""Ritmo actual del mes:
+
+Gastos reales: €{datos['total_gasto']:.2f} (en {datos['dias_transcurridos']} días)
+Gasto diario: €{datos['gasto_diario_promedio']:.2f}
+
+Si sigues así...
+→ Gastarías: €{datos['extrapolacion_mes']:.2f} para fin de mes
+→ Presupuesto: €{datos['presupuesto_total']:.2f}
+→ Estado: {datos['estado'].upper()}
+
+Te quedan {dias_falta} días."""
+
+
+def prompt_presupuesto_peligro(stats: Dict) -> str:
+    """Genera prompt para ángulo: presupuesto_peligro"""
+    if not stats['categorias_en_rojo'] and not stats['categorias_en_naranja']:
+        return "Todas las categorías están dentro del plan. ¡Vas bien! ✅"
+    
+    riesgo = stats['categorias_en_rojo'] + stats['categorias_en_naranja']
+    riesgo.sort(key=lambda x: x['pct'], reverse=True)
+    
+    top_riesgo = riesgo[0]
+    pct = top_riesgo['pct']
+    cat_name = f"{top_riesgo['cat1']}/{top_riesgo['cat2']}"
+    gasto = top_riesgo['gasto']
+    presupuesto = top_riesgo['presupuesto']
+    restante = top_riesgo['restante']
+    
+    if pct >= 100:
+        return f"🔴 ALERTA: {cat_name} está reventada ({pct:.0f}%)\nGasto: €{gasto:.2f} / Presupuesto: €{presupuesto:.2f}\nSobrepasada por: €{gasto - presupuesto:.2f}"
+    else:
+        return f"⚠️ NARANJA: {cat_name} al {pct:.0f}%\nGasto: €{gasto:.2f} / Presupuesto: €{presupuesto:.2f}\nRestante: €{restante:.2f}"
+
+
+def prompt_merchant_sorpresa(datos: Dict) -> str:
+    """Genera prompt para ángulo: merchant_sorpresa"""
+    if not datos:
+        return "Sin datos de merchants este mes."
+    
+    name = datos['name']
+    total = datos['total']
+    num_tx = datos['num_tx']
+    
+    return f"Revelación del mes: {name}\nHas gastado €{total:.2f} en {num_tx} compras\nPromedio por compra: €{total/num_tx:.2f}"
+
+
+def prompt_ahorro_diario(datos: Dict) -> str:
+    """Genera prompt para ángulo: ahorro_diario"""
+    if not datos:
+        return "Sin datos de ahorro."
+    
+    ayer = datos['fecha']
+    ahorro = datos['ahorro_ayer']
+    media = datos['media_diaria_mes']
+    estado = datos['estado']
+    
+    return f"Ahorro de ayer ({ayer}): €{ahorro:.2f}\nMedia diaria del mes: €{media:.2f}\nEstás {estado} de la media"
+
+
+def prompt_cargo_alerta(cargos: List[Dict]) -> str:
+    """Genera prompt para ángulo: cargo_alerta"""
+    if not cargos:
+        return "No hay cargos extraordinarios próximos. Respira. 😌"
+    
+    cargo = cargos[0]
+    return f"⏰ Alerta: {cargo['descripcion']}\n€{cargo['importe']:.2f} en {cargo['dias_para_aviso']} días ({cargo['fecha_cargo']})"
+
+
+def generate_daily_message() -> str:
+    """
+    Genera mensaje diario con ángulo aleatorio y tono rotativo.
+    
+    Returns:
+        str: Prompt listo para enviar al LLM o como fallback
+    """
+    # Elegir ángulo aleatorio
+    angulo = random.choice(ANGULOS_DIARIOS)
+    tono = random.choice(TONOS_DISPONIBLES)
+    
+    # Recopilar datos según ángulo
+    if angulo == "gastos_ayer":
+        datos = get_gastos_ayer()
+        contenido = prompt_gastos_ayer(datos)
+    
+    elif angulo == "ritmo_mes":
+        datos = get_ritmo_mes()
+        contenido = prompt_ritmo_mes(datos)
+    
+    elif angulo == "presupuesto_peligro":
+        stats = analizar_presupuestos()
+        contenido = prompt_presupuesto_peligro(stats)
+    
+    elif angulo == "comparativa_semana":
+        datos = get_comparativa_semanas()
+        if datos:
+            tren = datos['tendencia']
+            gasto_esta = datos['gasto_esta_semana']
+            gasto_anterior = datos['gasto_semana_anterior']
+            pct = datos['pct_cambio']
+            contenido = f"Comparativa semana:\nEsta semana: €{gasto_esta:.2f}\nSemana anterior: €{gasto_anterior:.2f}\nCambio: {tren} {pct:+.1f}%"
+        else:
+            contenido = "Sin datos para comparativa."
+    
+    elif angulo == "merchant_sorpresa":
+        datos = get_merchant_top_mes()
+        contenido = prompt_merchant_sorpresa(datos)
+    
+    elif angulo == "ahorro_diario":
+        datos = get_ahorro_diario()
+        contenido = prompt_ahorro_diario(datos)
+    
+    elif angulo == "cargo_alerta":
+        cargos = get_cargos_extraordinarios_proximos()
+        contenido = prompt_cargo_alerta(cargos)
+    
+    else:  # libre_llm
+        stats = analizar_presupuestos()
+        cargos = get_cargos_extraordinarios_proximos()
+        contenido = f"Análisis libre del mes:\n{stats['mes_nombre'].capitalize()}: €{stats['total_gasto']:.2f} gastado, {stats['pct_total']:.0f}% utilizado"
+    
+    # Construir prompt con instrucciones de tono
+    instrucciones_tono = _get_instrucciones_tono(tono)
+    
+    prompt = f"""Eres un asesor financiero personal de Telegram.
+
+## Tono a usar: {tono}
+{instrucciones_tono}
+
+## Datos del análisis de hoy:
+{contenido}
+
+## Instrucciones generales:
+- Sé breve: 2-3 párrafos máximo
+- Tono conversacional, sin jerga corporativa
+- Ocasionalmente incluye humor (especialmente si tono = bromista_financiero)
+- Responde directamente, sin formateo especial
+- No uses emojis excesivos
+
+Genera un mensaje para enviar por Telegram:"""
+    
+    return prompt
+
+
+def _get_instrucciones_tono(tono: str) -> str:
+    """Retorna instrucciones específicas para cada tono"""
+    instrucciones = {
+        "amigo_whatsapp": "Habla como si fueras un amigo que entiende de finanzas. Directo, sin rodeos. Frases cortas. WhatsApp vibes.",
+        "coach_energico": "Sé motivador pero realista. Sugiere acciones concretas. Energía positiva pero sin falsedad.",
+        "analista_seco": "Sólo hechos y números. Bloomberg terminal energy. Minimalista, sin formalidades innecesarias.",
+        "narrador_curioso": "Cuenta los datos como si fuera un cuento interesante. Busca patrones, conexiones inusuales.",
+        "bromista_financiero": "Incluye UN chiste o comentario humorous sobre dinero/finanzas. El resto puede ser serio."
+    }
+    return instrucciones.get(tono, "Sé cercano e informal.")
+
+
+def generate_monthly_message() -> str:
+    """
+    Genera mensaje mensual con ángulo rotativo.
+    El ángulo se elige según el mes del año (enero→cierre_vs_anterior, febrero→cierre_fire, etc.)
+    
+    Returns:
+        str: Prompt listo para enviar al LLM
+    """
+    # Elegir ángulo según el mes (rotación fija)
+    mes_actual = datetime.now().month
+    angulo_index = (mes_actual - 1) % len(ANGULOS_MENSUALES)
+    angulo = ANGULOS_MENSUALES[angulo_index]
+    
+    # Mes anterior (para cierre)
+    hoy = datetime.now()
+    primer_dia_mes_actual = hoy.replace(day=1)
+    ultimo_dia_mes_anterior = primer_dia_mes_actual - timedelta(days=1)
+    mes_anterior = ultimo_dia_mes_anterior.month
+    año_anterior = ultimo_dia_mes_anterior.year
+    
+    periodo_anterior = f"{año_anterior}-{mes_anterior:02d}"
+    periodo_actual = f"{hoy.year}-{hoy.month:02d}"
+    
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Query para mes anterior
+        cursor.execute(f"""
+            SELECT 
+                SUM(CASE WHEN tipo = 'INGRESO' THEN importe ELSE 0 END) as ingresos,
+                SUM(CASE WHEN tipo = 'GASTO' THEN ABS(importe) ELSE 0 END) as gastos
+            FROM transacciones
+            WHERE strftime('%Y-%m', fecha) = '{periodo_anterior}'
+        """)
+        row_anterior = cursor.fetchone()
+        ingresos_anterior = row_anterior[0] or 0
+        gastos_anterior = row_anterior[1] or 0
+        ahorro_anterior = ingresos_anterior - gastos_anterior
+        
+        # Query para mes actual (hasta hoy)
+        cursor.execute(f"""
+            SELECT 
+                SUM(CASE WHEN tipo = 'INGRESO' THEN importe ELSE 0 END) as ingresos,
+                SUM(CASE WHEN tipo = 'GASTO' THEN ABS(importe) ELSE 0 END) as gastos
+            FROM transacciones
+            WHERE strftime('%Y-%m', fecha) <= '{periodo_actual}'
+              AND fecha <= date('now')
+        """)
+        row_actual = cursor.fetchone()
+        ingresos_actual = row_actual[0] or 0
+        gastos_actual = row_actual[1] or 0
+        ahorro_actual = ingresos_actual - gastos_actual
+        
+        conn.close()
+        
+        # Generar contenido según ángulo
+        if angulo == "cierre_vs_anterior":
+            mes_anterior_nombre = get_mes_nombre(mes_anterior)
+            mes_actual_nombre = get_mes_nombre(hoy.month)
+            delta_gasto = gastos_anterior - gastos_actual
+            delta_ahorro = ahorro_anterior - ahorro_actual
+            
+            contenido = f"""Cierre de {mes_anterior_nombre.capitalize()}:
+            
+Ingresos: €{ingresos_anterior:.2f}
+Gastos: €{gastos_anterior:.2f}
+Ahorro: €{ahorro_anterior:.2f}
+
+Comparativa vs {mes_actual_nombre}:
+Gastos: {delta_gasto:+.2f}€
+Ahorro: {delta_ahorro:+.2f}€"""
+        
+        elif angulo == "cierre_fire":
+            tasa_ahorro = (ahorro_anterior / ingresos_anterior * 100) if ingresos_anterior > 0 else 0
+            # Asumir FI target de 1 millón y SWR de 4%
+            ahorro_anual_proyectado = ahorro_anterior * 12
+            meses_para_fire = (1000000 / ahorro_anual_proyectado * 12) if ahorro_anual_proyectado > 0 else float('inf')
+            
+            mes_nombre = get_mes_nombre(mes_anterior)
+            contenido = f"""Análisis FIRE — {mes_nombre.capitalize()}:
+
+Ahorro del mes: €{ahorro_anterior:.2f}
+Tasa de ahorro: {tasa_ahorro:.1f}%
+
+Proyección anual: €{ahorro_anual_proyectado:.2f}
+Meses para FI (target €1M): {meses_para_fire:.0f}"""
+        
+        else:  # cierre_patrones
+            # Top categoría del mes
+            cursor = conn.cursor()
+            cursor.execute(f"""
+                SELECT cat1, cat2, SUM(ABS(importe)) as total, COUNT(*) as num_tx
+                FROM transacciones
+                WHERE tipo = 'GASTO' AND strftime('%Y-%m', fecha) = '{periodo_anterior}'
+                GROUP BY cat1, cat2
+                ORDER BY total DESC
+                LIMIT 1
+            """)
+            row_top = cursor.fetchone()
+            if row_top:
+                top_cat = f"{row_top[0]}/{row_top[1]}: €{row_top[2]:.2f}"
+            else:
+                top_cat = "Sin datos"
+            
+            mes_nombre = get_mes_nombre(mes_anterior)
+            contenido = f"""Patrones de {mes_nombre.capitalize()}:
+
+Gasto total: €{gastos_anterior:.2f}
+Top categoría: {top_cat}
+Transacciones: Ver detalle en dashboard"""
+        
+        conn.close()
+        
+    except Exception as e:
+        print(f"❌ Error generando mensaje mensual: {e}", file=sys.stderr)
+        contenido = "Error al analizar datos mensuales."
+    
+    prompt = f"""Eres un asesor financiero personal que hace cierre mensual.
+
+## Ángulo de análisis: {angulo}
+Estilo: Analítico, con datos concretos y recomendaciones.
+
+## Datos del cierre:
+{contenido}
+
+## Instrucciones:
+- 2-4 párrafos, análisis serio
+- Incluye observaciones sobre tendencias
+- Si hay oportunidades de mejora, sugierelas
+- Sin emojis, tono profesional pero cercano
+
+Genera el cierre mensual para Telegram:"""
+    
+    return prompt
+
+
+def generate_annual_message() -> str:
+    """
+    Genera mensaje anual (1 de enero) con revisión del año anterior.
+    
+    Returns:
+        str: Prompt listo para enviar al LLM
+    """
+    try:
+        año_anterior = datetime.now().year - 1
+        periodo = f"{año_anterior}%"
+        
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        
+        # Query para año completo
+        cursor.execute(f"""
+            SELECT 
+                SUM(CASE WHEN tipo = 'INGRESO' THEN importe ELSE 0 END) as ingresos,
+                SUM(CASE WHEN tipo = 'GASTO' THEN ABS(importe) ELSE 0 END) as gastos,
+                COUNT(*) as num_tx
+            FROM transacciones
+            WHERE strftime('%Y', fecha) = '{año_anterior}'
+        """)
+        row = cursor.fetchone()
+        ingresos = row[0] or 0
+        gastos = row[1] or 0
+        num_tx = row[2] or 0
+        ahorro = ingresos - gastos
+        tasa_ahorro = (ahorro / ingresos * 100) if ingresos > 0 else 0
+        
+        # Top 5 categorías
+        cursor.execute(f"""
+            SELECT cat1, cat2, SUM(ABS(importe)) as total
+            FROM transacciones
+            WHERE tipo = 'GASTO' AND strftime('%Y', fecha) = '{año_anterior}'
+            GROUP BY cat1, cat2
+            ORDER BY total DESC
+            LIMIT 5
+        """)
+        
+        top_cats = []
+        for row_cat in cursor.fetchall():
+            top_cats.append(f"{row_cat[0]}/{row_cat[1]}: €{row_cat[2]:.2f}")
+        
+        # Proyección FIRE
+        ahorro_anual = ahorro
+        meses_para_fire = (1000000 / ahorro_anual * 12) if ahorro_anual > 0 else float('inf')
+        
+        conn.close()
+        
+        contenido = f"""Revisión Anual {año_anterior}:
+
+**Resumen Financiero:**
+- Ingresos totales: €{ingresos:.2f}
+- Gastos totales: €{gastos:.2f}
+- Ahorro neto: €{ahorro:.2f}
+- Tasa de ahorro: {tasa_ahorro:.1f}%
+- Transacciones: {num_tx}
+
+**Top 5 Categorías de Gasto:**
+{chr(10).join(['• ' + cat for cat in top_cats])}
+
+**Proyección FIRE:**
+- Ahorro anual: €{ahorro_anual:.2f}
+- Meses para FI (target €1M): {meses_para_fire:.0f}
+- Equivalente a {meses_para_fire/12:.1f} años"""
+        
+    except Exception as e:
+        print(f"❌ Error generando mensaje anual: {e}", file=sys.stderr)
+        contenido = "Error al analizar datos anuales."
+    
+    prompt = f"""Eres un asesor financiero personal haciendo un cierre anual.
+
+## Revisión del Año {año_anterior}
+
+{contenido}
+
+## Instrucciones para tu respuesta:
+- Tono: Estratégico, reflexivo, motivador
+- 3-5 párrafos máximo
+- Analiza tendencias y logros
+- Sugiere objetivos para el año nuevo
+- Celebra los ahorros conseguidos
+- Sé realista pero optimista
+
+Genera el mensaje anual para Telegram:"""
+    
+    return prompt
