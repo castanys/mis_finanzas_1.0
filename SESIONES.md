@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 30
+**Última actualización**: 2026-02-23 — Sesión 31
 
 ---
 
@@ -73,6 +73,11 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S31 — 2026-02-23
+- **Hecho**: ✅ PÁGINA 07 (GEOGRAFÍA) VALIDADA Y LISTA. (1) Verificada estructura: 516 líneas, componentes Streamlit (KPIs, mapa scatter_geo, tabla países, PyDeck). (2) Validadas funciones de advisor.py: `get_resumen_geografico()` y `get_gastos_por_ubicacion()` funcionan correctamente. (3) Instaladas dependencias (venv): streamlit, plotly, pydeck. (4) Tests exhaustivos: todos pasaron. Cobertura de datos: 24 países, 35.221€ total, 742 merchants geolocalizados, 6.731 transacciones. (5) Streamlit arranca sin errores (localhost:8502).
+- **Decisión**: Página 07 está lista para producción. No hay cambios necesarios.
+- **Próximo**: (1) Continuación: clustering automático de viajes; (2) Alternativas a pytr Trade Republic; (3) Cruzar Amazon transactions con CSV historial de pedidos.
 
 ### S30 — 2026-02-23
 - **Hecho**: ✅ PROTOCOLO C+D IMPLEMENTADO. (1) REGLAS_PROYECTO.md: Regla #5 añadida (prohibición explícita `UPDATE transacciones SET cat1/cat2`). Líneas: 74→91. (2) AGENTS.md: Reescrito de forma compacta. REGLA CRÍTICA fortalecida con punto #5 (referencia a Regla #5). Líneas: 111→69 (-38%). (3) Contenido crítico preservado: protocolo de trabajo, comandos, taxonomía. Texto redundante eliminado. (4) Git inicializado y primer commit: "protocolo: Regla #5 + fortalecer REGLA CRÍTICA".
