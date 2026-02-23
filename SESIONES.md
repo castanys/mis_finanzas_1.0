@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 32
+**Última actualización**: 2026-02-23 — Sesión 33
 
 ---
 
@@ -108,6 +108,11 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - **Hecho**: SISTEMA DE MERCHANTS CON GEOGRAFÍA IMPLEMENTADO. (1) Arreglados 18 `cat2=''` en merchants.py: 7 restaurantes Cartagena/Murcia con tipos correctos (Restaurante/Bar), reprocesamiento 12 txs afectadas ✅. (2) Tabla `merchants` creada en finsense.db (16 campos: place_id, address, city, country, lat, lng, cat1, cat2, confidence, source, search_scope, etc). Migración: 754 merchants desde merchant_cache.db + merchants_places.json. (3) Columna `merchant_name` añadida a transacciones. Pobladas 3,159 txs con merchant_name via extract_merchant(). (4) google_places.py reescrito QUERY-FIRST: búsqueda sin scope previo, luego amplía (cartagena→murcia→spain→europe→global). Extrae address completa, city, country desde `formatted_address`. 7 merchants enriquecidos desde Google Places (Murcia, Granada, México, Suiza). (5) Funciones en advisor.py: `get_gastos_por_ubicacion(country, city, fecha_ini, fecha_fin)` + `get_gastos_viaje(nombre)` para queries geográficas. Tests: España 40,80€ (2 txs), México 34,88€, Suiza 3,14€, Colombia 0€ (txs sin merchant aún).
 - **Decisión**: Arquitectura merchants lista para: (1) queries "dime gastos en EEUU", (2) viajes geográficos automáticos, (3) análisis por ubicación en bot/dashboard.
 - **Próximo**: (1) Integrar enrich_merchants.py en reclassify_all.py + process_transactions.py; (2) Llenar merchant_name para viajes (Colombia, etc.); (3) Añadir función de clustering automático de viajes (BAJA prioridad).
+
+### S33 — 2026-02-23
+- **Hecho**: ✅ VERIFICACIÓN BOT TELEGRAM + FIX STARTUP. (1) Revisado `bot_telegram.py` (362 líneas, arquitectura completa con handlers /start, /resumen, /presupuestos, /cargos, scheduler APScheduler para push 8:00 AM). (2) Detectado error en `start_bot.sh`: carga incorrecta de `.env` via `export $(cat .env | xargs)` (falla con caracteres especiales). Arreglado: usa `set -a && source .env && set +a` (método estándar). (3) Verificado token bot válido: `8464876026:AAGvQR7jp5IqzGzm9SCRFmuieu1MgA5Vh8k` ✓ (conecta a Telegram API correctamente). (4) Bot se inicia sin errores (excepto event loop normal con timeout): llega a "✅ Bot iniciado. Escuchando actualizaciones..." (5) Detectado: `TELEGRAM_USER_ID` vacío en `.env` (comentario: "obtener ejecutando bot y enviando /start"). (6) python-telegram-bot (22.6) + apscheduler instalados ✓.
+- **Bloqueante**: REQUIERE ACCIÓN DEL USUARIO. Usuario debe: (1) Ejecutar `./start_bot.sh` en terminal; (2) Buscar @mis_finanzas_castanys_bot en Telegram; (3) Enviar `/start`; (4) Copiar user_id de mensaje del bot; (5) Actualizar `.env` con `TELEGRAM_USER_ID=<id>`; (6) Reiniciar bot.
+- **Próximo**: (1) Usuario ejecuta procedimiento captura user_id; (2) Verificar mensaje llega a Telegram a las 8:00 AM; (3) BLOQUE 2: pytr + sync automation; (4) BLOQUE 3: Sistema 3-level (daily/monthly/annual).
 
 ### S25 — 2026-02-22
 - **Hecho**: ✅ FASE A+B COMPLETADAS. BD: creadas tablas `presupuestos` (6 presupuestos variables) y `cargos_extraordinarios` (6 cargos 2026), pobladas con valores acordados. Streamlit: página `06_🎯_Presupuestos.py` implementada (barras progreso verde/naranja/rojo, edición desde UI, calendario cargos). Bot Telegram: `advisor.py` (análisis financiero, generación prompts LLM) y `bot_telegram.py` (push 8:00 AM + comandos /resumen, /presupuestos, /cargos, /ayuda). LLM fallback: Qwen (Ollama) → Claude API → prompt crudo. Setup: token válido configurado (8464876026:AAG...), `.env` creado, `start_bot.sh` y documentación completa (TELEGRAM_SETUP.md + README_BOT.md). Dependencias: python-telegram-bot + apscheduler instaladas. Tests: token validado, advisor testeado (análisis OK, Febrero 140% presupuesto).
