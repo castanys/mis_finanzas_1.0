@@ -53,6 +53,10 @@ TR_DOWNLOAD_DIR = INPUT_DIR / "tr_download"
 PROCESSED_DIR = INPUT_DIR / "procesados"
 PYTR_TIMEOUT = 120
 
+# Ruta a pytr en el venv
+VENV_DIR = PROJECT_ROOT / "venv"
+PYTR_BIN = VENV_DIR / "bin" / "pytr"
+
 
 class TradeRepublicSyncError(Exception):
     """Error durante sincronización de Trade Republic."""
@@ -70,17 +74,20 @@ class PytrNotInstalledError(TradeRepublicSyncError):
 
 
 def check_pytr_installed(logger):
-    """Verificar que pytr está instalado."""
+    """Verificar que pytr está instalado en el venv."""
     try:
+        # Buscar pytr en el venv
+        pytr_path = PYTR_BIN if PYTR_BIN.exists() else "pytr"
+        
         result = subprocess.run(
-            ["pytr", "--version"],
+            [str(pytr_path), "--version"],
             capture_output=True,
             text=True,
             timeout=5
         )
         if result.returncode != 0:
             raise PytrNotInstalledError("pytr retornó código de error")
-        logger.debug(f"pytr {result.stdout.strip()} detectado")
+        logger.debug(f"pytr {result.stdout.strip()} detectado en {pytr_path}")
         return True
     except (subprocess.TimeoutExpired, FileNotFoundError) as e:
         raise PytrNotInstalledError(f"pytr no disponible: {e}")
@@ -109,8 +116,11 @@ def download_trade_republic_docs(logger, dry_run=False):
         return True
     
     try:
+        # Buscar pytr en el venv
+        pytr_path = PYTR_BIN if PYTR_BIN.exists() else "pytr"
+        
         result = subprocess.run(
-            ["pytr", "dl_docs", "--output", str(TR_DOWNLOAD_DIR)],
+            [str(pytr_path), "dl_docs", "--output", str(TR_DOWNLOAD_DIR), "--last_days", "2"],
             capture_output=True,
             text=True,
             timeout=PYTR_TIMEOUT
@@ -137,20 +147,20 @@ def download_trade_republic_docs(logger, dry_run=False):
 
 def find_new_account_statements(logger, dry_run=False):
     """
-    Detectar PDFs de extracto de cuenta nuevos en tr_download/.
+    Detectar PDFs de extracto de cuenta en tr_download/.
     
     Estrategia:
     1. Listar todos los PDFs en tr_download/ recursivamente
     2. Filtrar: nombre contiene "Extracto de cuenta"
-    3. Excluir: PDFs cuyo nombre_base ya existe en procesados/
+    3. Devolver todos (el pipeline deduplicará automáticamente por hash SHA256)
     
     Returns:
-        list[Path]: Rutas a PDFs nuevos (rutas relativas desde tr_download)
+        list[Path]: Rutas a PDFs encontrados en tr_download/
     """
     new_pdfs = []
     
     if not TR_DOWNLOAD_DIR.exists():
-        logger.debug(f"No hay directorio {TR_DOWNLOAD_DIR}, sin PDFs nuevos")
+        logger.debug(f"No hay directorio {TR_DOWNLOAD_DIR}, sin PDFs")
         return new_pdfs
     
     # Listar todos los PDFs descargados
@@ -169,26 +179,13 @@ def find_new_account_statements(logger, dry_run=False):
         logger.info("No hay PDFs de extracto de cuenta en tr_download/")
         return new_pdfs
     
-    # Cargar PDFs ya procesados
-    processed_basenames = set()
-    if PROCESSED_DIR.exists():
-        for pdf in PROCESSED_DIR.glob("*.pdf"):
-            # Nombre base = todo antes del timestamp
-            # Ej: "Extracto de cuenta_20260220_223125.pdf" → "Extracto de cuenta_20260220"
-            base = pdf.name.rsplit("_", 1)[0]
-            processed_basenames.add(base)
-        logger.debug(f"PDFs ya procesados: {len(processed_basenames)}")
-    
-    # Detectar nuevos
+    # Devolver todos los PDFs encontrados
+    # La deduplicación por hash se hace en el pipeline
     for pdf in statement_pdfs:
-        base = pdf.name.rsplit("_", 1)[0]
-        if base not in processed_basenames:
-            new_pdfs.append(pdf)
-            logger.info(f"✓ PDF nuevo detectado: {pdf.name}")
-        else:
-            logger.debug(f"↻ PDF ya procesado (skipped): {pdf.name}")
+        logger.info(f"✓ PDF detectado: {pdf.name}")
+        new_pdfs.append(pdf)
     
-    logger.info(f"Total PDFs nuevos: {len(new_pdfs)}")
+    logger.info(f"Total PDFs encontrados: {len(new_pdfs)}")
     return new_pdfs
 
 
@@ -223,9 +220,14 @@ def move_pdfs_to_input(logger, new_pdfs, dry_run=False):
     return moved
 
 
-def process_with_pipeline(logger, dry_run=False):
+def process_with_pipeline(logger, pdfs_procesados=0, dry_run=False):
     """
     Ejecutar process_transactions.py sobre input/ y capturar resultados.
+    
+    Args:
+        logger: Logger instance
+        pdfs_procesados: Número de PDFs que se movieron a input/ (para reportar en resultado)
+        dry_run: bool
     
     Returns:
         dict: {"nuevas_txs": int, "pdfs_procesados": int}
@@ -269,7 +271,7 @@ def process_with_pipeline(logger, dry_run=False):
                     pass
         
         logger.info(f"✓ Pipeline completado. Nuevas transacciones: {nuevas_txs}")
-        return {"nuevas_txs": nuevas_txs, "pdfs_procesados": len(find_new_account_statements(logger))}
+        return {"nuevas_txs": nuevas_txs, "pdfs_procesados": pdfs_procesados}
         
     except subprocess.TimeoutExpired:
         logger.error("process_transactions.py timeout (>300s)")
@@ -343,7 +345,7 @@ def sync_trade_republic(logger=None, dry_run=False):
         
         # 5. Procesar con pipeline
         if moved_pdfs or dry_run:
-            pipeline_result = process_with_pipeline(logger, dry_run=dry_run)
+            pipeline_result = process_with_pipeline(logger, pdfs_procesados=len(moved_pdfs), dry_run=dry_run)
             result["nuevas_txs"] = pipeline_result["nuevas_txs"]
             logger.info(f"✓ Sincronización completada: {result['nuevas_txs']} nuevas transacciones")
         
