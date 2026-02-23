@@ -1,6 +1,7 @@
 """
 bot_telegram.py — Bot de Telegram para seguimiento financiero
-Envía push diario a las 8:00 AM + responde consultas on-demand
+Versión corregida para python-telegram-bot v22.x
+Envía push diario + responde consultas on-demand
 Integración con advisor.py para análisis y LLM (Qwen/Claude)
 """
 
@@ -8,8 +9,6 @@ import os
 import sys
 import logging
 from datetime import datetime, time
-import asyncio
-import json
 
 # Configurar logging
 logging.basicConfig(
@@ -32,14 +31,6 @@ try:
     from telegram.error import TelegramError
 except ImportError:
     logger.error("❌ python-telegram-bot no instalado. Instala: pip install python-telegram-bot")
-    sys.exit(1)
-
-# Importar APScheduler para scheduling
-try:
-    from apscheduler.schedulers.asyncio import AsyncIOScheduler
-    from apscheduler.triggers.cron import CronTrigger
-except ImportError:
-    logger.error("❌ apscheduler no instalado. Instala: pip install apscheduler")
     sys.exit(1)
 
 # Importar advisor
@@ -273,8 +264,8 @@ Respondo en español, con tono cercano y sin jerga corporativa.
 
 async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     """
-    Tarea programada: envía push a las 8:00 AM
-    Se ejecuta automáticamente via APScheduler
+    Tarea programada: envía push a las hora configurada (defecto 8:00 AM)
+    Se ejecuta automáticamente via job_queue de python-telegram-bot
     """
     if not TELEGRAM_USER_ID:
         logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push.")
@@ -311,8 +302,8 @@ async def mensaje_generico(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # ===== INICIALIZACIÓN DEL BOT =====
 
-async def main():
-    """Inicia el bot con handlers y scheduler"""
+def main():
+    """Inicia el bot con handlers y scheduler — función síncrona"""
     
     logger.info("🚀 Iniciando bot de Telegram...")
     
@@ -329,40 +320,34 @@ async def main():
     
     # Configurar scheduler para push diario usando job_queue de python-telegram-bot
     if TELEGRAM_USER_ID:
-        # Usar el job_queue integrado de la aplicación
-        job_queue = app.job_queue
-        job_queue.scheduler.add_job(
-            push_diario,
-            CronTrigger(hour=PUSH_HOUR, minute=PUSH_MINUTE),
-            args=(app.context_types.context,),
-            id="push_diario",
-            name="Push financiero diario",
-            replace_existing=True
+        # Usar la API de alto nivel de job_queue
+        hora_push = time(hour=PUSH_HOUR, minute=PUSH_MINUTE)
+        app.job_queue.run_daily(
+            callback=push_diario,
+            time=hora_push,
+            name="push_diario"
         )
         
-        logger.info(f"📅 Scheduler configurado: Push diario a {PUSH_HOUR:02d}:{PUSH_MINUTE:02d}")
+        logger.info(f"📅 Push diario programado a las {PUSH_HOUR:02d}:{PUSH_MINUTE:02d}")
     else:
         logger.warning("⚠️ No se configuró push automático (falta TELEGRAM_USER_ID)")
     
     # Iniciar bot
-    async with app:
-        logger.info("✅ Bot iniciado. Escuchando actualizaciones...")
-        await app.run_polling()
+    logger.info("✅ Bot iniciado. Escuchando actualizaciones...")
+    
+    # run_polling() es un método bloqueante síncrono
+    # Crea y gestiona su propio event loop internamente
+    # NO usar asyncio.run() — eso rompe el event loop
+    app.run_polling()
 
 # ===== ENTRY POINT =====
 
 if __name__ == "__main__":
     try:
-        asyncio.run(main())
+        # ✅ Llamada directa — NO usar asyncio.run()
+        main()
     except KeyboardInterrupt:
         logger.info("\n⏹️ Bot detenido por el usuario")
-    except RuntimeError as e:
-        if "Cannot close a running event loop" in str(e):
-            # Ignorar este error — ocurre al interrumpir el event loop
-            logger.info("\n⏹️ Bot cerrado correctamente")
-        else:
-            logger.error(f"❌ Error fatal: {e}")
-            sys.exit(1)
     except Exception as e:
         logger.error(f"❌ Error fatal: {e}")
         sys.exit(1)
