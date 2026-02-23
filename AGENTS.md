@@ -38,7 +38,7 @@ Si bloque falla 2+ veces → PARAR. Documentar en SESIONES.md como BLOQUEADO. Pe
 2. Compactar sesiones antiguas: 3–5 líneas de resumen → "Resúmenes Compactados"
 3. Commit: `git add SESIONES.md && git commit -m "compactar: sesiones [rango]"`
 
-Límites: SESIONES.md ≤150, AGENTS.md ≤80, REGLAS_PROYECTO.md ≤50 líneas.
+Límites: SESIONES.md ≤150, AGENTS.md ≤80, REGLAS_PROYECTO.md ≤100 líneas.
 
 ---
 
