@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Tuple
 import os
 import sys
+import random
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "finsense.db")
 
