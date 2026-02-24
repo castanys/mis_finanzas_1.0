@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 38 EN PROGRESO
+**Última actualización**: 2026-02-24 — Sesión 39 COMPLETADA
 
 ---
 
@@ -73,6 +73,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S39 — 2026-02-24 — IMPORTACIÓN DE FICHEROS VÍA TELEGRAM ✅ COMPLETADO
+- **Hecho**: ✅ SISTEMA DE IMPORTACIÓN DE DOCUMENTOS IMPLEMENTADO. (1) **Desactivado sync de pytr**: eliminadas líneas 301-332 en push_diario() — el CSV de TR está descartado, solo PDFs vía Telegram. (2) **Nuevo handler de documentos**: función `async def documento_handler()` (~130 líneas) que: (a) Verifica autorización (solo TELEGRAM_USER_ID puede enviar docs), (b) Descarga PDF/CSV a input/, (c) Ejecuta process_transactions.py en background, (d) Parsea resultado para extraer nuevas_txs, (e) Notifica al usuario con resumen (nuevas txs, período, archivo), (f) Archiva en input/procesados/. (3) **Registro del handler**: añadido `MessageHandler(filters.Document.ALL, documento_handler)` en main() antes del handler genérico. (4) **Actualización /ayuda**: añadida sección "Importar documentos" con instrucciones de qué formatos se aceptan (.pdf, .csv, .xls, .xlsx) y cuáles bancos soporta. (5) **Pruebas**: bot reiniciado (PID 2531313), scheduler corriendo (push_diario 12:00, push_mensual día1, push_anual 1-ene), logs sin errores. Extensiones soportadas: .pdf, .csv, .xls, .xlsx.
+- **Métrica**: bot_telegram.py: +130 líneas (handler de documentos). Handler registrado y funcional. Seguridad: solo usuario autorizado puede enviar docs.
+- **Decisión**: Importación de documentos ahora es el único flujo de entrada para PDFs/CSVs. Sync de pytr eliminado (no necesario sin CSV).
+- **Próximo**: (1) Enviar PDF nuevo de TR desde Telegram → bot lo procesa automáticamente; (2) Cuando esté listo, enviar CSV de Mediolanum (anotado para después); (3) Continuar con auditoría Fase 2 de duplicados en otros bancos (baja prioridad).
 
 ### S38 — 2026-02-24 — LIMPIEZA DE DUPLICADOS TR ✅ COMPLETADO
 - **Hecho**: ✅ FASE 1 DE LIMPIEZA DE DUPLICADOS COMPLETADA. (1) **Investigación de duplicados**: 679 pares de duplicados lógicos (fecha+importe, hash distinto). Categorización: 104 txs del CSV TR de S23 con equivalente en PDF oficial, ~200 transacciones legítimas recurrentes (AECC -24€, "OFF TO SAVE" diario), ~275 duplicados entre múltiples fuentes. (2) **Plan de limpieza**: Fase 1 — eliminar CSV de S23 (fuente contaminada). Fase 2 — auditoría manual de otros pares. (3) **Ejecución Fase 1**: (a) Creada carpeta `input/descartados/` y movido CSV `TradeRepublic_ES8015860001420977164411.csv` (91KB). (b) Eliminadas 924 txs del CSV de BD. (c) Limpiadas 11 copias redundantes del PDF en `input/procesados/` (conservadas 3 únicas, diferentes). (d) Movidos PDFs procesados a `input/archivo_tr/`. (4) **Resultado**: BD limpia. Total txs 15,745→14,821 (-924). TR: 1,111 txs→187 txs (solo PDFs oficiales, cero contaminación del CSV). Período cubierto: 2004-05-03→2026-02-13 (sin cambio).

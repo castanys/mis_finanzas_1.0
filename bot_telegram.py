@@ -265,6 +265,15 @@ async def ayuda_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 /cargos — Cargos extraordinarios próximos
 /ayuda — Ver este mensaje
 
+**Importar documentos:**
+📁 Adjunta un PDF o CSV al chat
+Soportados: .pdf, .csv, .xls, .xlsx
+• Trade Republic (extractos de cuenta)
+• Mediolanum (movimientos)
+• Otros bancos
+
+El bot procesará automáticamente y te dará el resumen.
+
 **Sobre este bot:**
 Soy tu asesor financiero. Te envío análisis en 3 cadencias:
 
@@ -282,65 +291,27 @@ Respondo en español, con tono cercano y sin jerga corporativa.
 
 async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     """
-    Push diario (12:00) — Mensaje con ángulo aleatorio + sync de Trade Republic
+    Push diario (12:00) — Mensaje con ángulo aleatorio
     Se ejecuta automáticamente via job_queue de python-telegram-bot
     
     Flujo:
-    1. Intenta sincronizar Trade Republic (BLOQUE 2)
-    2. Si falla autenticación, notifica al usuario
-    3. Genera y envía mensaje diario con ángulo aleatorio (BLOQUE 3)
+    1. Genera y envía mensaje diario con ángulo aleatorio (BLOQUE 3)
+    
+    Nota: Sync de Trade Republic desactivado (CSV descartado, solo PDFs vía Telegram)
     """
     if not TELEGRAM_USER_ID:
         logger.warning("⚠️ TELEGRAM_USER_ID no configurado. Saltando push diario.")
         return
     
-    logger.info("📨 Iniciando push diario (con sync TR)...")
+    logger.info("📨 Iniciando push diario...")
     
     try:
-        # ===== BLOQUE 2: Sincronizar Trade Republic =====
-        sync_notif = None
-        if sync_trade_republic:
-            try:
-                logger.info("🔄 Sincronizando Trade Republic...")
-                sync_result = sync_trade_republic(logger=None, dry_run=False)
-                
-                if sync_result["estado"] == "auth_required":
-                    # Notificar al usuario que necesita reautenticar
-                    sync_notif = (
-                        "⚠️ **Trade Republic: Necesitas Reautenticar**\n\n"
-                        "La sesión de pytr expiró. Ejecuta manualmente:\n\n"
-                        "```\ncd ~/apps/mis_finanzas_1.0\n"
-                        "source venv/bin/activate\n"
-                        "pytr login\n```\n\n"
-                        "Luego el bot sinc automáticamente cada día.\n"
-                    )
-                    logger.warning("⚠️ Trade Republic: Reautenticación requerida")
-                    
-                elif sync_result["estado"] == "ok":
-                    nuevas_txs = sync_result.get("nuevas_txs", 0)
-                    logger.info(f"✅ Sync TR completado: {nuevas_txs} nuevas transacciones")
-                
-                elif sync_result["estado"] == "sin_novedades":
-                    logger.info("ℹ️ Sync TR: Sin novedades")
-                
-                else:
-                    logger.warning(f"⚠️ Sync TR: estado={sync_result['estado']}, error={sync_result.get('error')}")
-            
-            except Exception as e:
-                logger.error(f"❌ Error sincronizando TR: {e}")
-        else:
-            logger.debug("ℹ️ sync_trade_republic no disponible, skipped")
-        
         # ===== BLOQUE 3: Generar y enviar mensaje diario =====
         # Generar prompt con ángulo aleatorio (BLOQUE 3)
         prompt = generate_daily_message()
         
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
-        
-        # Si hay notificación de auth, prependerla
-        if sync_notif:
-            mensaje = sync_notif + "\n" + "=" * 50 + "\n\n" + mensaje
         
         # Enviar al usuario
         await context.bot.send_message(
@@ -428,6 +399,134 @@ async def push_anual(context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"❌ Error enviando push anual: {e}")
 
 
+async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """
+    Maneja documentos (PDF/CSV) — descarga y procesa transacciones
+    
+    Flujo:
+    1. Verifica que el remitente es el usuario autorizado (TELEGRAM_USER_ID)
+    2. Descarga el archivo a input/
+    3. Ejecuta process_transactions.py --file en background
+    4. Notifica al usuario con el resultado
+    5. Archiva el archivo en input/procesados/
+    """
+    import subprocess
+    import shutil
+    from pathlib import Path
+    
+    user_id = update.effective_user.id
+    user_name = update.effective_user.first_name or "Usuario"
+    
+    # Seguridad: solo el usuario autorizado puede enviar documentos
+    if TELEGRAM_USER_ID and str(user_id) != str(TELEGRAM_USER_ID):
+        logger.warning(f"⚠️ Intento no autorizado de importar documento de {user_name} (ID: {user_id})")
+        await update.message.reply_text("❌ No autorizado para enviar documentos.")
+        return
+    
+    # Obtener información del documento
+    document = update.message.document
+    file_name = document.file_name
+    file_size_mb = document.file_size / (1024 * 1024)
+    
+    # Validar extensión
+    allowed_extensions = ['.pdf', '.csv', '.xls', '.xlsx']
+    file_ext = Path(file_name).suffix.lower()
+    if file_ext not in allowed_extensions:
+        logger.warning(f"⚠️ Extensión no permitida: {file_ext}")
+        await update.message.reply_text(
+            f"❌ Formato no soportado: {file_ext}\n"
+            f"Soportados: {', '.join(allowed_extensions)}"
+        )
+        return
+    
+    logger.info(f"📥 Documento recibido: {file_name} ({file_size_mb:.2f} MB)")
+    
+    # Confirmar recepción
+    await update.message.reply_text(f"⏳ Recibido: {file_name}\nProcesando...")
+    
+    try:
+        # Descargar el archivo
+        file = await context.bot.get_file(document.file_id)
+        input_dir = Path("/home/pablo/apps/mis_finanzas_1.0/input")
+        file_path = input_dir / file_name
+        
+        await file.download_to_drive(str(file_path))
+        logger.info(f"✅ Archivo descargado a {file_path}")
+        
+        # Ejecutar process_transactions.py en background
+        logger.info(f"🔄 Procesando {file_name}...")
+        result = subprocess.run(
+            [
+                "/home/pablo/apps/mis_finanzas_1.0/venv/bin/python3",
+                "/home/pablo/apps/mis_finanzas_1.0/process_transactions.py",
+                "--file", str(file_path),
+                "--no-stats"
+            ],
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        
+        # Parsear resultado
+        output = result.stdout + result.stderr
+        logger.info(f"📋 Output: {output[:500]}")
+        
+        # Contar nuevas transacciones en el output
+        nuevas_txs = 0
+        if "nuevas transacciones" in output.lower():
+            try:
+                # Buscar patrón "X nuevas transacciones"
+                import re
+                match = re.search(r'(\d+)\s+nuevas?\s+transacciones?', output, re.IGNORECASE)
+                if match:
+                    nuevas_txs = int(match.group(1))
+            except:
+                pass
+        
+        # Preparar respuesta
+        if result.returncode == 0:
+            # Éxito
+            if nuevas_txs > 0:
+                status = f"✅ Procesado: {nuevas_txs} nuevas transacciones importadas"
+            else:
+                status = "ℹ️ Procesado: 0 nuevas transacciones (ya estaban en la BD)"
+            
+            response = (
+                f"**{status}**\n"
+                f"📄 Archivo: {file_name}\n"
+                f"📊 Tamaño: {file_size_mb:.2f} MB\n"
+                f"📁 Archivado en: input/procesados/\n"
+            )
+        else:
+            # Error
+            error_msg = result.stderr or "Error desconocido"
+            response = (
+                f"❌ Error procesando el archivo:\n"
+                f"```\n{error_msg[:500]}\n```"
+            )
+            logger.error(f"❌ Error: {error_msg}")
+        
+        # Enviar respuesta
+        await update.message.reply_text(response, parse_mode="Markdown")
+        
+        # Mover archivo a procesados/ si todo fue bien
+        if result.returncode == 0:
+            processed_dir = input_dir / "procesados"
+            processed_dir.mkdir(parents=True, exist_ok=True)
+            new_path = processed_dir / file_name
+            shutil.move(str(file_path), str(new_path))
+            logger.info(f"✅ Archivo archivado en {new_path}")
+        
+        logger.info(f"✅ Importación completada: {file_name}")
+    
+    except subprocess.TimeoutExpired:
+        logger.error("⏱️ El procesamiento tardó demasiado (>60s)")
+        await update.message.reply_text("❌ El procesamiento tardó demasiado. Intenta con un archivo más pequeño.")
+    
+    except Exception as e:
+        logger.error(f"❌ Error importando documento: {e}")
+        await update.message.reply_text(f"❌ Error: {str(e)[:100]}")
+
 async def mensaje_generico(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Maneja mensajes genéricos"""
     await update.message.reply_text(
@@ -450,6 +549,11 @@ def main():
     app.add_handler(CommandHandler("presupuestos", presupuestos_handler))
     app.add_handler(CommandHandler("cargos", cargos_handler))
     app.add_handler(CommandHandler("ayuda", ayuda_handler))
+    
+    # Handler para documentos (PDF/CSV) — procesar transacciones
+    app.add_handler(MessageHandler(filters.Document.ALL, documento_handler))
+    
+    # Handler para mensajes genéricos (debe ir al final)
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, mensaje_generico))
     
     # Configurar scheduler para push automático usando job_queue de python-telegram-bot
