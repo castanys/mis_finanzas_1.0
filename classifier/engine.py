@@ -870,6 +870,31 @@ class Classifier:
                 'capa': 0
             }
 
+        # REGLA #65B: Recibos Ayuntamiento con referencia de impuesto específico
+        # Detecta por patrón de mandato en descripción
+        if "AYUNTAMIENTO" in desc_upper and "RECIBO" in desc_upper and "MANDATO" in desc_upper:
+            # IBI (Impuesto sobre Bienes Inmuebles) — REF. MANDATO 011-...
+            if "MANDATO 011-" in descripcion:
+                cat2_refined = refine_cat2_by_description("Impuestos", "IBI", descripcion)
+                tipo = determine_tipo("Impuestos", importe, descripcion)
+                return {
+                    'cat1': 'Impuestos',
+                    'cat2': cat2_refined,
+                    'tipo': tipo,
+                    'capa': 0
+                }
+            
+            # Impuesto de Matriculación (IVTM) — REF. MANDATO 040-...
+            if "MANDATO 040-" in descripcion:
+                cat2_refined = refine_cat2_by_description("Impuestos", "IVTM", descripcion)
+                tipo = determine_tipo("Impuestos", importe, descripcion)
+                return {
+                    'cat1': 'Impuestos',
+                    'cat2': cat2_refined,
+                    'tipo': tipo,
+                    'capa': 0
+                }
+
         # REGLA #65: Recibos SEPA Direct Debit (reclasificar por tipo de pago)
         # Patrón: "Recibos Sepa Direct Debit transfer to <EMPRESA>"
         # Estos SON recibos/domiciliaciones, no transferencias externas reales
