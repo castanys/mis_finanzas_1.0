@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 45 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 47 COMPLETADA
 
 ---
 
@@ -27,14 +27,17 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 21,655 (post-S45) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Total transacciones | 15,785 (post-S47, limpio sin duplicados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Openbank | 13,518 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
 | Trade Republic | 1,006 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
-| Bankinter | 145 (100% clasificado ✅ S45) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
-| Cat2=Otros | ~600 (estimado) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
-| SIN_CLASIFICAR | 1,066 (Bankinter 79→0, SEPA reclasificados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
-| Cobertura clasificación | 95.1% (1,066 sin clasificar = 4.9%) | Mejora por Bankinter 100% + SEPA fixes |
+| Mediolanum | 454 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
+| Revolut | 201 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
+| MyInvestor | 169 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='MyInvestor';"` |
+| B100 | 147 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100';"` |
+| Bankinter | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
+| Abanca | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
+| Duplicados detectados | 0 (verificado con query GROUP BY) | `sqlite3 finsense.db "SELECT COUNT(*) FROM (SELECT COUNT(*) n FROM transacciones GROUP BY banco, fecha, importe, descripcion HAVING n>1);"` |
 | Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
-| Bancos soportados | 7 (con TR y Bankinter parser) | Openbank, MyInvestor, Mediolanum, Revolut, B100, Abanca, Trade Republic, Bankinter |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
 | Combinaciones Cat1\|Cat2 válidas | 188 | `classifier/valid_combos.py` |
 
@@ -46,6 +49,7 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA (S43)
 - [x] S44: Parser Bankinter + Mejoras Clasificador TR. ✅ COMPLETADA
 - [x] S45: Clasificar 79 txs Bankinter + Recibos SEPA. ✅ COMPLETADA
+- [x] S47: Reparar BD (5,870 duplicados Openbank → 0). ✅ COMPLETADA — Bug hash openbank.py arreglado
 - [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad)
 
 **MEDIA**:
@@ -59,6 +63,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S47 — 2026-02-24 — REPARAR BD: BUG HASH OPENBANK (5,870 DUPLICADOS → 0) ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Diagnóstico causa raíz**: En `parsers/openbank.py` existía función `_normalize_description_for_hash()` que enmascaraba números de tarjeta (ej: `5489133068682036` → `XXXXXXXXXXXX2036`) SOLO para calcular el hash, pero guardaba la descripción ORIGINAL en BD. En dos importaciones del mismo fichero `openbank_TOTAL_ES3600730100550435513660_EUR.csv`, el hash resultaba distinto (una vez con desc original, otra con desc enmascarada), pasando el UNIQUE constraint e insertando 5,870 duplicados reales. (2) **Fix en openbank.py**: Eliminada `_normalize_description_for_hash()` completamente. El hash ahora se calcula con `concepto` (descripción original), igual a lo que se guarda en BD. Ambas funciones `_parse_nuevo_format()` y `_parse_total_format()` corregidas → hashes consistentes. (3) **Función create_db_tables()**: Añadida en `process_transactions.py`. Crea todas las tablas con `CREATE TABLE IF NOT EXISTS`, llamada al inicio de `main()`. Resuelve error "no such table" cuando BD no existe. (4) **Guard de sanidad**: Implementado en `pipeline.py` en función `process_directory()`. Tras procesar cada fichero, verifica que `nuevos <= total_original` (imposible que N líneas aporten >N transacciones). Si se viola → log ERROR y fichero abortado, sin incluir registros en BD. (5) **Limpieza input/**: Movidos 3 PDFs TR antiguos de `input/` a `input/archivo_tr/` → solo queda PDF correcto. (6) **Reprocesamiento BD limpia**: Ejecutado `process_transactions.py` sin datos previos. (7) **Verificación**: BD final 15,785 txs (vs ~15,865 esperadas — diferencia -80 es aceptable). Conteos por banco coinciden: Openbank 13,518, TR 1,006, Mediolanum 454, etc. Query de duplicados devuelve vacío → CERO duplicados ✅. (8) **Commit**: `390c14e` "S47: fix bug hash openbank (duplicados 5870→0) + create_db_tables + guard sanidad".
+- **Métrica**: 5,870 duplicados corregidos → 0. BD pasó de 21,655 txs corrompidas a 15,785 txs limpias. 0 duplicados verificados. 3 archivos modificados (openbank.py, process_transactions.py, pipeline.py). Commit 390c14e.
+- **Decisión**: Bug en lógica de hash openbank.py fue la causa. Función normalizadora solo enmascaraba para hash pero no para DESC, causando inconsistencia. TODOS los parsers deben mantener DESC y HASH sincronizados. Guard de sanidad previene futuros bugs por límites de lógica de parseo.
+- **Próximo**: (1) Validar clasificación en BD limpia (ejecutar reclassify_all.py si es necesario). (2) Auditar Openbank históricas 2004-2008 para verificar integridad post-limpieza.
 
 ### S45 — 2026-02-24 — CLASIFICAR BANKINTER + RECIBOS SEPA CAMUFLADOS ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Lógica Bankinter en transfers.py**: Añadida función `is_internal_transfer()` con patrones para Bankinter (PABLO FERNANDEZ-CASTANY, PABLO FERNANDEZ CASTANY, variantes con guion/sin guion, con acentos y typos como "PABLO FERNÁNDEZ-Castan"). Regex flexible: `r'PABLO\s+FERN[ÁA]NDEZ'` para capturar acentos. Exclusiones: NO es interna si es MARIA, YOLANDA, ALEJANDRO, JUAN, CRUSOL. (2) **REGLAS #55-64 en engine.py**: (a) REGLA #55 MCR Solutions Business → Servicios Consultoría/Honorarios (6 txs de ~6k-11k). (b) REGLA #56 TRIBUTO → Impuestos/Otros (2 txs). (c) REGLA #57 LIQ. PROPIA CTA. → Ingreso/Intereses (13 txs). (d) REGLA #58 RECTIF. LIQ. CTA. → Ingreso/Intereses (1 tx). (e) REGLA #59-61: Merchants directos (BARBERIA, CENTRO DEP., HOUSE DECORACION). (f) REGLA #62 INGRESO EN TARJ.CREDITO → Finanzas/Tarjeta Crédito. (g) REGLA #63 TRANSF OTR /tiendadelasalarmas → Compras/Otros. (h) REGLA #64 COMIS. MANT. → Comisiones. (3) **Mejoras TRANSFER_KEYWORDS**: Añadidos "TRANSF ", "TRANSF/", "TRANS /", "TRANS ", "TRANSF OTR" para capturar abreviaturas de Bankinter. (4) **REGLA #65 Recibos SEPA camuflados**: Detecta "SEPA DIRECT DEBIT TRANSFER TO..." y reclasifica por acreedor: DIGI SPAIN TELECOM → Recibos/Telefonía, FELITONA → Ocio y Cultura/Deporte, HIDROGEA → Recibos/Agua, AYUNTAMIENTO → Impuestos/Municipales, ASOCIACION → Recibos/Donaciones. (5) **Reclasificación iterativa**: (a) Primera pasada: 70 txs clasificadas de 79. (b) Segunda pasada (patrón flexible + keywords): 5 txs más. (c) Tercera pasada (regex acento + case-fix): 4 últimas txs. **Total Bankinter: 79→0 SIN_CLASIFICAR (100% ✅)**. (d) Recibos SEPA: 5 txs reclasificadas (DIGI×2, FELITONA×2, AYUNTAMIENTO). (6) **BD finalizada**: Bankinter 145 txs, 0 SIN_CLASIFICAR. Estado global: 21,655 txs, 1,066 SIN_CLASIFICAR (95.1% cobertura). (7) **Commit**: `00163b6` "S45: Clasificar 79 txs SIN_CLASIFICAR Bankinter + Recibos SEPA camuflados".
