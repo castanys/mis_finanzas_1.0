@@ -473,6 +473,20 @@ class TransactionPipeline:
                 nuevos = stats_fichero['nuevos']
                 duplicados = stats_fichero['duplicados']
                 
+                # GUARD DE SANIDAD: Verificar que nuevos <= total_original
+                if nuevos > total:
+                    self.logger.error(
+                        f"🚨 SANIDAD FALLIDA en {filename}: "
+                        f"nuevos ({nuevos}) > total_original ({total}). "
+                        f"ABORTANDO ESTE FICHERO."
+                    )
+                    # No agregar estos registros a all_records
+                    all_records = [r for r in all_records if r.get('source_file') != filename]
+                    stats_fichero['sanidad_fallida'] = True
+                    file_stats[filename] = stats_fichero
+                    self.logger.add_stat('csvs_ignorados', 1)
+                    continue
+                
                 if duplicados == 0:
                     dup_info = "0"
                 else:
@@ -512,6 +526,14 @@ class TransactionPipeline:
             self.logger.warning(f"FICHEROS CON ERROR ({len(ficheros_con_error)}) — NO cargados:")
             for fname, s in ficheros_con_error.items():
                 self.logger.warning(f"  ✗ {fname}: {s['error']}")
+
+        # Mostrar ficheros con sanidad fallida si los hay
+        ficheros_sanidad_fallida = {f: s for f, s in file_stats.items() if s.get('sanidad_fallida')}
+        if ficheros_sanidad_fallida:
+            self.logger.error(f"")
+            self.logger.error(f"🚨 SANIDAD FALLIDA ({len(ficheros_sanidad_fallida)}) — NO cargados:")
+            for fname, s in ficheros_sanidad_fallida.items():
+                self.logger.error(f"  🚨 {fname}: nuevos ({s['nuevos']}) > total ({s['total_original']})")
 
         # Guardar stats por fichero en el logger para luego mostrarlas
         self.logger.add_stat('file_stats', file_stats)

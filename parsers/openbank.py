@@ -26,25 +26,6 @@ class OpenbankParser(BankParser):
 
     BANK_NAME = "Openbank"
 
-    @staticmethod
-    def _normalize_description_for_hash(descripcion: str) -> str:
-        """
-        Normaliza la descripción para hash, enmascarando números de tarjeta.
-        
-        Esto permite que transacciones idénticas de diferentes formatos CSV
-        (TOTAL con tarjeta completa vs. nuevo con tarjeta enmascarada) generen
-        el mismo hash para deduplicación correcta.
-        
-        Ejemplo: 
-        - "COMPRA EN SIMYO, CON LA TARJETA : 5489133068682036 EL 2026-01-19"
-        - "COMPRA EN SIMYO, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-01-19"
-        Ambas se normalizan a: "COMPRA EN SIMYO, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-01-19"
-        """
-        # Enmascarar números de tarjeta: reemplaza los primeros 12 dígitos por "X"
-        # Patrón: 12+ dígitos consecutivos
-        descripcion_normalizada = re.sub(r'\b\d{12,}\b', lambda m: 'X' * 12 + m.group(0)[-4:], descripcion)
-        return descripcion_normalizada
-
     def _detect_format(self, headers: List[str]) -> str:
         """
         Detect which Openbank format this file uses.
@@ -129,9 +110,6 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
-            # Normalizar descripción para hash (enmascarar números de tarjeta)
-            descripcion_normalizada = self._normalize_description_for_hash(concepto)
-            
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -139,7 +117,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": self.generate_hash(fecha_iso, importe, descripcion_normalizada, iban, line_num)
+                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
             }
             records.append(record)
             line_num += 1
@@ -198,9 +176,6 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
-            # Normalizar descripción para hash (enmascarar números de tarjeta)
-            descripcion_normalizada = self._normalize_description_for_hash(concepto)
-            
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -208,7 +183,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": self.generate_hash(fecha_iso, importe, descripcion_normalizada, iban, line_num)
+                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
             }
             records.append(record)
             line_num += 1
