@@ -1,0 +1,99 @@
+{
+  "cuentas": [
+    {
+      "banco": "Mediolanum",
+      "iban": null,
+      "numero_cuenta": "50010510084831",
+      "codigo_banco": "0501",
+      "alias": "Mediolanum Principal",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta principal Mediolanum. IBAN no disponible en extractos, usar número de cuenta."
+    },
+    {
+      "banco": "Abanca",
+      "iban": "ES5120800823473040166463",
+      "numero_cuenta": "3040166463",
+      "codigo_banco": "2080",
+      "alias": "Abanca B100 Normal",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta B100 normal via Enablebanking"
+    },
+    {
+      "banco": "Abanca",
+      "iban": "ES6620800100013043834434",
+      "numero_cuenta": "3043834434",
+      "codigo_banco": "2080",
+      "alias": "Abanca B100 Health",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta B100 health via Enablebanking"
+    },
+    {
+      "banco": "Abanca",
+      "iban": "ES8820800100013043834426",
+      "numero_cuenta": "3043834426",
+      "codigo_banco": "2080",
+      "alias": "Abanca B100 Save",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta B100 save via Enablebanking"
+    },
+    {
+      "banco": "Abanca",
+      "iban": "ES9520800100083043834442",
+      "numero_cuenta": "3043834442",
+      "codigo_banco": "2080",
+      "alias": "Abanca Nómina",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta nómina Abanca via Enablebanking"
+    },
+    {
+      "banco": "Openbank",
+      "iban": "ES3600730100550435513660",
+      "numero_cuenta": "0435513660",
+      "codigo_banco": "0073",
+      "alias": "Openbank Principal",
+      "moneda": "EUR",
+      "activa": true,
+      "notas": "Cuenta Openbank via Enablebanking"
+    },
+     {
+       "banco": "Trade Republic",
+       "iban": "ES8015860001420977164411",
+       "numero_cuenta": "0977164411",
+       "codigo_banco": "1586",
+       "alias": "Trade Republic Cash",
+       "moneda": "EUR",
+       "activa": true,
+       "notas": "Cuenta cash Trade Republic + inversiones"
+     },
+     {
+       "banco": "Bankinter",
+       "iban": "ES6001288700180105753633",
+       "numero_cuenta": "0128.8700.18.0105753633",
+       "codigo_banco": "0128",
+       "alias": "Bankinter (cerrada oct 2024)",
+       "moneda": "EUR",
+       "activa": false,
+       "notas": "Cuenta Bankinter cerrada en octubre 2024. Datos históricos jul-oct 2023."
+     },
+     {
+       "banco": "Bankinter",
+       "iban": "ES6001288700160105752044",
+       "numero_cuenta": "0128.8700.16.0105752044",
+       "codigo_banco": "0128",
+       "alias": "Bankinter (cerrada sep 2024)",
+       "moneda": "EUR",
+       "activa": false,
+       "notas": "Cuenta Bankinter cerrada en septiembre 2024. Datos históricos jun-sep 2024."
+     }
+   ],
+   "metadata": {
+     "ultima_actualizacion": "2026-02-24",
+     "total_cuentas": 9,
+     "bancos": ["Mediolanum", "Abanca", "Openbank", "Trade Republic", "Bankinter"]
+   }
+}

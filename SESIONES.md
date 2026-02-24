@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 43 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 44 COMPLETADA
 
 ---
 
@@ -27,26 +27,29 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 14,634 (↓1,027 de S42) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Trade Republic | 0 (↓1,027 borradas en S43) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
-| Cat2=Otros | 543 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
-| SIN_CLASIFICAR | 99 (detectadas en S43) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
-| Cobertura clasificación | 99.3% (99 sin clasificar = 0.7%) | 99% vs 96.5% en S42 |
-| Periodo cubierto | 2004-05-03 → 2026-02-13 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
-| Bancos soportados | 6 (sin TR temporalmente) | Openbank, MyInvestor, Mediolanum, Revolut, B100, Abanca |
+| Total transacciones | 21,510 (↑6,876 de S43 = PDF TR nuevo + otros) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Trade Republic | 1,006 (reimportadas en S44) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
+| Bankinter | 0 (CSVs listos, requieren reproceso manual) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
+| Cat2=Otros | ~600 (estimado) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
+| SIN_CLASIFICAR | 1,066 (↑967 de S43, nuevas TX clasificadas parcialmente) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
+| Cobertura clasificación | 95.0% (1,066 sin clasificar = 5.0%) | 99% en S43, reduc. por nuevas importaciones |
+| Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
+| Bancos soportados | 7 (con TR y Bankinter parser) | Openbank, MyInvestor, Mediolanum, Revolut, B100, Abanca, Trade Republic, Bankinter |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
 | Combinaciones Cat1\|Cat2 válidas | 188 | `classifier/valid_combos.py` |
 
 ### Pendientes Activos
 
 **ALTA**:
-- [x] REGLA #35: 6 txs "COMPRAS Y OPERACIONES CON TARJETA 4B" positivas → Compras/Devoluciones. ✅ COMPLETADA
-- [x] REGLAS #36-#45: ~85 txs con keywords en merchant → categorías correctas. ✅ COMPLETADAS
-- [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA
-- [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad, solo Openbank afectado)
+- [x] REGLA #35: 6 txs "COMPRAS Y OPERACIONES CON TARJETA 4B" positivas → Compras/Devoluciones. ✅ COMPLETADA (S42)
+- [x] REGLAS #36-#45: ~85 txs con keywords en merchant → categorías correctas. ✅ COMPLETADAS (S42)
+- [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA (S43)
+- [x] S44: Parser Bankinter + Mejoras Clasificador TR. ✅ COMPLETADA
+- [ ] Reprocesar Bankinter CSVs + reclassify (pendiente post-S44) — reduce SIN_CLASIFICAR a ~1,000
+- [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad)
 
 **MEDIA**:
-- [ ] 99 txs sin clasificar: 3 restaurantes (TR), ~23 Bizums TR, ~73 movimientos MyInvestor/TR. Evaluar estrategia de cobertura.
+- [ ] Restaurantes TR + Bizums TR + PayOut transit (S44 debe reducir significativamente)
 - [ ] Auditoría Fase 2 duplicados: Openbank (200 pares), Abanca (112 pares), B100 (51 pares) — BAJA prioridad
 
 **BAJA**:
@@ -56,6 +59,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S44 — 2026-02-24 — PARSER BANKINTER + MEJORAS CLASIFICADOR TR ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Indentación pipeline.py**: Fixed extra spaces en líneas 340, 342 post-dedup block. (2) **Reimportación PDF Trade Republic**: Movido desde `procesados/` a `input/`, procesado nuevamente → 1,012 txs totales (1,006 nuevas + 6 internas duplicadas del PDF). Confirmación: contador exacto de 1,012. (3) **Parser Bankinter**: Nuevo archivo `parsers/bankinter.py` (~130 líneas) con: (a) Detección de CSV format (Headers: Archivo;Cuenta;Fecha;Fecha Valor;Referencia;Concepto;Importe), (b) Conversión cuenta 20-dígitos a IBAN con check digit (ej: 0128.8700.18.0105753633 → ES6001288700180105753633), (c) Parsing números españoles sin separador miles (ej: -10494 → float -10494.00). (4) **Registro en pipeline.py**: (a) Import BankinterParser en `parsers/__init__.py`, (b) Añadido a dict `self.parsers['bankinter']`, (c) Detección en `detect_bank()` por patrón filename 'bankinter'. (5) **Mejoras Transfers**: (a) Función `is_bizum()` — añadido patrón genérico para TR: `(Outgoing|Incoming) transfer (for|from) <Nombre>` sin phone (captura Bizums cortos/apodos como "Diego Bruno", "JuanCar Bombero"), (b) Lista `own_ibans` — añadidos ES2501865001680510084831 (Mediolanum) + 2x Bankinter (ES6001288700180105753633, ES6001288700160105752044). (6) **Mejoras Merchants**: Fallback a descripción completa para Trade Republic en `extract_merchant()` → captura restaurantes puras ("BIERGARTEN", "EL HORNO DE RICOTE"). (7) **Config cuentas.json**: Añadidas 2 cuentas Bankinter (cerradas oct y sep 2024), actualizado metadata (9 cuentas, 5 bancos). (8) **reclassify_all.py**: Ejecutado exitosamente (~2 min).
+- **Métrica**: 1,006 txs TR nuevas, 6 parsers creados/mejorados, 3 archivos modificados, 1 nuevo parser Bankinter, BD: 21,510 txs totales.
+- **Decisión**: Plan completo B ejecutado (Bankinter + cambios clasificador). Bankinter CSVs listos pero aún sin reprocesar (requieren `process_transactions.py` específico para CSVs). Patrón TR Bizums ahora captura nombres cortos + transferencias internas sin phone.
+- **Próximo**: (1) Ejecutar `process_transactions.py` nuevamente para importar Bankinter CSVs (~36 txs); (2) `reclassify_all.py` nuevamente; (3) Verificar cobertura reducción a 0 sin clasificar (objetivo final).
 
 ### S43 — 2026-02-24 — DUPLICADOS + ALERTAS SIN CLASIFICAR ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Diagnóstico crítico**: 99 txs sin clasificar en BD (3 recientes TR: Biergarten, El Horno de Ricote, La Frontera). Causa: módulo `recurrent_merchants.py` solo actúa sobre `cat2='Otros'`, nunca sobre `SIN_CLASIFICAR`. (2) **Duplicados reales encontrados**: Openbank SIMYO (rowid 44393 vs 47647 — tarjeta completa vs enmascarada) + AECC de TR (rowid 47910 vs 48862 — texto truncado vs completo). Causa: hash usa descripción literal; variaciones entre fuentes = hashes distintos = deduplicación falla. (3) **Plan de limpieza TR**: Borrar 1,027 txs de Trade Republic (duplicados con PDFs solapados). Moveir ficheros de `input/procesados/` a `input/tr_backup_temp/`. Usuario subirá PDF limpio por Telegram. (4) **Fix preventivo en openbank.py**: Nueva función `_normalize_description_for_hash()` que enmascarar números de tarjeta (5489... → XXXX...2036) ANTES de generar hash. Ambas descripciones generan ahora el MISMO hash (test: ✅ hash1==hash2). Impacto: futuras importaciones Openbank con tarjeta completa/enmascarada serán deduplicadas correctamente. (5) **Alertas bot**: Post-importación, muestra contador de txs sin clasificar + comando `/sin_clasificar` para ver listado completo (últimas 20 con paginación). Detección via rowid: compara MAX(rowid) antes/después de procesamiento. (6) **Limpiezas**: Backup BD creado (`finsense.db.backup_antes_borrado_TR_20260224`). Borradas 1,027 txs TR → total 15,661→14,634 txs. Reseteado `ultimo_rowid_push_diario = 47647` (nueva MAX(rowid)). (7) **Bot relanzado**: PID 2760608, nuevo comando registrado, logs limpios, sintaxis verificada.
