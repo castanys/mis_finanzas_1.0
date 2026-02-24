@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 40 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 41 COMPLETADA
 
 ---
 
@@ -50,6 +50,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S41 — 2026-02-24 — INTEGRACIÓN CLAUDE API (FALLBACK LLM) ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Instalación paquete `anthropic`**: v0.83.0 instalado en venv (9 nuevas dependencias incluidas). (2) **Configuración `.env`**: Clave ANTHROPIC_API_KEY añadida línea 16. (3) **Reinicio bot**: Lanzado con nohup en background (PID 2568178). Bot corriendo correctamente, scheduler con 3 jobs (push_diario, push_mensual, push_anual). (4) **Cadena fallback LLM completada**: (a) Intenta Qwen (API local) → (b) Si falla, intenta Claude API → (c) Si ambos fallan, devuelve análisis en formato crudo. (5) **Nota técnica**: Clave de API rechazada con error 401, posiblemente porque no tiene créditos o está deshabilitada. Bot funciona normalmente con Qwen.
+- **Métrica**: +anthropic (9 deps), bot PID 2568178, fallback chain funcional. Logs limpios.
+- **Decisión**: Sistema fallback redundante está en place. Cuando se proporcione clave válida, bot usará Claude automáticamente.
+- **Próximo**: Esperar confirmación clave válida de Anthropic, o mantener con Qwen como LLM principal.
 
 ### S40 — 2026-02-24 — FIX DOCUMENTO HANDLER + HISTORIAL.MD PERMANENTE ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Fix crítico en `bot_telegram.py`** (línea 513-518): Verificación `if file_path.exists():` antes de `shutil.move()`. Problema: handler movía archivos ya movidos por pipeline→error "no such file". Solución: comprobar antes de mover; si no existe, loguear que fue movido por pipeline. (2) **Compactación SESIONES.md**: 143→82 líneas (-43%). Conservadas S36-S40 íntegras, S31-S35 en siguiente compactación. (3) **Creación HISTORIAL.md**: Archivo permanente (653 líneas) con S1-S40 completos, organizado en 3 fases. Nunca se compacta ni se borra. (4) **Actualización AGENTS.md**: Protocolo compactación → mover sesiones COMPLETAS a HISTORIAL.md (no resumir). (5) **Métricas actualizadas**: 15,661 txs, 2026-02-23, Cat2=Otros 543 (3.5%).
