@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 44 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 45 COMPLETADA
 
 ---
 
@@ -27,12 +27,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 21,510 (↑6,876 de S43 = PDF TR nuevo + otros) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Trade Republic | 1,006 (reimportadas en S44) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
-| Bankinter | 0 (CSVs listos, requieren reproceso manual) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
+| Total transacciones | 21,655 (post-S45) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Trade Republic | 1,006 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
+| Bankinter | 145 (100% clasificado ✅ S45) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
 | Cat2=Otros | ~600 (estimado) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
-| SIN_CLASIFICAR | 1,066 (↑967 de S43, nuevas TX clasificadas parcialmente) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
-| Cobertura clasificación | 95.0% (1,066 sin clasificar = 5.0%) | 99% en S43, reduc. por nuevas importaciones |
+| SIN_CLASIFICAR | 1,066 (Bankinter 79→0, SEPA reclasificados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
+| Cobertura clasificación | 95.1% (1,066 sin clasificar = 4.9%) | Mejora por Bankinter 100% + SEPA fixes |
 | Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
 | Bancos soportados | 7 (con TR y Bankinter parser) | Openbank, MyInvestor, Mediolanum, Revolut, B100, Abanca, Trade Republic, Bankinter |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
@@ -45,7 +45,7 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 - [x] REGLAS #36-#45: ~85 txs con keywords en merchant → categorías correctas. ✅ COMPLETADAS (S42)
 - [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA (S43)
 - [x] S44: Parser Bankinter + Mejoras Clasificador TR. ✅ COMPLETADA
-- [ ] Reprocesar Bankinter CSVs + reclassify (pendiente post-S44) — reduce SIN_CLASIFICAR a ~1,000
+- [x] S45: Clasificar 79 txs Bankinter + Recibos SEPA. ✅ COMPLETADA
 - [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad)
 
 **MEDIA**:
@@ -59,6 +59,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S45 — 2026-02-24 — CLASIFICAR BANKINTER + RECIBOS SEPA CAMUFLADOS ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Lógica Bankinter en transfers.py**: Añadida función `is_internal_transfer()` con patrones para Bankinter (PABLO FERNANDEZ-CASTANY, PABLO FERNANDEZ CASTANY, variantes con guion/sin guion, con acentos y typos como "PABLO FERNÁNDEZ-Castan"). Regex flexible: `r'PABLO\s+FERN[ÁA]NDEZ'` para capturar acentos. Exclusiones: NO es interna si es MARIA, YOLANDA, ALEJANDRO, JUAN, CRUSOL. (2) **REGLAS #55-64 en engine.py**: (a) REGLA #55 MCR Solutions Business → Servicios Consultoría/Honorarios (6 txs de ~6k-11k). (b) REGLA #56 TRIBUTO → Impuestos/Otros (2 txs). (c) REGLA #57 LIQ. PROPIA CTA. → Ingreso/Intereses (13 txs). (d) REGLA #58 RECTIF. LIQ. CTA. → Ingreso/Intereses (1 tx). (e) REGLA #59-61: Merchants directos (BARBERIA, CENTRO DEP., HOUSE DECORACION). (f) REGLA #62 INGRESO EN TARJ.CREDITO → Finanzas/Tarjeta Crédito. (g) REGLA #63 TRANSF OTR /tiendadelasalarmas → Compras/Otros. (h) REGLA #64 COMIS. MANT. → Comisiones. (3) **Mejoras TRANSFER_KEYWORDS**: Añadidos "TRANSF ", "TRANSF/", "TRANS /", "TRANS ", "TRANSF OTR" para capturar abreviaturas de Bankinter. (4) **REGLA #65 Recibos SEPA camuflados**: Detecta "SEPA DIRECT DEBIT TRANSFER TO..." y reclasifica por acreedor: DIGI SPAIN TELECOM → Recibos/Telefonía, FELITONA → Ocio y Cultura/Deporte, HIDROGEA → Recibos/Agua, AYUNTAMIENTO → Impuestos/Municipales, ASOCIACION → Recibos/Donaciones. (5) **Reclasificación iterativa**: (a) Primera pasada: 70 txs clasificadas de 79. (b) Segunda pasada (patrón flexible + keywords): 5 txs más. (c) Tercera pasada (regex acento + case-fix): 4 últimas txs. **Total Bankinter: 79→0 SIN_CLASIFICAR (100% ✅)**. (d) Recibos SEPA: 5 txs reclasificadas (DIGI×2, FELITONA×2, AYUNTAMIENTO). (6) **BD finalizada**: Bankinter 145 txs, 0 SIN_CLASIFICAR. Estado global: 21,655 txs, 1,066 SIN_CLASIFICAR (95.1% cobertura). (7) **Commit**: `00163b6` "S45: Clasificar 79 txs SIN_CLASIFICAR Bankinter + Recibos SEPA camuflados".
+- **Métrica**: 79 txs Bankinter clasificadas (0→0 SIN_CLASIFICAR, 100% cobertura). 5 Recibos SEPA reclasificados. 10 nuevas reglas (REGLAS #55-64). 2 archivos modificados. Commit 00163b6. BD: 21,655 txs, 1,066 SIN_CLASIFICAR (4.9%).
+- **Decisión**: Bankinter completamente clasificado. Recibos SEPA son domiciliaciones, no transferencias — clasificar por acreedor real. Typos en Bankinter (Fernández con acento, truncamientos) se resuelven con patrones regex flexibles + exclusiones explícitas.
+- **Próximo**: (1) Reducir SIN_CLASIFICAR de Trade Republic (~99 txs — PayOut transit, Bizums, Restaurantes). (2) Auditar Openbank ~888 SIN_CLASIFICAR (txs históricas 2004-2008).
 
 ### S44 — 2026-02-24 — PARSER BANKINTER + MEJORAS CLASIFICADOR TR ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Indentación pipeline.py**: Fixed extra spaces en líneas 340, 342 post-dedup block. (2) **Reimportación PDF Trade Republic**: Movido desde `procesados/` a `input/`, procesado nuevamente → 1,012 txs totales (1,006 nuevas + 6 internas duplicadas del PDF). Confirmación: contador exacto de 1,012. (3) **Parser Bankinter**: Nuevo archivo `parsers/bankinter.py` (~130 líneas) con: (a) Detección de CSV format (Headers: Archivo;Cuenta;Fecha;Fecha Valor;Referencia;Concepto;Importe), (b) Conversión cuenta 20-dígitos a IBAN con check digit (ej: 0128.8700.18.0105753633 → ES6001288700180105753633), (c) Parsing números españoles sin separador miles (ej: -10494 → float -10494.00). (4) **Registro en pipeline.py**: (a) Import BankinterParser en `parsers/__init__.py`, (b) Añadido a dict `self.parsers['bankinter']`, (c) Detección en `detect_bank()` por patrón filename 'bankinter'. (5) **Mejoras Transfers**: (a) Función `is_bizum()` — añadido patrón genérico para TR: `(Outgoing|Incoming) transfer (for|from) <Nombre>` sin phone (captura Bizums cortos/apodos como "Diego Bruno", "JuanCar Bombero"), (b) Lista `own_ibans` — añadidos ES2501865001680510084831 (Mediolanum) + 2x Bankinter (ES6001288700180105753633, ES6001288700160105752044). (6) **Mejoras Merchants**: Fallback a descripción completa para Trade Republic en `extract_merchant()` → captura restaurantes puras ("BIERGARTEN", "EL HORNO DE RICOTE"). (7) **Config cuentas.json**: Añadidas 2 cuentas Bankinter (cerradas oct y sep 2024), actualizado metadata (9 cuentas, 5 bancos). (8) **reclassify_all.py**: Ejecutado exitosamente (~2 min).
