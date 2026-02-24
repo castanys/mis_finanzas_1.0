@@ -5,7 +5,11 @@ Detecta transferencias (internas, externas, Bizum, cuenta común).
 import re
 
 
-TRANSFER_KEYWORDS = ["TRANSFERENCIA", "TRASNFERENCIA", "TRANSF.", "TRASPASO", "STICHTING", "TRANSFER"]
+TRANSFER_KEYWORDS = [
+    "TRANSFERENCIA", "TRASNFERENCIA", "TRANSF.", "TRANSF ", "TRANSF/", 
+    "TRANS /", "TRANS ", "TRASPASO", "STICHTING", "TRANSFER",
+    "TRANSF OTR"
+]
 
 
 def is_bizum(descripcion, banco):
@@ -132,6 +136,29 @@ def is_internal_transfer(descripcion, banco, importe):
     # Revolut: recargas
     if banco == "Revolut" and ("APPLE PAY" in desc_upper or "RECARGA" in desc_upper):
         return True
+
+    # Bankinter: transferencias del titular (nombre propio truncado, con variaciones y typos)
+    if banco == "Bankinter":
+        # Patrones exactos
+        bankinter_own_patterns = [
+            "PABLO FERNANDEZ-CASTANY",
+            "PABLO FERNANDEZ CASTANY",
+            "PABLO FERNANDEZ-CASTANYS",  # variante con 's'
+            "P. FERNANDEZ",
+            "CUENTA PROFESIONAL",        # TRANSF INT /Cuenta Profesional
+            "CUENTA CORRIENTE DIGITA",   # TRANS /Cuenta Corriente Digita
+            "TRANSF OTRAS /PABLO FERNANDEZ",  # variante sin guion
+        ]
+        if any(pat in desc_upper for pat in bankinter_own_patterns):
+            return True
+        
+        # Patrón flexible para nombres con typos/truncamientos/acentos: PABLO FERNANDEZ* (sin CASTANY completo)
+        # Captura: "PABLO FERNANDEZ-CASTAN" (falta 'y'), "PABLO FERNÁNDEZ-Castan" (acento+typo), "PABLO FERNANDEZ-Castna" (typo)
+        import re
+        if re.search(r'PABLO\s+FERN[ÁA]NDEZ', desc_upper, re.IGNORECASE):
+            # Asegurar que NO es una persona tercera (MARIA, YOLANDA, etc.)
+            if not any(name in desc_upper for name in ["MARIA", "YOLANDA", "ALEJANDRO", "JUAN", "CRUSOL"]):
+                return True
 
     # Openbank: transferencias donde el destino es otra cuenta propia
     # Patrón: "TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB"
