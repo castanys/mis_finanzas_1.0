@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-23 — Sesión 36 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 38 EN PROGRESO
 
 ---
 
@@ -27,9 +27,9 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,636 (↓899 pytr) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Cat2=Otros | 417 (↓81) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
-| Compras/Otros | 353 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='Compras' AND cat2='Otros';"` |
+| Total transacciones | 14,821 (↓924 CSV TR S23) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Cat2=Otros | ~380 (est.) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
+| Compras/Otros | ~300 (est.) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='Compras' AND cat2='Otros';"` |
 | Cobertura clasificación | 100% (0 SIN_CLASIFICAR) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
 | Periodo cubierto | 2004-05-03 → 2026-02-13 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
 | Bancos soportados | 7 | Openbank, MyInvestor, Mediolanum, Revolut, Trade Republic, B100, Abanca |
@@ -73,6 +73,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S38 — 2026-02-24 — LIMPIEZA DE DUPLICADOS TR ✅ COMPLETADO
+- **Hecho**: ✅ FASE 1 DE LIMPIEZA DE DUPLICADOS COMPLETADA. (1) **Investigación de duplicados**: 679 pares de duplicados lógicos (fecha+importe, hash distinto). Categorización: 104 txs del CSV TR de S23 con equivalente en PDF oficial, ~200 transacciones legítimas recurrentes (AECC -24€, "OFF TO SAVE" diario), ~275 duplicados entre múltiples fuentes. (2) **Plan de limpieza**: Fase 1 — eliminar CSV de S23 (fuente contaminada). Fase 2 — auditoría manual de otros pares. (3) **Ejecución Fase 1**: (a) Creada carpeta `input/descartados/` y movido CSV `TradeRepublic_ES8015860001420977164411.csv` (91KB). (b) Eliminadas 924 txs del CSV de BD. (c) Limpiadas 11 copias redundantes del PDF en `input/procesados/` (conservadas 3 únicas, diferentes). (d) Movidos PDFs procesados a `input/archivo_tr/`. (4) **Resultado**: BD limpia. Total txs 15,745→14,821 (-924). TR: 1,111 txs→187 txs (solo PDFs oficiales, cero contaminación del CSV). Período cubierto: 2004-05-03→2026-02-13 (sin cambio).
+- **Métrica**: 924 txs eliminadas. 679 pares duplicados aún bajo análisis (incluyen transferencias legítimas entre cuentas propias). BD: 14,821 txs puras (0 duplicados de hash), 187 de TR (solo PDFs).
+- **Decisión**: CSV de S23 descartado definitivamente. TR usa solo PDFs oficiales como fuente. Cuando usuario mande PDF nuevo por Telegram, bot lo procesa automáticamente.
+- **Próximo**: (1) Esperar a que usuario mande PDF nuevo por Telegram; (2) Pipeline procesará el PDF automáticamente; (3) Auditoría Fase 2 de duplicados en otros bancos (Openbank, Abanca, B100) — más baja prioridad.
 
 ### S32 — 2026-02-23
 - **Hecho**: ✅ MEJORAS PÁGINA 07 (GEOGRAFÍA) — MAPA COMPLETADAS. (1) Cambio go.Scattergeo → go.Scattermap con OpenStreetMap tiles: línea 204 editada, configuración geo→mapbox con style 'open-street-map', center=(40, 0), zoom=2. (2) Filtrado merchants online/virtuales: añadida lógica en `get_merchants_para_mapa()` en advisor.py (línea ~628-642) excluyendo cat1 ('Suscripciones', 'Transferencia') y 25 merchants virtuales conocidos (RAKUTEN, PAYPAL, GOOGLE, NETFLIX, SPOTIFY, etc). Resultado: 636→626 merchants visibles. (3) Enriquecimiento masivo de merchants: creado script `enrich_unregistered_merchants.py` que extrae 1,497 merchants únicos de transacciones NO registrados en tabla merchants, los inserta, y los enriquece con Google Places API. Resultado: 754 merchants (742 coords) → 2,251 merchants (1,221 coords). Transacciones geolocalizadas: ~1,500 → 2,420 txs (+62% cobertura). Google Places API: ~1,500 llamadas, coste estimado ~15€. (4) Streamlit reiniciado: Página 07 ahora usa Scattermap con 626 merchants filtrados y 2,420 txs sin suscripciones/transferencias virtuales.
