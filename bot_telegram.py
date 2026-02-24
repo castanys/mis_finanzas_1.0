@@ -255,6 +255,52 @@ async def cargos_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"❌ Error en /cargos: {e}")
         await update.message.reply_text(f"❌ Error: {e}")
 
+async def sin_clasificar_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Maneja /sin_clasificar — lista transacciones sin clasificar"""
+    user_name = update.effective_user.first_name or "Usuario"
+    logger.info(f"🔍 /sin_clasificar solicitado por {user_name}")
+    
+    try:
+        import sqlite3
+        db_path = "/home/pablo/apps/mis_finanzas_1.0/finsense.db"
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        # Contar total sin clasificar
+        cursor.execute(
+            "SELECT COUNT(*) FROM transacciones "
+            "WHERE cat1='SIN_CLASIFICAR' OR cat1 IS NULL OR cat1=''"
+        )
+        total_sin_clasificar = cursor.fetchone()[0]
+        
+        if total_sin_clasificar == 0:
+            mensaje = "✅ ¡Todas las transacciones están clasificadas! 🎉"
+        else:
+            # Obtener últimas 20 sin clasificar (ordenadas por fecha descendente)
+            cursor.execute(
+                "SELECT fecha, importe, descripcion, banco FROM transacciones "
+                "WHERE cat1='SIN_CLASIFICAR' OR cat1 IS NULL OR cat1='' "
+                "ORDER BY fecha DESC LIMIT 20"
+            )
+            txs = cursor.fetchall()
+            
+            mensaje = f"📊 **Transacciones Sin Clasificar** ({total_sin_clasificar} total)\n\n"
+            mensaje += "**Últimas 20:**\n\n"
+            
+            for idx, (fecha, importe, descripcion, banco) in enumerate(txs, 1):
+                # Truncar descripción si es muy larga
+                desc_corta = descripcion[:50] + ("..." if len(descripcion) > 50 else "")
+                mensaje += f"{idx}. {fecha} | €{importe:>7.2f} | {banco}\n"
+                mensaje += f"   _{desc_corta}_\n\n"
+        
+        conn.close()
+        await update.message.reply_text(mensaje, parse_mode="Markdown")
+        logger.info(f"✅ Sin clasificar enviado a {user_name}")
+    
+    except Exception as e:
+        logger.error(f"❌ Error en /sin_clasificar: {e}")
+        await update.message.reply_text(f"❌ Error: {e}")
+
 async def ayuda_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Maneja /ayuda"""
     mensaje = f"""
@@ -263,6 +309,7 @@ async def ayuda_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 /resumen — Análisis completo del mes con ángulo aleatorio
 /presupuestos — Estado de presupuestos por categoría
 /cargos — Cargos extraordinarios próximos
+/sin_clasificar — Transacciones sin clasificar
 /ayuda — Ver este mensaje
 
 **Importar documentos:**
@@ -491,6 +538,15 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await file.download_to_drive(str(file_path))
         logger.info(f"✅ Archivo descargado a {file_path}")
         
+        # Guardar MAX(rowid) antes del procesamiento para detectar txs sin clasificar nuevas
+        import sqlite3
+        db_path = "/home/pablo/apps/mis_finanzas_1.0/finsense.db"
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT MAX(rowid) FROM transacciones")
+        rowid_antes = cursor.fetchone()[0] or 0
+        conn.close()
+        
         # Ejecutar process_transactions.py en background
         logger.info(f"🔄 Procesando {file_name}...")
         result = subprocess.run(
@@ -521,6 +577,24 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             except:
                 pass
         
+        # Contar txs sin clasificar nuevas (entre rowid_antes y MAX(rowid) actual)
+        sin_clasificar_nuevas = 0
+        sin_clasificar_list = []
+        if nuevas_txs > 0:
+            try:
+                conn = sqlite3.connect(db_path)
+                cursor = conn.cursor()
+                cursor.execute(
+                    "SELECT rowid, descripcion, importe FROM transacciones "
+                    "WHERE rowid > ? AND (cat1='SIN_CLASIFICAR' OR cat1 IS NULL OR cat1='') "
+                    "ORDER BY rowid DESC LIMIT 50",
+                    (rowid_antes,)
+                )
+                sin_clasificar_nuevas = len(cursor.fetchall())
+                conn.close()
+            except Exception as e:
+                logger.warning(f"⚠️ Error contando sin_clasificar: {e}")
+        
         # Preparar respuesta
         if result.returncode == 0:
             # Éxito
@@ -535,6 +609,10 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"📊 Tamaño: {file_size_mb:.2f} MB\n"
                 f"📁 Archivado en: input/procesados/\n"
             )
+            
+            # Añadir alerta si hay txs sin clasificar
+            if sin_clasificar_nuevas > 0:
+                response += f"⚠️ {sin_clasificar_nuevas} transacciones sin clasificar — usa /sin_clasificar para ver el detalle\n"
         else:
             # Error
             error_msg = result.stderr or "Error desconocido"
@@ -589,6 +667,7 @@ def main():
     app.add_handler(CommandHandler("resumen", resumen_handler))
     app.add_handler(CommandHandler("presupuestos", presupuestos_handler))
     app.add_handler(CommandHandler("cargos", cargos_handler))
+    app.add_handler(CommandHandler("sin_clasificar", sin_clasificar_handler))
     app.add_handler(CommandHandler("ayuda", ayuda_handler))
     
     # Handler para documentos (PDF/CSV) — procesar transacciones
