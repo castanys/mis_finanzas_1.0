@@ -886,12 +886,12 @@ class Classifier:
                     'capa': 0
                 }
             
-            # FELITONA SERVICIOS Y GESTIONES → OCIO Y CULTURA/Deporte (gimnasio)
+            # FELITONA SERVICIOS Y GESTIONES → RECIBOS/Gimnasio (recibo de gimnasio)
             if "FELITONA" in desc_upper:
-                cat2_refined = refine_cat2_by_description("Ocio y Cultura", "Deporte", descripcion)
-                tipo = determine_tipo("Ocio y Cultura", importe, descripcion)
+                cat2_refined = refine_cat2_by_description("Recibos", "Gimnasio", descripcion)
+                tipo = determine_tipo("Recibos", importe, descripcion)
                 return {
-                    'cat1': 'Ocio y Cultura',
+                    'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
                     'capa': 0
@@ -908,12 +908,13 @@ class Classifier:
                     'capa': 0
                 }
             
-            # AYUNTAMIENTO → IMPUESTOS/Municipales
+            # AYUNTAMIENTO → RECIBOS/Plan de pago personalizado
+            # Pago mensual unificado de todas las obligaciones municipales (IBI, IVTM, etc.)
             if "AYUNTAMIENTO" in desc_upper or "EXCMO" in desc_upper:
-                cat2_refined = refine_cat2_by_description("Impuestos", "Municipales", descripcion)
-                tipo = determine_tipo("Impuestos", importe, descripcion)
+                cat2_refined = refine_cat2_by_description("Recibos", "Plan de pago personalizado", descripcion)
+                tipo = determine_tipo("Recibos", importe, descripcion)
                 return {
-                    'cat1': 'Impuestos',
+                    'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
                     'capa': 0
