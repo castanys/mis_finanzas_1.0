@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 41 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 42 COMPLETADA
 
 ---
 
@@ -50,6 +50,12 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S42 — 2026-02-24 — PUSH DIARIO: SOLO ENVIAR SI HAY CAMBIOS ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Problema identificado**: `push_diario()` enviaba mensaje TODOS los días a las 12:00, sin verificar si hubo nuevas importaciones de transacciones. Desperdiciaba credenciales de LLM. (2) **Solución implementada**: Detección de cambios usando `MAX(rowid)` de `transacciones` vs. valor guardado en nueva tabla `bot_estado`. (3) **Implementación detallada**: (a) Crear tabla `bot_estado(clave TEXT PK, valor TEXT)` con `CREATE TABLE IF NOT EXISTS` al primer llamado. (b) Leer `MAX(rowid)` actual de `transacciones` (~48,888). (c) Leer `ultimo_rowid_push_diario` de `bot_estado` (inicialmente `-1`). (d) **Lógica**: Si `max_rowid == ultimo_rowid` → omitir push (log: "⏭️ Push diario omitido: no hay nuevas txs"). Si `max_rowid != ultimo_rowid` → generar, enviar, y guardar nuevo rowid. (4) **Testing manual**: Simuladas 3 ejecuciones: primera (enviar ✓), segunda sin cambios (omitir ✓), tercera con nueva tx insertada (enviar ✓). (5) **BD verificación**: Tabla `bot_estado` creada, registro `ultimo_rowid_push_diario = 48888` guardado. (6) **Bot reiniciado**: PID 2631620, scheduler corriendo, logs limpios, sin errores de sintaxis.
+- **Métrica**: ~35 líneas de código nuevo en `push_diario()`. Tabla `bot_estado` implementada. Bot PID 2631620.
+- **Decisión**: Push diario ahora inteligente — solo envía cuando hay cambios en BD (nuevas importaciones). Reduce uso innecesario de API/LLM.
+- **Próximo**: Próximo `push_diario()` se ejecutará a las 12:00 mañana. Si sin cambios desde hoy (48,888 rowid), se omitirá automáticamente. Si usuario envía CSV/PDF por Telegram antes, incrementará rowid y se enviará el push.
 
 ### S41 — 2026-02-24 — INTEGRACIÓN CLAUDE API (FALLBACK LLM) ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Instalación paquete `anthropic`**: v0.83.0 instalado en venv (9 nuevas dependencias incluidas). (2) **Configuración `.env`**: Clave ANTHROPIC_API_KEY actualizada (2 intentos: sk-ant-api03-xG4... → error 401; sk-ant-api03-RFvIVy... → error 404 sin acceso a modelos). (3) **Cadena fallback LLM completada**: (a) Intenta Qwen (API local) → (b) Si falla, intenta Claude API → (c) Si ambos fallan, devuelve análisis en formato crudo. (4) **Diagnóstico**: Primera clave: error autenticación. Segunda clave: auténtica pero sin permisos acceso a modelos (posiblemente clave test/desarrollo deshabilitada). (5) **Solución**: Bot funciona perfectamente con Qwen como LLM principal. Fallback Claude en código listo para cuando haya clave válida con acceso a modelos.

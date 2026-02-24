@@ -291,11 +291,13 @@ Respondo en español, con tono cercano y sin jerga corporativa.
 
 async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     """
-    Push diario (12:00) — Mensaje con ángulo aleatorio
+    Push diario (12:00) — Mensaje con ángulo aleatorio (SOLO si hay nuevas transacciones)
     Se ejecuta automáticamente via job_queue de python-telegram-bot
     
     Flujo:
-    1. Genera y envía mensaje diario con ángulo aleatorio (BLOQUE 3)
+    1. Detecta cambios: compara MAX(rowid) actual vs. último rowid enviado
+    2. Si NO hay cambios → omite push (log informativo)
+    3. Si HAY cambios → genera mensaje, envía, y actualiza rowid guardado
     
     Nota: Sync de Trade Republic desactivado (CSV descartado, solo PDFs vía Telegram)
     """
@@ -306,6 +308,37 @@ async def push_diario(context: ContextTypes.DEFAULT_TYPE):
     logger.info("📨 Iniciando push diario...")
     
     try:
+        # ===== DETECCIÓN DE CAMBIOS: Comparar rowid de transacciones =====
+        import sqlite3
+        from pathlib import Path
+        
+        # Ruta de la BD
+        db_path = Path(__file__).parent / "finsense.db"
+        conn = sqlite3.connect(str(db_path))
+        
+        # Obtener MAX(rowid) actual
+        max_rowid_actual = conn.execute("SELECT MAX(rowid) FROM transacciones").fetchone()[0] or 0
+        
+        # Crear tabla de estado si no existe
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS bot_estado (
+                clave TEXT PRIMARY KEY,
+                valor TEXT
+            )
+        """)
+        
+        # Leer último rowid enviado
+        row = conn.execute("SELECT valor FROM bot_estado WHERE clave='ultimo_rowid_push_diario'").fetchone()
+        ultimo_rowid = int(row[0]) if row else -1
+        
+        # Si no hay nuevas transacciones → omitir push
+        if max_rowid_actual == ultimo_rowid:
+            logger.info(f"⏭️ Push diario omitido: no hay nuevas transacciones desde el último envío (rowid: {ultimo_rowid})")
+            conn.close()
+            return
+        
+        logger.info(f"✅ Nuevas transacciones detectadas (rowid: {ultimo_rowid} → {max_rowid_actual})")
+        
         # ===== BLOQUE 3: Generar y enviar mensaje diario =====
         # Generar prompt con ángulo aleatorio (BLOQUE 3)
         prompt = generate_daily_message()
@@ -320,7 +353,12 @@ async def push_diario(context: ContextTypes.DEFAULT_TYPE):
             parse_mode="Markdown"
         )
         
-        logger.info(f"✅ Push diario enviado a {TELEGRAM_USER_ID}")
+        # Actualizar último rowid enviado
+        conn.execute("INSERT OR REPLACE INTO bot_estado VALUES ('ultimo_rowid_push_diario', ?)", (str(max_rowid_actual),))
+        conn.commit()
+        conn.close()
+        
+        logger.info(f"✅ Push diario enviado a {TELEGRAM_USER_ID}. Rowid guardado: {max_rowid_actual}")
     
     except TelegramError as e:
         logger.error(f"❌ Error enviando push diario (Telegram): {e}")
