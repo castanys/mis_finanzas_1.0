@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 40 EN PROGRESO
+**Última actualización**: 2026-02-24 — Sesión 40 COMPLETADA
 
 ---
 
@@ -51,10 +51,11 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
 
-### S40 — 2026-02-24 — FIX DOCUMENTO HANDLER + COMPACTACIÓN 🔧
-- **Hecho**: 🔧 (1) **Fix crítico en `bot_telegram.py`** (línea 513-518): Añadida verificación `if file_path.exists():` antes de `shutil.move()`. Problema: el handler intentaba mover archivos que ya había movido `process_transactions.py`, causando error "no such file or directory". Solución: comprobar si existe antes de mover; si no, loguear que fue movido por pipeline. (2) **Compactación de SESIONES.md**: Reducidas 239→~160 líneas (-33%). Conservadas sesiones S39, S38, S32, S31, S30 íntegras. Sesiones S16-S29 compactadas en "Resúmenes Compactados" (3-5 líneas cada). Métricas actualizadas: Total txs 14,821→15,661 (+840 del PDF TR), Período actualizado 2026-02-13→2026-02-23, Cat2=Otros: 380→543 (txs nuevas TR aún sin clasificación). (3) **Actualización AGENTS.md/REGLAS_PROYECTO.md**: sin cambios necesarios (ambos dentro de límites).
-- **Métrica**: bot_telegram.py: +2 líneas (verificación existe), mejor manejo de errores. SESIONES.md: compactado -33%.
-- **Próximo**: (1) Reiniciar bot; (2) Commit S40; (3) Esperar importación de Mediolanum y nuevos PDFs TR.
+### S40 — 2026-02-24 — FIX DOCUMENTO HANDLER + HISTORIAL.MD PERMANENTE ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Fix crítico en `bot_telegram.py`** (línea 513-518): Verificación `if file_path.exists():` antes de `shutil.move()`. Problema: handler movía archivos ya movidos por pipeline→error "no such file". Solución: comprobar antes de mover; si no existe, loguear que fue movido por pipeline. (2) **Compactación SESIONES.md**: 143→82 líneas (-43%). Conservadas S36-S40 íntegras, S31-S35 en siguiente compactación. (3) **Creación HISTORIAL.md**: Archivo permanente (653 líneas) con S1-S40 completos, organizado en 3 fases. Nunca se compacta ni se borra. (4) **Actualización AGENTS.md**: Protocolo compactación → mover sesiones COMPLETAS a HISTORIAL.md (no resumir). (5) **Métricas actualizadas**: 15,661 txs, 2026-02-23, Cat2=Otros 543 (3.5%).
+- **Métrica**: SESIONES.md -43%, HISTORIAL.md +653 líneas (24 sesiones archivadas), AGENTS.md actualizado, bot reiniciado (PID 2537328), 3 jobs OK. Coste tokens: 0 (HISTORIAL.md no se lee en cada sesión).
+- **Commit**: 31367a1 "S40: crear HISTORIAL.md permanente + actualizar protocolo compactación"
+- **Próximo**: (1) Mediolanum CSV por Telegram; (2) Nuevos PDFs TR; (3) Auditoría Fase 2 duplicados (baja prioridad).
 
 ### S39 — 2026-02-24 — IMPORTACIÓN DE FICHEROS VÍA TELEGRAM ✅ COMPLETADO
 - **Hecho**: ✅ SISTEMA DE IMPORTACIÓN DE DOCUMENTOS IMPLEMENTADO. (1) **Desactivado sync de pytr**: eliminadas líneas 301-332 en push_diario() — el CSV de TR está descartado, solo PDFs vía Telegram. (2) **Nuevo handler de documentos**: función `async def documento_handler()` (~130 líneas) que: (a) Verifica autorización (solo TELEGRAM_USER_ID), (b) Descarga PDF/CSV a input/, (c) Ejecuta process_transactions.py en background, (d) Parsea resultado para extraer nuevas_txs, (e) Notifica al usuario, (f) Archiva en input/procesados/. (3) **Registro del handler**: añadido `MessageHandler(filters.Document.ALL, documento_handler)` en main(). (4) **Actualización /ayuda**: sección "Importar documentos" con instrucciones. (5) **Pruebas**: bot reiniciado (PID 2531313), scheduler corriendo, logs OK. (6) **840 txs nuevas importadas** desde PDF TR completo.
