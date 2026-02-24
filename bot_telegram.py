@@ -514,8 +514,11 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             processed_dir = input_dir / "procesados"
             processed_dir.mkdir(parents=True, exist_ok=True)
             new_path = processed_dir / file_name
-            shutil.move(str(file_path), str(new_path))
-            logger.info(f"✅ Archivo archivado en {new_path}")
+            if file_path.exists():
+                shutil.move(str(file_path), str(new_path))
+                logger.info(f"✅ Archivo archivado en {new_path}")
+            else:
+                logger.info(f"ℹ️ Archivo ya movido por el pipeline: {file_name}")
         
         logger.info(f"✅ Importación completada: {file_name}")
     
