@@ -35,10 +35,13 @@ Si bloque falla 2+ veces → PARAR. Documentar en SESIONES.md como BLOQUEADO. Pe
 ## Compactación de SESIONES.md (cada 5 sesiones)
 
 1. Dejar solo últimas 5 sesiones en "Últimas Sesiones"
-2. Compactar sesiones antiguas: 3–5 líneas de resumen → "Resúmenes Compactados"
-3. Commit: `git add SESIONES.md && git commit -m "compactar: sesiones [rango]"`
+2. **Mover sesiones antiguas COMPLETAS a HISTORIAL.md** (sin resumir, sin cortar)
+3. Eliminar secciones "Resúmenes Compactados" y "Historial de Cambios Recientes" de SESIONES.md
+4. Commit: `git add SESIONES.md HISTORIAL.md && git commit -m "compactar: sesiones [rango] → HISTORIAL.md"`
 
-Límites: SESIONES.md ≤150, AGENTS.md ≤80, REGLAS_PROYECTO.md ≤100 líneas.
+**Nota**: HISTORIAL.md es archivo permanente, nunca se compacta ni se borra.
+
+Límites: SESIONES.md ≤150, AGENTS.md ≤80, REGLAS_PROYECTO.md ≤100 líneas, HISTORIAL.md sin límite.
 
 ---
 
