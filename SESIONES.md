@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 42 COMPLETADA
+**Última actualización**: 2026-02-24 — Sesión 43 COMPLETADA
 
 ---
 
@@ -27,11 +27,13 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,661 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Total transacciones | 14,634 (↓1,027 de S42) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Trade Republic | 0 (↓1,027 borradas en S43) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
 | Cat2=Otros | 543 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat2='Otros';"` |
-| Cobertura clasificación | 96.5% (543 Otros = 3.5%) | 100% sin SIN_CLASIFICAR |
-| Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
-| Bancos soportados | 7 | Openbank, MyInvestor, Mediolanum, Revolut, Trade Republic, B100, Abanca |
+| SIN_CLASIFICAR | 99 (detectadas en S43) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"` |
+| Cobertura clasificación | 99.3% (99 sin clasificar = 0.7%) | 99% vs 96.5% en S42 |
+| Periodo cubierto | 2004-05-03 → 2026-02-13 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
+| Bancos soportados | 6 (sin TR temporalmente) | Openbank, MyInvestor, Mediolanum, Revolut, B100, Abanca |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
 | Combinaciones Cat1\|Cat2 válidas | 188 | `classifier/valid_combos.py` |
 
@@ -40,16 +42,26 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 **ALTA**:
 - [x] REGLA #35: 6 txs "COMPRAS Y OPERACIONES CON TARJETA 4B" positivas → Compras/Devoluciones. ✅ COMPLETADA
 - [x] REGLAS #36-#45: ~85 txs con keywords en merchant → categorías correctas. ✅ COMPLETADAS
+- [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA
+- [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad, solo Openbank afectado)
 
 **MEDIA**:
+- [ ] 99 txs sin clasificar: 3 restaurantes (TR), ~23 Bizums TR, ~73 movimientos MyInvestor/TR. Evaluar estrategia de cobertura.
 - [ ] Auditoría Fase 2 duplicados: Openbank (200 pares), Abanca (112 pares), B100 (51 pares) — BAJA prioridad
 
 **BAJA**:
 - [ ] Mediolanum: CSV cuando esté listo — bot procesará automáticamente
+- [ ] Comando `/sin_clasificar` — producción ready, solo listado de últimas 20
 
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S43 — 2026-02-24 — DUPLICADOS + ALERTAS SIN CLASIFICAR ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Diagnóstico crítico**: 99 txs sin clasificar en BD (3 recientes TR: Biergarten, El Horno de Ricote, La Frontera). Causa: módulo `recurrent_merchants.py` solo actúa sobre `cat2='Otros'`, nunca sobre `SIN_CLASIFICAR`. (2) **Duplicados reales encontrados**: Openbank SIMYO (rowid 44393 vs 47647 — tarjeta completa vs enmascarada) + AECC de TR (rowid 47910 vs 48862 — texto truncado vs completo). Causa: hash usa descripción literal; variaciones entre fuentes = hashes distintos = deduplicación falla. (3) **Plan de limpieza TR**: Borrar 1,027 txs de Trade Republic (duplicados con PDFs solapados). Moveir ficheros de `input/procesados/` a `input/tr_backup_temp/`. Usuario subirá PDF limpio por Telegram. (4) **Fix preventivo en openbank.py**: Nueva función `_normalize_description_for_hash()` que enmascarar números de tarjeta (5489... → XXXX...2036) ANTES de generar hash. Ambas descripciones generan ahora el MISMO hash (test: ✅ hash1==hash2). Impacto: futuras importaciones Openbank con tarjeta completa/enmascarada serán deduplicadas correctamente. (5) **Alertas bot**: Post-importación, muestra contador de txs sin clasificar + comando `/sin_clasificar` para ver listado completo (últimas 20 con paginación). Detección via rowid: compara MAX(rowid) antes/después de procesamiento. (6) **Limpiezas**: Backup BD creado (`finsense.db.backup_antes_borrado_TR_20260224`). Borradas 1,027 txs TR → total 15,661→14,634 txs. Reseteado `ultimo_rowid_push_diario = 47647` (nueva MAX(rowid)). (7) **Bot relanzado**: PID 2760608, nuevo comando registrado, logs limpios, sintaxis verificada.
+- **Métrica**: 1,027 txs borradas. 99 sin clasificar identificadas. Fix preventivo: enmascarado de tarjetas en openbank.py. 2 ficheros modificados. Commit 00e31d2.
+- **Decisión**: Dedup fallida por variaciones de descripción resuelto. Future: enmascarar tarjetas en TODOS los parsers (Openbank es fase 1). Alertas sin clasificar: Opción C (contador + `/sin_clasificar`).
+- **Próximo**: Usuario envía PDF TR limpio por Telegram. Bot procesará con nuevo fix de openbank.py → sin duplicados con tarjeta enmascarada. Comando `/sin_clasificar` disponible para auditar.
 
 ### S42 — 2026-02-24 — PUSH DIARIO: SOLO ENVIAR SI HAY CAMBIOS ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Problema identificado**: `push_diario()` enviaba mensaje TODOS los días a las 12:00, sin verificar si hubo nuevas importaciones de transacciones. Desperdiciaba credenciales de LLM. (2) **Solución implementada**: Detección de cambios usando `MAX(rowid)` de `transacciones` vs. valor guardado en nueva tabla `bot_estado`. (3) **Implementación detallada**: (a) Crear tabla `bot_estado(clave TEXT PK, valor TEXT)` con `CREATE TABLE IF NOT EXISTS` al primer llamado. (b) Leer `MAX(rowid)` actual de `transacciones` (~48,888). (c) Leer `ultimo_rowid_push_diario` de `bot_estado` (inicialmente `-1`). (d) **Lógica**: Si `max_rowid == ultimo_rowid` → omitir push (log: "⏭️ Push diario omitido: no hay nuevas txs"). Si `max_rowid != ultimo_rowid` → generar, enviar, y guardar nuevo rowid. (4) **Testing manual**: Simuladas 3 ejecuciones: primera (enviar ✓), segunda sin cambios (omitir ✓), tercera con nueva tx insertada (enviar ✓). (5) **BD verificación**: Tabla `bot_estado` creada, registro `ultimo_rowid_push_diario = 48888` guardado. (6) **Bot reiniciado**: PID 2631620, scheduler corriendo, logs limpios, sin errores de sintaxis.
