@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-25 — Sesión 51 COMPLETADA (correcciones clasificación final)
+**Última actualización**: 2026-02-25 — Sesión 52 COMPLETADA (mantenimiento: fixes S51 pendientes + bitácora)
 
 ---
 
@@ -27,7 +27,7 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,994 (post-S51: 15,995 − 1 duplicado SIMYO) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Total transacciones | 15,993 (post-S52: 15,994 − 1 duplicado AEAT enablebanking) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
 | Openbank | 13,745 (13,529 TOTAL + 216 de otros orígenes, −1 SIMYO S51) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
 | Trade Republic | 969 (PDF actualizado de Extracto S49) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
 | Mediolanum | 457 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
@@ -63,6 +63,45 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S52 — 2026-02-25 — MANTENIMIENTO: 2 FIXES S51 + BITÁCORA ✅ COMPLETADO
+- **Contexto**: S51 completó correcciones masivas pero dejó 2 problemas pendientes + bitácora sin actualizar.
+- **Cambios implementados**:
+
+  1. **Fix Problema 1 — Duplicado AEAT ids 29308 + 30809**:
+     - Tx idéntica: `2026-01-23 | 50€ | TRANSFERENCIA DE DEVOLUCIONES TRIBUTARIAS...`
+     - `id=29308` (openbank_TOTAL) → **CONSERVAR**
+     - `id=30809` (enablebanking) → **BORRAR**
+     - Ejecución: `DELETE FROM transacciones WHERE id=30809;`
+     - Resultado: BD 15,994 → **15,993 txs**
+  
+  2. **Fix Problema 2 — REGLA #33 RevPoints tipo incorrecto**:
+     - Problema: `id=30108 | tipo='GASTO', cat1='Ingreso', cat2='Devoluciones'` (inconsistente)
+     - Causa: REGLA #33 asignaba `cat1='Ingreso'` pero `determine_tipo()` convertía a `GASTO`
+     - Solución en engine.py (línea 546): reemplazar `tipo = determine_tipo(...)` → `tipo = 'INGRESO'` explícito
+     - Ejecución: `reclassify_all.py`
+     - Verificación: `SELECT COUNT(*) FROM transacciones WHERE tipo='GASTO' AND cat1='Ingreso'` → **0 filas** ✅
+  
+  3. **Mantenimiento bitácora**:
+     - Actualización SESIONES.md: nueva entrada S52, métricas corregidas
+     - Limpieza: `Bitacora/IMPLEMENTAR_BITACORA_V2.md` (artefacto de instalación) movido a `docs/`
+
+- **Ejecución**:
+  1. Borrar id=30809 con SQL directo
+  2. Fix engine.py REGLA #33
+  3. `reclassify_all.py` para aplicar cambios
+  4. `export_bbdd.py` para actualizar exports
+  5. Commit con ambos fixes
+
+- **Resultados**:
+  - **15,993 txs** (15,994 − 1 AEAT duplicado)
+  - **0 SIN_CLASIFICAR** (sin cambios)
+  - **0 filas con tipo='GASTO' AND cat1='Ingreso'** (bug RevPoints solucionado)
+  - **1 RevPoints correcta**: INGRESO/Ingreso/Devoluciones
+  - finsense_export.xlsx actualizado
+
+- **Archivos modificados**: classifier/engine.py, docs/ (archivo IMPLEMENTAR_BITACORA_V2.md movido)
+- **Commits**: `f29f258` (S52: fix duplicado AEAT id=30809, fix REGLA #33 RevPoints tipo='INGRESO')
 
 ### S51 — 2026-02-25 — CORRECCIONES FINALES CLASIFICACIÓN ✅ COMPLETADO
 - **Contexto**: Post-S50 usuario identificó 11 problemas en la clasificación.
