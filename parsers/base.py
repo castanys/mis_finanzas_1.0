@@ -56,6 +56,37 @@ class BankParser(ABC):
         return hashlib.sha256(raw.encode()).hexdigest()
 
     @staticmethod
+    def normalize_card_number(concepto: str) -> str:
+        """
+        Normalizar números de tarjeta en la descripción para deduplicación cross-file.
+        
+        Problema: Diferentes bancos representan tarjetas de formas distintas:
+        - Openbank TOTAL: números completos (5489133068682036)
+        - Openbank enablebanking: números enmascarados (XXXXXXXXXXXX2036)
+        - Abanca/B100: pueden tener patrones similares
+        
+        Solución: Reemplazar ambos patrones por una forma canónica ****XXXX (últimos 4 dígitos).
+        
+        Args:
+            concepto: Descripción original de la transacción
+            
+        Returns:
+            Descripción con números de tarjeta normalizados
+        """
+        if not concepto:
+            return concepto
+            
+        # Patrón 1: Números enmascarados "XXXXXXXXXXXX2036" → "****2036"
+        # Ej: "CON LA TARJETA : XXXXXXXXXXXX2036" → "CON LA TARJETA : ****2036"
+        concepto = re.sub(r'[X]+(\d{4})', r'****\1', concepto)
+        
+        # Patrón 2: Números completos "5489133068682036" → "****2036"
+        # Ej: "CON LA TARJETA : 5489133068682036" → "CON LA TARJETA : ****2036"
+        concepto = re.sub(r'\b\d{12}(\d{4})\b', r'****\1', concepto)
+        
+        return concepto
+
+    @staticmethod
     def parse_spanish_number(s: str) -> float:
         """
         Convert Spanish number format to float.

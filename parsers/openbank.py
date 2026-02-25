@@ -21,36 +21,6 @@ from typing import List, Dict
 from .base import BankParser
 
 
-def normalize_card_number(concepto: str) -> str:
-    """
-    Normalizar números de tarjeta en la descripción para deduplicación cross-file.
-    
-    Problema: El archivo TOTAL tiene números de tarjeta completos (5489133068682036)
-    mientras que enablebanking los enmascara (XXXXXXXXXXXX2036). Ambos se refieren
-    a la misma transacción, pero generan hashes distintos.
-    
-    Solución: Reemplazar ambos patrones por una forma canónica ****XXXX (últimos 4 dígitos).
-    
-    Args:
-        concepto: Descripción original de la transacción
-        
-    Returns:
-        Descripción con números de tarjeta normalizados
-    """
-    # Patrón 1: Números enmascarados "XXXXXXXXXXXX2036" → extraer últimos 4 dígitos
-    # Patrón 2: Números completos "5489133068682036" → extraer últimos 4 dígitos
-    
-    # Encontrar patrones de tarjeta enmascarada (X seguido de dígitos)
-    # Ej: "CON LA TARJETA : XXXXXXXXXXXX2036" → "CON LA TARJETA : ****2036"
-    concepto = re.sub(r'[X]+(\d{4})', r'****\1', concepto)
-    
-    # Encontrar patrones de tarjeta completa (secuencia de 16 dígitos)
-    # Ej: "CON LA TARJETA : 5489133068682036" → "CON LA TARJETA : ****2036"
-    concepto = re.sub(r'\b\d{12}(\d{4})\b', r'****\1', concepto)
-    
-    return concepto
-
-
 class OpenbankParser(BankParser):
     """Parser para CSV de Openbank (ambos formatos)."""
 
@@ -141,7 +111,7 @@ class OpenbankParser(BankParser):
                 continue
 
             # Normalizar número de tarjeta en concepto para deduplicación cross-file
-            concepto_for_hash = normalize_card_number(concepto)
+            concepto_for_hash = self.normalize_card_number(concepto)
 
             record = {
                 "fecha": fecha_iso,
@@ -217,7 +187,7 @@ class OpenbankParser(BankParser):
                 continue
 
             # Normalizar número de tarjeta en concepto para deduplicación cross-file
-            concepto_for_hash = normalize_card_number(concepto)
+            concepto_for_hash = self.normalize_card_number(concepto)
 
             # CUSTOM HASH PARA TOTAL FORMAT: incluye número de línea
             # Esto permite transacciones idénticas dentro del mismo fichero
