@@ -1,0 +1,5 @@
+✓ Cargados 552 merchants de Google Places
+Traceback (most recent call last):
+  File "/home/pablo/apps/mis_finanzas_1.0/rebuild_from_scratch.py", line 8, in <module>
+    from internal_transfer_hunter import detect_internal_transfers
+ImportError: cannot import name 'detect_internal_transfers' from 'internal_transfer_hunter' (/home/pablo/apps/mis_finanzas_1.0/internal_transfer_hunter.py)

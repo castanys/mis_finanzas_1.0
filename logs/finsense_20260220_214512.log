@@ -1,0 +1,6 @@
+[2026-02-20 21:45:12] [INFO    ] [finsense] ======================================================================
+[2026-02-20 21:45:12] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-20 21:45:12] [INFO    ] [finsense] ======================================================================
+[2026-02-20 21:45:12] [DEBUG   ] [finsense] Cargadas 8 excepciones de clasificación
+[2026-02-20 21:45:12] [INFO    ] [finsense] Pipeline inicializado con 14569 transacciones conocidas en 16 cuentas
+[2026-02-20 21:45:12] [DEBUG   ] [finsense] Parser trade_republic_csv parseó 920 transacciones de TradeRepublic_ES8015860001420977164411.csv

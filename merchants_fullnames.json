@@ -1,0 +1,1472 @@
+{
+  "E S SAN JAVIER": {
+    "cat1": "Transporte",
+    "cat2": "Gasolina",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "A LA BARRA GASTROBAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ROYMAGA PETROLEOS SL": {
+    "cat1": "Transporte",
+    "cat2": "Gasolina",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GVB Spinnerij": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "GESTIPRAT S.L.": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GESTIPRAT S L": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CRV*TIDAL Malmo SWE": {
+    "cat1": "Suscripciones",
+    "cat2": "Música",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AMERICAN ROCK BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "A LA BARRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PADEL CENTER CARTAGO": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Deporte",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CARTAGO PADEL": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Deporte",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BARBERIA CARLOS CONDE": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Peluquería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ARTEFISIO SANTA ANA": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ALDEASA": {
+    "cat1": "Compras",
+    "cat2": "Aeropuerto",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "CHURRERIA SANTA FLORENTIN": {
+    "cat1": "Restauración",
+    "cat2": "Churrería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CHURRERIA TOFI": {
+    "cat1": "Restauración",
+    "cat2": "Churrería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "VINISSIMUS SL": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "PC Componentes": {
+    "cat1": "Compras",
+    "cat2": "Tecnología",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "NATIONAL EXPRESS": {
+    "cat1": "Transporte",
+    "cat2": "Autobús",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CLICKAIR": {
+    "cat1": "Transporte",
+    "cat2": "Vuelos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PACKLINK SHIPPING": {
+    "cat1": "Compras",
+    "cat2": "Servicios",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "DOMINO'S PIZZA": {
+    "cat1": "Restauración",
+    "cat2": "Pizza",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LINEA DIRECTA ASEGURADORA": {
+    "cat1": "Finanzas",
+    "cat2": "Seguros",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Revolut": {
+    "cat1": "Transferencia",
+    "cat2": "Interna",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "COMPLEX ESPORTIU": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Deporte",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "ALAMEDA TAPAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "HAPPY PIZZERIA": {
+    "cat1": "Restauración",
+    "cat2": "Pizza",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "TRENES.COM": {
+    "cat1": "Transporte",
+    "cat2": "Tren",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AENA PARK": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AREAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "HIJOS DE NAVARRO ROBLES S": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "PC Componentes y Multi": {
+    "cat1": "Compras",
+    "cat2": "Tecnología",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "HMS HOST": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "Swisscom Internet NL": {
+    "cat1": "Recibos",
+    "cat2": "Telefonía e Internet",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PETROPAY": {
+    "cat1": "Transporte",
+    "cat2": "Gasolina",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "MANO A MANO CARTAGENA": {
+    "cat1": "Alimentación",
+    "cat2": "Mercado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "JIJONENCA": {
+    "cat1": "Restauración",
+    "cat2": "Heladería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "IBESSA": {
+    "cat1": "Transporte",
+    "cat2": "Gasolina",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GABE MARKET": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "COMERCIO RAMIREZ": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "CASA. PARQUE MEDITERRANEO": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "CAFE LAB": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AEROMODELISMO SERPA SL": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Deporte",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "VINO Y MAS": {
+    "cat1": "Alimentación",
+    "cat2": "Bodega",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "TRAINERSMN.COM": {
+    "cat1": "Compras",
+    "cat2": "Deportes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "TABLECART": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "LA FARFALLA SL": {
+    "cat1": "Restauración",
+    "cat2": "Italiano",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "HIPER ASIA": {
+    "cat1": "Alimentación",
+    "cat2": "Asiático",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "EFECTO 2000": {
+    "cat1": "Compras",
+    "cat2": "Bazar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "CAFETERIA NOYMAR": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA CHAJA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ALICANTE AEROPUERTO": {
+    "cat1": "Compras",
+    "cat2": "Aeropuerto",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "AENA PARK COCHES": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "VARGAS CAFETERIA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "SUPERMERCADO MARAU": {
+    "cat1": "Alimentación",
+    "cat2": "Supermercado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "SPRINTER TORREVIEJA 951": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "SBB/Bats Geneve-Aeropo": {
+    "cat1": "Transporte",
+    "cat2": "Tren",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "RESTAURANTE A LA BARRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "RAKUTEN": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Microsoft*Store": {
+    "cat1": "Suscripciones",
+    "cat2": "Software",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "EL ASADOR DE JUAN MANUEL": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA PROAnull": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "TABERNA CENTRAL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "PIZZERIA LA RUCOLA": {
+    "cat1": "Restauración",
+    "cat2": "Pizza",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA VIRGEN DE LA CA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "medium"
+  },
+  "CAFETERIA PREMIUM CAFE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA CURRO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "A SFUENTIDUENA DEL TAJO": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "medium"
+  },
+  "1433 / LEVANTE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "medium"
+  },
+  "POLLO DORADO ASADORES SL": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "Otros_Transaccion_extractor",
+    "confidence": "high"
+  },
+  "VIRGINIA ROCA PUESTO 16": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "SIMPLY GENERAL MOSCA": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "OFERPLAN - LA VERDAD DIGI": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "YOESTAREAQUI": {
+    "cat1": "Compras",
+    "cat2": "Agencia de viajes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "VALLADOLID ORA-3": {
+    "cat1": "Transporte",
+    "cat2": "Aparcamiento/Peajes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "UTE ORA GRUA ALICANTE": {
+    "cat1": "Transporte",
+    "cat2": "Taller",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "SEITT-R3R5TRONCO ARGANDA": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "SEITT-R3R5TRONCO VICALVAR": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "MANPER E HIJOS ALIMENTAC": {
+    "cat1": "Alimentación",
+    "cat2": "Carnicería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "RECAUDACION MUNICIPAL": {
+    "cat1": "Impuestos",
+    "cat2": "Municipales",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "NYON BILLETT TPN": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Entradas",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "Intersport Global": {
+    "cat1": "Compras",
+    "cat2": "Deportes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "INSTANT GAMING": {
+    "cat1": "Compras",
+    "cat2": "Videojuegos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "HIPER HF.": {
+    "cat1": "Alimentación",
+    "cat2": "Supermercado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GVB Ouderkerkerlaan": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "GVB Gaasperplas": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "DGT SANCIONES INTERNET": {
+    "cat1": "Impuestos",
+    "cat2": "Municipales",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CERVECERIA 100 MONTADITOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CASA RAMIREZ": {
+    "cat1": "Compras",
+    "cat2": "Hogar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "AUTOS PABLO SANCHEZ, S.L.": {
+    "cat1": "Transporte",
+    "cat2": "Taller",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "World of Delights Shop": {
+    "cat1": "Compras",
+    "cat2": "Regalos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "WHAREHOUSE": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "Virgin": {
+    "cat1": "Suscripciones",
+    "cat2": "Telefonía e Internet",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "VINARTE": {
+    "cat1": "Alimentación",
+    "cat2": "Vinos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "USD EUROPCAR": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "Tidal Music": {
+    "cat1": "Suscripciones",
+    "cat2": "Música",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "TIENDAS ESPACIO CASA": {
+    "cat1": "Compras",
+    "cat2": "Muebles",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "TIENDAS ESPACIO CASA S.L.": {
+    "cat1": "Compras",
+    "cat2": "Muebles",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "THE CORNER MUSIC": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "THE CORNER MUSIC TAVERV": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "TAXI LICENCIA 2808": {
+    "cat1": "Transporte",
+    "cat2": "Taxi",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "STUKA MODELISMO": {
+    "cat1": "Compras",
+    "cat2": "Juguetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "SOLOBUEY": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "SBB/Bats Montreux": {
+    "cat1": "Transporte",
+    "cat2": "Tren",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "QUO FITNESS CARTAGENA SL": {
+    "cat1": "Compras",
+    "cat2": "Gimnasio",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Patreon* Membership": {
+    "cat1": "Suscripciones",
+    "cat2": "Entretenimiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PRO BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PORT AVENTURA TIENDAS": {
+    "cat1": "Compras",
+    "cat2": "Parques",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PC COMPONENTES": {
+    "cat1": "Compras",
+    "cat2": "Tecnología",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "PACKLINK - AUCTANE SL": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "P.C. BOX CARTAGENA": {
+    "cat1": "Compras",
+    "cat2": "Tecnología",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ORBXSYSTEMS.COM": {
+    "cat1": "Compras",
+    "cat2": "Software",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "OLYMPIA CANILLO II": {
+    "cat1": "Viajes",
+    "cat2": "Alojamiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "OLD HAVANA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "NH PRIVATE EQUITY BV": {
+    "cat1": "Finanzas",
+    "cat2": "Inversión",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "NEWSTRI CORPORATE SOLUTIO": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "SPANAIR, S.A.": {
+    "cat1": "Viajes",
+    "cat2": "Vuelos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ENTRADAS.COM": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Entradas",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CRV*FRN*HOLD.FREE-NOW.": {
+    "cat1": "Transporte",
+    "cat2": "Taxi",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "NYX*ABServiciosSelecta": {
+    "cat1": "Compras",
+    "cat2": "Servicios",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "MARIANTONIETTA CAFE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "FDN SINTRA": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "ECLER": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "COVA CALAVERES BENIDOLEIG": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "COSTA BLANCA CLUB DE RUGB": {
+    "cat1": "Deportes",
+    "cat2": "Club",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CJ PARQUE MEDITERRANEO": {
+    "cat1": "Compras",
+    "cat2": "Parques",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "CHURRERIA LA QUINTA": {
+    "cat1": "Restauración",
+    "cat2": "Churrería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BALNEARIO DE ARCHENA S A": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Spa",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ARAMARK 18010RR": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "ZOCOCITY": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "PADEL IBERICO": {
+    "cat1": "Deportes",
+    "cat2": "Pádel",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AVANQUA OCEANOGRAFIC AGOR": {
+    "cat1": "Compras",
+    "cat2": "Museos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "AEROMODELO": {
+    "cat1": "Compras",
+    "cat2": "Juguetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "365RIDER": {
+    "cat1": "Transporte",
+    "cat2": "Taxi",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "US373 CARTAGENA TENTEGORR": {
+    "cat1": "Alimentación",
+    "cat2": "Supermercado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "SIMPLY GENERAL MOSCARDO": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "GO METRO ST CATHERINE": {
+    "cat1": "Transporte",
+    "cat2": "Transporte público",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CRV*TIDAL": {
+    "cat1": "Suscripciones",
+    "cat2": "Música",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Ap. Maisonnave": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "VIRGINIA ROCA MERC S FLO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "TOTAL SANT ELOI CANILL": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "TOMAS GUILLEN GUILLEN, S.": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "REC 2000, S.L.": {
+    "cat1": "Compras",
+    "cat2": "Bazar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "QUO. VORTICE ESPACIO TIEM": {
+    "cat1": "Compras",
+    "cat2": "Hogar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "PLENOIL CARTAGENA MURCIA": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "MC DONALD'S NUEVO BARAJAS": {
+    "cat1": "Restauración",
+    "cat2": "Fast food",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "MACY'S EAST #666": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "LOW STATION": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "LOW STATION SL": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "LOVELL SPORTS LTD": {
+    "cat1": "Compras",
+    "cat2": "Deportes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LOCKHEED MARTIN GTL": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "LIBRERIA UNIVERSITARIA": {
+    "cat1": "Compras",
+    "cat2": "Librería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LA PLAZA TERRAZA BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LA HERRADURA ASADOR ARGEN": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LA CHARITO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "KOL OUTDOOR": {
+    "cat1": "Compras",
+    "cat2": "Deportes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GROSVENOR CHAUFFER CAR": {
+    "cat1": "Transporte",
+    "cat2": "Taxi",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GRANDVALIRA": {
+    "cat1": "Deportes",
+    "cat2": "Club",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GESTION EESS 220, S.L.": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "FIREHOUSE SUBS #34": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "FILEPOST": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "FEDIAZ SANEAMIENTOS SL": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "FEDERVIEH": {
+    "cat1": "Compras",
+    "cat2": "Bazar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "EPC*FORTNITE": {
+    "cat1": "Compras",
+    "cat2": "Videojuegos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "LDO.ALFONSO MARTINEZ GOME": {
+    "cat1": "Servicios Consultoría",
+    "cat2": "",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "H tel Ibis Gen ve-A ro": {
+    "cat1": "Viajes",
+    "cat2": "Alojamiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "GLH CARTAGENA 1": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "ESTRASTEGIAS DE INVERSION": {
+    "cat1": "Finanzas",
+    "cat2": "Inversión",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "EPC*EPIC GAMES STORE": {
+    "cat1": "Compras",
+    "cat2": "Videojuegos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "EL SUE¥O DE JEMIK, S.L.": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "DGT SANCIONES INTERNET 2": {
+    "cat1": "Impuestos",
+    "cat2": "Municipales",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "DEPORTIVO SANTA ANA": {
+    "cat1": "Deportes",
+    "cat2": "Club",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CROMWELS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "CONFITERIA COLISEO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "COMUNIDAD FILMIN SL": {
+    "cat1": "Suscripciones",
+    "cat2": "Streaming",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "COMPLEX ESPORTIU LES CORT": {
+    "cat1": "Deportes",
+    "cat2": "Club",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "COMERC SABA AP.": {
+    "cat1": "Compras",
+    "cat2": "Bazar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "CERVECERIA SENTO ARCONADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CERVECERIA LA MEJILLONERA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CERVECERIA GAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CERVECERIA CASA BLANCA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CENTRO DEP. ZONA SUR": {
+    "cat1": "Deportes",
+    "cat2": "Club",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CDSCA SUBOFICIALES CARTAG": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "CALZEDONIA": {
+    "cat1": "Compras",
+    "cat2": "Ropa y Calzado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA CLUB DEPORTIVO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CAFETERIA CAVITE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "medium"
+  },
+  "BOOTS 1231": {
+    "cat1": "Compras",
+    "cat2": "Estética",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BEIN CONNECT": {
+    "cat1": "Suscripciones",
+    "cat2": "Streaming",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BEER BURGUER PLAZA": {
+    "cat1": "Restauración",
+    "cat2": "Fast food",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BARLEY BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "BARCELONA AEROP TIENDA T1": {
+    "cat1": "Compras",
+    "cat2": "Aeropuerto/Duty Free",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AYALA AUTOMOCION": {
+    "cat1": "Transporte",
+    "cat2": "Taller",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AUDITORIO EL BATEL": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Entradas",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ARMONYGYM": {
+    "cat1": "Compras",
+    "cat2": "Gimnasio",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "ARIZONA RUTA 66 ROCK BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "APARCAMENT ILLA CARLEM": {
+    "cat1": "Transporte",
+    "cat2": "Aparcamiento/Peajes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AIRBNB * HMEC3C2PD8": {
+    "cat1": "Viajes",
+    "cat2": "Alojamiento",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AEROPUERTO ALICANTE PK PR": {
+    "cat1": "Transporte",
+    "cat2": "Aparcamiento/Peajes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "AEROPORT BARCELONA": {
+    "cat1": "Transporte",
+    "cat2": "Aparcamiento/Peajes",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "627 - PC AER BCN T1 AIRE": {
+    "cat1": "Compras",
+    "cat2": "Aeropuerto/Duty Free",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "CAMMPILLO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "EST ALICANTE": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "ATX BRANDS": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "eDreams": {
+    "cat1": "Viajes",
+    "cat2": "Vuelos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Zalando Payments": {
+    "cat1": "Compras",
+    "cat2": "Ropa y Calzado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "Zala ndo Pay": {
+    "cat1": "Compras",
+    "cat2": "Ropa y Calzado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "WWW ZALANDO ES": {
+    "cat1": "Compras",
+    "cat2": "Ropa y Calzado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "WDFE": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "VIVINO.COM ÑX3QKHJGD": {
+    "cat1": "Alimentación",
+    "cat2": "Vinos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "www.europlexcinemas.ch": {
+    "cat1": "Ocio y Cultura",
+    "cat2": "Cines",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "supermercados zamanillo": {
+    "cat1": "Alimentación",
+    "cat2": "Supermercado",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "pcloud": {
+    "cat1": "Suscripciones",
+    "cat2": "Streaming",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "low"
+  },
+  "payGamemoney": {
+    "cat1": "Compras",
+    "cat2": "Videojuegos",
+    "source": "COMPRA_EN_extractor",
+    "confidence": "high"
+  },
+  "REST CASA AUGUSTO ARRANZ": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "BODEGAS BAIGORRI": {
+    "cat1": "Restauración",
+    "cat2": "Bodega",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "BAR EL PERCHAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "DELANTE BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "EL PURGATORIO BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "HENRYûS DELIZIE": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "medium"
+  },
+  "RESATAURANTE BELLAVISTA": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "high"
+  },
+  "ARTISAR": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "medium"
+  },
+  "TITIRIT": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "medium"
+  },
+  "SIETE RIOS SL": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "medium"
+  },
+  "LA MARINA I": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "RESTAURACION_OTROS_S9",
+    "confidence": "low"
+  },
+  "CLINICA ORTONOVA": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "E.S LAS TEJERAS": {
+    "cat1": "Transporte",
+    "cat2": "Combustible",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "788-ECI C.O.TORREVIEJA": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "BEAZA MOTOR": {
+    "cat1": "Transporte",
+    "cat2": "Taller",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "BKT-MAD-PARK-O-CA": {
+    "cat1": "Transporte",
+    "cat2": "Parking",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "C I F DE HOSTELERIA Y TUR": {
+    "cat1": "Viajes",
+    "cat2": "Alojamiento",
+    "source": "Bloque_A_S10",
+    "confidence": "medium"
+  },
+  "CAFE DE LA ESTACION": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "COOLMOD": {
+    "cat1": "Compras",
+    "cat2": "Tecnología",
+    "source": "Bloque_A_S10",
+    "confidence": "high"
+  },
+  "DRUNI": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_A_S10",
+    "confidence": "medium"
+  },
+  "ELHA - CARTAGENA": {
+    "cat1": "Viajes",
+    "cat2": "Alojamiento",
+    "source": "Bloque_A_S10",
+    "confidence": "medium"
+  },
+  "PIZZERIA YAM YAM": {
+    "cat1": "Restauración",
+    "cat2": "Pizzería",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "OHANA GASTROBAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "S10 BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "IL CUCURUCHONE": {
+    "cat1": "Restauración",
+    "cat2": "Restaurante",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "Temu.com": {
+    "cat1": "Compras",
+    "cat2": "Online",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "HIPER ANDORRA 2": {
+    "cat1": "Alimentación",
+    "cat2": "Supermercado",
+    "source": "Bloque_B_S10_R2",
+    "confidence": "high"
+  },
+  "ZONA 26": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_B_S10_R3",
+    "confidence": "low"
+  },
+  "URBAMUSA": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_B_S10_R3",
+    "confidence": "low"
+  },
+  "GEODA PULPI": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_B_S10_R3",
+    "confidence": "low"
+  },
+  "MAYPE II": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_B_S10_R3",
+    "confidence": "low"
+  },
+  "ERAMNSA": {
+    "cat1": "Compras",
+    "cat2": "Otros",
+    "source": "Bloque_B_S10_R3",
+    "confidence": "low"
+  }
+}

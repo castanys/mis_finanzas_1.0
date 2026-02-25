@@ -1,0 +1,10 @@
+[2026-02-20 22:25:09] [INFO    ] [finsense] ======================================================================
+[2026-02-20 22:25:09] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-20 22:25:09] [INFO    ] [finsense] ======================================================================
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Cargadas 8 excepciones de clasificación
+[2026-02-20 22:25:09] [INFO    ] [finsense] Pipeline inicializado con 0 transacciones conocidas en 0 cuentas
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Parser mediolanum_old parseó 457 transacciones de mediolanum_ES2501865001680510084831.csv
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Parser abanca parseó 7 transacciones de ABANCA_ES5120800823473040166463.csv
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Parser openbank parseó 55 transacciones de openbank_ES2200730100510135698457.csv
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv
+[2026-02-20 22:25:09] [DEBUG   ] [finsense] Parser enablebanking parseó 111 transacciones de enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv

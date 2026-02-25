@@ -603,9 +603,12 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             else:
                 status = "ℹ️ Procesado: 0 nuevas transacciones (ya estaban en la BD)"
             
+            # Escapar nombre de archivo para Markdown (reemplazar caracteres especiales)
+            file_name_safe = file_name.replace("_", "\\_").replace("-", "\\-").replace("[", "\\[").replace("]", "\\]")
+            
             response = (
                 f"**{status}**\n"
-                f"📄 Archivo: {file_name}\n"
+                f"📄 Archivo: `{file_name_safe}`\n"
                 f"📊 Tamaño: {file_size_mb:.2f} MB\n"
                 f"📁 Archivado en: input/procesados/\n"
             )
@@ -616,14 +619,21 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             # Error
             error_msg = result.stderr or "Error desconocido"
+            # Escapar error_msg para evitar problemas de Markdown
+            error_msg_safe = error_msg[:200].replace("[", "\\[").replace("]", "\\]")
             response = (
                 f"❌ Error procesando el archivo:\n"
-                f"```\n{error_msg[:500]}\n```"
+                f"`{error_msg_safe}`"
             )
             logger.error(f"❌ Error: {error_msg}")
         
         # Enviar respuesta
-        await update.message.reply_text(response, parse_mode="Markdown")
+        try:
+            await update.message.reply_text(response, parse_mode="Markdown")
+        except Exception as markdown_err:
+            # Si falla por Markdown, enviar sin format
+            logger.warning(f"⚠️ Error Markdown, enviando sin formato: {markdown_err}")
+            await update.message.reply_text(response)
         
         # Mover archivo a procesados/ si todo fue bien
         if result.returncode == 0:

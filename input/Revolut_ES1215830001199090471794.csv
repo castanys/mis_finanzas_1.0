@@ -1,0 +1,211 @@
+﻿Tipo;Producto;Fecha de inicio;Fecha de finalización;Descripción;Importe;Comisión;Divisa;State;Saldo
+Recargas;Actual;02/07/2019 17:19;;Recarga de *****;1;0;EUR;REVERTED;
+Recargas;Actual;02/07/2019 17:25;02/07/2019 17:25;Una recarga de Apple Pay con *2919;10;0;EUR;COMPLETADO;10
+Recargas;Actual;03/07/2019 9:04;03/07/2019 9:04;Una recarga de Apple Pay con *2919;50;0;EUR;COMPLETADO;60
+Cambio;Actual;03/07/2019 16:51;03/07/2019 16:51;Conversión a CHF;-60;0;EUR;COMPLETADO;0
+Recargas;Actual;03/07/2019 19:37;03/07/2019 19:37;Una recarga de Apple Pay con *2919;200;0;EUR;COMPLETADO;200
+Cambio;Actual;04/07/2019 8:15;04/07/2019 8:15;Conversión a CHF;-200;0;EUR;COMPLETADO;0
+Recargas;Actual;04/07/2019 8:16;;Recarga de *****;1;0;EUR;REVERTED;
+Recargas;Actual;04/07/2019 8:17;04/07/2019 8:17;Una recarga de Apple Pay con *2919;25;0;EUR;COMPLETADO;25
+Cambio;Actual;04/07/2019 8:17;04/07/2019 8:17;Conversión a CHF;-25;0;EUR;COMPLETADO;0
+Cambio;Actual;09/07/2019 21:15;09/07/2019 21:15;Conversión a EUR;6.28;0;EUR;COMPLETADO;6.28
+Comisiones de apertura por adelantado;Actual;09/07/2019 21:16;09/07/2019 21:16;Gastos de envío de la tarjeta;-5.99;0;EUR;COMPLETADO;0.29
+Recargas;Actual;11/07/2019 7:01;11/07/2019 7:01;Una recarga de Apple Pay con *2919;50;0;EUR;COMPLETADO;50.29
+Cambio;Actual;11/07/2019 7:01;11/07/2019 7:01;Conversión a CHF;-50;0;EUR;COMPLETADO;0.29
+Recargas;Actual;23/08/2019 8:08;;Recarga de *****;1;0;EUR;REVERTED;
+Recargas;Actual;29/08/2019 9:24;29/08/2019 9:24;Una recarga de Apple Pay con *2919;130;0;EUR;COMPLETADO;130.29
+Cambio;Actual;29/08/2019 9:25;29/08/2019 9:25;Conversión a CHF;-130;0;EUR;COMPLETADO;0.29
+Recargas;Actual;30/08/2019 8:00;30/08/2019 8:00;Una recarga de Apple Pay con *2919;30;0;EUR;COMPLETADO;30.29
+Cambio;Actual;30/08/2019 8:03;30/08/2019 8:03;Conversión a CHF;-30;0;EUR;COMPLETADO;0.29
+Recargas;Actual;30/08/2019 8:18;30/08/2019 8:18;Una recarga de Apple Pay con *2919;30;0;EUR;COMPLETADO;30.29
+Cambio;Actual;30/08/2019 8:22;30/08/2019 8:22;Conversión a CHF;-30.2;0;EUR;COMPLETADO;0.09
+Recargas;Actual;30/08/2019 15:40;30/08/2019 15:40;Una recarga de Apple Pay con *2919;10;0;EUR;COMPLETADO;10.09
+Cambio;Actual;30/08/2019 15:40;30/08/2019 15:40;Conversión a CHF;-10;0;EUR;COMPLETADO;0.09
+Recargas;Actual;30/08/2019 16:45;30/08/2019 16:45;Una recarga de Apple Pay con *2919;10;0;EUR;COMPLETADO;10.09
+Cambio;Actual;30/08/2019 16:45;30/08/2019 16:45;Conversión a CHF;-10;0;EUR;COMPLETADO;0.09
+Recargas;Actual;17/09/2019 6:31;17/09/2019 6:31;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;17/09/2019 11:16;17/09/2019 11:16;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;18/09/2019 18:33;18/09/2019 18:34;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;18/09/2019 18:34;18/09/2019 18:34;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;19/09/2019 19:00;19/09/2019 19:00;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;19/09/2019 19:00;19/09/2019 19:00;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;22/09/2019 9:27;22/09/2019 9:27;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;22/09/2019 9:27;22/09/2019 9:27;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;23/09/2019 16:08;23/09/2019 16:08;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;23/09/2019 16:08;23/09/2019 16:08;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;24/09/2019 18:46;24/09/2019 18:46;Una recarga de Apple Pay con *2919;250;0;EUR;COMPLETADO;250.09
+Cambio;Actual;24/09/2019 18:46;24/09/2019 18:46;Conversión a CHF;-250;0;EUR;COMPLETADO;0.09
+Recargas;Actual;25/09/2019 21:10;25/09/2019 21:10;Una recarga de Apple Pay con *2919;150;0;EUR;COMPLETADO;150.09
+Cambio;Actual;25/09/2019 21:10;25/09/2019 21:10;Conversión a CHF;-150.09;0;EUR;COMPLETADO;0
+Recargas;Actual;26/09/2019 19:17;26/09/2019 19:17;Una recarga de Apple Pay con *2919;100;0;EUR;COMPLETADO;100
+Cambio;Actual;26/09/2019 19:18;26/09/2019 19:18;Conversión a CHF;-100;0;EUR;COMPLETADO;0
+Recargas;Actual;27/09/2019 7:39;27/09/2019 7:39;Una recarga de Apple Pay con *2919;100;0;EUR;COMPLETADO;100
+Cambio;Actual;27/09/2019 7:40;27/09/2019 7:40;Conversión a CHF;-100;0;EUR;COMPLETADO;0
+Recargas;Actual;21/10/2019 11:34;21/10/2019 11:34;Una recarga de Apple Pay con *2789;150;0;EUR;COMPLETADO;150
+Cambio;Actual;21/10/2019 11:35;21/10/2019 11:35;Conversión a CHF;-150;0;EUR;COMPLETADO;0
+Recargas;Actual;23/10/2019 8:21;23/10/2019 8:21;Una recarga de Apple Pay con *2789;150;0;EUR;COMPLETADO;150
+Cambio;Actual;23/10/2019 8:22;23/10/2019 8:22;Conversión a CHF;-150;0;EUR;COMPLETADO;0
+Recargas;Actual;23/10/2019 8:22;23/10/2019 8:22;Una recarga de Apple Pay con *2789;100;0;EUR;COMPLETADO;100
+Cambio;Actual;23/10/2019 8:22;23/10/2019 8:22;Conversión a CHF;-100;0;EUR;COMPLETADO;0
+Recargas;Actual;24/10/2019 7:04;;Recarga de *****;1;0;EUR;REVERTED;
+Recargas;Actual;24/10/2019 12:33;24/10/2019 12:33;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Cambio;Actual;24/10/2019 12:33;24/10/2019 12:33;Conversión a CHF;-250;0;EUR;COMPLETADO;0
+Recargas;Actual;24/10/2019 15:59;24/10/2019 15:59;Una recarga de Apple Pay con *2789;15;0;EUR;COMPLETADO;15
+Cambio;Actual;24/10/2019 15:59;24/10/2019 15:59;Conversión a CHF;-15;0;EUR;COMPLETADO;0
+Recargas;Actual;24/10/2019 16:00;24/10/2019 16:00;Una recarga de Apple Pay con *2789;15;0;EUR;COMPLETADO;15
+Cambio;Actual;24/10/2019 16:00;24/10/2019 16:00;Conversión a CHF;-15;0;EUR;COMPLETADO;0
+Recargas;Actual;25/10/2019 8:36;25/10/2019 8:36;Pago de FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO;200;0;EUR;COMPLETADO;200
+Cambio;Actual;25/10/2019 8:51;25/10/2019 8:51;Conversión a CHF;-200;0;EUR;COMPLETADO;0
+Recargas;Actual;28/10/2019 8:08;28/10/2019 8:08;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Cambio;Actual;28/10/2019 8:08;28/10/2019 8:08;Conversión a CHF;-250;0;EUR;COMPLETADO;0
+Recargas;Actual;30/10/2019 7:40;30/10/2019 7:40;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Cambio;Actual;30/10/2019 7:40;30/10/2019 7:40;Conversión a CHF;-250;0;EUR;COMPLETADO;0
+Recargas;Actual;10/11/2019 10:51;10/11/2019 10:51;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Recargas;Actual;11/11/2019 11:10;11/11/2019 11:10;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;500
+Recargas;Actual;13/11/2019 7:45;13/11/2019 7:45;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;750
+Cambio;Actual;13/11/2019 21:28;13/11/2019 21:28;Conversión a CHF;-750;0;EUR;COMPLETADO;0
+Recargas;Actual;17/11/2019 12:36;17/11/2019 12:36;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Recargas;Actual;20/11/2019 21:09;20/11/2019 21:09;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;500
+Cambio;Actual;20/11/2019 21:09;20/11/2019 21:09;Conversión a CHF;-460;0;EUR;COMPLETADO;40
+Recargas;Actual;21/11/2019 21:11;21/11/2019 21:11;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;290
+Cambio;Actual;21/11/2019 21:11;21/11/2019 21:11;Conversión a CHF;-250;0;EUR;COMPLETADO;40
+Pago con tarjeta;Actual;20/11/2019 21:07;22/11/2019 8:24;Sushi Haiku;-34.63;0;EUR;COMPLETADO;5.37
+Recargas;Actual;25/11/2019 7:25;25/11/2019 7:25;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;255.37
+Recargas;Actual;25/11/2019 7:51;;Recarga de *****;1;0;EUR;REVERTED;
+Recargas;Actual;25/11/2019 7:52;;Recarga de *****;1;0;EUR;REVERTED;
+Cambio;Actual;25/11/2019 7:54;25/11/2019 7:54;Conversión a CHF;-255;0;EUR;COMPLETADO;0.37
+Recargas;Actual;26/11/2019 20:07;26/11/2019 20:07;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;26/11/2019 20:07;26/11/2019 20:07;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;28/11/2019 7:57;28/11/2019 7:57;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;28/11/2019 7:57;28/11/2019 7:57;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;15/12/2019 17:58;15/12/2019 17:58;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;15/12/2019 17:58;15/12/2019 17:58;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;16/12/2019 20:04;16/12/2019 20:04;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;16/12/2019 20:04;16/12/2019 20:04;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;18/12/2019 8:01;18/12/2019 8:01;Una recarga de Apple Pay con *2789;200;0;EUR;COMPLETADO;200.37
+Cambio;Actual;18/12/2019 8:02;18/12/2019 8:02;Conversión a CHF;-200;0;EUR;COMPLETADO;0.37
+Recargas;Actual;27/01/2020 16:27;27/01/2020 16:27;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;27/01/2020 16:28;27/01/2020 16:28;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;29/01/2020 6:32;29/01/2020 6:32;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;29/01/2020 6:32;29/01/2020 6:32;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;30/01/2020 18:16;30/01/2020 18:16;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;30/01/2020 18:17;30/01/2020 18:17;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;17/02/2020 12:33;17/02/2020 12:33;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;17/02/2020 12:33;17/02/2020 12:33;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;19/02/2020 7:33;19/02/2020 7:33;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250.37
+Cambio;Actual;19/02/2020 7:34;19/02/2020 7:34;Conversión a CHF;-250;0;EUR;COMPLETADO;0.37
+Recargas;Actual;20/02/2020 7:55;20/02/2020 7:55;Una recarga de Apple Pay con *2789;50;0;EUR;COMPLETADO;50.37
+Cambio;Actual;20/02/2020 7:55;20/02/2020 7:55;Conversión a CHF;-50.37;0;EUR;COMPLETADO;0
+Recargas;Actual;20/02/2020 13:29;20/02/2020 13:29;Una recarga de Apple Pay con *2789;30;0;EUR;COMPLETADO;30
+Cambio;Actual;20/02/2020 13:29;20/02/2020 13:29;Conversión a CHF;-30;0;EUR;COMPLETADO;0
+Recargas;Actual;08/03/2020 20:07;08/03/2020 20:07;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Cambio;Actual;09/03/2020 15:56;09/03/2020 15:56;Conversión a CHF;-250;0;EUR;COMPLETADO;0
+Recargas;Actual;10/03/2020 18:26;10/03/2020 18:26;Una recarga de Apple Pay con *2789;250;0;EUR;COMPLETADO;250
+Cambio;Actual;10/03/2020 18:26;10/03/2020 18:26;Conversión a CHF;-250;0;EUR;COMPLETADO;0
+Recargas;Actual;11/03/2020 20:13;11/03/2020 20:13;Una recarga de Apple Pay con *2789;200;0;EUR;COMPLETADO;200
+Cambio;Actual;11/03/2020 20:13;11/03/2020 20:13;Conversión a CHF;-200;0;EUR;COMPLETADO;0
+Cambio;Actual;12/03/2020 16:44;12/03/2020 16:44;Conversión a EUR;111.79;0;EUR;COMPLETADO;111.79
+Pago con tarjeta;Actual;13/03/2020 10:54;15/03/2020 16:51;Mercadona;-41.08;0;EUR;COMPLETADO;70.71
+Pago con tarjeta;Actual;16/03/2020 11:00;17/03/2020 10:55;Mercadona;-33.55;0;EUR;COMPLETADO;37.16
+Pago con tarjeta;Actual;21/03/2020 10:05;23/03/2020 2:53;VisionLab;-12;0;EUR;COMPLETADO;25.16
+Pago con tarjeta;Actual;14/05/2020 14:39;15/05/2020 9:03;NS;-23.3;0;EUR;COMPLETADO;1.86
+Recargas;Actual;15/05/2020 12:59;15/05/2020 12:59;Una recarga de Apple Pay con *2789;20;0;EUR;COMPLETADO;21.86
+Recargas;Actual;17/07/2020 12:59;17/07/2020 12:59;Una recarga de Apple Pay con *2789;30;0;EUR;COMPLETADO;51.86
+Pago con tarjeta;Actual;18/07/2020 19:12;20/07/2020 14:52;GM Oil;-37.75;0;EUR;COMPLETADO;14.11
+Transferir;Actual;27/11/2020 5:07;27/11/2020 5:07;Balance migration to another region or legal entity;-14.11;0;EUR;COMPLETADO;0
+Transferir;Actual;27/11/2020 5:07;27/11/2020 5:07;Balance migration to another region or legal entity;14.11;0;EUR;COMPLETADO;14.11
+Recargas;Actual;12/01/2021 16:15;12/01/2021 16:39;Una recarga de Apple Pay con *2789;40;0;EUR;COMPLETADO;54.11
+Pago con tarjeta;Actual;12/01/2021 17:39;13/01/2021 11:38;Vinoseleccion;-50;0;EUR;COMPLETADO;4.11
+Transferir;Ahorros;17/10/2022 11:55;17/10/2022 11:55;Al Pocket EUR Ahorros desde EUR;560;0;EUR;COMPLETADO;560
+Transferir;Ahorros;25/10/2022 10:17;25/10/2022 10:17;Al Pocket EUR Ahorros desde EUR;200;0;EUR;COMPLETADO;760
+Transferir;Ahorros;27/10/2022 16:15;27/10/2022 16:15;Al Pocket EUR Ahorros desde EUR;850;0;EUR;COMPLETADO;1610
+Transferir;Ahorros;08/11/2022 14:01;08/11/2022 14:01;Al Pocket EUR Ahorros desde EUR;340;0;EUR;COMPLETADO;1950
+Transferir;Ahorros;17/11/2022 12:48;17/11/2022 12:48;Al Pocket EUR Ahorros desde EUR;200;0;EUR;COMPLETADO;2150
+Transferir;Ahorros;29/11/2022 21:59;29/11/2022 21:59;Al Pocket EUR Ahorros desde EUR;1130;0;EUR;COMPLETADO;3280
+Transferir;Ahorros;04/12/2022 15:52;04/12/2022 15:52;Al Pocket EUR Ahorros desde EUR;370;0;EUR;COMPLETADO;3650
+Transferir;Ahorros;13/12/2022 17:50;13/12/2022 17:50;Al Pocket EUR Ahorros desde EUR;200;0;EUR;COMPLETADO;3850
+Transferir;Ahorros;18/12/2022 8:21;18/12/2022 8:21;Al Pocket EUR Ahorros desde EUR;210;0;EUR;COMPLETADO;4060
+Transferir;Ahorros;05/01/2023 8:59;05/01/2023 9:00;To Pablo Fernandez-Castanys Ortiz De Villajos;-4060;0;EUR;COMPLETADO;0
+Transferir;Actual;16/02/2022 12:40;16/02/2022 12:40;Balance migration to another region or legal entity;-4.11;0;EUR;COMPLETADO;0
+Transferir;Actual;16/02/2022 12:40;16/02/2022 12:40;Balance migration to another region or legal entity;4.11;0;EUR;COMPLETADO;4.11
+Recargas;Actual;27/04/2022 13:35;27/04/2022 13:36;Una recarga de Apple Pay con *4124;90;0;EUR;COMPLETADO;94.11
+Pago con tarjeta;Actual;27/04/2022 13:37;28/04/2022 11:18;Vinoseleccion;-89;0;EUR;COMPLETADO;5.11
+Recargas;Actual;28/09/2022 11:45;28/09/2022 11:45;Recarga de *****;1000;0;EUR;COMPLETADO;1005.11
+Cambio;Actual;28/09/2022 12:11;28/09/2022 12:11;Conversión a GBP;-1005.11;0;EUR;COMPLETADO;0
+Recargas;Actual;17/10/2022 11:54;17/10/2022 11:54;Una recarga de Apple Pay con *4124;310;0;EUR;COMPLETADO;310
+Recargas;Actual;17/10/2022 11:54;17/10/2022 11:55;Una recarga de Apple Pay con *4124;250;0;EUR;COMPLETADO;560
+Transferir;Actual;17/10/2022 11:55;17/10/2022 11:55;Al Pocket EUR Ahorros desde EUR;-560;0;EUR;COMPLETADO;0
+Recargas;Actual;25/10/2022 10:16;25/10/2022 10:16;Una recarga de Apple Pay con *4124;200;0;EUR;COMPLETADO;200
+Transferir;Actual;25/10/2022 10:17;25/10/2022 10:17;Al Pocket EUR Ahorros desde EUR;-200;0;EUR;COMPLETADO;0
+Recargas;Actual;27/10/2022 16:14;27/10/2022 16:14;Una recarga de Apple Pay con *4124;850;0;EUR;COMPLETADO;850
+Transferir;Actual;27/10/2022 16:15;27/10/2022 16:15;Al Pocket EUR Ahorros desde EUR;-850;0;EUR;COMPLETADO;0
+Cambio;Actual;27/10/2022 16:16;27/10/2022 16:16;Conversión a EUR;1042.67;21;EUR;COMPLETADO;1042.46
+Transferir;Actual;27/10/2022 16:33;28/10/2022 14:20;To Pablo Fernandez-Castanys Ortiz De Villajos;-1042.46;0;EUR;COMPLETADO;0
+Recargas;Actual;08/11/2022 14:00;08/11/2022 14:01;Recarga de *2010;340;0;EUR;COMPLETADO;340
+Transferir;Actual;08/11/2022 14:01;08/11/2022 14:01;Al Pocket EUR Ahorros desde EUR;-340;0;EUR;COMPLETADO;0
+Recargas;Actual;17/11/2022 12:47;17/11/2022 12:48;Recarga de *2010;200;0;EUR;COMPLETADO;200
+Transferir;Actual;17/11/2022 12:48;17/11/2022 12:48;Al Pocket EUR Ahorros desde EUR;-200;0;EUR;COMPLETADO;0
+Recargas;Actual;29/11/2022 21:58;29/11/2022 21:58;Recarga de *2010;1130;0;EUR;COMPLETADO;1130
+Transferir;Actual;29/11/2022 21:59;29/11/2022 21:59;Al Pocket EUR Ahorros desde EUR;-1130;0;EUR;COMPLETADO;0
+Recargas;Actual;04/12/2022 15:51;04/12/2022 15:51;Recarga de *2010;370;0;EUR;COMPLETADO;370
+Transferir;Actual;04/12/2022 15:52;04/12/2022 15:52;Al Pocket EUR Ahorros desde EUR;-370;0;EUR;COMPLETADO;0
+Recargas;Actual;13/12/2022 17:49;13/12/2022 17:49;Recarga de *2010;200;0;EUR;COMPLETADO;200
+Transferir;Actual;13/12/2022 17:50;13/12/2022 17:50;Al Pocket EUR Ahorros desde EUR;-200;0;EUR;COMPLETADO;0
+Recargas;Actual;18/12/2022 8:20;18/12/2022 8:21;Recarga de *2010;210;0;EUR;COMPLETADO;210
+Transferir;Actual;18/12/2022 8:21;18/12/2022 8:21;Al Pocket EUR Ahorros desde EUR;-210;0;EUR;COMPLETADO;0
+Recargas;Actual;18/09/2025 18:20;18/09/2025 18:20;Una recarga de Apple Pay con *4012;6.99;0;EUR;COMPLETADO;6.99
+Comisiones de apertura por adelantado;Actual;18/09/2025 18:20;18/09/2025 18:20;Gastos de envío de la tarjeta;-6.99;0;EUR;COMPLETADO;0
+Recargas;Actual;18/09/2025 22:36;18/09/2025 22:36;Una recarga de Apple Pay con *4012;30;0;EUR;COMPLETADO;30
+Transferir;Actual;18/09/2025 22:37;18/09/2025 22:37;Transferencia a un cliente de Revolut;-7;0;EUR;COMPLETADO;23
+Transferir;Actual;19/09/2025 16:50;19/09/2025 16:50;Transferencia a un cliente de Revolut;-10;0;EUR;COMPLETADO;13
+Transferir;Actual;24/09/2025 15:29;24/09/2025 15:29;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;5
+Transferir;Actual;29/09/2025 10:38;29/09/2025 10:38;Transferencia a un cliente de Revolut;-5;0;EUR;COMPLETADO;0
+Recargas;Actual;29/09/2025 10:41;29/09/2025 10:41;Una recarga de Apple Pay con *4012;25;0;EUR;COMPLETADO;25
+Transferir;Actual;29/09/2025 19:03;29/09/2025 19:03;Transferencia a un cliente de Revolut;-12;0;EUR;COMPLETADO;13
+Transferir;Actual;30/09/2025 19:25;30/09/2025 19:25;Transferencia a un cliente de Revolut;-6;0;EUR;COMPLETADO;7
+Transferir;Actual;30/09/2025 20:05;30/09/2025 20:05;Transferencia de un cliente de Revolut;0.45;0;EUR;COMPLETADO;7.45
+Transferir;Actual;02/10/2025 7:44;02/10/2025 7:44;Transferencia a un cliente de Revolut;-4.3;0;EUR;COMPLETADO;3.15
+Recargas;Actual;04/10/2025 19:57;04/10/2025 19:58;Una recarga de Apple Pay con *4012;15;0;EUR;COMPLETADO;18.15
+Transferir;Actual;04/10/2025 19:58;04/10/2025 19:58;Transferencia a un cliente de Revolut;-6;0;EUR;COMPLETADO;12.15
+Transferir;Actual;04/10/2025 19:59;04/10/2025 19:59;Transferencia a un cliente de Revolut;-6;0;EUR;COMPLETADO;6.15
+Transferir;Actual;13/10/2025 9:20;13/10/2025 9:20;Transferencia a un cliente de Revolut;-5;0;EUR;COMPLETADO;1.15
+Recargas;Actual;18/10/2025 18:38;18/10/2025 18:38;Una recarga de Apple Pay con *4012;16;0;EUR;COMPLETADO;17.15
+Transferir;Actual;18/10/2025 18:38;18/10/2025 18:38;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;9.15
+Transferir;Actual;18/10/2025 18:39;18/10/2025 18:39;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;1.15
+Recargas;Actual;23/10/2025 8:46;23/10/2025 8:46;Una recarga de Apple Pay con *4012;65;0;EUR;COMPLETADO;66.15
+Transferir;Actual;23/10/2025 8:47;23/10/2025 8:47;Transferencia a un cliente de Revolut;-65;0;EUR;COMPLETADO;1.15
+Transferir;Actual;23/10/2025 8:56;23/10/2025 8:56;Transferencia de un cliente de Revolut;65;0;EUR;COMPLETADO;66.15
+Transferir;Actual;23/10/2025 9:03;23/10/2025 9:04;To Robo portfolio;-65;0;EUR;COMPLETADO;1.15
+Recargas;Actual;27/10/2025 8:26;27/10/2025 8:26;Una recarga de Apple Pay con *4012;15;0;EUR;COMPLETADO;16.15
+Transferir;Actual;27/10/2025 8:26;27/10/2025 8:26;Transferencia a un cliente de Revolut;-10;0;EUR;COMPLETADO;6.15
+Recargas;Actual;07/11/2025 22:51;07/11/2025 22:51;Pago de PABLO FERNANDEZ CASTANYS ORTIZ DE VILLAJOS;500;0;EUR;COMPLETADO;506.15
+Cambio;Actual;09/11/2025 4:12;09/11/2025 4:12;Conversión a COP;-92.6;93;EUR;COMPLETADO;412.62
+Transferir;Actual;09/11/2025 19:19;09/11/2025 19:19;RevPoints con Redondeo;-0.64;0;EUR;COMPLETADO;411.98
+Cambio;Actual;09/11/2025 20:16;09/11/2025 20:16;Conversión a COP;-200;0;EUR;COMPLETADO;211.98
+Pago con tarjeta;Actual;09/11/2025 19:18;10/11/2025 10:07;Colo Coffee Usaquen;-48.36;48;EUR;COMPLETADO;163.14
+Cambio;Actual;12/11/2025 22:18;12/11/2025 22:18;Conversión a COP;-14;0;EUR;COMPLETADO;149.14
+Cambio;Actual;12/11/2025 22:43;12/11/2025 22:43;Conversión a COP;-10;0;EUR;COMPLETADO;139.14
+Cambio;Actual;16/11/2025 16:00;16/11/2025 16:00;Conversión a COP;-50;0;EUR;COMPLETADO;89.14
+Transferir;Actual;17/11/2025 22:04;17/11/2025 22:04;To Pablo Fernandez-Castanys Ortiz De Villajos;-85;0;EUR;COMPLETADO;4.14
+Recargas;Actual;22/11/2025 18:11;22/11/2025 18:11;Una recarga de Apple Pay con *4012;15;0;EUR;COMPLETADO;19.14
+Recargas;Actual;22/11/2025 18:14;22/11/2025 18:14;Una recarga de Apple Pay con *4012;20;0;EUR;COMPLETADO;39.14
+Cambio;Actual;22/11/2025 18:14;22/11/2025 18:14;Conversión a COP;-35;0;EUR;COMPLETADO;4.14
+Cambio;Actual;25/11/2025 11:28;25/11/2025 11:28;Conversión a EUR;3.55;0;EUR;COMPLETADO;7.69
+Transferir;Actual;25/11/2025 11:28;25/11/2025 11:28;Transferencia a un cliente de Revolut;-5;0;EUR;COMPLETADO;2.69
+Recargas;Actual;29/11/2025 22:55;29/11/2025 22:55;Una recarga de Apple Pay con *4012;10;0;EUR;COMPLETADO;12.69
+Transferir;Actual;29/11/2025 22:55;29/11/2025 22:55;Transferencia a un cliente de Revolut;-10;0;EUR;COMPLETADO;2.69
+Recargas;Actual;06/12/2025 17:24;06/12/2025 17:24;Una recarga de Apple Pay con *4012;20;0;EUR;COMPLETADO;22.69
+Transferir;Actual;06/12/2025 17:24;06/12/2025 17:24;Transferencia a un cliente de Revolut;-20;0;EUR;COMPLETADO;2.69
+Recargas;Actual;08/12/2025 19:57;08/12/2025 19:57;Una recarga de Apple Pay con *4012;20;0;EUR;COMPLETADO;22.69
+Transferir;Actual;08/12/2025 19:58;08/12/2025 19:58;Transferencia a un cliente de Revolut;-20;0;EUR;COMPLETADO;2.69
+Recargas;Actual;09/12/2025 11:45;09/12/2025 11:45;Una recarga de Apple Pay con *4012;10;0;EUR;COMPLETADO;12.69
+Transferir;Actual;09/12/2025 11:45;09/12/2025 11:45;Transferencia a un cliente de Revolut;-3;0;EUR;COMPLETADO;9.69
+Transferir;Actual;13/12/2025 23:26;13/12/2025 23:26;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;1.69
+Recargas;Actual;31/12/2025 14:50;31/12/2025 14:50;Una recarga de Apple Pay con *4012;20;0;EUR;COMPLETADO;21.69
+Transferir;Actual;31/12/2025 14:50;31/12/2025 14:50;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;13.69
+Transferir;Actual;31/12/2025 14:51;31/12/2025 14:51;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;5.69
+Recargas;Actual;03/01/2026 22:34;03/01/2026 22:34;Pago de PABLO FERNANDEZ-CASTANYS ORTIZ DE VILLAJOS;10;0;EUR;COMPLETADO;15.69
+Transferir;Actual;03/01/2026 22:35;03/01/2026 22:35;Transferencia a un cliente de Revolut;-8;0;EUR;COMPLETADO;7.69
+Transferir;Actual;03/01/2026 23:28;03/01/2026 23:28;Transferencia a un cliente de Revolut;-4;0;EUR;COMPLETADO;3.69
+Recargas;Actual;08/01/2026 8:52;08/01/2026 8:52;Una recarga de Apple Pay con *4012;30;0;EUR;COMPLETADO;33.69
+Transferir;Actual;08/01/2026 8:53;08/01/2026 8:53;Transferencia a un cliente de Revolut;-30;0;EUR;COMPLETADO;3.69

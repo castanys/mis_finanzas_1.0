@@ -208,7 +208,6 @@ else:
                 marker=dict(
                     size=[sizes[i] for i in cat_indices],
                     color=cat_colors.get(cat, '#808080'),
-                    line=dict(width=1, color='white'),
                     opacity=0.8
                 ),
                 text=[merchants_texts[i] for i in cat_indices],

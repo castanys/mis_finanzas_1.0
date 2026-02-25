@@ -1,0 +1,120 @@
+2026-02-22 21:41:52,088 - INFO - ============================================================
+2026-02-22 21:41:52,088 - INFO - ENRIQUECIMIENTO DE MERCHANTS - INICIO
+2026-02-22 21:41:52,088 - INFO - ============================================================
+
+2026-02-22 21:41:52,088 - INFO - 📊 Estado inicial:
+2026-02-22 21:41:52,119 - INFO -    Total merchants: 754
+2026-02-22 21:41:52,119 - INFO -    Con place_id: 741
+2026-02-22 21:41:52,119 - INFO -    Con city: 7
+2026-02-22 21:41:52,119 - INFO -    Con country: 7
+2026-02-22 21:41:52,119 - INFO -    Txs con merchant_name: 3159
+2026-02-22 21:41:52,119 - INFO -    Txs sin merchant_name: 12477
+
+2026-02-22 21:41:52,119 - INFO - 🚀 Iniciando proceso de enriquecimiento...
+
+2026-02-22 21:41:52,120 - INFO - 📝 Poblando merchant_name en transacciones...
+2026-02-22 21:41:52,136 - INFO -    Procesando 12477 transacciones...
+2026-02-22 21:41:52,139 - INFO -    Progreso: 500/12477 (0 actualizadas)
+2026-02-22 21:41:52,141 - INFO -    Progreso: 1000/12477 (0 actualizadas)
+2026-02-22 21:41:52,145 - INFO -    Progreso: 1500/12477 (0 actualizadas)
+2026-02-22 21:41:52,148 - INFO -    Progreso: 2000/12477 (0 actualizadas)
+2026-02-22 21:41:52,152 - INFO -    Progreso: 2500/12477 (0 actualizadas)
+2026-02-22 21:41:52,159 - INFO -    Progreso: 3000/12477 (3 actualizadas)
+2026-02-22 21:41:52,166 - INFO -    Progreso: 3500/12477 (4 actualizadas)
+2026-02-22 21:41:52,175 - INFO -    Progreso: 4000/12477 (72 actualizadas)
+2026-02-22 21:41:52,186 - INFO -    Progreso: 4500/12477 (348 actualizadas)
+2026-02-22 21:41:52,199 - INFO -    Progreso: 5000/12477 (605 actualizadas)
+2026-02-22 21:41:52,210 - INFO -    Progreso: 5500/12477 (901 actualizadas)
+2026-02-22 21:41:52,220 - INFO -    Progreso: 6000/12477 (1102 actualizadas)
+2026-02-22 21:41:52,231 - INFO -    Progreso: 6500/12477 (1332 actualizadas)
+2026-02-22 21:41:52,243 - INFO -    Progreso: 7000/12477 (1550 actualizadas)
+2026-02-22 21:41:52,254 - INFO -    Progreso: 7500/12477 (1782 actualizadas)
+2026-02-22 21:41:52,263 - INFO -    Progreso: 8000/12477 (2096 actualizadas)
+2026-02-22 21:41:52,272 - INFO -    Progreso: 8500/12477 (2464 actualizadas)
+2026-02-22 21:41:52,282 - INFO -    Progreso: 9000/12477 (2806 actualizadas)
+2026-02-22 21:41:52,291 - INFO -    Progreso: 9500/12477 (3164 actualizadas)
+2026-02-22 21:41:52,299 - INFO -    Progreso: 10000/12477 (3407 actualizadas)
+2026-02-22 21:41:52,305 - INFO -    Progreso: 10500/12477 (3459 actualizadas)
+2026-02-22 21:41:52,310 - INFO -    Progreso: 11000/12477 (3513 actualizadas)
+2026-02-22 21:41:52,313 - INFO -    Progreso: 11500/12477 (3513 actualizadas)
+2026-02-22 21:41:52,319 - INFO -    Progreso: 12000/12477 (3529 actualizadas)
+2026-02-22 21:41:52,325 - INFO - ✅ Actualizadas 3590/12477 transacciones con merchant_name
+
+2026-02-22 21:41:52,325 - INFO - 🔍 Enriqueciendo merchants desde Google Places (sin límite)...
+2026-02-22 21:41:52,326 - INFO -    Encontrados 13 merchants sin place_id para enriquecer
+2026-02-22 21:41:58,491 - INFO -    ✅ Coop-1962 GE Serve → Schaerbeek, Belgium
+2026-02-22 21:42:12,815 - INFO - ✅ Enriquecimiento completado:
+2026-02-22 21:42:12,816 - INFO -    - Enriquecidos: 1/13
+2026-02-22 21:42:12,816 - INFO -    - No encontrados: 12
+2026-02-22 21:42:12,816 - INFO -    - Errores: 0
+
+2026-02-22 21:42:12,816 - INFO - 🔗 Estadísticas de vinculación txs-merchants...
+2026-02-22 21:42:12,833 - INFO -    ✅ 7 transacciones vinculadas con city
+2026-02-22 21:42:12,833 - INFO -    ✅ 7 transacciones vinculadas con country
+
+2026-02-22 21:42:12,833 - INFO - 📊 Estado final:
+2026-02-22 21:42:12,839 - INFO -    Total merchants: 754
+2026-02-22 21:42:12,839 - INFO -    Con place_id: 742 (Δ +1)
+2026-02-22 21:42:12,839 - INFO -    Con city: 8 (Δ +1)
+2026-02-22 21:42:12,839 - INFO -    Con country: 8 (Δ +1)
+2026-02-22 21:42:12,839 - INFO -    Txs con merchant_name: 6749 (Δ +3590)
+
+2026-02-22 21:42:12,839 - INFO - ============================================================
+2026-02-22 21:42:12,839 - INFO - ✅ ENRIQUECIMIENTO COMPLETADO
+2026-02-22 21:42:12,839 - INFO - ============================================================
+2026-02-23 15:10:52,882 - INFO - ============================================================
+2026-02-23 15:10:52,882 - INFO - ENRIQUECIMIENTO DE MERCHANTS - INICIO
+2026-02-23 15:10:52,882 - INFO - ============================================================
+
+2026-02-23 15:10:52,882 - INFO - 📊 Estado inicial:
+2026-02-23 15:10:52,889 - INFO -    Total merchants: 754
+2026-02-23 15:10:52,890 - INFO -    Con place_id: 742
+2026-02-23 15:10:52,890 - INFO -    Con city: 742
+2026-02-23 15:10:52,890 - INFO -    Con country: 742
+2026-02-23 15:10:52,890 - INFO -    Txs con merchant_name: 6744
+2026-02-23 15:10:52,890 - INFO -    Txs sin merchant_name: 8865
+
+2026-02-23 15:10:52,890 - INFO - 🚀 Iniciando proceso de enriquecimiento...
+
+2026-02-23 15:10:52,890 - INFO - 📝 Poblando merchant_name en transacciones...
+2026-02-23 15:10:52,900 - INFO -    Procesando 8865 transacciones...
+2026-02-23 15:10:52,903 - INFO -    Progreso: 500/8865 (0 actualizadas)
+2026-02-23 15:10:52,906 - INFO -    Progreso: 1000/8865 (0 actualizadas)
+2026-02-23 15:10:52,911 - INFO -    Progreso: 1500/8865 (0 actualizadas)
+2026-02-23 15:10:52,915 - INFO -    Progreso: 2000/8865 (0 actualizadas)
+2026-02-23 15:10:52,919 - INFO -    Progreso: 2500/8865 (0 actualizadas)
+2026-02-23 15:10:52,924 - INFO -    Progreso: 3000/8865 (0 actualizadas)
+2026-02-23 15:10:52,930 - INFO -    Progreso: 3500/8865 (0 actualizadas)
+2026-02-23 15:10:52,936 - INFO -    Progreso: 4000/8865 (0 actualizadas)
+2026-02-23 15:10:52,943 - INFO -    Progreso: 4500/8865 (0 actualizadas)
+2026-02-23 15:10:52,950 - INFO -    Progreso: 5000/8865 (0 actualizadas)
+2026-02-23 15:10:52,956 - INFO -    Progreso: 5500/8865 (0 actualizadas)
+2026-02-23 15:10:52,961 - INFO -    Progreso: 6000/8865 (0 actualizadas)
+2026-02-23 15:10:52,966 - INFO -    Progreso: 6500/8865 (0 actualizadas)
+2026-02-23 15:10:52,969 - INFO -    Progreso: 7000/8865 (0 actualizadas)
+2026-02-23 15:10:52,972 - INFO -    Progreso: 7500/8865 (0 actualizadas)
+2026-02-23 15:10:52,976 - INFO -    Progreso: 8000/8865 (0 actualizadas)
+2026-02-23 15:10:52,980 - INFO -    Progreso: 8500/8865 (0 actualizadas)
+2026-02-23 15:10:52,982 - INFO - ✅ Actualizadas 0/8865 transacciones con merchant_name
+
+2026-02-23 15:10:52,983 - INFO - 🔍 Enriqueciendo merchants desde Google Places (sin límite)...
+2026-02-23 15:10:52,983 - INFO -    Encontrados 12 merchants sin place_id para enriquecer
+2026-02-23 15:11:12,038 - INFO - ✅ Enriquecimiento completado:
+2026-02-23 15:11:12,039 - INFO -    - Enriquecidos: 0/12
+2026-02-23 15:11:12,039 - INFO -    - No encontrados: 12
+2026-02-23 15:11:12,039 - INFO -    - Errores: 0
+
+2026-02-23 15:11:12,039 - INFO - 🔗 Estadísticas de vinculación txs-merchants...
+2026-02-23 15:11:12,050 - INFO -    ✅ 1008 transacciones vinculadas con city
+2026-02-23 15:11:12,050 - INFO -    ✅ 1008 transacciones vinculadas con country
+
+2026-02-23 15:11:12,050 - INFO - 📊 Estado final:
+2026-02-23 15:11:12,056 - INFO -    Total merchants: 754
+2026-02-23 15:11:12,056 - INFO -    Con place_id: 742 (Δ +0)
+2026-02-23 15:11:12,056 - INFO -    Con city: 742 (Δ +0)
+2026-02-23 15:11:12,057 - INFO -    Con country: 742 (Δ +0)
+2026-02-23 15:11:12,057 - INFO -    Txs con merchant_name: 6744 (Δ +0)
+
+2026-02-23 15:11:12,057 - INFO - ============================================================
+2026-02-23 15:11:12,057 - INFO - ✅ ENRIQUECIMIENTO COMPLETADO
+2026-02-23 15:11:12,057 - INFO - ============================================================

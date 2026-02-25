@@ -1,0 +1,571 @@
+# AGENTS.md - Instrucciones para Agentes de IA en mis_finanzas_1.0
+
+## Comunicación
+
+**IMPORTANTE**: Toda comunicación con el usuario debe ser en **ESPAÑOL**. No traduzcas ni cambies a inglés bajo ninguna circunstancia.
+
+---
+
+## Criterio de Éxito en Tareas
+
+Antes de considerar una tarea completada, **verifica explícitamente que el resultado coincida con el objetivo declarado por el usuario**. 
+
+**Ejemplo**:
+- Usuario: "Reduce transacciones Cat2=Otros a menos de 500"
+- Ejecutar: Modificar reglas → Reprocesar → Verificar con query
+- Verificación: `SELECT COUNT(*) FROM transacciones WHERE cat2='Otros'` → debe ser <500
+- **Si el número no coincide**, investigar y explicar qué pasó antes de dar el resultado por bueno
+
+Este protocolo previene que se acepten resultados incorrectos por confianza en razonamientos lógicos internos sin verificar contra la realidad (hechos).
+
+---
+
+## Protocolo de Modos y Escalado
+
+### Modos Conceptuales
+
+El trabajo se divide en dos modos según la naturaleza de la tarea:
+
+- **PLAN (Claude Sonnet)** — Arquitectura y decisiones estructurales: diseño de esquema, resolución de conflictos de modelo de datos, decisiones que afectan identificadores o constraints.
+- **BUILD (Claude Haiku)** — Implementación y debugging operativo: parseo, guardado, scripts, queries, logging, correcciones puntuales.
+
+**El modo por defecto es BUILD.**
+
+### Cuándo BUILD debe escalar a PLAN (obligatorio)
+
+BUILD debe detenerse y emitir un bloque `[ESCALADO A PLAN REQUERIDO]` ante cualquiera de estas situaciones:
+
+1. Cambio necesario en el esquema de la base de datos (nuevas columnas, tablas, constraints).
+2. Colisión conceptual en la lógica del clasificador que afecte múltiples capas.
+3. Más de 2 intentos fallidos para resolver el mismo error.
+4. La solución implique modificar identificadores o cambiar comportamiento fundamental.
+5. Problema que afecte decisiones arquitectónicas previas.
+
+### Límites de BUILD
+
+BUILD **no puede**:
+
+- Cambiar el esquema de la base de datos.
+- Alterar constraints existentes.
+- Modificar la lógica fundamental del clasificador sin validación.
+- Implementar soluciones que cambien el modelo mental aprobado por PLAN.
+
+### Formato de Escalado
+
+Cuando se requiere escalado, BUILD emite el siguiente bloque y se **detiene hasta recibir instrucción del usuario**:
+
+```
+[ESCALADO A PLAN REQUERIDO]
+Problema detectado: <descripción en 1-2 frases>
+Evidencia (máx 5 líneas): <logs, errores o queries relevantes>
+Hipótesis: <causa probable>
+Bloqueo: <por qué BUILD no puede resolverlo solo>
+Solicitud concreta a PLAN: <qué decisión o diseño se necesita>
+```
+
+---
+
+## Descripción General del Proyecto
+
+`mis_finanzas_1.0` es un clasificador automático de transacciones bancarias que procesa CSVs de múltiples bancos, deduplica transacciones y las clasifica en categorías usando un sistema de reglas de 5 capas (sin ML). Incluye un asistente LLM (Ollama + Claude) para consultas en lenguaje natural sobre finanzas personales.
+
+### Estado Actual (2026-02-17)
+
+| Métrica | Valor | Fuente |
+|---------|-------|--------|
+| Transacciones | 15,058 | finsense.db (reprocesadas con taxonomía v2.2) |
+| Periodo | 2019-07 a 2026-01 | histórico |
+| Bancos soportados | 7 | Openbank, MyInvestor, Mediolanum, Revolut, Trade Republic, B100, Abanca |
+| Cobertura clasificación | 98.5% | test_pipeline_manual.py |
+| Cat1 accuracy vs maestro v3 | 100% | Validacion_Categorias_Finsense_MASTER_v3.csv |
+| Cat2 accuracy vs maestro v3 | 100% | Validacion_Categorias_Finsense_MASTER_v3.csv |
+| Asistente LLM | ✅ Operativo | Fase 4B completada |
+| Taxonomía vigente | v2.2 | Con Devoluciones como Cat2, Regularización en Efectivo |
+
+**Última validación**: 2026-02-17 (post-taxonomía v2.2)
+
+---
+
+## REGLA #1: NUNCA Parchear Datos, SIEMPRE Arreglar Reglas
+
+**Las correcciones se hacen en el clasificador (reglas, merchants, tokens), NUNCA modificando transacciones individuales en la BBDD.**
+
+### Principio Fundamental
+
+Toda corrección debe funcionar para:
+- Todo el histórico de transacciones (15,912 registros)
+- Todos los datos futuros que se procesen
+
+### Flujo de Trabajo Correcto
+
+1. Identificar el problema en las transacciones clasificadas
+2. Analizar la causa raíz:
+   - ¿Falta una regla en el clasificador?
+   - ¿Un token está mal configurado?
+   - ¿Una keyword de merchant conflictúa con otra?
+3. Agregar/modificar la regla correspondiente en el clasificador
+4. Reprocesar TODAS las transacciones desde cero: `python3 reclassify_all.py`
+5. Validar que el cambio funcionó para todos los casos con query de verificación
+
+### ¿Dónde Hacer Correcciones?
+
+✅ **CORRECTO:**
+- `classifier/engine.py` - Reglas prioritarias y lógica principal
+- `classifier/exact_match.py` - Diccionario de descripciones exactas
+- `classifier/merchants.py` - Reglas de keywords de merchants
+- `classifier/tokens.py` - Tokens heurísticos
+- `classifier/transfers.py` - Detección de transferencias
+- `classifier/valid_combos.py` - Whitelist de combinaciones válidas
+- `excepciones_clasificacion.json` - Excepciones específicas
+
+❌ **INCORRECTO:**
+- Modificar transacciones individuales en `finsense.db`
+- Editar CSVs de salida manualmente
+- Crear scripts one-off para parchear casos específicos
+- Usar `UPDATE` directo sin cambiar las reglas
+
+### Recordatorio
+
+**Lee `REGLAS_PROYECTO.md` antes de hacer cambios en el clasificador.**
+
+---
+
+## REGLA #2: NUNCA Inventar o Insertar Datos Sin Fuente Real
+
+**Prohibido absolutamente crear, inventar o insertar datos que no provengan de un CSV de entrada (input/) o que no existan en finsense.db.**
+
+### Principio Fundamental
+
+La integridad de los datos es **crítica**. Toda transacción, categoría o metadato debe:
+- Provenir de un archivo CSV en `input/` (bancario)
+- Estar presente en `finsense.db` (base de datos)
+- O ser validado explícitamente por el usuario antes de insertar
+
+### ¿Qué está prohibido?
+
+❌ **NUNCA HACER:**
+- Crear líneas ficticias en maestros CSV (`Validacion_Categorias_Finsense_MASTER_*.csv`) "como plantilla" o "para entrenar"
+- Inventar transacciones que no existen en la BD
+- Insertar hash, importes, descripciones o fechas que no correspondan a transacciones reales
+- Modificar archivos maestros sin verificar primero que los datos existen en finsense.db
+- Añadir excepciones o reglas basadas en datos imaginados
+
+✅ **CORRECTO:**
+- Validar que una transacción existe en finsense.db antes de modificar su clasificación
+- Generar maestros SOLO desde queries SELECT de la BD real
+- Si es necesario crear reglas para casos especiales, confirmar CON EL USUARIO primero que el caso existe
+- Documentar la fuente de cualquier cambio (query SQL, archivo input, etc.)
+
+### Protocolo de Validación
+
+Antes de cualquier modificación a datos maestros:
+1. **Verificar existencia**: `SELECT * FROM transacciones WHERE descripcion = '...'`
+2. **Confirmar con usuario**: "¿Quieres que modifique esto? Aquí está el registro real"
+3. **Ejecutar cambio**: Solo después de aprobación explícita
+4. **Documentar**: Incluir query SQL que demuestre la fuente
+
+### Ejemplo del Error
+
+❌ **Lo que NO se debe hacer:**
+```python
+# Inventar 3 líneas para "entrenar" el exact match
+02/02/2026;-1500;Transf. Concepto no especificado;Mediolanum;4831;INVERSION;Cripto;Otros;hash1;921
+02/02/2026;-150;Otros Transacción MRCR Mobile Pay;Trade Republic;4411;INVERSION;Cripto;MRCR;hash2;922
+02/02/2026;-100;Transferencia;Trade Republic;4411;INVERSION;Cripto;Otros;hash3;923
+```
+→ Estas transacciones NO existen en finsense.db. Fueron inventadas. **PROHIBITED.**
+
+✅ **Lo correcto:**
+```sql
+SELECT fecha, importe, descripcion, banco, tipo, cat1, cat2 
+FROM transacciones 
+WHERE (descripcion LIKE '%MRCR%' OR cat1='Cripto') 
+AND cat2 IS NULL OR cat2='';
+-- Si existen, modificar el maestro. Si no existen, NO HACER NADA.
+```
+
+---
+
+## Reglas Implementadas (Activas - Feb 2026)
+
+### ARQUITECTURA: Devoluciones como Cat2 (Taxonomía v2.2)
+**Cambio clave desde v2.1**: Las devoluciones NO son una Cat1 independiente, sino un **Cat2 dentro de cada categoría de gasto**.
+
+**Ejemplo**:
+- Antes v2.1: `GASTO/Devoluciones/""` (categoría separada)
+- Ahora v2.2: `GASTO/Compras/Devoluciones`, `GASTO/Restauración/Devoluciones`, etc.
+
+**Justificación**: Si gastas €100 en Compras y devuelves €100, el neto de Compras debe ser €0, no aparecer como €100 gasto + €100 devolución separada.
+
+**Aplicación**: Todas las Cat1 de GASTO tienen Cat2 `Devoluciones` excepto `Efectivo`, `Cuenta Común`, `Comisiones` e `Impuestos`.
+
+**Transacciones afectadas**: 242 transacciones con `Cat2=Devoluciones` + 9 con `Cat2=Regularización`.
+
+---
+
+### REGLA #1: B100 Transferencias Internas
+**Ubicación**: `classifier/engine.py` y `classifier/transfers.py`
+
+**Descripción**: Cualquier transacción de B100 cuya descripción contenga estas palabras clave se clasifica como `TRANSFERENCIA/Interna`:
+- `HEALTH`, `SAVE`, `TRASPASO`, `AHORRO PARA HUCHA`, `MOVE TO SAVE`, `OFF TO SAVE`, `APERTURA CUENTA`
+
+**Justificación**: Transferencias automáticas del sistema de ahorro de B100. NO son ingresos ni gastos.
+
+**Transacciones afectadas**: ~83 transacciones B100
+
+**Verificación**:
+```bash
+sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100' AND tipo='TRANSFERENCIA' AND cat1='Interna';"
+```
+
+---
+
+### REGLA #2: Detección de Devoluciones (importe positivo + keywords)
+**Ubicación**: `classifier/engine.py` en función `classify()`
+
+**Descripción**: Transacciones con importe **POSITIVO** que contienen keywords de devolución:
+- `DEVOLUCIÓN`, `DEVOLUCION`, `REEMBOLSO`, `REFUND`, `RETURN`, `REVERSAL`, `AMAZON`, `AMZN`
+
+**Comportamiento**:
+1. Detecta si es devolución (importe > 0 + keyword)
+2. Intenta encontrar la Cat1 original (via merchant lookup o exact match)
+3. Asigna `Cat2="Devoluciones"` automáticamente
+4. Tipo = `GASTO` (es devuelto dinero, no ingreso)
+
+**Justificación**: Una devolución de compra con importe positivo sigue siendo un gasto desde flujo de efectivo. El dinero regresa, no es ganancia nueva.
+
+**Transacciones afectadas**: ~252 devoluciones detectadas
+
+**Ejemplo**:
+```
+AMZN Mktp ES | +34.95 → GASTO/Compras/Devoluciones (importe positivo + AMAZON keyword)
+```
+
+---
+
+### REGLA #3: Regularización en Efectivo
+**Ubicación**: `classifier/engine.py` y `classifier/tokens.py`
+
+**Descripción**: Transacciones de Efectivo con keyword `REGULARIZACION` se clasifican como `GASTO/Efectivo/Regularización`.
+
+**Justificación**: Regularizaciones de comisiones en cajero (ej: "REGULARIZACION DISPOSICION CAJERO DEL..."). Son correcciones internas, no gastos normales.
+
+**Transacciones afectadas**: ~9 regularizaciones
+
+**Ejemplo**:
+```
+REGULARIZACION DISPOSICION CAJERO DEL 15/01 → GASTO/Efectivo/Regularización
+```
+
+---
+
+## Arquitectura del Clasificador: 5 Capas
+
+El clasificador evalúa cada transacción pasando por las capas en orden. **La primera capa que matchea gana.** Si ninguna capa produce resultado, la transacción se marca como `SIN_CLASIFICAR`.
+
+### Flujo de Capas
+
+```
+Capa 1: Exact Match
+  └─ Descripción exacta ya vista en maestro CSV
+  └─ Cobertura esperada: ~37.7% (6,000+ transacciones)
+
+Capa 2: Merchant Lookup  ← IMPORTANTE: ANTES de Transferencias
+  └─ Keywords en descripción → merchant conocido
+  └─ Cobertura adicional: ~40-50%
+  └─ PRIORIDAD: reglas específicas ANTES que genéricas
+
+Capa 3: Transfer Detection
+  └─ Detectar Bizum, Internas, Externas, Cuenta Común
+  └─ Cobertura adicional: ~6%
+
+Capa 4: Token Heurístico
+  └─ Tokens discriminantes (BAR, RESTAURANTE, RECIBO, etc.)
+  └─ Cobertura adicional: ~5-10%
+
+Capa 5: SIN_CLASIFICAR
+  └─ Cola de revisión manual
+  └─ < 2% de transacciones (raramente)
+```
+
+### Prioridad de Merchant vs Transfer
+
+**CRÍTICO**: La Capa 2 (Merchants) se evalúa ANTES de la Capa 3 (Transferencias).
+
+Ejemplo: Si una descripción contiene "AMAZON" y también es una transferencia, se clasifica como `Compras|Amazon`, NO como `Externa`.
+
+Esto resuelve el problema de prioridad: **el gasto en Amazon pesa más que el hecho de que sea una transferencia**.
+
+### Whitelist de Combinaciones Válidas (Cat1|Cat2)
+
+El clasificador SOLO puede devolver combinaciones que existen en los datos reales. Ver `classifier/valid_combos.py` para la lista completa (~90 combinaciones válidas).
+
+**Regla estricta**: Si una combinación no está en la whitelist, forzar `Cat2=""` o `Cat2="Otros"`.
+
+---
+
+## Comandos Principales
+
+### Procesamiento de Transacciones
+
+```bash
+# Procesar todos los CSVs nuevos en input/
+python3 process_transactions.py
+
+# Procesar y exportar a CSV
+python3 process_transactions.py -o output/transacciones.csv
+
+# Procesar y exportar a JSON
+python3 process_transactions.py --output-json output/transacciones.json
+
+# Procesar un solo archivo
+python3 process_transactions.py --file input/openbank_ES22.csv
+
+# Solo parsear, sin clasificar (más rápido para debug)
+python3 process_transactions.py --no-classify
+```
+
+### Reclasificación (tras modificar reglas)
+
+```bash
+# **IMPORTANTE**: Ejecutar después de cualquier cambio en classifier/
+python3 reclassify_all.py
+
+# Esto reprocesa las 15,912 transacciones con las reglas actuales
+# y actualiza finsense.db automáticamente
+```
+
+### Asistente LLM
+
+```bash
+# Pregunta simple (con modelo por defecto)
+python3 ask.py "¿cuánto gasté en restaurantes en enero 2025?"
+
+# Especificar provider y modelo
+python3 ask.py --provider ollama --model qwen2.5:7b "pregunta"
+python3 ask.py --provider claude "análisis profundo"
+
+# Modo interactivo
+python3 ask.py
+# > ¿cuánto gasté en bares?
+# > ¿y comparado con noviembre?
+# > salir
+```
+
+### Testing y Validación
+
+```bash
+# Test de parsers (7 bancos)
+python3 test_parsers_manual.py
+# Esperado: 10/10 parsers OK | Total: 1,907 transacciones
+
+# Test del pipeline completo
+python3 test_pipeline_manual.py
+# Esperado: 98.5% de cobertura de clasificación
+
+# Verificar estado de la BD
+sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"
+
+# Analizar transacciones sin clasificar
+python3 analyze_unclassified.py
+```
+
+---
+
+## Estructura de Archivos
+
+```
+mis_finanzas_1.0/
+│
+├── finsense.db                    # Base de datos SQLite (15,912 txs)
+├── process_transactions.py        # Script principal: parsea + clasifica
+├── reclassify_all.py              # Reprocesa todo con reglas actuales
+├── ask.py                         # CLI del asistente LLM
+├── pipeline.py                    # Orquestador interno
+│
+├── classifier/                    # Clasificador de 5 capas
+│   ├── engine.py                  # Motor principal + reglas prioritarias
+│   ├── exact_match.py             # Capa 1: Exact Match
+│   ├── merchants.py               # Capa 2: Merchant Keywords
+│   ├── transfers.py               # Capa 3: Transfer Detection
+│   ├── tokens.py                  # Capa 4: Token Heurístico
+│   └── valid_combos.py            # Whitelist Cat1|Cat2 válidas
+│
+├── src/
+│   ├── parsers/                   # 7 parsers de bancos
+│   │   ├── base.py                # Clase base BankParser
+│   │   ├── openbank.py            # Parser Openbank
+│   │   ├── myinvestor.py          # Parser MyInvestor
+│   │   ├── mediolanum.py          # Parser Mediolanum
+│   │   ├── revolut.py             # Parser Revolut
+│   │   ├── trade_republic.py      # Parser Trade Republic
+│   │   ├── b100.py                # Parser B100 / Abanca
+│   │   └── abanca.py              # Parser Abanca (enablebanking)
+│   │
+│   ├── query_engine.py            # Motor de consultas SQL para análisis
+│   ├── ai_assistant.py            # Asistente LLM (Ollama + Claude)
+│   └── database.py                # Utilidades SQLite
+│
+├── input/                         # CSVs de entrada (bancos)
+├── output/                        # CSVs/JSONs de salida
+│
+├── excepciones_clasificacion.json # Excepciones específicas (si las hay)
+├── .env.example                   # Variables de entorno
+├── requirements.txt               # Dependencias Python
+│
+├── AGENTS.md                      # Este archivo (instrucciones para IA)
+├── REGLAS_PROYECTO.md             # Principios fundamentales
+├── GUION_CODE_TAXONOMIA.md        # Especificación de taxonomía v2.2
+├── QUICKSTART.md                  # Guía rápida de uso
+├── README_PARSERS.md              # Documentación de parsers
+├── REPORTE_VERIFICACION_B100.md   # Validación del sistema (Feb 2026)
+├── RESUMEN_CAMBIOS_DEVOLUCIONES.md # Cambios en devoluciones como Cat2
+├── FICHEROS_FINALES_v2.2.md       # Documentación de ficheros finales
+└── docs/                          # Documentación adicional
+│
+└── validate/
+    └── Validacion_Categorias_Finsense_MASTER_v3.csv  # Maestro validado (15,641 txs)
+```
+
+---
+
+## Estilo de Código (Esencial)
+
+### Idioma
+Todos los nombres de variables, comentarios, mensajes de log y docstrings usan **español**. Mantener esta consistencia.
+
+### Type Hints
+**Obligatorios** en todas las firmas de función:
+```python
+def classify(self, descripcion: str, banco: str, importe: float) -> tuple[str, str, str]:
+    """Clasifica una transacción.
+    
+    Args:
+        descripcion: Texto de la transacción
+        banco: Nombre del banco
+        importe: Cantidad (negativo=gasto)
+    
+    Returns:
+        (cat1, cat2, tipo)
+    """
+```
+
+### Imports
+```python
+# 1. Librería estándar
+import os, sys, logging, re, sqlite3
+from datetime import datetime
+from typing import Optional
+
+# 2. Terceros
+import anthropic, pandas as pd
+
+# 3. Locales
+from config import DB_PATH
+from classifier import Classifier
+```
+
+### Logging
+```python
+logger = logging.getLogger(__name__)
+
+# INFO: milestones importantes
+logger.info(f"Procesadas 100 transacciones de {banco}")
+
+# WARNING: discrepancias
+logger.warning(f"Clasificación con baja confianza: {descripcion}")
+
+# ERROR: fallos con excepciones
+logger.error(f"No se pudo conectar a {DB_PATH}", exc_info=True)
+```
+
+### Base de Datos
+- Todas las operaciones vía `src/database.py`
+- Siempre cerrar conexiones: `conn.close()`
+- Fechas como TEXT ISO: `datetime.isoformat()`
+- Verificar deduplicación antes de insertar
+
+---
+
+## Troubleshooting Común
+
+### "No se pudo detectar el banco"
+
+**Causa**: El filename no contiene el nombre del banco
+
+**Solución**: Renombra con el banco incluido:
+```bash
+mv movimientos.csv openbank_movimientos.csv
+mv export.csv MyInvestor_export.csv
+```
+
+### Transacciones SIN_CLASIFICAR
+
+**Verificación**:
+```bash
+sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE cat1='SIN_CLASIFICAR';"
+```
+
+**Solución**: Analizar y agregar reglas:
+```bash
+python3 analyze_unclassified.py
+# Añadir reglas en classifier/merchants.py o classifier/tokens.py
+python3 reclassify_all.py  # Reprocesar
+```
+
+### QueryEngine cuenta Bizum como gasto
+
+**Causa**: Falta la exclusión de Bizum en queries
+
+**Solución**: Verificar en `src/query_engine.py` que TODAS las queries de ingresos/gastos excluyan `Cat1='Bizum'`:
+```python
+WHERE cat1 != 'Bizum'  # OBLIGATORIO
+```
+
+### Números parseados incorrectamente
+
+**Causa**: Formato español vs inglés no reconocido
+
+**Solución**: Verificar parser usa la conversión correcta:
+- Español (`1.234,56`) → `parse_spanish_number()`
+- Inglés (`1234.56`) → `float()`
+
+---
+
+## Validación Final (Febrero 2026)
+
+**Última verificación**: 2026-02-15 (3 meses: enero 2026, enero 2025, diciembre 2025)
+
+| Mes | Ingresos | Gastos | Balance | Estado |
+|-----|----------|--------|---------|--------|
+| 2026-01 | €1,192 | €3,116 | -€1,924 | ✅ Sin nómina |
+| 2025-01 | €4,272 | €3,735 | €537 | ✅ Normal |
+| 2025-12 | €4,499 | €5,625 | -€1,126 | ✅ Gastos altos |
+
+### Criterios de Validación Cumplidos
+
+- ✅ 0 transferencias internas contadas como ingreso/gasto
+- ✅ 0 Bizum contados como ingreso/gasto
+- ✅ 0 transacciones sin clasificar en los 3 meses
+- ✅ Nómina coherente (~€4k en meses con nómina)
+- ✅ Balance razonable (positivo normal, negativo solo por gastos extraordinarios)
+- ✅ Cat1 accuracy 100% vs maestro CSV
+- ✅ Cat2 accuracy 100% vs maestro CSV
+- ✅ Asistente LLM precisión 100%
+
+**Sistema listo para producción** ✅
+
+---
+
+## Para Leer Antes de Trabajar
+
+1. **Reglas**: `REGLAS_PROYECTO.md` (5 min)
+2. **Taxonomía vigente**: `GUION_CODE_TAXONOMIA.md` (10 min)
+3. **Estado**: `REPORTE_VERIFICACION_B100.md` (10 min)
+4. **Comandos**: `QUICKSTART.md` (5 min)
+
+---
+
+**Última actualización**: 2026-02-17  
+**Versión**: 1.1 (consolidada)  
+**Estado**: ✅ Sistema operativo y validado

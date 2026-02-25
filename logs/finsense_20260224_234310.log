@@ -1,0 +1,14 @@
+[2026-02-24 23:43:10] [INFO    ] [finsense] ======================================================================
+[2026-02-24 23:43:10] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-24 23:43:10] [INFO    ] [finsense] ======================================================================
+[2026-02-24 23:43:10] [DEBUG   ] [finsense] Cargadas 19 excepciones de clasificación
+[2026-02-24 23:43:10] [INFO    ] [finsense] Pipeline inicializado con 0 transacciones conocidas en 0 cuentas
+[2026-02-24 23:43:10] [DEBUG   ] [finsense] Parser openbank parseó 13529 transacciones de openbank_TOTAL_ES3600730100550435513660_EUR.csv
+[2026-02-24 23:43:10] [DEBUG   ] [finsense]   openbank_TOTAL_ES3600730100550435513660_EUR.csv: parseo=13529, internos_dup=0, cross_dup=0, result=13529
+[2026-02-24 23:43:11] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):  1406 tx ( 10.4%)
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 1 (Exact match              ):  5424 tx ( 40.1%)
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 2 (Merchants                ):  4402 tx ( 32.5%)
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 3 (Transferencias           ):   718 tx (  5.3%)
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 4 (Tokens                   ):   331 tx (  2.4%)
+[2026-02-24 23:43:11] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):  1248 tx (  9.2%)

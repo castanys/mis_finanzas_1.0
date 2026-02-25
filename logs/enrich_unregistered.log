@@ -1,0 +1,545 @@
+2026-02-23 15:11:35,046 - INFO - ============================================================
+2026-02-23 15:11:35,046 - INFO - ENRIQUECIMIENTO DE MERCHANTS NO REGISTRADOS - INICIO
+2026-02-23 15:11:35,046 - INFO - ============================================================
+2026-02-23 15:11:35,056 - INFO - 📊 Encontrados 1497 merchants no registrados
+
+2026-02-23 15:11:35,056 - INFO - 📝 Insertando 1497 merchants no registrados...
+2026-02-23 15:11:35,069 - INFO - ✅ Insertados 1497/1497 merchants
+
+2026-02-23 15:11:35,070 - INFO - 🔍 Enriqueciendo 1497 merchants con Google Places...
+2026-02-23 15:11:35,696 - INFO -    ✅ , → Murcia, Spain
+2026-02-23 15:11:36,148 - INFO -    ✅ 029 - CORTE INGLES C → Salamanca, Spain
+2026-02-23 15:11:36,612 - INFO -    ✅ 029 - CORTE INGLES CARTAG → Murcia, Spain
+2026-02-23 15:11:37,125 - INFO -    ✅ 0548-CONSUM SANTA POLA → Alicante, Spain
+2026-02-23 15:11:37,685 - INFO -    ✅ 365RIDER → Valencia, Spain
+2026-02-23 15:11:38,129 - INFO -    ✅ 52147 HIPER ENT → Illes Balears, Spain
+2026-02-23 15:11:38,570 - INFO -    ✅ 627 - PC AER BCN T1 AIRE → Barcelona, Spain
+2026-02-23 15:11:39,004 - INFO -    ✅ 631 - TT AER BCN T1 AIRE → Barcelona, Spain
+2026-02-23 15:11:39,490 - INFO -    ✅ 655 - COFFE REPUBLIC MAD → Madrid, Spain
+2026-02-23 15:11:40,247 - INFO -    ✅ 9993 LICENCIA TAXI → Murcia, Spain
+2026-02-23 15:11:40,687 - INFO -    ✅ A LA BARRA → Salamanca, Spain
+2026-02-23 15:11:41,261 - INFO -    ✅ A LA BARRA GASTROBAR → Murcia, Spain
+2026-02-23 15:11:41,962 - INFO -    ✅ A LA BRASA TABERNA MEDITE → Salamanca, Spain
+2026-02-23 15:11:42,458 - INFO -    ✅ A MANTEIGARIA → Lisboa, Portugal
+2026-02-23 15:11:42,892 - INFO -    ✅ A.C.E.S.A LIMIT CONC -ACC → Salamanca, Spain
+2026-02-23 15:11:43,349 - INFO -    ✅ A.S. LAS SALINAS → Murcia, Spain
+2026-02-23 15:11:43,797 - INFO -    ✅ A.T CASA BOTES CUENCA → Cuenca, Spain
+2026-02-23 15:11:44,312 - INFO -    ✅ ADMON LOTERIA → Salamanca, Spain
+2026-02-23 15:11:44,737 - INFO -    ✅ ADRIDAN, S.L. → 610262 Piatra Neamț, Romania
+2026-02-23 15:11:45,204 - INFO -    ✅ AELIA RELAY RENFE-ATOCHA → Madrid, Spain
+2026-02-23 15:11:45,851 - INFO -    ✅ AENA PARK COCHES → Málaga, Spain
+2026-02-23 15:11:46,388 - INFO -    ✅ AER. ALICANTE → Alicante, Spain
+2026-02-23 15:11:46,819 - INFO -    ✅ AEROP. ADOLFO SUAREZ MADR → Madrid, Spain
+2026-02-23 15:11:47,185 - INFO -    ✅ AEROPORT BARCELONA → Barcelona, Spain
+2026-02-23 15:11:47,718 - INFO -    ✅ AEROPORTO → Salamanca, Spain
+2026-02-23 15:11:48,145 - INFO -    ✅ AEROPUERTO ALICANTE PK PR → Alicante, Spain
+2026-02-23 15:11:49,007 - INFO -    ✅ AGRUPACION DINAMIA → Murcia, Spain
+2026-02-23 15:11:49,558 - INFO -    ✅ AIR EUROPA LINEAS AERE → Madrid, Spain
+2026-02-23 15:11:50,038 - INFO -    ✅ AIR EUROPA LINEAS AEREAS → Madrid, Spain
+2026-02-23 15:11:50,475 - INFO -    ✅ AIRAM → Kerava, Finland
+2026-02-23 15:11:51,314 - INFO -    ✅ AIRBNB * HMCKE4RXNZ → Murcia, Spain
+2026-02-23 15:11:52,143 - INFO -    ✅ AIRBNB * HMEC3C2PD8 → Murcia, Spain
+2026-02-23 15:11:52,602 - INFO -    ✅ AIREMAR ALIMENTACION,S.L. → Murcia, Spain
+2026-02-23 15:11:52,992 - INFO -    ✅ AKRA RUGBY → Alicante, Spain
+2026-02-23 15:11:53,442 - INFO -    ✅ ALAMEDA TAPAS → Murcia, Spain
+2026-02-23 15:11:54,020 - INFO -    ✅ ALCAMPO CC PLAZA MAR2 → Alicante, Spain
+2026-02-23 15:11:54,469 - INFO -    ✅ ALCAMPO MOTRIL → Granada, Spain
+2026-02-23 15:11:54,918 - INFO -    ✅ ALCAMPO PIO XII → Madrid, Spain
+2026-02-23 15:11:55,527 - INFO -    ✅ ALDI CARTAGENA → Murcia, Spain
+2026-02-23 15:11:56,094 - INFO -    ✅ ALDI MOTRIL → Granada, Spain
+2026-02-23 15:11:56,490 - INFO -    ✅ ALI*aliexpress.com → Madrid, Spain
+2026-02-23 15:11:56,992 - INFO -    ✅ ALICANTE AEROPUERTO → Alicante, Spain
+2026-02-23 15:11:57,413 - INFO -    ✅ ALIEXPRESS → Madrid, Spain
+2026-02-23 15:11:57,846 - INFO -    ✅ ALIEXPRESS.COM → Madrid, Spain
+2026-02-23 15:11:58,648 - INFO -    ✅ AMAZON MED* D01-941418 → Murcia, Spain
+2026-02-23 15:11:59,181 - INFO -    ✅ AMAZON MKTPLACE PMTS → Salamanca, Spain
+2026-02-23 15:11:59,685 - INFO -    ✅ AMAZON PAYMENTS EUROPE S.C.A. AMAZON PAY → Kennedy, 1855 Neudorf-Weimershof Luxembourg
+2026-02-23 15:12:00,155 - INFO -    ✅ AMAZON SPAIN RETAIL AM → Madrid, Spain
+2026-02-23 15:12:00,936 - INFO -    ✅ AMAZON* 404-0166475-37 → Murcia, Spain
+2026-02-23 15:12:01,407 - INFO -    ✅ AMAZON* 404-0202872-97 → Salamanca, Spain
+2026-02-23 15:12:01,510 - INFO -    Progreso: 50/1497 (✅ 50, ⏭️  0, ⚠️  0)
+2026-02-23 15:12:01,884 - INFO -    ✅ AMAZON* 404-1166098-08 → Salamanca, Spain
+2026-02-23 15:12:02,333 - INFO -    ✅ AMAZON* 404-1968063-98 → Salamanca, Spain
+2026-02-23 15:12:03,115 - INFO -    ✅ AMAZON* 404-2164303-35 → Murcia, Spain
+2026-02-23 15:12:03,869 - INFO -    ✅ AMAZON* 404-4196472-22 → Murcia, Spain
+2026-02-23 15:12:04,716 - INFO -    ✅ AMAZON* 404-4389676-05 → Murcia, Spain
+2026-02-23 15:12:05,148 - INFO -    ✅ AMAZON* 404-4576374-07 → Salamanca, Spain
+2026-02-23 15:12:05,587 - INFO -    ✅ AMAZON* 404-7535918-00 → Salamanca, Spain
+2026-02-23 15:12:06,039 - INFO -    ✅ AMAZON* 404-7652413-48 → Salamanca, Spain
+2026-02-23 15:12:07,216 - INFO -    ✅ AMAZON* 404-7988880-49 → Murcia, Spain
+2026-02-23 15:12:08,037 - INFO -    ✅ AMAZON* 404-8688348-43 → Murcia, Spain
+2026-02-23 15:12:08,475 - INFO -    ✅ AMAZON* 404-9080875-65 → Salamanca, Spain
+2026-02-23 15:12:08,928 - INFO -    ✅ AMAZON* 404-9440495-23 → Salamanca, Spain
+2026-02-23 15:12:09,606 - INFO -    ✅ AMAZON* 404-9883964-17 → Salamanca, Spain
+2026-02-23 15:12:10,079 - INFO -    ✅ AMAZON* 404-9968643-32 → Salamanca, Spain
+2026-02-23 15:12:10,860 - INFO -    ✅ AMAZON* LY1MH6OH5 → Murcia, Spain
+2026-02-23 15:12:11,671 - INFO -    ✅ AMAZON* MW8TX52G5 → Murcia, Spain
+2026-02-23 15:12:12,217 - INFO -    ✅ AMAZON* TL4FB34G4 → Salamanca, Spain
+2026-02-23 15:12:13,003 - INFO -    ✅ AMAZON* TQ5NW9AV4 → Murcia, Spain
+2026-02-23 15:12:13,555 - INFO -    ✅ AMAZON.ES AMAZON.ES → Salamanca, Spain
+2026-02-23 15:12:14,109 - INFO -    ✅ AMAZON.ES COMPRA → Salamanca, Spain
+2026-02-23 15:12:14,586 - INFO -    ✅ AMAZON.ES COMPRA AMAZO → Salamanca, Spain
+2026-02-23 15:12:15,033 - INFO -    ✅ AMAZON.ES*0L9TF1UR5 AM → Salamanca, Spain
+2026-02-23 15:12:15,489 - INFO -    ✅ AMAZON.ES*167OQ5LJ4 AM → Salamanca, Spain
+2026-02-23 15:12:16,006 - INFO -    ✅ AMAZON.ES*1V2IV5G84 AM → Salamanca, Spain
+2026-02-23 15:12:16,442 - INFO -    ✅ AMAZON.ES*210MG64A4 AM → Salamanca, Spain
+2026-02-23 15:12:16,864 - INFO -    ✅ AMAZON.ES*219GE3B24 AM → Salamanca, Spain
+2026-02-23 15:12:17,351 - INFO -    ✅ AMAZON.ES*252UP4MV4 AM → Salamanca, Spain
+2026-02-23 15:12:17,776 - INFO -    ✅ AMAZON.ES*2557Z6W64 AM → Salamanca, Spain
+2026-02-23 15:12:18,263 - INFO -    ✅ AMAZON.ES*256OJ2J54 AM → Salamanca, Spain
+2026-02-23 15:12:18,733 - INFO -    ✅ AMAZON.ES*257XT80C4 AM → Salamanca, Spain
+2026-02-23 15:12:19,210 - INFO -    ✅ AMAZON.ES*271IR4T55 AM → Salamanca, Spain
+2026-02-23 15:12:19,645 - INFO -    ✅ AMAZON.ES*2808X3PG4 AM → Madrid, Spain
+2026-02-23 15:12:20,084 - INFO -    ✅ AMAZON.ES*280C388N4 AM → Salamanca, Spain
+2026-02-23 15:12:20,538 - INFO -    ✅ AMAZON.ES*289XC2KF4 AM → Madrid, Spain
+2026-02-23 15:12:20,945 - INFO -    ✅ AMAZON.ES*2G06X64Y4 AM → Salamanca, Spain
+2026-02-23 15:12:21,367 - INFO -    ✅ AMAZON.ES*2L55J90P4 AM → Salamanca, Spain
+2026-02-23 15:12:21,918 - INFO -    ✅ AMAZON.ES*2N8U61K54 AM → Salamanca, Spain
+2026-02-23 15:12:22,457 - INFO -    ✅ AMAZON.ES*2R37I8YM4 AM → Salamanca, Spain
+2026-02-23 15:12:22,907 - INFO -    ✅ AMAZON.ES*2T4469U94 AM → Salamanca, Spain
+2026-02-23 15:12:23,386 - INFO -    ✅ AMAZON.ES*2T4SB4EA4 AM → Salamanca, Spain
+2026-02-23 15:12:23,823 - INFO -    ✅ AMAZON.ES*2X9JH3MX4 AM → Salamanca, Spain
+2026-02-23 15:12:24,276 - INFO -    ✅ AMAZON.ES*772YO99G5 AM → Salamanca, Spain
+2026-02-23 15:12:24,696 - INFO -    ✅ AMAZON.ES*7W5R976O5 AM → Salamanca, Spain
+2026-02-23 15:12:25,152 - INFO -    ✅ AMAZON.ES*CI2EF3XF5 AM → Salamanca, Spain
+2026-02-23 15:12:25,589 - INFO -    ✅ AMAZON.ES*E36LM0245 AM → Salamanca, Spain
+2026-02-23 15:12:26,008 - INFO -    ✅ AMAZON.ES*EF1W681T5 AM → Salamanca, Spain
+2026-02-23 15:12:26,440 - INFO -    ✅ AMAZON.ES*H86PS9445 AM → Salamanca, Spain
+2026-02-23 15:12:26,964 - INFO -    ✅ AMAZON.ES*IE2TZ5M85 AM → Salamanca, Spain
+2026-02-23 15:12:27,406 - INFO -    ✅ AMAZON.ES*K39R50ZB5 AM → Madrid, Spain
+2026-02-23 15:12:27,864 - INFO -    ✅ AMAZON.ES*KZ15T6385 AM → Salamanca, Spain
+2026-02-23 15:12:27,968 - INFO -    Progreso: 100/1497 (✅ 100, ⏭️  0, ⚠️  0)
+2026-02-23 15:12:28,351 - INFO -    ✅ AMAZON.ES*L29717EW5 AM → Salamanca, Spain
+2026-02-23 15:12:28,777 - INFO -    ✅ AMAZON.ES*M44FK54L4 AM → Salamanca, Spain
+2026-02-23 15:12:29,244 - INFO -    ✅ AMAZON.ES*MB5EI5MH4 AM → Salamanca, Spain
+2026-02-23 15:12:29,705 - INFO -    ✅ AMAZON.ES*MF3F737D4 AM → Salamanca, Spain
+2026-02-23 15:12:30,133 - INFO -    ✅ AMAZON.ES*MM0G129Y4 AM → Salamanca, Spain
+2026-02-23 15:12:30,589 - INFO -    ✅ AMAZON.ES*MM63Z6JQ4 AM → Salamanca, Spain
+2026-02-23 15:12:31,018 - INFO -    ✅ AMAZON.ES*MN2ZI0W84 AM → Salamanca, Spain
+2026-02-23 15:12:31,484 - INFO -    ✅ AMAZON.ES*MO6TR2NG4 AM → Salamanca, Spain
+2026-02-23 15:12:31,935 - INFO -    ✅ AMAZON.ES*MU0K23RG4 AM → Salamanca, Spain
+2026-02-23 15:12:32,376 - INFO -    ✅ AMAZON.ES*MU9PQ0Z74 AM → Salamanca, Spain
+2026-02-23 15:12:32,847 - INFO -    ✅ AMAZON.ES*MV3K24564 AM → Salamanca, Spain
+2026-02-23 15:12:33,310 - INFO -    ✅ AMAZON.ES*MZ6XN3M84 AM → Salamanca, Spain
+2026-02-23 15:12:33,743 - INFO -    ✅ AMAZON.ES*PA10Z5GW5 AM → Salamanca, Spain
+2026-02-23 15:12:34,184 - INFO -    ✅ AMAZON.ES*Q77OR47S5 AM → Salamanca, Spain
+2026-02-23 15:12:34,714 - INFO -    ✅ AMAZON.ES*RR7Q19XQ5 AM → Madrid, Spain
+2026-02-23 15:12:35,240 - INFO -    ✅ AMAZON.ES*S85N43EG5 AM → Salamanca, Spain
+2026-02-23 15:12:35,704 - INFO -    ✅ AMAZON.ES*SB8EE43S5 AM → Salamanca, Spain
+2026-02-23 15:12:36,192 - INFO -    ✅ AMAZON.ES*U95K60IO5 AM → Salamanca, Spain
+2026-02-23 15:12:36,637 - INFO -    ✅ AMAZON.ES*V60GT5985 AM → Salamanca, Spain
+2026-02-23 15:12:37,064 - INFO -    ✅ AMAZON.ES*W17QJ8IC5 AM → Salamanca, Spain
+2026-02-23 15:12:37,520 - INFO -    ✅ AMAZON.ES*X13J90Y65 AM → Salamanca, Spain
+2026-02-23 15:12:37,959 - INFO -    ✅ AMAZON.ES*Y28898MH5 AM → Madrid, Spain
+2026-02-23 15:12:38,422 - INFO -    ✅ AMAZON.UK PAYMENTS → JQ, UK
+2026-02-23 15:12:38,876 - INFO -    ✅ AME DU PAIN → Encamp, Andorra
+2026-02-23 15:12:39,320 - INFO -    ✅ AMERICAN ROCK BAR → Alicante, Spain
+2026-02-23 15:12:40,224 - INFO -    ✅ AMZN DIGITAL*1V5XA5KO4 → Murcia, Spain
+2026-02-23 15:12:41,050 - INFO -    ✅ AMZN DIGITAL*2X1S02GF4 → Murcia, Spain
+2026-02-23 15:12:41,706 - INFO -    ✅ AMZN DIGITAL*9O4FZ96E5 → Murcia, Spain
+2026-02-23 15:12:42,358 - INFO -    ✅ AMZN DIGITAL*IR75E67I5 → Murcia, Spain
+2026-02-23 15:12:45,184 - INFO -    ✅ AMZN MKTP ES*1H6T920W4 → Madrid, Spain
+2026-02-23 15:12:46,529 - INFO -    ✅ AMZN MKTP ES*1H7E08GL4 → Madrid, Spain
+2026-02-23 15:12:49,255 - INFO -    ✅ AMZN MKTP ES*258H74VI4 → Madrid, Spain
+2026-02-23 15:12:51,835 - INFO -    ✅ AMZN MKTP ES*295XJ0LF4 → Madrid, Spain
+2026-02-23 15:12:57,860 - INFO -    ✅ AMZN MKTP ES*2D65P1SJ4 → Madrid, Spain
+2026-02-23 15:13:00,571 - INFO -    ✅ AMZN MKTP ES*2L4633R04 → Madrid, Spain
+2026-02-23 15:13:01,803 - INFO -    ✅ AMZN MKTP ES*2L4CV15W4 → Madrid, Spain
+2026-02-23 15:13:03,034 - INFO -    ✅ AMZN MKTP ES*2L7FC83W4 → Madrid, Spain
+2026-02-23 15:13:12,183 - INFO -    ✅ AMZN MKTP ES*2R55L6334 → Madrid, Spain
+2026-02-23 15:13:12,286 - INFO -    Progreso: 150/1497 (✅ 138, ⏭️  12, ⚠️  0)
+2026-02-23 15:13:13,369 - INFO -    ✅ AMZN MKTP ES*2R9277GH4 → Madrid, Spain
+2026-02-23 15:13:14,739 - INFO -    ✅ AMZN MKTP ES*2X1PP04F4 → Madrid, Spain
+2026-02-23 15:13:15,965 - INFO -    ✅ AMZN MKTP ES*2X2JB1MX4 → Madrid, Spain
+2026-02-23 15:13:17,531 - INFO -    ✅ AMZN MKTP ES*2X2R80F04 → Madrid, Spain
+2026-02-23 15:13:18,776 - INFO -    ✅ AMZN MKTP ES*2X4HE5WK4 → Madrid, Spain
+2026-02-23 15:13:30,557 - INFO -    ✅ AMZN MKTP ES*C503P2MJ5 → Madrid, Spain
+2026-02-23 15:13:36,139 - INFO -    ✅ AMZN MKTP ES*HD8S61OJ5 → Madrid, Spain
+2026-02-23 15:13:38,875 - INFO -    ✅ AMZN MKTP ES*HW79H7PV4 → Madrid, Spain
+2026-02-23 15:13:42,088 - INFO -    ✅ AMZN MKTP ES*IN4VA1Y65 → Clichy, France
+2026-02-23 15:13:44,948 - INFO -    ✅ AMZN MKTP ES*JJ8GP0LW5 → Madrid, Spain
+2026-02-23 15:13:47,783 - INFO -    ✅ AMZN MKTP ES*LO1KI4HW5 → Madrid, Spain
+2026-02-23 15:13:48,946 - INFO -    ✅ AMZN MKTP ES*M43W11NR4 → Madrid, Spain
+2026-02-23 15:13:56,880 - INFO -    ✅ AMZN MKTP ES*MC0ZS2244 → Madrid, Spain
+2026-02-23 15:13:58,060 - INFO -    ✅ AMZN MKTP ES*MH48E0VD5 → Madrid, Spain
+2026-02-23 15:13:59,249 - INFO -    ✅ AMZN MKTP ES*MM5MR3VZ4 → Madrid, Spain
+2026-02-23 15:14:07,808 - INFO -    ✅ AMZN MKTP ES*WD69H9EZ5 → Madrid, Spain
+2026-02-23 15:14:11,726 - INFO -    ✅ AMZN MKTP ES*XY4V29V55 → Madrid, Spain
+2026-02-23 15:14:13,004 - INFO -    ✅ AMZN MKTP ES*YQ00Y6RE5 → Madrid, Spain
+2026-02-23 15:14:14,197 - INFO -    ✅ AMZN MKTP ES*ZG0QI4C35 → Madrid, Spain
+2026-02-23 15:14:14,965 - INFO -    ✅ AMZN Mktp ES → Murcia, Spain
+2026-02-23 15:14:16,175 - INFO -    ✅ AMZN Mktp ES*0L3TU8VB5 → Madrid, Spain
+2026-02-23 15:14:20,520 - INFO -    Progreso: 200/1497 (✅ 159, ⏭️  41, ⚠️  0)
+2026-02-23 15:14:32,226 - INFO -    ✅ AMZN Mktp ES*1H2Z080P4 → Madrid, Spain
+2026-02-23 15:14:36,335 - INFO -    ✅ AMZN Mktp ES*1I6XX7IM4 → Madrid, Spain
+2026-02-23 15:14:40,921 - INFO -    ✅ AMZN Mktp ES*1N5L12KO4 → Madrid, Spain
+2026-02-23 15:14:43,714 - INFO -    ✅ AMZN Mktp ES*1R8YR9SD4 → Madrid, Spain
+2026-02-23 15:14:45,078 - INFO -    ✅ AMZN Mktp ES*1S0VE9FB5 → Madrid, Spain
+2026-02-23 15:14:47,680 - INFO -    ✅ AMZN Mktp ES*281SQ7284 → Madrid, Spain
+2026-02-23 15:14:51,517 - INFO -    ✅ AMZN Mktp ES*287SL3274 → Murcia, Spain
+2026-02-23 15:14:57,238 - INFO -    ✅ AMZN Mktp ES*2P6AQ4KK4 → Madrid, Spain
+2026-02-23 15:14:58,477 - INFO -    ✅ AMZN Mktp ES*2T0T30VY4 → Madrid, Spain
+2026-02-23 15:15:01,280 - INFO -    ✅ AMZN Mktp ES*2T6MW1PP4 → Madrid, Spain
+2026-02-23 15:15:02,513 - INFO -    ✅ AMZN Mktp ES*2T9VC0NI4 → Madrid, Spain
+2026-02-23 15:15:03,840 - INFO -    ✅ AMZN Mktp ES*2Y8CW6O04 → Madrid, Spain
+2026-02-23 15:15:12,738 - INFO -    ✅ AMZN Mktp ES*4T54L0RW5 → Madrid, Spain
+2026-02-23 15:15:18,545 - INFO -    ✅ AMZN Mktp ES*610ZB4BS5 → Madrid, Spain
+2026-02-23 15:15:21,367 - INFO -    ✅ AMZN Mktp ES*6I0WW5RV5 → Madrid, Spain
+2026-02-23 15:15:31,970 - INFO -    Progreso: 250/1497 (✅ 174, ⏭️  76, ⚠️  0)
+2026-02-23 15:15:40,587 - INFO -    ✅ AMZN Mktp ES*A05JW0MQ5 → Madrid, Spain
+2026-02-23 15:15:43,394 - INFO -    ✅ AMZN Mktp ES*AB6XM0N15 → Madrid, Spain
+2026-02-23 15:15:46,408 - INFO -    ✅ AMZN Mktp ES*AL1HF4PE5 → Madrid, Spain
+2026-02-23 15:15:52,223 - INFO -    ✅ AMZN Mktp ES*BV2TI0BV5 → Madrid, Spain
+2026-02-23 15:16:01,523 - INFO -    ✅ AMZN Mktp ES*DD3B14UA5 → Madrid, Spain
+2026-02-23 15:16:16,206 - INFO -    ✅ AMZN Mktp ES*GF6ON3AA5 → Madrid, Spain
+2026-02-23 15:16:17,420 - INFO -    ✅ AMZN Mktp ES*GG4576JJ5 → Madrid, Spain
+2026-02-23 15:16:27,852 - INFO -    ✅ AMZN Mktp ES*JM3AN3ES5 → Madrid, Spain
+2026-02-23 15:16:29,053 - INFO -    ✅ AMZN Mktp ES*JO6F05NW5 → Madrid, Spain
+2026-02-23 15:16:30,279 - INFO -    ✅ AMZN Mktp ES*JO7ZF6JD5 → Madrid, Spain
+2026-02-23 15:16:36,341 - INFO -    ✅ AMZN Mktp ES*LX3VQ68O5 → Madrid, Spain
+2026-02-23 15:16:37,508 - INFO -    ✅ AMZN Mktp ES*M02XM4BP4 → Madrid, Spain
+2026-02-23 15:16:40,062 - INFO -    ✅ AMZN Mktp ES*M04OA04I4 → Madrid, Spain
+2026-02-23 15:16:44,914 - INFO -    Progreso: 300/1497 (✅ 187, ⏭️  113, ⚠️  0)
+2026-02-23 15:16:53,377 - INFO -    ✅ AMZN Mktp ES*M75UK5SB4 → Madrid, Spain
+2026-02-23 15:16:56,272 - INFO -    ✅ AMZN Mktp ES*M766T7BX4 → Madrid, Spain
+2026-02-23 15:16:57,485 - INFO -    ✅ AMZN Mktp ES*MA4ZH3NS5 → Madrid, Spain
+2026-02-23 15:16:58,756 - INFO -    ✅ AMZN Mktp ES*MB1SP2XI4 → Madrid, Spain
+2026-02-23 15:17:03,041 - INFO -    ✅ AMZN Mktp ES*MF0VN4SO4 → Madrid, Spain
+2026-02-23 15:17:07,311 - INFO -    ✅ AMZN Mktp ES*MJ4YO23S4 → Madrid, Spain
+2026-02-23 15:17:08,492 - INFO -    ✅ AMZN Mktp ES*MJ5XM7J04 → Madrid, Spain
+2026-02-23 15:17:09,795 - INFO -    ✅ AMZN Mktp ES*MJ7LH6IT4 → Madrid, Spain
+2026-02-23 15:17:11,137 - INFO -    ✅ AMZN Mktp ES*MJ9LL2C94 → Madrid, Spain
+2026-02-23 15:17:12,453 - INFO -    ✅ AMZN Mktp ES*MJ9WY1RC4 → Madrid, Spain
+2026-02-23 15:17:19,528 - INFO -    ✅ AMZN Mktp ES*MK1Y16NJ4 → Madrid, Spain
+2026-02-23 15:17:20,703 - INFO -    ✅ AMZN Mktp ES*MK3PU96B4 → Madrid, Spain
+2026-02-23 15:17:33,535 - INFO -    ✅ AMZN Mktp ES*MO6EB9TL4 → Madrid, Spain
+2026-02-23 15:17:34,769 - INFO -    ✅ AMZN Mktp ES*MO6GE2ZT4 → Madrid, Spain
+2026-02-23 15:17:37,345 - INFO -    ✅ AMZN Mktp ES*MO7YT01G4 → Madrid, Spain
+2026-02-23 15:17:40,155 - INFO -    ✅ AMZN Mktp ES*MS20W2IE4 → Madrid, Spain
+2026-02-23 15:17:42,871 - INFO -    ✅ AMZN Mktp ES*MS5EG0IW4 → Madrid, Spain
+2026-02-23 15:17:44,137 - INFO -    ✅ AMZN Mktp ES*MS6ES7QB4 → Madrid, Spain
+2026-02-23 15:17:48,449 - INFO -    ✅ AMZN Mktp ES*MT6Y09184 → Madrid, Spain
+2026-02-23 15:17:49,754 - INFO -    ✅ AMZN Mktp ES*MT7D519M4 → Madrid, Spain
+2026-02-23 15:17:51,339 - INFO -    ✅ AMZN Mktp ES*MU1SO66W4 → Madrid, Spain
+2026-02-23 15:17:52,772 - INFO -    ✅ AMZN Mktp ES*MU56122P4 → Madrid, Spain
+2026-02-23 15:17:54,027 - INFO -    ✅ AMZN Mktp ES*MU5BJ3EI4 → Madrid, Spain
+2026-02-23 15:17:54,130 - INFO -    Progreso: 350/1497 (✅ 210, ⏭️  140, ⚠️  0)
+2026-02-23 15:17:55,326 - INFO -    ✅ AMZN Mktp ES*MU8PJ2B04 → Madrid, Spain
+2026-02-23 15:17:57,935 - INFO -    ✅ AMZN Mktp ES*MV5GN7PI4 → Madrid, Spain
+2026-02-23 15:17:59,167 - INFO -    ✅ AMZN Mktp ES*MV5NH6B44 → Madrid, Spain
+2026-02-23 15:18:05,426 - INFO -    ✅ AMZN Mktp ES*MZ4Y04744 → Madrid, Spain
+2026-02-23 15:18:06,773 - INFO -    ✅ AMZN Mktp ES*NB0942AV5 → Madrid, Spain
+2026-02-23 15:18:08,188 - INFO -    ✅ AMZN Mktp ES*NO4GX4FT5 → Madrid, Spain
+2026-02-23 15:18:09,474 - INFO -    ✅ AMZN Mktp ES*NQ66D8IJ5 → Madrid, Spain
+2026-02-23 15:18:36,493 - INFO -    ✅ AMZN Mktp ES*T64SC3QT4 → Madrid, Spain
+2026-02-23 15:18:37,819 - INFO -    ✅ AMZN Mktp ES*TO8CH4CL4 → Madrid, Spain
+2026-02-23 15:18:43,593 - INFO -    ✅ AMZN Mktp ES*WG9WV3DI5 → Madrid, Spain
+2026-02-23 15:18:48,150 - INFO -    ✅ AMZN Mktp ES*XI0MM1QF5 → Madrid, Spain
+2026-02-23 15:18:55,509 - INFO -    ✅ AMZN Mktp ES*YM3EX9II5 → Madrid, Spain
+2026-02-23 15:18:56,797 - INFO -    ✅ AMZN Mktp ES*ZS1CV0O35 → Madrid, Spain
+2026-02-23 15:18:57,368 - INFO -    ✅ ANDAMUR LIMITE → Almería, Spain
+2026-02-23 15:18:58,032 - INFO -    ✅ ANTA HOTEL → zim, Malaysia
+2026-02-23 15:18:58,547 - INFO -    ✅ AP.EST.ALICANTE → Alicante, Spain
+2026-02-23 15:18:58,976 - INFO -    ✅ APARC.ALFONSO X → Murcia, Spain
+2026-02-23 15:18:59,479 - INFO -    ✅ APARCAMENT CENTRE VILA → Barcelona, Spain
+2026-02-23 15:18:59,890 - INFO -    ✅ APARCAMENT ILLA CARLEM → Escaldes-Engordany, Andorra
+2026-02-23 15:19:00,486 - INFO -    ✅ APARCAMENT PRAT DE LES → Barcelona, Spain
+2026-02-23 15:19:00,590 - INFO -    Progreso: 400/1497 (✅ 230, ⏭️  170, ⚠️  0)
+2026-02-23 15:19:00,947 - INFO -    ✅ APARCAMENT PRAT DEL RI → Canillo, Andorra
+2026-02-23 15:19:01,372 - INFO -    ✅ APARCAMIENTO GLORIETA → Cádiz, Spain
+2026-02-23 15:19:02,067 - INFO -    ✅ APARCAMIENTO GLORIETA DE → Cádiz, Spain
+2026-02-23 15:19:02,505 - INFO -    ✅ APARCAMIENTOS EUROPEOS → Madrid, Spain
+2026-02-23 15:19:02,948 - INFO -    ✅ APARTHOTEL SANT ANDREU → Arinsal, Andorra
+2026-02-23 15:19:03,797 - INFO -    ✅ APPLE.COM/BILL → Murcia, Spain
+2026-02-23 15:19:04,208 - INFO -    ✅ ARAMARK 18010RR → Madrid, Spain
+2026-02-23 15:19:04,670 - INFO -    ✅ AREA DE SERVICIO BENICARL → Castellón, Spain
+2026-02-23 15:19:05,128 - INFO -    ✅ AREAS, S.A. → Barcelona, Spain
+2026-02-23 15:19:06,058 - INFO -    ✅ ARENA ZONA HOTELS → Valencia, Spain
+2026-02-23 15:19:06,562 - INFO -    ✅ ARIZONA RUTA 66 ROCK BAR → Murcia, Spain
+2026-02-23 15:19:07,008 - INFO -    ✅ ARMONYGYM → Alicante, Spain
+2026-02-23 15:19:07,434 - INFO -    ✅ ARO AQUA FITNESS → Alicante, Spain
+2026-02-23 15:19:07,991 - INFO -    ✅ AS L'HOSPITALET NORTE → Barcelona, Spain
+2026-02-23 15:19:08,492 - INFO -    ✅ ASADOR ALBARRACIN → Teruel, Spain
+2026-02-23 15:19:09,098 - INFO -    ✅ ASADOR EL MARQUES → Madrid, Spain
+2026-02-23 15:19:09,560 - INFO -    ✅ ASADOR LA GRANJA → Segovia, Spain
+2026-02-23 15:19:09,983 - INFO -    ✅ ASADOR LA HERRADURA → Murcia, Spain
+2026-02-23 15:19:10,564 - INFO -    ✅ ASOC.DEPORTIVAS → Salamanca, Spain
+2026-02-23 15:19:11,117 - INFO -    ✅ ASOCIACION ESPANOLA CONTRA EL CANCER → Salamanca, Spain
+2026-02-23 15:19:11,604 - INFO -    ✅ ATM-PORTAL INSCRIPCIONES → Salamanca, Spain
+2026-02-23 15:19:12,323 - INFO -    ✅ AUCOSTA → Murcia, Spain
+2026-02-23 15:19:12,834 - INFO -    ✅ AUDITORIO EL BATEL → Murcia, Spain
+2026-02-23 15:19:13,715 - INFO -    ✅ AUSURMONTESINOS → Alicante, Spain
+2026-02-23 15:19:14,198 - INFO -    ✅ AUTO CINE EL SUR → Alicante, Spain
+2026-02-23 15:19:14,755 - INFO -    ✅ AUTOPISTA AP-36-SEITT-2 → Madrid, Spain
+2026-02-23 15:19:15,381 - INFO -    ✅ AUTOPISTA AP-7 SEITT → Madrid, Spain
+2026-02-23 15:19:15,818 - INFO -    ✅ AUTOPISTA COSTA CALIDA → Alicante, Spain
+2026-02-23 15:19:16,207 - INFO -    ✅ AUTOPISTA DEL SURESTE (AU → Alicante, Spain
+2026-02-23 15:19:16,649 - INFO -    ✅ AUTOPISTA MARE NOSTRUM → Castelló, Spain
+2026-02-23 15:19:17,450 - INFO -    ✅ AUTOPISTAS DEL SURESTE → Alicante, Spain
+2026-02-23 15:19:17,908 - INFO -    ✅ AUTOS PABLO SANCHEZ, S.L. → Madrid, Spain
+2026-02-23 15:19:18,849 - INFO -    ✅ AUTPTA.SURESTE → Murcia, Spain
+2026-02-23 15:19:19,302 - INFO -    ✅ AVANQUA OCEANOGRAFIC AGOR → Valencia, Spain
+2026-02-23 15:19:19,791 - INFO -    ✅ AXA AURORA VIDA S.A. CIF A-48464606 → Bizkaia, Spain
+2026-02-23 15:19:20,209 - INFO -    ✅ AYALA AUTOMOCION → Murcia, Spain
+2026-02-23 15:19:20,594 - INFO -    ✅ AliExpress → Madrid, Spain
+2026-02-23 15:19:21,026 - INFO -    ✅ Amazon *Mktplce EU-ES → Salamanca, Spain
+2026-02-23 15:19:21,632 - INFO -    ✅ Amazon *Mktplce EU-UK → ET, UK
+2026-02-23 15:19:22,082 - INFO -    ✅ Amazon Digital Dwnlds → Salamanca, Spain
+2026-02-23 15:19:22,506 - INFO -    ✅ Amazon EU → Salamanca, Spain
+2026-02-23 15:19:23,472 - INFO -    ✅ Amazon Music*1I4UZ3PZ4 → Murcia, Spain
+2026-02-23 15:19:24,246 - INFO -    ✅ Amazon Music*210AK0NH4 → Murcia, Spain
+2026-02-23 15:19:25,043 - INFO -    ✅ Amazon Music*294BW3Z74 → Murcia, Spain
+2026-02-23 15:19:25,867 - INFO -    ✅ Amazon Music*2G1BP83F4 → Murcia, Spain
+2026-02-23 15:19:26,742 - INFO -    ✅ Amazon Music*2P8HL1D04 → Murcia, Spain
+2026-02-23 15:19:27,721 - INFO -    ✅ Amazon Music*2Y61C3424 → Murcia, Spain
+2026-02-23 15:19:28,507 - INFO -    ✅ Amazon Music*KG62G0US5 → Murcia, Spain
+2026-02-23 15:19:29,294 - INFO -    ✅ Amazon Music*VU8UO5CS5 → Murcia, Spain
+2026-02-23 15:19:29,832 - INFO -    ✅ Amazon Premium Cuota → Salamanca, Spain
+2026-02-23 15:19:29,936 - INFO -    Progreso: 450/1497 (✅ 280, ⏭️  170, ⚠️  0)
+2026-02-23 15:19:30,733 - INFO -    ✅ Amazon Prime*2P4KY3CU4 → Murcia, Spain
+2026-02-23 15:19:31,579 - INFO -    ✅ Amazon Prime*AQ83I89Y5 → Murcia, Spain
+2026-02-23 15:19:32,109 - INFO -    ✅ Amazon Prime*HD5DZ5M14 → Salamanca, Spain
+2026-02-23 15:19:32,994 - INFO -    ✅ Amazon Prime*I98B47PL5 → Murcia, Spain
+2026-02-23 15:19:33,934 - INFO -    ✅ Amazon Prime*M424M86S4 → Murcia, Spain
+2026-02-23 15:19:34,698 - INFO -    ✅ Amazon Prime*MZ2A312Z4 → Murcia, Spain
+2026-02-23 15:19:35,100 - INFO -    ✅ Amazon Svcs EU-ES → Salamanca, Spain
+2026-02-23 15:19:35,566 - INFO -    ✅ Amazon.es → Salamanca, Spain
+2026-02-23 15:19:36,034 - INFO -    ✅ Amazon.es*0U5TE8G95 → Madrid, Spain
+2026-02-23 15:19:36,507 - INFO -    ✅ Amazon.es*148HO9W64 → Salamanca, Spain
+2026-02-23 15:19:36,961 - INFO -    ✅ Amazon.es*1F28931Q5 → Salamanca, Spain
+2026-02-23 15:19:37,410 - INFO -    ✅ Amazon.es*1F2BW0E64 → Salamanca, Spain
+2026-02-23 15:19:37,938 - INFO -    ✅ Amazon.es*1H1IU98Z4 → Salamanca, Spain
+2026-02-23 15:19:38,388 - INFO -    ✅ Amazon.es*1I5YP5PS4 → Salamanca, Spain
+2026-02-23 15:19:38,815 - INFO -    ✅ Amazon.es*1L3S52AS4 → Salamanca, Spain
+2026-02-23 15:19:39,253 - INFO -    ✅ Amazon.es*1M1971UN4 → Salamanca, Spain
+2026-02-23 15:19:39,693 - INFO -    ✅ Amazon.es*1R2WX9Z14 → Salamanca, Spain
+2026-02-23 15:19:40,141 - INFO -    ✅ Amazon.es*1W7PD5C04 → Salamanca, Spain
+2026-02-23 15:19:40,602 - INFO -    ✅ Amazon.es*1X7AZ8XM4 → Salamanca, Spain
+2026-02-23 15:19:41,041 - INFO -    ✅ Amazon.es*283KZ52Z4 → Salamanca, Spain
+2026-02-23 15:19:41,498 - INFO -    ✅ Amazon.es*2D0RZ0VQ5 → Salamanca, Spain
+2026-02-23 15:19:41,924 - INFO -    ✅ Amazon.es*2T19K9FV4 → Salamanca, Spain
+2026-02-23 15:19:42,493 - INFO -    ✅ Amazon.es*2T84P3TW5 → Salamanca, Spain
+2026-02-23 15:19:43,030 - INFO -    ✅ Amazon.es*4T09K92J5 → Salamanca, Spain
+2026-02-23 15:19:43,580 - INFO -    ✅ Amazon.es*5P3MD1LM5 → Madrid, Spain
+2026-02-23 15:19:44,020 - INFO -    ✅ Amazon.es*6D2781XZ5 → Salamanca, Spain
+2026-02-23 15:19:44,445 - INFO -    ✅ Amazon.es*7F92A6Y25 → Salamanca, Spain
+2026-02-23 15:19:44,883 - INFO -    ✅ Amazon.es*9E08O1JL5 → Salamanca, Spain
+2026-02-23 15:19:45,317 - INFO -    ✅ Amazon.es*9J9GJ2EX5 → Salamanca, Spain
+2026-02-23 15:19:45,794 - INFO -    ✅ Amazon.es*C58QD8A15 → Salamanca, Spain
+2026-02-23 15:19:46,254 - INFO -    ✅ Amazon.es*F08GV0X85 → Salamanca, Spain
+2026-02-23 15:19:46,724 - INFO -    ✅ Amazon.es*F95IG21S5 → Salamanca, Spain
+2026-02-23 15:19:47,186 - INFO -    ✅ Amazon.es*FA3A79RD5 → Madrid, Spain
+2026-02-23 15:19:47,593 - INFO -    ✅ Amazon.es*FY3841A75 → Salamanca, Spain
+2026-02-23 15:19:48,100 - INFO -    ✅ Amazon.es*H810425X4 → Salamanca, Spain
+2026-02-23 15:19:48,521 - INFO -    ✅ Amazon.es*J66PQ3U85 → Salamanca, Spain
+2026-02-23 15:19:48,921 - INFO -    ✅ Amazon.es*K929J5PV5 → Salamanca, Spain
+2026-02-23 15:19:49,457 - INFO -    ✅ Amazon.es*M70KE5WG4 → Salamanca, Spain
+2026-02-23 15:19:49,867 - INFO -    ✅ Amazon.es*MJ2JC2ZA4 → Salamanca, Spain
+2026-02-23 15:19:50,413 - INFO -    ✅ Amazon.es*MJ8M541P4 → Salamanca, Spain
+2026-02-23 15:19:50,862 - INFO -    ✅ Amazon.es*MM20C4U74 → Salamanca, Spain
+2026-02-23 15:19:51,322 - INFO -    ✅ Amazon.es*MO3X26LR4 → Salamanca, Spain
+2026-02-23 15:19:51,743 - INFO -    ✅ Amazon.es*MU4I26Q25 → Salamanca, Spain
+2026-02-23 15:19:52,167 - INFO -    ✅ Amazon.es*RM3VK9IR5 → Salamanca, Spain
+2026-02-23 15:19:52,578 - INFO -    ✅ Amazon.es*RP6QP3EU5 → Salamanca, Spain
+2026-02-23 15:19:53,043 - INFO -    ✅ Amazon.es*RU2VK26S5 → Madrid, Spain
+2026-02-23 15:19:53,486 - INFO -    ✅ Amazon.es*SF8DZ3AK5 → Salamanca, Spain
+2026-02-23 15:19:53,941 - INFO -    ✅ Amazon.es*SO6PJ1515 → Salamanca, Spain
+2026-02-23 15:19:54,350 - INFO -    ✅ Amazon.es*T900U7P24 → Madrid, Spain
+2026-02-23 15:19:54,798 - INFO -    ✅ Amazon.es*TJ6YE9Q85 → Salamanca, Spain
+2026-02-23 15:19:54,901 - INFO -    Progreso: 500/1497 (✅ 330, ⏭️  170, ⚠️  0)
+2026-02-23 15:19:55,229 - INFO -    ✅ Amazon.es*TO8G88AS4 → Salamanca, Spain
+2026-02-23 15:19:55,630 - INFO -    ✅ Amazon.es*TX4583Z24 → Salamanca, Spain
+2026-02-23 15:19:56,057 - INFO -    ✅ Amazon.es*U992O5415 → Salamanca, Spain
+2026-02-23 15:19:56,508 - INFO -    ✅ Amazon.es*UP1CT9XY5 → Salamanca, Spain
+2026-02-23 15:19:56,994 - INFO -    ✅ Amazon.es*UR2YW0B65 → Madrid, Spain
+2026-02-23 15:19:57,535 - INFO -    ✅ Amazon.es*W90TE5X15 → Salamanca, Spain
+2026-02-23 15:19:57,970 - INFO -    ✅ Amazon.es*X307F1EA5 → Salamanca, Spain
+2026-02-23 15:19:58,423 - INFO -    ✅ Amazon.es*XT8070755 → Salamanca, Spain
+2026-02-23 15:19:58,875 - INFO -    ✅ Amazon.es*Z32CY0ZH5 → Salamanca, Spain
+2026-02-23 15:19:59,324 - INFO -    ✅ Amazon.es*ZE2EU32K5 → Salamanca, Spain
+2026-02-23 15:19:59,763 - INFO -    ✅ Ap. Maisonnave → Navarra, Spain
+2026-02-23 15:20:00,203 - INFO -    ✅ Audible ES → Berlin, Germany
+2026-02-23 15:20:00,917 - INFO -    ✅ Aviflora, Lounge 1 → AA Schiphol, Netherlands
+2026-02-23 15:20:01,479 - INFO -    ✅ B.K. ESPARRAGERA REPSOL → Barcelona, Spain
+2026-02-23 15:20:01,881 - INFO -    ✅ BAILA FM WL → Miranda, Venezuela
+2026-02-23 15:20:02,325 - INFO -    ✅ BALLENOIL S.L MOSTOLES → Madrid, Spain
+2026-02-23 15:20:02,819 - INFO -    ✅ BALNEARIO AIRE ALMERIA → Almería, Spain
+2026-02-23 15:20:03,284 - INFO -    ✅ BAMBU BEACH → La Guaira, Venezuela
+2026-02-23 15:20:03,762 - INFO -    ✅ BANCO CETELEM, S.A. → Madrid, Spain
+2026-02-23 15:20:04,235 - INFO -    ✅ BANCOPOPULAR-E → Salamanca, Spain
+2026-02-23 15:20:04,661 - INFO -    ✅ BANCOPOPULAR-E -TARJETAS DE CREDITO → Madrid, Spain
+2026-02-23 15:20:05,171 - INFO -    ✅ BARBERIA CARLOS CONDE → Salamanca, Spain
+2026-02-23 15:20:05,624 - INFO -    ✅ BARLEY BAR → Krung Thep Maha Nakhon 10520, Thailand
+2026-02-23 15:20:06,185 - INFO -    ✅ BASTION HOTEL BOP 28 → AW Groningen, Netherlands
+2026-02-23 15:20:06,721 - INFO -    ✅ BAZAR CHINO → Salamanca, Spain
+2026-02-23 15:20:07,122 - INFO -    ✅ BAZAR DRAGON FELIZ → Murcia, Spain
+2026-02-23 15:20:07,536 - INFO -    ✅ BEAZA MOTOR → Murcia, Spain
+2026-02-23 15:20:08,073 - INFO -    ✅ BEER BURGUER PLAZA → Salamanca, Spain
+2026-02-23 15:20:08,546 - INFO -    ✅ BELVEDAIR CAFE REST → RH, UK
+2026-02-23 15:20:09,438 - INFO -    ✅ BERTALO & URDIALES S.L. → Murcia, Spain
+2026-02-23 15:20:09,984 - INFO -    ✅ BICICLETAS M.R., S.L. → Almería, Spain
+2026-02-23 15:20:10,693 - INFO -    ✅ BIPANDBIP.COM → Murcia, Spain
+2026-02-23 15:20:11,402 - INFO -    ✅ BKG*BOOKING.COM HOTEL → Salamanca, Spain
+2026-02-23 15:20:12,120 - INFO -    ✅ BKG*HOTEL AT BOOKING.C → Salamanca, Spain
+2026-02-23 15:20:13,004 - INFO -    ✅ BKT-MAD-PARK-O-CA → Murcia, Spain
+2026-02-23 15:20:13,409 - INFO -    ✅ BLACKBIRD ROCK BAR → Madrid, Spain
+2026-02-23 15:20:13,837 - INFO -    ✅ BODEGA ANTONIO PEREZ → Murcia, Spain
+2026-02-23 15:20:14,298 - INFO -    ✅ BODEGA EL ATROJE → Granada, Spain
+2026-02-23 15:20:14,803 - INFO -    ✅ BODEGA MERCADER → Murcia, Spain
+2026-02-23 15:20:15,226 - INFO -    ✅ BODEGAS ANTONIO PEREZ → Murcia, Spain
+2026-02-23 15:20:15,750 - INFO -    ✅ BODEGAS COOPERATIVAS DE → Cádiz, Spain
+2026-02-23 15:20:16,336 - INFO -    ✅ BODEGAS E MENDOZA SLU → Alicante, Spain
+2026-02-23 15:20:16,830 - INFO -    ✅ BODEGAS LA FUENTE → Murcia, Spain
+2026-02-23 15:20:17,353 - INFO -    ✅ BODY FACTORY → Zamora, Spain
+2026-02-23 15:20:17,757 - INFO -    ✅ BOLT.EU/O/ → GT, UK
+2026-02-23 15:20:18,624 - INFO -    ✅ BOOKING.COM → Murcia, Spain
+2026-02-23 15:20:19,437 - INFO -    ✅ BOOTS 1231 → Murcia, Spain
+2026-02-23 15:20:19,835 - INFO -    ✅ BOWLING CARTHAGO → Murcia, Spain
+2026-02-23 15:20:20,305 - INFO -    ✅ BOWLING CARTHAGO SL → Murcia, Spain
+2026-02-23 15:20:20,747 - INFO -    ✅ BRICO HOUSE → ti-Leordeni, Romania
+2026-02-23 15:20:20,851 - INFO -    Progreso: 550/1497 (✅ 380, ⏭️  170, ⚠️  0)
+2026-02-23 15:20:21,593 - INFO -    ✅ BRICOFIRE → Murcia, Spain
+2026-02-23 15:20:21,942 - INFO -    ✅ BRICOR CARTAGENA → Murcia, Spain
+2026-02-23 15:20:22,382 - INFO -    ✅ BUSCALIBRE ESPA#A S.L. → Barcelona, Spain
+2026-02-23 15:20:22,868 - INFO -    ✅ Bershka.com → Salamanca, Spain
+2026-02-23 15:20:23,682 - INFO -    ✅ C&A MODAS CARTAGENA → Murcia, Spain
+2026-02-23 15:20:24,560 - INFO -    ✅ C.P. EDIFICIO EL FARO DE CARTAGENA II → Murcia, Spain
+2026-02-23 15:20:24,985 - INFO -    ✅ CABIFY → Madrid, Spain
+2026-02-23 15:20:25,600 - INFO -    ✅ CAFE DE LA ESTACION → Salamanca, Spain
+2026-02-23 15:20:26,143 - INFO -    ✅ CAFE DEL RIO → Madrid, Spain
+2026-02-23 15:20:26,545 - INFO -    ✅ CAFE IACOBUS → A Coruña, Spain
+2026-02-23 15:20:27,074 - INFO -    ✅ CAFE LAB → Salamanca, Spain
+2026-02-23 15:20:27,523 - INFO -    ✅ CAFESTORE ALBERIQUE MONTE → Valencia, Spain
+2026-02-23 15:20:27,974 - INFO -    ✅ CAFETERIA ADANERO → vila, Spain
+2026-02-23 15:20:28,552 - INFO -    ✅ CAFETERIA CASA DA CULTURA → La Coruña, Spain
+2026-02-23 15:20:29,159 - INFO -    ✅ CAFETERIA CAVITE → Cavite, Philippines
+2026-02-23 15:20:29,665 - INFO -    ✅ CAFETERIA CHAJA → A Coruña, Spain
+2026-02-23 15:20:30,230 - INFO -    ✅ CAFETERIA CLUB DEPORTIVO → Salamanca, Spain
+2026-02-23 15:20:30,744 - INFO -    ✅ CAFETERIA CUATRO ROSAS → Madrid, Spain
+2026-02-23 15:20:31,160 - INFO -    ✅ CAFETERIA MAGANI → Alicante, Spain
+2026-02-23 15:20:31,582 - INFO -    ✅ CAFETERIA MINOTAURO → Madrid, Spain
+2026-02-23 15:20:32,023 - INFO -    ✅ CAFETERIA NOYMAR → Murcia, Spain
+2026-02-23 15:20:32,451 - INFO -    ✅ CAIXABANK PAYMENTS CONSUMER, E.f.c., E → Madrid, Spain
+2026-02-23 15:20:32,951 - INFO -    ✅ CALZEDONIA → Salamanca, Spain
+2026-02-23 15:20:33,344 - INFO -    ✅ CAMPING LAGOS COTO → Madrid, Spain
+2026-02-23 15:20:33,842 - INFO -    ✅ CAMPOS GARDEN → NY 10009, USA
+2026-02-23 15:20:34,323 - INFO -    ✅ CANCUN T3 SALID DF 892 → Q.R., Mexico
+2026-02-23 15:20:34,775 - INFO -    ✅ CAPGEMINI ESPANA SLU → Madrid, Spain
+2026-02-23 15:20:35,250 - INFO -    ✅ CARMA PADEL FOOTBALL → Murcia, Spain
+2026-02-23 15:20:35,681 - INFO -    ✅ CARNICAS CAMPILLO → Salamanca, Spain
+2026-02-23 15:20:36,129 - INFO -    ✅ CARNICAS CAMPILLO SA → Murcia, Spain
+2026-02-23 15:20:36,541 - INFO -    ✅ CARNICERIA HIGINIO → Murcia, Spain
+2026-02-23 15:20:36,988 - INFO -    ✅ CARNICERIA HIGINIO SL → Madrid, Spain
+2026-02-23 15:20:37,484 - INFO -    ✅ CARNICERIA LA ESTANCIA → Jal., Mexico
+2026-02-23 15:20:37,927 - INFO -    ✅ CARNISSERIA XARCUTERIA BA → Barcelona, Spain
+2026-02-23 15:20:38,524 - INFO -    ✅ CARREF CARTAGENA II → Murcia, Spain
+2026-02-23 15:20:39,127 - INFO -    ✅ CARREFOUR CARTA → Salamanca, Spain
+2026-02-23 15:20:39,538 - INFO -    ✅ CARREFOUR ELCHE → Alicante, Spain
+2026-02-23 15:20:40,072 - INFO -    ✅ CARREFOUR EXPRESS GENERAL → Salamanca, Spain
+2026-02-23 15:20:40,660 - INFO -    ✅ CARREFOUR GRVIA → Salamanca, Spain
+2026-02-23 15:20:41,205 - INFO -    ✅ CARREFOUR MARKET CUATRO C → Madrid, Spain
+2026-02-23 15:20:41,664 - INFO -    ✅ CARREFOUR MARKET GRANADA → Granada, Spain
+2026-02-23 15:20:42,081 - INFO -    ✅ CARREFOUR MEDIT → Salamanca, Spain
+2026-02-23 15:20:42,468 - INFO -    ✅ CARREFOUR P ALFONSO XIII → Murcia, Spain
+2026-02-23 15:20:42,857 - INFO -    ✅ CARREFOUR SPOLA → Salamanca, Spain
+2026-02-23 15:20:43,365 - INFO -    ✅ CARREFOUR TRVJA → Salamanca, Spain
+2026-02-23 15:20:43,812 - INFO -    ✅ CARREFOUR ZARAICHE → Murcia, Spain
+2026-02-23 15:20:44,378 - INFO -    ✅ CARROT CAFE → WA 98102, USA
+2026-02-23 15:20:44,776 - INFO -    ✅ CARTAGO PADEL → Murcia, Spain
+2026-02-23 15:20:45,285 - INFO -    ✅ CASA DEL LIBRO → Salamanca, Spain
+2026-02-23 15:20:45,735 - INFO -    ✅ CASCAIS CSO TVM → Cascais, Portugal
+2026-02-23 15:20:45,839 - INFO -    Progreso: 600/1497 (✅ 430, ⏭️  170, ⚠️  0)
+2026-02-23 15:20:46,285 - INFO -    ✅ CASH CONVERTERS → Salamanca, Spain
+2026-02-23 15:20:46,704 - INFO -    ✅ CASH LEPE JAMON 296 → Huelva, Spain
+2026-02-23 15:20:47,128 - INFO -    ✅ CDE RUGBY ALCORCON → Madrid, Spain
+2026-02-23 15:20:47,634 - INFO -    ✅ CEDIPSA 05714-1 EL CRUCE → Salamanca, Spain
+2026-02-23 15:20:48,149 - INFO -    ✅ CEDIPSA 11698-2 SABINAR I → Salamanca, Spain
+2026-02-23 15:20:48,568 - INFO -    ✅ CEDIPSA 13254-1 ALFAMURCI → Salamanca, Spain
+2026-02-23 15:20:49,088 - INFO -    ✅ CEDIPSA 16346 S → Salamanca, Spain
+2026-02-23 15:20:49,492 - INFO -    ✅ CEDIPSA 16346-1 SUBMARINO → Salamanca, Spain
+2026-02-23 15:20:49,848 - INFO -    ✅ CEDIPSA E.S. PETROPAY → Salamanca, Spain
+2026-02-23 15:20:50,265 - INFO -    ✅ CEDIPSA EL ALGAR → Murcia, Spain
+2026-02-23 15:20:50,896 - INFO -    ✅ CEDIPSA LA RIBERA → Salamanca, Spain
+2026-02-23 15:20:51,405 - INFO -    ✅ CENTRO DEP. ZONA SUR → Sevilla, Spain
+2026-02-23 15:20:52,107 - INFO -    ✅ CEPSA 16228-2 S → Salamanca, Spain
+2026-02-23 15:20:52,581 - INFO -    ✅ CERBERU TELEGESTION TURIS → Salamanca, Spain
+2026-02-23 15:20:53,225 - INFO -    ✅ CERVECERIA 100 MONTADITOS → Salamanca, Spain
+2026-02-23 15:20:53,787 - INFO -    ✅ CERVECERIA CASA BLANCA → Valencia, Spain
+2026-02-23 15:20:54,204 - INFO -    ✅ CERVECERIA EL PASAJE → Salamanca, Spain
+2026-02-23 15:20:54,657 - INFO -    ✅ CERVECERIA GAS → Murcia, Spain
+2026-02-23 15:20:55,126 - INFO -    ✅ CERVECERIA LA MEJILLONERA → Gipuzkoa, Spain
+2026-02-23 15:20:55,671 - INFO -    ✅ CERVECERIA SANTA ANA → Madrid, Spain
+2026-02-23 15:20:56,178 - INFO -    ✅ CERVECERIA SENTO BARRIO A → Alicante, Spain
+2026-02-23 15:20:56,887 - INFO -    ✅ CERVERZA FRIA SL → Madrid, Spain
+2026-02-23 15:20:57,276 - INFO -    ✅ CHIRINGUITO CA PACORRO → Alicante, Spain
+2026-02-23 15:20:57,686 - INFO -    ✅ CHURRERIA LA QUINTA → A Coruña, Spain
+2026-02-23 15:20:58,137 - INFO -    ✅ CHURRERIA SANTA FLORENTIN → Murcia, Spain
+2026-02-23 15:20:58,540 - INFO -    ✅ CHURRERIA TOFI → Murcia, Spain
+2026-02-23 15:20:59,060 - INFO -    ✅ CIAO WOODFIRE PIZZA → D04 RX63, Ireland
+2026-02-23 15:20:59,480 - INFO -    ✅ CICLOS CURRA → Murcia, Spain
+2026-02-23 15:20:59,964 - INFO -    ✅ CINES MANDARACHE → Murcia, Spain
+2026-02-23 15:21:00,389 - INFO -    ✅ CINES NUEVA CONDOMINA → Murcia, Spain
+2026-02-23 15:21:00,770 - INFO -    ✅ CINES PANORAMIS → Alicante, Spain
+2026-02-23 15:21:01,312 - INFO -    ✅ CITIBANK -TARJETAS DE CREDITO- → Milano MI, Italy
+2026-02-23 15:21:01,761 - INFO -    ✅ CJ PARQUE MEDITERRANEO → MI 48038, USA
+2026-02-23 15:21:03,613 - INFO -    ✅ CLINICA ORTONOVA → Murcia, Spain
+2026-02-23 15:21:04,008 - INFO -    ✅ CLINICA TEMPLADO → Murcia, Spain
+2026-02-23 15:21:04,434 - INFO -    ✅ CLUB DE RUGBY SANT CUGAT → Barcelona, Spain
+2026-02-23 15:21:04,886 - INFO -    ✅ CLUB DE RUGBY U CARTAGENA → Murcia, Spain
+2026-02-23 15:21:05,436 - INFO -    ✅ CLUB NAUTICO DE STA LUCI → Murcia, Spain
+2026-02-23 15:21:05,827 - INFO -    ✅ CLUB RUGBY LA VILA → Alicante, Spain
+2026-02-23 15:21:06,207 - INFO -    ✅ CM VIRGEN DE LA CARIDAD → Murcia, Spain
+2026-02-23 15:21:06,601 - INFO -    ✅ COLINAS GREEN GOLF → Alicante, Spain
+2026-02-23 15:21:07,231 - INFO -    ✅ COMERCIAL CARNES CARTAGEN → Bolívar, Colombia
+2026-02-23 15:21:07,805 - INFO -    ✅ COMERCIO RAMIREZ → Región Metropolitana, Chile
+2026-02-23 15:21:08,371 - INFO -    ✅ COMPLEX ESPORTIU LES CORT → Barcelona, Spain
+2026-02-23 15:21:08,970 - INFO -    ✅ CONCELLO DE SANTIAGO DE C → A Coruña, Spain
+2026-02-23 15:21:09,538 - INFO -    ✅ CONFITERIA BERNAL → Cádiz, Spain
+2026-02-23 15:21:09,949 - INFO -    ✅ CONFITERIA COLISEO → Murcia, Spain
+2026-02-23 15:21:10,394 - INFO -    ✅ CONFITERIA GALLEGO → Murcia, Spain
+2026-02-23 15:21:10,836 - INFO -    ✅ CONSUM AGUILAS → Murcia, Spain
+2026-02-23 15:21:10,942 - INFO -    Progreso: 650/1497 (✅ 479, ⏭️  171, ⚠️  0)
+2026-02-23 15:21:11,314 - INFO -    ✅ CONSUM SANTA POLA → Alicante, Spain
+2026-02-23 15:21:12,109 - INFO -    ✅ CONTRIB.MUNICIPAL → Murcia, Spain
+2026-02-23 15:21:12,514 - INFO -    ✅ COOLMOD → Castelló, Spain
+2026-02-23 15:21:12,921 - INFO -    ✅ COPIMAX CARTAGENA → Murcia, Spain
+2026-02-23 15:21:13,408 - INFO -    ✅ CORTE INGLES CARTAGENA → Murcia, Spain
+2026-02-23 15:21:14,148 - INFO -    ✅ CORTEFIEL → Salamanca, Spain
+2026-02-23 15:21:14,696 - INFO -    ✅ COSMETICS → Salamanca, Spain
+2026-02-23 15:21:15,166 - INFO -    ✅ COSTA BLANCA CLUB DE RUGB → Alicante, Spain
+2026-02-23 15:21:15,684 - INFO -    ✅ COSTA COFFEE → Salamanca, Spain
+2026-02-23 15:21:16,535 - INFO -    ✅ COSTABLANCA TAPAS → Alicante, Spain
+2026-02-23 15:21:17,474 - INFO -    ✅ CROMWELS → Alicante, Spain
+2026-02-23 15:21:17,930 - INFO -    ✅ CRUSOL PROYECTOS E INSTALACIONES S.L. → Murcia, Spain
+2026-02-23 15:21:18,328 - INFO -    ✅ CRV*AMAZON → Salamanca, Spain
+2026-02-23 15:21:18,696 - INFO -    ✅ CRV*AMAZON + → Salamanca, Spain
+2026-02-23 15:21:19,413 - INFO -    ✅ CRV*AMZN Mktp ES → Murcia, Spain
+2026-02-23 15:21:21,443 - INFO -    ✅ CRV*AUDITORIO EL BATEL → Murcia, Spain
+2026-02-23 15:21:22,368 - INFO -    ✅ CRV*Amazon Prime → Murcia, Spain
+2026-02-23 15:21:22,842 - INFO -    ✅ CRV*Amazon.es → Salamanca, Spain
+2026-02-23 15:21:23,372 - INFO -    ✅ CRV*CARREF CARTAGENA I → Murcia, Spain
+2026-02-23 15:21:23,768 - INFO -    ✅ CRV*CARTAGO PADEL → Murcia, Spain
+2026-02-23 15:21:24,288 - INFO -    ✅ CRV*CORTE INGLES CARTA → Salamanca, Spain
+2026-02-23 15:21:24,854 - INFO -    ✅ CRV*DEPORTIVO SANTA AN → Murcia, Spain
+2026-02-23 15:21:25,306 - INFO -    ✅ CRV*EL ASADOR DE JUAN → Madrid, Spain
+2026-02-23 15:21:25,813 - INFO -    ✅ CRV*EL PURGATORIO BAR → Valladolid, Spain
+2026-02-23 15:21:26,315 - INFO -    ✅ CRV*ESTANCO BARRIO PER → Salamanca, Spain
+2026-02-23 15:21:26,712 - INFO -    ✅ CRV*FRN*HOLD.FREE-NOW. → BS, UK
+2026-02-23 15:21:27,868 - INFO -    ✅ CRV*GOPAY *TOP4RUNNIN → Murcia, Spain
+2026-02-23 15:21:28,692 - INFO -    ✅ CRV*KaffeKapslen → Murcia, Spain
+2026-02-23 15:21:29,133 - INFO -    ✅ CRV*LIDL CARTAGENA AV → Murcia, Spain
+2026-02-23 15:21:29,669 - INFO -    ✅ CRV*MERCADONA PROLONGA → Salamanca, Spain
+2026-02-23 15:21:30,075 - INFO -    ✅ CRV*NEOCINE MYRTEA → Murcia, Spain
+2026-02-23 15:21:30,493 - INFO -    ✅ CRV*PESCADOS MARIA ANT → Murcia, Spain
+2026-02-23 15:21:31,006 - INFO -    ✅ CRV*SP BIOKSAN → Las Palmas, Spain
+2026-02-23 15:21:31,821 - INFO -    ✅ CRV*TIDAL → Murcia, Spain
+2026-02-23 15:21:32,592 - INFO -    ✅ CRV*TIDAL Malmo SWE → Murcia, Spain
+2026-02-23 15:21:33,028 - INFO -    ✅ CRV*WWW.AMAZON.ES → Salamanca, Spain
+2026-02-23 15:21:33,945 - INFO -    ✅ CRV*WWW.AMAZON.ES +140 → Murcia, Spain
+2026-02-23 15:21:34,376 - INFO -    ✅ CRV*ZARA → Salamanca, Spain
+2026-02-23 15:21:39,363 - INFO - ============================================================
+2026-02-23 15:21:39,363 - INFO - ENRIQUECIMIENTO DE MERCHANTS NO REGISTRADOS - INICIO
+2026-02-23 15:21:39,363 - INFO - ============================================================
+2026-02-23 15:21:39,371 - INFO - 📊 Encontrados 0 merchants no registrados
+
+2026-02-23 15:21:39,371 - INFO - ✅ No hay merchants sin registrar

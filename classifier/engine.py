@@ -543,7 +543,7 @@ class Classifier:
         # REGLA #33: RevPoints con Redondeo (Revolut cashback/rewards) → INGRESO/Devoluciones
         if "RevPoints con Redondeo" in descripcion:
             cat1, cat2 = "Ingreso", "Devoluciones"
-            tipo = determine_tipo(cat1, importe, descripcion)
+            tipo = "INGRESO"
             return {
                 'cat1': cat1,
                 'cat2': cat2,

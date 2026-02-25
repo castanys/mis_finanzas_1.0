@@ -1,0 +1,7 @@
+[2026-02-20 16:15:10] [INFO    ] [finsense] ======================================================================
+[2026-02-20 16:15:10] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-20 16:15:10] [INFO    ] [finsense] ======================================================================
+[2026-02-20 16:15:10] [DEBUG   ] [finsense] Iniciando exportación a Excel: output/transacciones_20260220_161510.xlsx
+[2026-02-20 16:15:11] [DEBUG   ] [finsense] Transferencias sin pareja encontradas: 1754
+[2026-02-20 16:15:11] [DEBUG   ] [finsense] Transacciones cargadas: 15800
+[2026-02-20 16:15:15] [INFO    ] [finsense] Excel exportado: output/transacciones_20260220_161510.xlsx

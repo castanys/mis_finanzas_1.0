@@ -1,0 +1,157 @@
+{
+  "comentario": "Casos específicos que requieren clasificación manual",
+  "excepciones": [
+    {
+      "fecha": "2020-07-22",
+      "importe": -1432.10,
+      "banco": "Mediolanum",
+      "cat1": "Externa",
+      "cat2": "",
+      "razon": "Transferencia sin contrapartida"
+    },
+    {
+      "fecha": "2023-06-12",
+      "importe": -17000.0,
+      "banco": "Mediolanum",
+      "cat1": "Cripto",
+      "cat2": "Otros",
+      "razon": "Transferencia a exchange crypto sin contrapartida"
+    },
+    {
+      "fecha": "2023-07-05",
+      "importe": -1500.0,
+      "banco": "Mediolanum",
+      "cat1": "Cripto",
+      "cat2": "Otros",
+      "razon": "Transferencia a exchange crypto sin contrapartida"
+    },
+    {
+      "fecha": "2023-08-07",
+      "importe": -2000.0,
+      "banco": "Mediolanum",
+      "cat1": "Cripto",
+      "cat2": "Otros",
+      "razon": "Transferencia a exchange crypto sin contrapartida"
+    },
+    {
+      "fecha": "2022-11-09",
+      "importe": 1300.0,
+      "banco": "Openbank",
+      "cat1": "Cripto",
+      "cat2": "Nexo",
+      "razon": "Transferencia desde Nexo (mal clasificada como Interna en Capa 1)"
+    },
+    {
+      "fecha": "2024-02-28",
+      "importe": -6700.0,
+      "banco": "Mediolanum",
+      "cat1": "Cripto",
+      "cat2": "Nexo",
+      "razon": "Transferencia a Nexo (mal clasificada como Interna en Capa 1)"
+    },
+    {
+      "fecha": "2024-02-29",
+      "importe": -6300.0,
+      "banco": "Mediolanum",
+      "cat1": "Cripto",
+      "cat2": "Nexo",
+      "razon": "Transferencia a Nexo (mal clasificada como Interna en Capa 1)"
+    },
+     {
+       "fecha": "2025-01-26",
+       "importe": -150.0,
+       "banco": "Trade Republic",
+       "cat1": "Cripto",
+       "cat2": "MRCR",
+       "razon": "Compra crypto via MRCR Mobile Pay (mal clasificada como Compras en Capa 4)"
+     },
+     {
+       "fecha": "2006-06-02",
+       "importe": -10.0,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo domiciliado antiguo - SESIÓN 14"
+     },
+     {
+       "fecha": "2006-12-07",
+       "importe": -10.0,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo domiciliado antiguo - SESIÓN 14"
+     },
+     {
+       "fecha": "2007-05-04",
+       "importe": -10.0,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo domiciliado antiguo - SESIÓN 14"
+     },
+     {
+       "fecha": "2007-11-07",
+       "importe": -10.0,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo domiciliado antiguo - SESIÓN 14"
+     },
+     {
+       "fecha": "2016-06-01",
+       "importe": -46.82,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo BANCOPOPULAR-E - SESIÓN 14"
+     },
+     {
+       "fecha": "2022-09-02",
+       "importe": -23.63,
+       "banco": "Openbank",
+       "cat1": "Recibos",
+       "cat2": "Domiciliados",
+       "razon": "Recibo REF. MANDATO - SESIÓN 14"
+     },
+     {
+       "fecha": "2022-05-02",
+       "importe": -389.06,
+       "banco": "Mediolanum",
+       "cat1": "Recibos",
+       "cat2": "Devoluciones",
+       "razon": "Retr. Recibo a su cargo (devolución de recibo) - SESIÓN 14"
+     },
+     {
+       "fecha": "2005-06-02",
+       "importe": -0.28,
+       "banco": "Openbank",
+       "cat1": "Finanzas",
+       "cat2": "Comisiones",
+       "razon": "GASTOS CORREO - SESIÓN 14"
+     },
+     {
+       "fecha": "2006-12-02",
+       "importe": -0.29,
+       "banco": "Openbank",
+       "cat1": "Finanzas",
+       "cat2": "Comisiones",
+       "razon": "GASTOS CORREO - SESIÓN 14"
+     },
+     {
+       "fecha": "2020-04-15",
+       "importe": -393.25,
+       "banco": "Mediolanum",
+       "cat1": "Vivienda",
+       "cat2": "Otros",
+       "razon": "ARCO VALORACIONES, S.A. (tasación vivienda) - SESIÓN 14"
+     },
+     {
+       "fecha": "2018-02-26",
+       "importe": 50.0,
+       "banco": "Openbank",
+       "cat1": "Restauración",
+       "cat2": "Restaurante",
+       "razon": "Devolución/Ajuste de Restauración (descripción sugiere 20€ Sushi + 16€ peluquero) - SESIÓN 14"
+     }
+   ]
+}

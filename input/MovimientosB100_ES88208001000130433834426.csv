@@ -1,0 +1,149 @@
+Fecha de Operación,Fecha valor,Detalle,Concepto,Cantidad,Saldo tras operación,Divisa,Tipo de Movimiento
+07/01/2026,07/01/2026,Transferencia enviada,NA,-34.00,0.00,EUR,Gasto
+07/01/2026,07/01/2026,Transferencia recibida,TRASPASO DESDE CUENTA HEALTH 07/01/ 2026 14:03:17,34.00,34.00,EUR,Ingreso
+03/01/2026,03/01/2026,Transferencia enviada,NA,-800.00,0.00,EUR,Gasto
+03/01/2026,03/01/2026,Transferencia recibida,TRASPASO DESDE CUENTA HEALTH 03/01/ 2026 07:45:49,800.00,800.00,EUR,Ingreso
+29/12/2025,29/12/2025,Transferencia enviada,NA,-70.00,0.00,EUR,Gasto
+29/12/2025,29/12/2025,Transferencia recibida,TRASPASO DESDE CUENTA HEALTH 29/12/ 2025 14:51:31,70.00,70.00,EUR,Ingreso
+29/12/2025,29/12/2025,Transferencia enviada,NA,-100.00,0.00,EUR,Gasto
+29/12/2025,29/12/2025,Transferencia recibida,TRASPASO DESDE CUENTA HEALTH 29/12/ 2025 14:02:51,100.00,100.00,EUR,Ingreso
+27/12/2025,27/12/2025,Transferencia enviada,NA,-2954.97,0.00,EUR,Gasto
+27/12/2025,27/12/2025,Transferencia recibida,TRASPASO DESDE CUENTA HEALTH 27/12/ 2025 19:28:57,2000.00,2954.97,EUR,Ingreso
+27/12/2025,27/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 19:2 8:14,804.97,954.97,EUR,Ingreso
+26/12/2025,26/12/2025,Transferencia enviada,NA,-50.00,150.00,EUR,Gasto
+26/12/2025,26/12/2025,Transferencia enviada,OFF TO SAVE 25/12,-30.00,200.00,EUR,Gasto
+26/12/2025,26/12/2025,Tipo de operación,Move to save día 25/12,-30.00,230.00,EUR,Gasto
+25/12/2025,25/12/2025,Transferencia enviada,OFF TO SAVE 24/12,-30.00,260.00,EUR,Gasto
+25/12/2025,25/12/2025,Tipo de operación,Move to save día 23/12,-30.00,290.00,EUR,Gasto
+24/12/2025,24/12/2025,Transferencia enviada,OFF TO SAVE 23/12,-30.00,320.00,EUR,Gasto
+23/12/2025,23/12/2025,Transferencia enviada,OFF TO SAVE 22/12,-30.00,350.00,EUR,Gasto
+23/12/2025,23/12/2025,Transferencia recibida,FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO,200.00,380.00,EUR,Ingreso
+23/12/2025,23/12/2025,Tipo de operación,Move to save día 22/12,-30.00,180.00,EUR,Gasto
+22/12/2025,22/12/2025,Tipo de operación,Move to save día 21/12,-30.00,210.00,EUR,Gasto
+22/12/2025,22/12/2025,Transferencia enviada,OFF TO SAVE 21/12,-30.00,240.00,EUR,Gasto
+22/12/2025,22/12/2025,Transferencia enviada,OFF TO SAVE 20/12,-30.00,270.00,EUR,Gasto
+22/12/2025,22/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 00:0 7:37,250.00,300.00,EUR,Ingreso
+21/12/2025,21/12/2025,Tipo de operación,Move to save día 20/12,-30.00,50.00,EUR,Gasto
+20/12/2025,20/12/2025,Transferencia enviada,OFF TO SAVE 19/12,-30.00,80.00,EUR,Gasto
+20/12/2025,20/12/2025,Tipo de operación,Move to save día 18/12,-30.00,110.00,EUR,Gasto
+19/12/2025,19/12/2025,Transferencia enviada,OFF TO SAVE 18/12,-30.00,140.00,EUR,Gasto
+19/12/2025,19/12/2025,Transferencia enviada,NA,-100.00,170.00,EUR,Gasto
+19/12/2025,19/12/2025,Transferencia enviada,NA,-100.00,270.00,EUR,Gasto
+19/12/2025,19/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 11:4 0:48,300.00,370.00,EUR,Ingreso
+19/12/2025,19/12/2025,Tipo de operación,Move to save día 17/12,-30.00,70.00,EUR,Gasto
+18/12/2025,18/12/2025,Transferencia enviada,OFF TO SAVE 17/12,-30.00,100.00,EUR,Gasto
+18/12/2025,18/12/2025,Transferencia enviada,NA,-150.00,130.00,EUR,Gasto
+18/12/2025,18/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 21:0 4:29,150.00,280.00,EUR,Ingreso
+18/12/2025,18/12/2025,Tipo de operación,Move to save día 16/12,-30.00,130.00,EUR,Gasto
+17/12/2025,17/12/2025,Transferencia enviada,OFF TO SAVE 16/12,-30.00,160.00,EUR,Gasto
+17/12/2025,17/12/2025,Tipo de operación,Move to save día 15/12,-30.00,190.00,EUR,Gasto
+16/12/2025,16/12/2025,Transferencia enviada,OFF TO SAVE 15/12,-30.00,220.00,EUR,Gasto
+16/12/2025,16/12/2025,Transferencia enviada,OFF TO SAVE 14/12,-30.00,250.00,EUR,Gasto
+15/12/2025,15/12/2025,Tipo de operación,Move to save día 14/12,-30.00,280.00,EUR,Gasto
+15/12/2025,15/12/2025,Tipo de operación,Move to save día 11/12,-30.00,310.00,EUR,Gasto
+14/12/2025,14/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 22:5 7:57,300.00,340.00,EUR,Ingreso
+14/12/2025,14/12/2025,Transferencia enviada,OFF TO SAVE 13/12,-30.00,40.00,EUR,Gasto
+14/12/2025,14/12/2025,Transferencia enviada,OFF TO SAVE 12/12,-30.00,70.00,EUR,Gasto
+14/12/2025,14/12/2025,Transferencia enviada,OFF TO SAVE 11/12,-30.00,100.00,EUR,Gasto
+12/12/2025,12/12/2025,Tipo de operación,Move to save día 10/12,-30.00,130.00,EUR,Gasto
+11/12/2025,11/12/2025,Transferencia enviada,OFF TO SAVE 10/12,-30.00,160.00,EUR,Gasto
+11/12/2025,11/12/2025,Tipo de operación,Move to save día 09/12,-30.00,190.00,EUR,Gasto
+10/12/2025,10/12/2025,Transferencia enviada,NA,-250.00,220.00,EUR,Gasto
+10/12/2025,10/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 11:1 1:24,250.00,470.00,EUR,Ingreso
+10/12/2025,10/12/2025,Transferencia enviada,OFF TO SAVE 09/12,-30.00,220.00,EUR,Gasto
+10/12/2025,10/12/2025,Tipo de operación,Move to save día 08/12,-30.00,250.00,EUR,Gasto
+09/12/2025,09/12/2025,Transferencia enviada,OFF TO SAVE 08/12,-30.00,280.00,EUR,Gasto
+08/12/2025,08/12/2025,Transferencia enviada,OFF TO SAVE 07/12,-30.00,310.00,EUR,Gasto
+08/12/2025,08/12/2025,Tipo de operación,Move to save día 07/12,-30.00,340.00,EUR,Gasto
+08/12/2025,08/12/2025,Tipo de operación,Move to save día 06/12,-30.00,370.00,EUR,Gasto
+07/12/2025,07/12/2025,Transferencia enviada,NA,-1235.00,400.00,EUR,Gasto
+07/12/2025,07/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 22:2 6:31,1235.00,1635.00,EUR,Ingreso
+07/12/2025,07/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 22:2 4:03,300.00,400.00,EUR,Ingreso
+07/12/2025,07/12/2025,Transferencia enviada,OFF TO SAVE 06/12,-30.00,100.00,EUR,Gasto
+07/12/2025,07/12/2025,Tipo de operación,Move to save día 05/12,-30.00,130.00,EUR,Gasto
+06/12/2025,06/12/2025,Transferencia enviada,OFF TO SAVE 05/12,-30.00,160.00,EUR,Gasto
+05/12/2025,05/12/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 09:2 9:56,150.00,190.00,EUR,Ingreso
+05/12/2025,05/12/2025,Tipo de operación,Move to save día 04/12,-30.00,40.00,EUR,Gasto
+05/12/2025,05/12/2025,Tipo de operación,Move to save día 03/12,-30.00,70.00,EUR,Gasto
+05/12/2025,05/12/2025,Transferencia enviada,OFF TO SAVE 04/12,-30.00,100.00,EUR,Gasto
+05/12/2025,05/12/2025,Transferencia enviada,AHORRO PARA HUCHA PRINCIPAL 00:13:3 9,-1235.00,130.00,EUR,Gasto
+05/12/2025,05/12/2025,Transferencia recibida,FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO,1235.00,1365.00,EUR,Ingreso
+04/12/2025,04/12/2025,Transferencia enviada,OFF TO SAVE 03/12,-30.00,130.00,EUR,Gasto
+04/12/2025,04/12/2025,Tipo de operación,Move to save día 02/12,-30.00,160.00,EUR,Gasto
+03/12/2025,03/12/2025,Transferencia enviada,OFF TO SAVE 02/12,-30.00,190.00,EUR,Gasto
+02/12/2025,02/12/2025,Tipo de operación,Move to save día 01/12,-30.00,220.00,EUR,Gasto
+02/12/2025,02/12/2025,Tipo de operación,Move to save día 30/11,-30.00,250.00,EUR,Gasto
+02/12/2025,02/12/2025,Tipo de operación,Move to save día 29/11,-30.00,280.00,EUR,Gasto
+02/12/2025,02/12/2025,Transferencia enviada,OFF TO SAVE 01/12,-30.00,310.00,EUR,Gasto
+02/12/2025,02/12/2025,Transferencia enviada,AHORRO PARA HUCHA PRINCIPAL 10:50:0 4,-1250.00,340.00,EUR,Gasto
+02/12/2025,02/12/2025,Transferencia recibida,FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO,1400.00,1590.00,EUR,Ingreso
+01/12/2025,01/12/2025,Transferencia enviada,OFF TO SAVE 30/11,-30.00,190.00,EUR,Gasto
+01/12/2025,01/12/2025,Transferencia enviada,OFF TO SAVE 29/11,-30.00,220.00,EUR,Gasto
+30/11/2025,30/11/2025,Tipo de operación,Move to save día 28/11,-30.00,250.00,EUR,Gasto
+29/11/2025,29/11/2025,Transferencia enviada,OFF TO SAVE 28/11,-30.00,280.00,EUR,Gasto
+29/11/2025,29/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 15:1 6:48,300.00,310.00,EUR,Ingreso
+29/11/2025,29/11/2025,Tipo de operación,Move to save día 27/11,-30.00,10.00,EUR,Gasto
+28/11/2025,28/11/2025,Transferencia enviada,OFF TO SAVE 27/11,-30.00,40.00,EUR,Gasto
+28/11/2025,28/11/2025,Tipo de operación,Move to save día 26/11,-30.00,70.00,EUR,Gasto
+27/11/2025,27/11/2025,Transferencia enviada,OFF TO SAVE 26/11,-30.00,100.00,EUR,Gasto
+27/11/2025,27/11/2025,Transferencia enviada,NA,-250.00,130.00,EUR,Gasto
+27/11/2025,27/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 12:3 6:14,250.00,380.00,EUR,Ingreso
+27/11/2025,27/11/2025,Tipo de operación,Move to save día 25/11,-30.00,130.00,EUR,Gasto
+26/11/2025,26/11/2025,Transferencia enviada,OFF TO SAVE 25/11,-30.00,160.00,EUR,Gasto
+26/11/2025,26/11/2025,Tipo de operación,Move to save día 24/11,-30.00,190.00,EUR,Gasto
+25/11/2025,25/11/2025,Transferencia enviada,OFF TO SAVE 24/11,-30.00,220.00,EUR,Gasto
+25/11/2025,25/11/2025,Transferencia enviada,OFF TO SAVE 23/11,-30.00,250.00,EUR,Gasto
+23/11/2025,23/11/2025,Transferencia enviada,OFF TO SAVE 22/11,-30.00,280.00,EUR,Gasto
+22/11/2025,22/11/2025,Transferencia enviada,OFF TO SAVE 20/11,-30.00,310.00,EUR,Gasto
+22/11/2025,22/11/2025,Tipo de operación,Move to save día 20/11,-30.00,340.00,EUR,Gasto
+21/11/2025,21/11/2025,Transferencia enviada,OFF TO SAVE 19/11,-30.00,370.00,EUR,Gasto
+21/11/2025,21/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 02:4 0:28,350.00,400.00,EUR,Ingreso
+21/11/2025,21/11/2025,Tipo de operación,Move to save día 19/11,-30.00,50.00,EUR,Gasto
+20/11/2025,20/11/2025,Transferencia enviada,OFF TO SAVE 18/11,-30.00,80.00,EUR,Gasto
+20/11/2025,20/11/2025,Tipo de operación,Move to save día 18/11,-30.00,110.00,EUR,Gasto
+19/11/2025,19/11/2025,Transferencia enviada,COLOMBIA,-250.00,140.00,EUR,Gasto
+19/11/2025,19/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 14:5 7:18,300.00,390.00,EUR,Ingreso
+19/11/2025,19/11/2025,Transferencia enviada,OFF TO SAVE 17/11,-30.00,90.00,EUR,Gasto
+19/11/2025,19/11/2025,Tipo de operación,Move to save día 17/11,-30.00,120.00,EUR,Gasto
+18/11/2025,18/11/2025,Transferencia enviada,OFF TO SAVE 16/11,-30.00,150.00,EUR,Gasto
+17/11/2025,17/11/2025,Transferencia enviada,OFF TO SAVE 15/11,-30.00,180.00,EUR,Gasto
+16/11/2025,16/11/2025,Transferencia enviada,OFF TO SAVE 14/11,-30.00,210.00,EUR,Gasto
+16/11/2025,16/11/2025,Tipo de operación,Move to save día 15/11,-30.00,240.00,EUR,Gasto
+15/11/2025,15/11/2025,Transferencia enviada,OFF TO SAVE 13/11,-30.00,270.00,EUR,Gasto
+15/11/2025,15/11/2025,Tipo de operación,Move to save día 13/11,-30.00,300.00,EUR,Gasto
+14/11/2025,14/11/2025,Transferencia enviada,OFF TO SAVE 12/11,-30.00,330.00,EUR,Gasto
+14/11/2025,14/11/2025,Transferencia enviada,OFF TO SAVE 11/11,-30.00,360.00,EUR,Gasto
+14/11/2025,14/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 02:1 8:13,300.00,390.00,EUR,Ingreso
+13/11/2025,13/11/2025,Tipo de operación,Move to save día 11/11,-30.00,90.00,EUR,Gasto
+12/11/2025,12/11/2025,Transferencia enviada,OFF TO SAVE 10/11,-30.00,120.00,EUR,Gasto
+11/11/2025,11/11/2025,Tipo de operación,Move to save día 09/11,-30.00,150.00,EUR,Gasto
+09/11/2025,09/11/2025,Transferencia enviada,OFF TO SAVE 08/11,-30.00,180.00,EUR,Gasto
+09/11/2025,09/11/2025,Tipo de operación,Move to save día 07/11,-30.00,210.00,EUR,Gasto
+08/11/2025,08/11/2025,Tipo de operación,Move to save día 06/11,-30.00,240.00,EUR,Gasto
+07/11/2025,07/11/2025,Transferencia enviada,COLOMBIA,-500.00,270.00,EUR,Gasto
+07/11/2025,07/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 22:4 9:45,500.00,770.00,EUR,Ingreso
+07/11/2025,07/11/2025,Transferencia enviada,OFF TO SAVE 06/11,-30.00,270.00,EUR,Gasto
+07/11/2025,07/11/2025,Tipo de operación,Move to save día 05/11,-30.00,300.00,EUR,Gasto
+06/11/2025,06/11/2025,Transferencia enviada,OFF TO SAVE 05/11,-30.00,330.00,EUR,Gasto
+06/11/2025,06/11/2025,Transferencia enviada,COLOMBIA,-500.00,360.00,EUR,Gasto
+06/11/2025,06/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 21:5 5:25,750.00,860.00,EUR,Ingreso
+05/11/2025,05/11/2025,Transferencia enviada,OFF TO SAVE 04/11,-30.00,110.00,EUR,Gasto
+05/11/2025,05/11/2025,Tipo de operación,Move to save día 04/11,-30.00,140.00,EUR,Gasto
+05/11/2025,05/11/2025,Tipo de operación,Move to save día 03/11,-30.00,170.00,EUR,Gasto
+04/11/2025,04/11/2025,Transferencia enviada,OFF TO SAVE 03/11,-30.00,200.00,EUR,Gasto
+03/11/2025,03/11/2025,Transferencia enviada,OFF TO SAVE 02/11,-30.00,230.00,EUR,Gasto
+03/11/2025,03/11/2025,Tipo de operación,Move to save día 02/11,-30.00,260.00,EUR,Gasto
+02/11/2025,02/11/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 23:2 7:04,200.00,290.00,EUR,Ingreso
+02/11/2025,02/11/2025,Transferencia enviada,PABLO NOVIEMBRE,-250.00,90.00,EUR,Gasto
+02/11/2025,02/11/2025,Transferencia recibida,FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO,250.00,340.00,EUR,Ingreso
+02/11/2025,02/11/2025,Tipo de operación,Move to save día 01/11,-15.00,90.00,EUR,Gasto
+02/11/2025,02/11/2025,Transferencia enviada,OFF TO SAVE 01/11,-30.00,105.00,EUR,Gasto
+01/11/2025,01/11/2025,Transferencia enviada,OFF TO SAVE 31/10,-30.00,135.00,EUR,Gasto
+31/10/2025,31/10/2025,Transferencia enviada,OFF TO SAVE 30/10,-30.00,165.00,EUR,Gasto
+31/10/2025,31/10/2025,Tipo de operación,Move to save día 30/10,-30.00,195.00,EUR,Gasto
+30/10/2025,30/10/2025,Transferencia enviada,OFF TO SAVE 29/10,-30.00,225.00,EUR,Gasto
+29/10/2025,29/10/2025,Transferencia enviada,OFF TO SAVE 28/10,-30.00,255.00,EUR,Gasto
+29/10/2025,29/10/2025,Tipo de operación,Move to save día 28/10,-15.00,285.00,EUR,Gasto
+28/10/2025,28/10/2025,Transferencia recibida,TRASPASO DESDE HUCHA PRINCIPAL 15:3 8:25,300.00,300.00,EUR,Ingreso
+28/10/2025,28/10/2025,Transferencia enviada,AHORRO PARA HUCHA PRINCIPAL 15:25:1 0,-4500.00,0.00,EUR,Gasto
+28/10/2025,28/10/2025,Transferencia recibida,FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO,4500.00,4500.00,EUR,Ingreso

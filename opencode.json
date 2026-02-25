@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Instrucciones del proyecto para el agente
+  "instructions": ["AGENTS.md"],
+
+  // Los modelos se heredan del global. Descomentar solo si querés sobreescribir en este proyecto:
+  // "model": "anthropic/claude-sonnet-4-6",
+  // "agent": {
+  //   "build": { "model": "anthropic/claude-haiku-4-5" },
+  //   "plan":  { "model": "anthropic/claude-sonnet-4-6" }
+  // },
+
+  // Para usar Ollama local en este proyecto, descomentar:
+  // "model": "ollama_local/qwen2.5-coder:14b"
+}

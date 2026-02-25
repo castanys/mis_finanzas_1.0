@@ -1,0 +1,317 @@
+# AGENTS.md - Instrucciones para Agentes de IA en mis_tickets
+
+Este documento proporciona a agentes IA esenciales información sobre la estructura, comandos y directrices de estilo de código del proyecto `mis_tickets`.
+
+## Comunicación
+
+**IMPORTANTE**: Toda comunicación con el usuario debe ser en **ESPAÑOL**. No traduzcas ni cambies a inglés bajo ninguna circunstancia.
+
+## Criterio de Éxito en Tareas
+
+Antes de considerar una tarea completada, **verifica explícitamente que el resultado coincida con el objetivo declarado por el usuario**. 
+
+**Ejemplo**:
+- Usuario: "Añade 10 tickets nuevos a la BD"
+- Haiku ejecuta: Guarda 10 tickets
+- Verificación: `SELECT COUNT(*) FROM tickets WHERE tienda='Lidl'` → debe ser +10 respecto al valor anterior
+- **Si el número no coincide**, investiga y explica qué pasó antes de dar el resultado por bueno
+
+Este protocolo previene que se acepten resultados incorrectos por confianza en razonamientos lógicos internos sin verificar contra la realidad (hechos).
+
+## Protocolo de Modos y Escalado
+
+### Modos Conceptuales
+
+El trabajo se divide en dos modos según la naturaleza de la tarea:
+
+- **PLAN (Claude Sonnet)** — Arquitectura y decisiones estructurales: diseño de esquema, resolución de conflictos de modelo de datos, decisiones que afectan identificadores o constraints.
+- **BUILD (Claude Haiku)** — Implementación y debugging operativo: parseo, guardado, scripts, queries, logging, correcciones puntuales.
+
+**El modo por defecto es BUILD.**
+
+### Cuándo BUILD debe escalar a PLAN (obligatorio)
+
+BUILD debe detenerse y emitir un bloque `[ESCALADO A PLAN REQUERIDO]` ante cualquiera de estas situaciones:
+
+1. `UNIQUE constraint` inesperada que no se resuelve con deduplicación estándar.
+2. Cambio necesario en el esquema de la base de datos (nuevas columnas, tablas, constraints).
+3. Colisión conceptual de identificadores (ej. mismo `email_uid` entre tiendas).
+4. Más de 2 intentos fallidos para resolver el mismo error.
+5. La solución implique renombrar datos o modificar identificadores para evitar restricciones.
+6. El problema implique un posible error de modelo de datos o diseño estructural.
+
+### Límites de BUILD
+
+BUILD **no puede**:
+
+- Cambiar el esquema de la base de datos.
+- Alterar constraints existentes.
+- Redefinir identificadores (UIDs, claves primarias, claves únicas).
+- Implementar soluciones que cambien el modelo mental aprobado por PLAN.
+
+### Formato de Escalado
+
+Cuando se requiere escalado, BUILD emite el siguiente bloque y se **detiene hasta recibir instrucción del usuario**:
+
+```
+[ESCALADO A PLAN REQUERIDO]
+Problema detectado: <descripción en 1-2 frases>
+Evidencia (máx 5 líneas): <logs, errores o queries relevantes>
+Hipótesis: <causa probable>
+Bloqueo: <por qué BUILD no puede resolverlo solo>
+Solicitud concreta a PLAN: <qué decisión o diseño se necesita>
+```
+
+## Descripción General del Proyecto
+
+`mis_tickets` es una aplicación Python que procesa recibos de supermercado (tickets) desde Gmail, extrae datos vía OCR y análisis de PDFs, y almacena datos estructurados en SQLite. Soporta formato Mercadona (PDF) y Lidl (imagen/OCR).
+
+Antes de iniciar trabajo, lee `docs/PROJECT_STATE.md` para el estado actual de la BD.
+
+## Estado de Validación
+
+**Última Validación**: 2026-02-17
+
+| Tienda | Tickets | Estado | Precisión |
+|--------|---------|--------|-----------|
+| **Lidl** | 46 | 100% procesados | Suma de items = total |
+| **Mercadona** | 53 | 100% procesados | 100% exacto (PDF) |
+| **TOTAL** | 99 | Listos para análisis | ✅ |
+
+**Cambios recientes (2026-02-17)**:
+- Se añadieron 10 tickets Lidl nuevos (2024-07-06 a 2024-10-17)
+- Se corrigieron 3 bugs de deduplicación de UID (Lidl vs Mercadona)
+- BD completamente integrada y verificada
+
+## Configuración del Entorno
+
+## Configuración del Entorno
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # rellenar GMAIL_USER, GMAIL_APP_PASSWORD, ANTHROPIC_API_KEY
+```
+
+**Requisito de sistema**: `tesseract-ocr` debe estar instalado (`apt install tesseract-ocr` en Debian/Ubuntu).
+
+**Dependencias clave** (en `requirements.txt` + instaladas en venv):
+- `anthropic` — extracción LLM
+- `pytesseract` — wrapper de Tesseract OCR
+- `pdfplumber` — parsing de PDFs de Mercadona
+- `pillow`, `opencv-python-headless` — procesamiento de imágenes
+- `python-dotenv` — configuración de entorno
+- `easyocr` — instalado pero experimental; no en requirements.txt
+
+## Ejecutar Código
+
+```bash
+# Procesar nuevos emails desde Gmail
+python3 main.py
+
+# Reprocesar todos los archivos raw en data/raw/ (limpia BD primero)
+python3 reprocesar.py
+
+# Reprocesar solo tickets Lidl (limpia solo datos Lidl)
+python3 reprocesar_lidl_only.py
+
+# Inicializar esquema de BD (también llamado por main.py al inicio)
+python3 -c "from database import init_db; init_db()"
+```
+
+### Scripts de Análisis y Programados
+
+```bash
+# Detectar alertas de precio y guardar en BD (ejecutar diariamente vía cron)
+python3 scripts/check_alerts.py
+
+# Enviar reporte HTML semanal de alertas no notificadas (ejecutar lunes)
+python3 scripts/send_weekly_report.py
+
+# Verificar tickets duplicados
+python3 validar_duplicados.py
+
+# Prueba de configuración de env vars
+python3 test_config.py
+```
+
+### Testing y Validación
+
+Existe una suite formal de tests con pytest:
+
+```bash
+# Ejecutar todos los tests
+cd /home/pablo/apps/mis_tickets && source venv/bin/activate && python3 -m pytest tests/ -v
+
+# Ejecutar con cobertura
+python3 -m pytest tests/ --cov=src/analytics --cov-report=html
+```
+
+Scripts de validación adicionales:
+
+```bash
+# Ejecutar parser Lidl 10x en una imagen y reportar stats de consistencia
+python3 scripts/validar_lidl.py
+
+# Comparar métodos OCR (Tesseract whitelist vs EasyOCR) en una imagen
+python3 test_ocr_methods.py
+
+# Depurar pipeline de preprocesamiento
+python3 scripts/test_preprocesamiento.py
+
+# Depurar modos Tesseract PSM
+python3 scripts/test_psm.py
+
+# Depurar patrones regex contra texto OCR raw
+python3 scripts/debug_regex.py
+```
+
+Para validar un ticket manualmente:
+```bash
+python3 -c "
+from parser_lidl import parsear_ticket_lidl
+t = parsear_ticket_lidl('data/raw/ticket_1.png', 'test_uid')
+print(t)
+"
+```
+
+Después de cualquier reprocesamiento, inspecciona `logs/` y consulta la BD:
+```bash
+sqlite3 data/tickets.db "SELECT tienda, fecha, total FROM tickets ORDER BY fecha;"
+```
+
+## Estructura de Archivos
+
+```
+main.py                  # Entry point: obtiene Gmail, parsea, guarda
+reprocesar.py            # Reprocesa todos los archivos raw en data/raw/
+reprocesar_lidl_only.py  # Reprocesa solo archivos de imagen Lidl
+config.py                # Carga .env; expone DATA_DIR, RAW_DIR, DB_PATH
+models.py                # Dataclasses: Ticket, ProductoTicket
+database.py              # Acceso SQLite: get_connection(), init_db(), guardar_ticket()
+email_client.py          # Gmail IMAP: conectar_gmail(), obtener_emails(), extraer_adjuntos()
+image_preprocessor.py    # Pipeline OpenCV: escala gris → upscale → denoise → threshold
+parser_lidl.py           # Parser Lidl (Tesseract PSM 4)
+parser_mercadona.py      # Funciones Mercadona (pdfplumber)
+validar_duplicados.py    # Utilidad de detección de duplicados
+scripts/                 # Scripts listos para cron y debug/test
+src/analytics/           # Módulos de análisis y reportes:
+  alerts.py              #   detect_exceptional_prices(), detect_spending_trend()
+  alert_storage.py       #   save_alert() con ventana dedup de 7 días
+  categorizer.py         #   categorize_product() — 11 categorías españolas
+  comparator.py          #   compare_product_prices() — promedios Lidl vs Mercadona
+  product_comparator.py  #   compare_product(), get_top_price_differences()
+  queries.py             #   get_total_spending(), get_spending_by_category()
+  smart_recommender.py   #   generate_shopping_suggestions()
+  email_sender.py        #   Envío de reportes HTML por SMTP
+data/raw/                # Imágenes de recibos crudos (PNG) y PDFs
+data/tickets.db          # Base de datos SQLite principal
+logs/                    # Logs de aplicación (tickets.log, reprocesar_lidl.log, etc.)
+templates/               # Template Jinja2 para emails HTML
+docs/                    # Reglas de flujo para IA y snapshots de estado del proyecto
+prompts/                 # Notas de iteración y prompts LLM (no código)
+```
+
+**Nota**: Los módulos de `src/analytics/` usan `sys.path.append` para acceder al `database.py` de raíz — este es el patrón establecido; no cambiarlo.
+
+## Directrices de Estilo de Código
+
+### Idioma
+Todos los nombres de variables, comentarios, mensajes de log y docstrings usan **español**. Mantener esta consistencia.
+
+### Imports
+```python
+# 1. Librería estándar
+import os, sys, logging, re, json, sqlite3
+from datetime import datetime
+from typing import Optional
+
+# 2. Terceros
+import anthropic, pdfplumber, pytesseract
+from PIL import Image
+from dotenv import load_dotenv
+
+# 3. Locales
+from config import DB_PATH
+from models import Ticket, ProductoTicket
+from database import get_connection
+```
+- Imports absolutos a nivel de raíz; manipulación de `sys.path` en `src/analytics/`
+- Línea en blanco entre cada grupo
+
+### Formato y Tipos
+- **Python 3.12+** con type hints en todas las firmas de función
+- **Longitud de línea**: 88 caracteres (estándar Black)
+- **Nombrado**:
+  - Clases: `PascalCase` — `LidlParser`, `ImagePreprocessor`
+  - Funciones/métodos: `snake_case` — `parsear_ticket_lidl`, `_extract_text`
+  - Constantes: `UPPER_SNAKE_CASE` — `GMAIL_LABEL_LIDL`, `DB_PATH`
+  - Métodos privados: prefijo `_` — `_parse_text`, `_to_ticket_object`
+- Usar `@dataclass` para datos estructurados (ver `models.py`)
+
+### Manejo de Errores
+- Siempre loguear con `exc_info=True` para traceback completo
+- Retornar `None` o vacío para fallos esperados; nunca ignorar silenciosamente
+- Usar tipos de excepción específicos, no bare `except:`
+- Verificar `ticket_ya_procesado(uid, tienda)` antes de procesar cualquier email
+
+```python
+try:
+    result = parse_pdf(file_path)
+    if not result:
+        logger.error(f"Fallo al parsear {file_path}")
+        return None
+except FileNotFoundError as e:
+    logger.error(f"Archivo no encontrado: {file_path}", exc_info=True)
+    return None
+```
+
+### Logging
+- Logger a nivel de módulo: `logger = logging.getLogger(__name__)`
+- `INFO` — milestones: email obtenido, ticket parseado, almacenado
+- `WARNING` — discrepancias: confianza OCR baja, tolerancia excedida, fallback usado
+- `ERROR` — fallos y excepciones
+- Incluir contexto en mensajes: `logger.info(f"Lidl ticket guardado: {ticket.fecha} - {ticket.total}€")`
+
+### Base de Datos
+- Todas las operaciones vía `database.py` (`get_connection()`, `guardar_ticket()`, etc.)
+- Siempre llamar `conn.close()` después de usar (sin context managers en código actual)
+- Fechas almacenadas como TEXT en formato ISO vía `datetime.isoformat()`
+- Guardián de duplicados: constraint `UNIQUE(tienda, fecha, total)` en tabla `tickets`
+
+### Configuración
+- Toda configuración en `config.py` cargada desde `.env` vía `python-dotenv`
+- Nunca hardcodear credenciales, API keys o rutas absolutas
+
+### Docstrings
+```python
+def parse(self, file_path: str, email_uid: str = "") -> Optional[Ticket]:
+    """Parsea ticket desde archivo de imagen.
+
+    Args:
+        file_path: Ruta al archivo de imagen o PDF.
+        email_uid: UID del email fuente para trazabilidad.
+
+    Returns:
+        Objeto Ticket si exitoso, None en caso de error.
+    """
+```
+
+## Problemas Conocidos de OCR (Parser Lidl)
+
+**Problema 1: Confusión de dígitos (0↔9)** — Tesseract PSM 4 ocasionalmente malinterpreta dígitos en fuentes pequeñas (ej. 1.50€ → 1.59€). PSM 6 y upscaling lo arreglan pero rompen la extracción de fecha en otros tickets. No corregir manualmente estos en la BD.
+
+**Problema 2: Segmentación de multiplicador** — Patrones como `0,97x 3` se leen como `9,97x 3`. **Solución ya implementada**: `validar_consistencia_producto()` en `parser_lidl.py` corrige automáticamente vía thresholds:
+- < 0.02€ diff: OK
+- 0.02–0.50€: WARNING (aceptado, loguéado)
+- ≥ 0.50€: CORREGIDO (usa `precio_total` del recibo como fuente de verdad)
+
+## Contribuir
+
+1. Actualizar `models.py` si cambia el schema; añadir `create_*_table()` en `database.py`
+2. Hacer backup de `data/tickets.db` antes de cualquier reprocesamiento destructivo
+3. Seguir patrones de logging y manejo de errores arriba
+4. Verificar cero duplicados después de reprocesamiento: `python3 validar_duplicados.py`
+5. Documentar limitaciones de OCR/parsing en comentarios de código
+6. Actualizar `docs/PROJECT_STATE.md` después de cambios significativos

@@ -1,0 +1,95 @@
+[2026-02-20 21:45:23] [INFO    ] [finsense] ======================================================================
+[2026-02-20 21:45:23] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-20 21:45:23] [INFO    ] [finsense] ======================================================================
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Cargadas 8 excepciones de clasificación
+[2026-02-20 21:45:23] [INFO    ] [finsense] Pipeline inicializado con 15483 transacciones conocidas en 17 cuentas
+[2026-02-20 21:45:23] [INFO    ] [finsense] Encontrados 21 CSVs y 0 PDFs en input
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser openbank parseó 13529 transacciones de openbank_TOTAL_ES3600730100550435513660_EUR.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ openbank_TOTAL_ES3600730100550435513660_EUR.csv        0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [ERROR   ] [finsense] ✗ ABANCA_ES5120800823473040166463.csv                ERROR: 'utf-8' codec can't decode byte 0xd1 in position 270: invalid continuation byte
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser b100 parseó 148 transacciones de MovimientosB100_ES88208001000130433834426.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ MovimientosB100_ES88208001000130433834426.csv          0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser myinvestor parseó 10 transacciones de MyInvestor_ES5215447889746650686253.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ MyInvestor_ES5215447889746650686253.csv                3 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser myinvestor parseó 76 transacciones de MyInvestor_ES6115447889736650701175.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ MyInvestor_ES6115447889736650701175.csv                6 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser myinvestor parseó 26 transacciones de MyInvestor_ES7715447889736650686240.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ MyInvestor_ES7715447889736650686240.csv                1 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser myinvestor parseó 30 transacciones de Myinvestor_ES6015447889796650683633.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Myinvestor_ES6015447889796650683633.csv                2 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser myinvestor parseó 29 transacciones de Myinvestor_ES7415447889716653144178.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Myinvestor_ES7415447889716653144178.csv                6 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser preprocessed parseó 1000 transacciones de Openbank_ES3600730100550435513660.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Openbank_ES3600730100550435513660.csv                  3 tx (nuevas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser openbank parseó 26 transacciones de Openbank_Fede_ES1900730100500502943470.xls.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Openbank_Fede_ES1900730100500502943470.xls.csv         0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser openbank parseó 30 transacciones de Openbank_Miguel_ES6700730100510502943333.xls.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Openbank_Miguel_ES6700730100510502943333.xls.csv       0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser openbank parseó 81 transacciones de Openbank_Violeta_ES4200730100550502943296.xls.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Openbank_Violeta_ES4200730100550502943296.xls.csv      0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser revolut parseó 210 transacciones de Revolut_ES1215830001199090471794.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ Revolut_ES1215830001199090471794.csv                   0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser trade_republic_csv parseó 920 transacciones de TradeRepublic_ES8015860001420977164411.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ TradeRepublic_ES8015860001420977164411.csv             0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser enablebanking parseó 2 transacciones de abanca_ES5120800823473040166463_EUR_20260213-180352.csv
+[2026-02-20 21:45:23] [ERROR   ] [finsense] Parser Abanca no generó hash para transacción: {'fecha': datetime.date(2026, 1, 29), 'fecha_valor': datetime.date(2026, 1, 29), 'concepto': 'TIMESTAMP SOLUTIONS AND CONSULTING SL', 'importe': 4025.21, 'balance': 4026.48, 'moneda': 'EUR', 'cuenta': 'ES5120800823473040166463', 'banco': 'Abanca', 'uid_externo': '', 'source_file': 'abanca_ES5120800823473040166463_EUR_20260213-180352.csv', 'descripcion': 'TIMESTAMP SOLUTIONS AND CONSULTING SL'}
+[2026-02-20 21:45:23] [ERROR   ] [finsense] ✗ abanca_ES5120800823473040166463_EUR_20260213-180352.csv ERROR: Parser Abanca no generó hash para transacción: {'fecha': datetime.date(2026, 1, 29), 'fecha_valor': datetime.date(2026, 1, 29), 'concepto': 'TIMESTAMP SOLUTIONS AND CONSULTING SL', 'importe': 4025.21, 'balance': 4026.48, 'moneda': 'EUR', 'cuenta': 'ES5120800823473040166463', 'banco': 'Abanca', 'uid_externo': '', 'source_file': 'abanca_ES5120800823473040166463_EUR_20260213-180352.csv', 'descripcion': 'TIMESTAMP SOLUTIONS AND CONSULTING SL'}
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser enablebanking parseó 0 transacciones de abanca_ES8820800100013043834426_EUR_20260213-180402.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ abanca_ES8820800100013043834426_EUR_20260213-180402.csv     0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser abanca parseó 0 transacciones de enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv     0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser abanca parseó 0 transacciones de enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv     0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [ERROR   ] [finsense] ✗ mediolanum_ES2501865001680510084831.csv            ERROR: Unsupported format, or corrupt file: Expected BOF record; found b'\xef\xbb\xbfFecha'
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser enablebanking parseó 0 transacciones de openbank_ES2200730100510135698457.csv
+[2026-02-20 21:45:23] [INFO    ] [finsense] ✓ openbank_ES2200730100510135698457.csv                  0 tx (todas duplicadas)
+[2026-02-20 21:45:23] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de openbank_ES3600730100550435513660_EUR_20260213-180337.csv
+[2026-02-20 21:45:23] [ERROR   ] [finsense] Parser Openbank no generó hash para transacción: {'fecha': datetime.date(2026, 2, 11), 'fecha_valor': datetime.date(2026, 2, 11), 'concepto': 'Apple pay: COMPRA EN Revolut**4173*, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-02-09', 'importe': -20.0, 'balance': None, 'moneda': 'EUR', 'cuenta': 'ES3600730100550435513660', 'banco': 'Openbank', 'uid_externo': '', 'source_file': 'openbank_ES3600730100550435513660_EUR_20260213-180337.csv', 'descripcion': 'Apple pay: COMPRA EN Revolut**4173*, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-02-09'}
+[2026-02-20 21:45:23] [ERROR   ] [finsense] ✗ openbank_ES3600730100550435513660_EUR_20260213-180337.csv ERROR: Parser Openbank no generó hash para transacción: {'fecha': datetime.date(2026, 2, 11), 'fecha_valor': datetime.date(2026, 2, 11), 'concepto': 'Apple pay: COMPRA EN Revolut**4173*, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-02-09', 'importe': -20.0, 'balance': None, 'moneda': 'EUR', 'cuenta': 'ES3600730100550435513660', 'banco': 'Openbank', 'uid_externo': '', 'source_file': 'openbank_ES3600730100550435513660_EUR_20260213-180337.csv', 'descripcion': 'Apple pay: COMPRA EN Revolut**4173*, CON LA TARJETA : XXXXXXXXXXXX2036 EL 2026-02-09'}
+[2026-02-20 21:45:23] [INFO    ] [finsense] Total: 21 transacciones nuevas
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] ================================================================================
+[2026-02-20 21:45:23] [INFO    ] [finsense] RESUMEN DE EJECUCIÓN
+[2026-02-20 21:45:23] [INFO    ] [finsense] ================================================================================
+[2026-02-20 21:45:23] [INFO    ] [finsense] Timestamp: 2026-02-20 21:45:23
+[2026-02-20 21:45:23] [INFO    ] [finsense] Log guardado en: /home/pablo/apps/mis_finanzas_1.0/logs/finsense_20260220_214523.log
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] --- INFORME DE IMPORTACIÓN POR FICHERO ---
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] Fichero                             │    Total │   Nuevos │ Duplicados
+[2026-02-20 21:45:23] [INFO    ] [finsense] ─────────────────────────────────────────────────────────────────────
+[2026-02-20 21:45:23] [INFO    ] [finsense] MovimientosB100_ES882080010001304.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] MyInvestor_ES52154478897466506862.. │        6 │        3 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] MyInvestor_ES61154478897366507011.. │       12 │        6 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] MyInvestor_ES77154478897366506862.. │        2 │        1 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Myinvestor_ES60154478897966506836.. │        4 │        2 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Myinvestor_ES74154478897166531441.. │       12 │        6 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Openbank_ES3600730100550435513660.. │        6 │        3 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Openbank_Fede_ES19007301005005029.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Openbank_Miguel_ES670073010051050.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Openbank_Violeta_ES42007301005505.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] Revolut_ES1215830001199090471794... │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] TradeRepublic_ES80158600014209771.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] abanca_ES8820800100013043834426_E.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] enable_abanca_ES66208001000130433.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] enable_abanca_ES95208001000830433.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] openbank_ES2200730100510135698457.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] openbank_TOTAL_ES3600730100550435.. │        0 │        0 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] ─────────────────────────────────────────────────────────────────────
+[2026-02-20 21:45:23] [INFO    ] [finsense] TOTAL                               │       42 │       21 │        0
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] --- Estadísticas de Procesamiento ---
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Ficheros encontrados:           21
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Ficheros procesados:            17
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Ficheros ignorados:             4
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Transacciones leídas:           21
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Duplicados (mismo archivo):     0
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Duplicados (ya en BD):          16094
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Nuevas transacciones insertadas:0
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Merchants únicos detectados:    0
+[2026-02-20 21:45:23] [INFO    ] [finsense]   Total en BD después:            0
+[2026-02-20 21:45:23] [INFO    ] [finsense] 
+[2026-02-20 21:45:23] [INFO    ] [finsense] ================================================================================
+[2026-02-20 21:45:23] [INFO    ] [finsense] FIN DE EJECUCIÓN
+[2026-02-20 21:45:23] [INFO    ] [finsense] ================================================================================

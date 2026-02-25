@@ -1,0 +1,14 @@
+[2026-02-21 18:44:04] [INFO    ] [finsense] ======================================================================
+[2026-02-21 18:44:04] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-21 18:44:04] [INFO    ] [finsense] ======================================================================
+[2026-02-21 18:44:04] [INFO    ] [finsense] Directorio entrada: input
+[2026-02-21 18:44:04] [INFO    ] [finsense] Maestro CSV: validate/Validacion_Categorias_Finsense_MASTER_v9.csv
+[2026-02-21 18:44:04] [INFO    ] [finsense] BD: finsense.db
+[2026-02-21 18:44:04] [INFO    ] [finsense] 
+[2026-02-21 18:44:04] [WARNING ] [finsense] ======================================================================
+[2026-02-21 18:44:04] [WARNING ] [finsense] ⚠️  RESET-DB: Se borrarán TODAS las transacciones de finsense.db
+[2026-02-21 18:44:04] [WARNING ] [finsense] ⚠️  Se reimportarán 21 ficheros de input
+[2026-02-21 18:44:04] [WARNING ] [finsense] ⚠️  Las reglas del clasificador son permanentes y no se borran
+[2026-02-21 18:44:04] [WARNING ] [finsense] ======================================================================
+[2026-02-21 18:44:04] [INFO    ] [finsense] 
+[2026-02-21 18:44:04] [ERROR   ] [finsense] Error borrando transacciones: no such table: transacciones

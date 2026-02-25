@@ -1,0 +1,3314 @@
+{
+  "0207-CONSUM B.AVDA. ROMA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "10062 - GOIKO CC ESP MEDI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "A LA BARRA -CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "A NOVENA PORTA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "A VI.OTECA DO MERCADO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ACEITUNAS LA MURCIANICA": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "google_type": "convenience_store",
+    "confidence": "high"
+  },
+  "AD DELHAIZE ANSPACH": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ADRIDAN": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AERO INT MATECANA": {
+    "cat1": "Viajes",
+    "cat2": "Aeropuerto/Duty Free",
+    "google_type": "airport",
+    "confidence": "high"
+  },
+  "AIREMAR ALIMENTACION": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AIREMAR ALMENTACION": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ALAMBIQUE BARnull": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "ALCHEMIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ALIBABA.COM": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ALORATURIAVENTUR": {
+    "cat1": "Compras",
+    "cat2": "Agencia de viajes",
+    "google_type": "travel_agency",
+    "confidence": "medium"
+  },
+  "ALTAMAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ALVARO MORENO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "AMERICAN ROCK": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "AN INES JACQUELIN HEGI": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "ANDORRA 2000": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ANJOS": {
+    "cat1": "Compras",
+    "cat2": "Taller",
+    "google_type": "car_repair",
+    "confidence": "high"
+  },
+  "ANTONIO ALVAREZ JAMONES": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "APPLE COMPUTER INTL": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "ARCECARNE SL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AREA CARRETERA M.V.KM 111": {
+    "cat1": "Compras",
+    "cat2": "Transporte público",
+    "google_type": "transit_station",
+    "confidence": "medium"
+  },
+  "AREA UCLES": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AREAS - AS ALBERIQUE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "AREAS PORTUGAL SA": {
+    "cat1": "Compras",
+    "cat2": "Centro comercial",
+    "google_type": "shopping_mall",
+    "confidence": "medium"
+  },
+  "AREAS SAGUNTO": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "AREAS SIBARIUM DELICATESS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ARIZONA RUTA 66 ROCK BARnull": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "AROMAS GOLF": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "ARROCERIA EL LIMONERO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ARTESANIA DE MARRUECOS II": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "ASP 2011 - ANDORRA CHA": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "ASP 2011 ANDORRA CHALE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "ATRACCIONES ESTEBAN": {
+    "cat1": "Compras",
+    "cat2": "Parques",
+    "google_type": "amusement_park",
+    "confidence": "high"
+  },
+  "AUSURZENIA TRON": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AUTOUR DE L'ASI3122860": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "AVALON CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "Alltricks": {
+    "cat1": "Compras",
+    "cat2": "Taller",
+    "google_type": "car_repair",
+    "confidence": "medium"
+  },
+  "Alternate Ordenadores": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "BALNEARIO SAN ANTONIO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BAR - RTE. LOS CURROS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR A MILAGROSA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR AL PESCADERIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR AREVACOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR CENTRAL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR EL GATO 3 SANTA LUCIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR EL PERCHAS -LOGRO/O": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BAR FELIX": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR GUADALEST": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR LA DESPENSA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR LA ISLETA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR LA PAZ": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR LA PLAZA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR LA TABERNA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR MARIAN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR MURALLA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR PARDAL": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "BAR POLIDEPORTIVO 4C": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR RESTAURANTE BAHIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BAR RESTAURANTE PLATERO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR RIBA ESCORXADA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BAR SANTA TERESA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "BAR SOL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR STOP": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BAR TIO PEDRO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BARRIO FORO ROMANO. MOLIN": {
+    "cat1": "Compras",
+    "cat2": "Museos",
+    "google_type": "museum",
+    "confidence": "medium"
+  },
+  "BEER SHOOTER CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BEET-VEGETARIANO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BENETTON CARTAGENA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "BENETTON CARTAGENA UCB": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "BICO DEXEADO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BIENMESABE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BIERWINKEL ELCHE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BIFERIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BKT MAD PARK V PREPAGO": {
+    "cat1": "Viajes",
+    "cat2": "Aeropuerto/Duty Free",
+    "google_type": "airport",
+    "confidence": "high"
+  },
+  "BOCABEACH": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BOCADOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BOCAT S": {
+    "cat1": "Compras",
+    "cat2": "Taller",
+    "google_type": "car_repair",
+    "confidence": "high"
+  },
+  "BODEGAS ARRAEZ": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "BODEGAS BAIGORRI -NAVARIDAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BONDI BEACH": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "BURGER KING - ZONA TIERRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "Back Market": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "Brasserie des Alpes": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "C.C.ESPACIO MEDITERRANEO": {
+    "cat1": "Compras",
+    "cat2": "Centro comercial",
+    "google_type": "shopping_mall",
+    "confidence": "medium"
+  },
+  "CABLEPELADO": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "CAFE BAR CASA LUTHIER": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR GANDIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR LA PALOMA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR LA PALOMA.": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR LA PALOMA.null": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR LOMA PUA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAFE BAR PUERTA DE LOS TR": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "CAFETERIA PROA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "CAFETERIA PROA -BARRIO DE PER": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "CALDEA-BOTIGA AQUATICA": {
+    "cat1": "Compras",
+    "cat2": "Spa",
+    "google_type": "spa",
+    "confidence": "medium"
+  },
+  "CAMPBELL": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "CAMPING ENTREROBLES": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CAMPING LA PUERTA": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "CANTINA PALACIO DE LOS DE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CARTAGENA MONTEVIDEO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CARULLA VILLA SUSANA": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "CASA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CASA AZZURRI CARTAGENA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CASA CEGARRA E HIJOS SL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CASA DAS CRECHAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CASA DE TODOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CASA FERMIN": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CASA NENE": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CASA PACA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CASA VISITA HERMOSA": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "CASANOVA BEACH CLUB": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CATERING EXPRESS II": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CEDIPSA LA MARINA II": {
+    "cat1": "Compras",
+    "cat2": "Combustible",
+    "google_type": "gas_station",
+    "confidence": "medium"
+  },
+  "CENTRO AZZIERTO FOOD": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CHAMFER": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CHAMFER BURGER CENTRO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CHICO CALLA ALICANTE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CHOCOLATES VALOR": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "CIRALSA SA CONCESIONARIA": {
+    "cat1": "Compras",
+    "cat2": "Taller",
+    "google_type": "car_repair",
+    "confidence": "high"
+  },
+  "CIUDAD ARTE CIENCIAS": {
+    "cat1": "Compras",
+    "cat2": "Cines",
+    "google_type": "movie_theater",
+    "confidence": "medium"
+  },
+  "CLARKS.CO.UK-EUR": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "CLASS CENTRO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "COLMAO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "COLMAO THE MARKET": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CONFETTI CLASSICS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "COTTON GRILL PARQUE MEDI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "CREST OF EDINBURGH": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "CRV*BAR EL TATO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CRV*COLMAO THE MARKET": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "CRV*Guinness SH": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "CRV*SQ *GERARDS DELI C": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "Capi": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "D LIOnull": {
+    "cat1": "Compras",
+    "cat2": "Parques",
+    "google_type": "amusement_park",
+    "confidence": "high"
+  },
+  "D'COYSA": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "DALVIR SIDHU": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "DASEBAS URBAN FOOD": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "DE BASSUS BAVARIA SL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "DELANTE BAR -CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "DRINKS&CO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "DT BY HILTON DAL GALLE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "DUFFIN DAGELS": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "Deichmann Cartagena 03": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "Donurmy - Dresoop": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "E147 VISTAHERMOSA": {
+    "cat1": "Compras",
+    "cat2": "Hospital",
+    "google_type": "hospital",
+    "confidence": "medium"
+  },
+  "EAT AEROPUERTO ALICANTE": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EDMUNDO HOSTELERIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EL BARETO SETABENSE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL BRILLANTE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL CANDIL": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "EL CANTONET": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL CHANQUETE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL CHARRU": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EL DESCANSO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EL FRESCO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EL GALLEGO": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "EL JARDIN.SABORES ARTESAN": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "EL KILO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "EL LOCO ANGEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL LOCO ANGEL ANGEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL MERCADO DEL TRIGO SL.": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "EL ORIGEN": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "EL PURGATORIO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL PURGATORIO BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL PURGATORIO BAR -CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL PURGATORIO BARnull": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "EL RANCHO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "EL RANCHO CARTAGENA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EL RINCON DE PEPE": {
+    "cat1": "Compras",
+    "cat2": "Peluquería",
+    "google_type": "hair_care",
+    "confidence": "medium"
+  },
+  "EL SOLDADITO PLOMO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "EL VINAGRILLO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ELECTRONICARRC.COM": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "EMPANADAS MALVON WANDA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "ENTRETABLASYVINOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ES ESPINADRO AGRUP": {
+    "cat1": "Compras",
+    "cat2": "Lavado",
+    "google_type": "car_wash",
+    "confidence": "high"
+  },
+  "ES HNOS BLAZQUEZ": {
+    "cat1": "Compras",
+    "cat2": "Combustible",
+    "google_type": "gas_station",
+    "confidence": "medium"
+  },
+  "ES LOURDES SL": {
+    "cat1": "Compras",
+    "cat2": "Lavado",
+    "google_type": "car_wash",
+    "confidence": "high"
+  },
+  "ESTABLECIMIENTOS ALFARO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "EVANA": {
+    "cat1": "Compras",
+    "cat2": "Estética",
+    "google_type": "beauty_salon",
+    "confidence": "high"
+  },
+  "EXPPUERTASDEMURCIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "EZAPATILLAS": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "FAN FOODS FOR YOU S.L": {
+    "cat1": "Compras",
+    "cat2": "Libros",
+    "google_type": "book_store",
+    "confidence": "high"
+  },
+  "FIGON DE RECOLETOS S L": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "FINANCIAL SOPORTES TPV": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "FNAC": {
+    "cat1": "Compras",
+    "cat2": "Libros",
+    "google_type": "book_store",
+    "confidence": "high"
+  },
+  "FNAC ESPAGNE": {
+    "cat1": "Compras",
+    "cat2": "Libros",
+    "google_type": "book_store",
+    "confidence": "high"
+  },
+  "FOOD VILLAGE SCHIPHOL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "FOSTER'S PARQUE MEDITERRA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "FPH STESKAL": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "GAME CC ESPACIO MEDITERRA": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "GARCIA TORAL S.L.": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "GARVALIN CALZADOS": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "GASTROBAR LA FABRICA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GASTROBAR LA FABRICAnull": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GATE GROUP INFLIGHT": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "GATO 3": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GLORIAS RESTAURANT #4": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "GOLETA TRES": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GOONSHOP.ES": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "GOSPODA KOKO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GRAN TEA SL": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "GRANADA EL VIOL N": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GRUPO D LIO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GRUPO LA GAMBA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "GRUPO SABORES DEL MAR": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "Google Store": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "HAPEYENES S.L": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HENNES & MAURITZ SL 03011": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "HENRYûS DELIZIE -SANTIAGO DE L": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HOLIDAY INNS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HOPDODDY SOCO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "HOSPEDAJE BAR LA TITA": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "HOSTEFOX SL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HOSTELERIA CASA MOLINA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HOSTELERIA UN RATO FELIZ": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HOSTERIA EL CORRALUCO": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "HOUSE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "HPY*EKOSPORT": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "HUGO BOSS ESPAãA SA.": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "HUGO Y LATIFA E.A.R": {
+    "cat1": "Compras",
+    "cat2": "Joyería",
+    "google_type": "jewelry_store",
+    "confidence": "medium"
+  },
+  "IBER SWISS CATERING": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "IBEROS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ILC -Transavia NL": {
+    "cat1": "Compras",
+    "cat2": "Colegio",
+    "google_type": "school",
+    "confidence": "medium"
+  },
+  "IMAGINARIUM": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "INERCIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "INMACULADA CONCEPCIOQUINT": {
+    "cat1": "Compras",
+    "cat2": "Colegio",
+    "google_type": "school",
+    "confidence": "medium"
+  },
+  "INSIDE": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "INTERMARCHE": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "INTRAWOLRD 2005S.L.": {
+    "cat1": "Compras",
+    "cat2": "Colegio",
+    "google_type": "school",
+    "confidence": "medium"
+  },
+  "IRCO SL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "IZ *INFERNUN RESTAURAN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "IZ *Remco Solleveld": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "IrishCo Gaia": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "JACKSON IRISH": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "JAKOSC JAGODA KOSC": {
+    "cat1": "Compras",
+    "cat2": "Estética",
+    "google_type": "beauty_salon",
+    "confidence": "high"
+  },
+  "JEN'S PLACE BAKERY & C": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "JIOVANNI PIZZER3107591": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "JOAQUIN BOJ CASA DE LAS E": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "JOYAN JOYEROS": {
+    "cat1": "Compras",
+    "cat2": "Joyería",
+    "google_type": "jewelry_store",
+    "confidence": "medium"
+  },
+  "JUAN FORNES FORNES": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "JUGUETILANDIA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "KEBAP ROYAL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "KFC CARTAGENA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "KIOSCO DEL NAVAL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "KIOSCO MIRAMAR": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "KIOSKO MIGUEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "KIOSKO RAFAEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA BRASERIA DE CARLOS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA BRASERIA DE MILAGR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA CANGREJA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA CANTINA DE ALTABIX": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA CANTINA DE CARMEN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA CANTINA DEL BESO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA CREM CREPERIE": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "LA FABRICA DE NIKIS VI": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "LA GALLINA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA GRAN PULPERIA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA GUINDILLA TAQUERIA AAA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA INVENCIBLE SL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA MANCHEGUITA 1978": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA MANGA CLUB S.L.": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "LA MARINA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA MARQUESITA": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "LA MARUCA DE CASTELLAN": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA MILLA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA MILLA VERDE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA MOROCHA GRANADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA PARADA": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "LA PARADA DE IONUT": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA PIRIPI DEL PERLITA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA POSADA DE LA PUEBLA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "LA SALAMANDRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA TAPA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA TAQUERIA MEXICANA DEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA TAULA DELS AMICS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA UVA JUMILLANA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LA VACAVIEJA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LA VERDAD DIGITAL": {
+    "cat1": "Compras",
+    "cat2": "Libros",
+    "google_type": "book_store",
+    "confidence": "high"
+  },
+  "LADUTI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LAIE SF MARINA": {
+    "cat1": "Compras",
+    "cat2": "Libros",
+    "google_type": "book_store",
+    "confidence": "high"
+  },
+  "LARVI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "LOS ALTRAMUCES": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LOS CURROS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LOS ROCHES": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LOS TORREZNOS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LOS TORREZNOS -GOYA-": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LOU GRILL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "LUL TICKET MACHINE": {
+    "cat1": "Compras",
+    "cat2": "Transporte público",
+    "google_type": "transit_station",
+    "confidence": "medium"
+  },
+  "M.PLAZA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MACARENA RESTAURANTE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MANDARACHE STORE": {
+    "cat1": "Compras",
+    "cat2": "Centro comercial",
+    "google_type": "shopping_mall",
+    "confidence": "medium"
+  },
+  "MANDARACHE STORE SL": {
+    "cat1": "Compras",
+    "cat2": "Centro comercial",
+    "google_type": "shopping_mall",
+    "confidence": "medium"
+  },
+  "MAR AO CARMO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MARIA FERNANDEZ PAVON": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MARISCAL DELICATESSEN TAP": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MARKS & SPENCER SSPLTD": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "MASTIACRAFTBEER": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MCDONALDS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MCDONALDS SANTA POLA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MENAJE DEL HOGAR 044": {
+    "cat1": "Compras",
+    "cat2": "Hogar",
+    "google_type": "furniture_store",
+    "confidence": "medium"
+  },
+  "MENTA Y FRESA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "MERCACENTER - RIVER EN": {
+    "cat1": "Compras",
+    "cat2": "Centro comercial",
+    "google_type": "shopping_mall",
+    "confidence": "medium"
+  },
+  "MERCHANDTOUR": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "MERENDERO LA OLIVERA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MGP*Vinted": {
+    "cat1": "Compras",
+    "cat2": "Hogar",
+    "google_type": "furniture_store",
+    "confidence": "medium"
+  },
+  "MICROSOFT *ACCOUNT": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "MINIPRECO EXPRES LIS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MIRADOR DA BREA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MOLLIY S CROSS": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "MOMENTS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "MORSI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "MUNDOPDA.COM": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "MUU STEAK HOUSE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "Marketplace PCCom": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "Microsoft *Store": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "Migros Forum Montreux": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "Migros MM Eaux-Vives": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "Migros MM Servette": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "NEMRUT KEBAP": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "NEUHAUS VLEZENBEEK": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "NEW KING CHIN REST": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "NEWREST TRAVEL RETAIL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "NUESTRA BARRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "NUEVO GRUPO HOSTELERO LA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "O BALCON DAS BRANAS": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "O CACHO DO JOSE": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "OK SOLUCIONES Y SUMINIST": {
+    "cat1": "Compras",
+    "cat2": "Ferretería",
+    "google_type": "hardware_store",
+    "confidence": "medium"
+  },
+  "OLEAJE PLAYA GRANADA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "OLYMPUS SPORT NUTRICION S": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "google_type": "convenience_store",
+    "confidence": "high"
+  },
+  "OYSHO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "PA.OS INTERSPORT": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "PADDY SINGHïS RESTAURANT": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PAMPLING CARTAGENA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "PAPPADEAUX SEAFOOD KIT": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PAPPAS BROTHERS STKHSE": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PAPPASITO'S CANTINA #0": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PARLAMENTO TAPEO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PARRILLADA EL CHARRU": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PASO DE LA SERRA (LAGUNA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PEPE MENDOZA CASA AGRICOL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PEPINOS BEACH": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PETISCOS DO CARDEAL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PILARICA PUNTO MIXTO": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "PISANO SAN MIGUEL": {
+    "cat1": "Compras",
+    "cat2": "Hogar",
+    "google_type": "home_goods_store",
+    "confidence": "medium"
+  },
+  "PISTACHIO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PISTACHIO ESPACIO MEDITER": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "POLINESIA ESPACIO MEDITER": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "PORTAVENTURA RESTAURANTS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PORTOMINO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "PP*0231CODE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "PP*3486CODE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "PP*7095CODE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "PP*7606CODE": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "PRACTISER CENTRAL": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "PREMIUM FOOD": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PREMIUMS BEERS FROM SPAIN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PROBAR EL BUEN BAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PRTA LOS TRISTES/EL PASEO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PRV VINHO NO BOLHA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "PULPERIA LUIS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "PURA CEPA VERMU": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "Passaggio Restaurant B": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "Pharm Plus Orthoped": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Farmacia",
+    "google_type": "pharmacy",
+    "confidence": "medium"
+  },
+  "QUAI 23 SARL": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "QUIOSCO MIGUEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "QUIOSCO MIGUEL -CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "QUITAPENAS": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "RADIO BAR CARTAGENA ASOCI": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RAESA AEROPUERTO BARAJAS": {
+    "cat1": "Viajes",
+    "cat2": "Aeropuerto/Duty Free",
+    "google_type": "airport",
+    "confidence": "high"
+  },
+  "RAME COCKTAIL & FOOD": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RAMEN SHIFU ISABEL LA CAT": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REATAURANTE COCINA ASIATI": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RECEPCION 2": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "RED LION NORTH T": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RENDEZ VOUS": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESATAURANTE BELLAVISTA -CALAVERA, LA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST CASA ADAO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST CASA AUGUSTO ARRANZ -SORIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST LA PIAZZENZA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST PINCHO CASTILLA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST. CASA AZZURRI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST. COSTA BLANCA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST. EL PINCHO DE CASTIL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST. ESTRELLA GALICIA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "REST. LA PECERA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST. RUTA DE LAS NIEVES": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST.AVENIDA HOXTESAR S.L": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "REST.IKEA MURCIA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "REST.MOLI DEL PEANO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "REST.PALAU DE GEL": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESTAUR.EL PINCHO DE CAST": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURACJA STARKA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURACJA U BABCI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANT-AREA DE SER. J": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE A CALZADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE ABRASAME": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE ALBORADA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE BAR BULEVAR": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE CAMPBELL'S": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE CARRETAS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE CARROTS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE CASA COCO -SANTA POLA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE CASA SEIN": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE COCINA ASIATI": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE DALMANSA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE DUBLIN": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESTAURANTE EL CRUCE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESTAURANTE EL GALLEGO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE EL MUELLE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE EL PINCHO DE": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE EL ZORROnull": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE ESZENCIA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE FUENTE LA HIG": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE GREEN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE INFERNUM": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE KATY": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE LA ARTESA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LA CARTELA S.": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LA CASONA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE LA GRADONA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE LA PARRA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE LA SELLA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LA TANA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE LA TARANTA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LAS RUMBAS": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LOREA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE LOS TRONCOS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE MAGOGA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE MARES BRAVAS": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE MESONICO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE MORENO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE PANEQUE RUIZ": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESTAURANTE PICCOLO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE RAMON": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE RUF-MARI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE SALZILLO S.L.": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE SALZILLO SL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE SARMIENTO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE SNIPE": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE SUESJO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE TILO": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RESTAURANTE VEGETARIANO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE VENTA EL PUER": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE VENTA QUEMADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE VENTA SERRANO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTAURANTE VINAROZ 28": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAURANTE XIRI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RESTAUTANTE ARCONADA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RESTURANTE JUVENTUD": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RINCON DEL PERLITA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "RINCON DEL REY RESTAURANT": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "RINCON MANCHEGO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "ROCK BAR FRONTERA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RTE LIZARRAN-SERRANO GALV": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RTE LOS CURROS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "RUGBY HEAVEN": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "Restaurante Mare e Monti": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "Restaurante Porto Giglio": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SABOR ANDALUZ": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "SALTGRASS - VALLEY VW": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SALUD DEL SUR CB": {
+    "cat1": "Salud y Belleza",
+    "cat2": "Médico",
+    "google_type": "doctor",
+    "confidence": "high"
+  },
+  "SANTIAGO DA PRACA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SANTIVERI": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "google_type": "convenience_store",
+    "confidence": "high"
+  },
+  "SANTIVERI TURISME S.L.": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "google_type": "convenience_store",
+    "confidence": "high"
+  },
+  "SAR Lounge 1": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "SAXO CARTAGENA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "SCABETTI": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SCOTCH HOUSE EDINBURGH": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "SCOTLAND T SHIRT CO.": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "SELECCIONADORES DE QUESO": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "SERVIAREAS 2000": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SERVICIOS COMIDAS MUNDIAL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "SERVIDOR SPAIN.COM": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "SIETE RIOS SL -MURCIA": {
+    "cat1": "Compras",
+    "cat2": "Parking",
+    "google_type": "parking",
+    "confidence": "medium"
+  },
+  "SKI SERVEIS": {
+    "cat1": "Compras",
+    "cat2": "Agencia de viajes",
+    "google_type": "travel_agency",
+    "confidence": "medium"
+  },
+  "SORIA MARINA SL": {
+    "cat1": "Compras",
+    "cat2": "Taller",
+    "google_type": "car_repair",
+    "confidence": "high"
+  },
+  "SORIANA170 CENTRO MAYA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SP ALL4CYCLING": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "medium"
+  },
+  "SP PANAMA JACK": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "shoe_store",
+    "confidence": "medium"
+  },
+  "SPECS LIQUOR #128": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "STUFF": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "SUBWAY 00124271": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SUPER KEISY 4": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "SUPER UPPER 643": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SUPERBARnull": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "SUPERCOR EXPRESS AVD": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "SUPERDRY 203": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "SUPERMERCADO UPPER 948": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SUPERMERCAT PROXI 7 (A": {
+    "cat1": "Alimentación",
+    "cat2": "Conveniencia",
+    "google_type": "convenience_store",
+    "confidence": "high"
+  },
+  "SUPERTREBOL": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SumUp *Corleggy Chees": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "SumUp *JOSE ALBALADEJ": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "SumUp *OCLIA PATRIMON": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TALMS ZAVENTEM AIRPOR": {
+    "cat1": "Viajes",
+    "cat2": "Aeropuerto/Duty Free",
+    "google_type": "airport",
+    "confidence": "high"
+  },
+  "TAQUILLA MEDITERRANEO": {
+    "cat1": "Compras",
+    "cat2": "Cines",
+    "google_type": "movie_theater",
+    "confidence": "medium"
+  },
+  "TARTAR INVERSIONES": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TECHNOLOGIC ROAD": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "TEMPLO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TEMPLO GASTRO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TERRAZA GATO 3": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TERRAZA L.": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TETERIA KASBAH": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "THE CURRY CORNER": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "THE DAYAEL": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "THE SQUARE BAR & G": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "THE TRAVELLER CAFFE": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "TIENDA D1 CARTAGENA LA": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "TIENDA D1 ST M ALCAZAR": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "TIENDA MARUJA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "TIENDA145 SANTA POLA": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "TIENDAS PRINK": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "TIMBER CARTAGENA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TIPICO ARGENTINO": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "TITIRIT -VALENCIA": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "TITO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TOC MADRID": {
+    "cat1": "Compras",
+    "cat2": "Alojamiento",
+    "google_type": "lodging",
+    "confidence": "medium"
+  },
+  "TORTUGA ART AND ROCK": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "TRAINERSMN": {
+    "cat1": "Compras",
+    "cat2": "Gimnasio",
+    "google_type": "gym",
+    "confidence": "medium"
+  },
+  "TooGoodToG rk6c5qygs41": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "TooGoodToG txrbj1ve2x6": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "Transavia OnboardSales": {
+    "cat1": "Viajes",
+    "cat2": "Aeropuerto/Duty Free",
+    "google_type": "airport",
+    "confidence": "high"
+  },
+  "UNICO GALLEGO": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "UNIDE MARKET": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "UPPER 546": {
+    "cat1": "Compras",
+    "cat2": "Gimnasio",
+    "google_type": "gym",
+    "confidence": "medium"
+  },
+  "UPPER 687": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "VELA BEACH": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "VENTA GARCERAN": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "VENTA HNOS MULA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "VENTA MOYA": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "VIAJES BARCELO": {
+    "cat1": "Compras",
+    "cat2": "Agencia de viajes",
+    "google_type": "travel_agency",
+    "confidence": "medium"
+  },
+  "VINCENT FARGES": {
+    "cat1": "Alimentación",
+    "cat2": "Alimentación",
+    "google_type": "food",
+    "confidence": "medium"
+  },
+  "WAL-MART #2105": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "WALGREENS #3731": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "WASI FUSION": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "WDFG ALICANTE": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "WH SMITH": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "WHOLEFDS ADN #10473": {
+    "cat1": "Compras",
+    "cat2": "Panadería",
+    "google_type": "bakery",
+    "confidence": "high"
+  },
+  "WOD HOLLAND GIFTS": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "WORTEN": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "WORTEN CARTAGENA": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "WWW.KORNER.ES": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "WWW.LOCKON.RU CURR": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "Welikecoffee.com": {
+    "cat1": "Restauración",
+    "cat2": "Cafetería",
+    "google_type": "cafe",
+    "confidence": "high"
+  },
+  "YAPHONE.COM": {
+    "cat1": "Compras",
+    "cat2": "Electrónica",
+    "google_type": "electronics_store",
+    "confidence": "high"
+  },
+  "ZARA": {
+    "cat1": "Ropa y Calzado",
+    "cat2": "Ropa y Calzado",
+    "google_type": "clothing_store",
+    "confidence": "high"
+  },
+  "costa": {
+    "cat1": "Restauración",
+    "cat2": "Bar",
+    "google_type": "bar",
+    "confidence": "high"
+  },
+  "¥AM ¥AM PARQUE MEDITERRA": {
+    "cat1": "Compras",
+    "cat2": "Parques",
+    "google_type": "amusement_park",
+    "confidence": "high"
+  }
+}

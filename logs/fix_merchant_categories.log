@@ -1,0 +1,51 @@
+2026-02-22 21:52:08,245 - INFO - ============================================================
+2026-02-22 21:52:08,245 - INFO - CORRECCIÓN DE CATEGORÍAS DE MERCHANTS
+2026-02-22 21:52:08,245 - INFO - ============================================================
+
+2026-02-22 21:52:08,245 - INFO - 🔧 Recategorizando merchants con tipos de Google Places...
+2026-02-22 21:52:08,247 - INFO -    Encontrados 740 merchants para recategorizar
+2026-02-22 21:52:08,253 - INFO -    Progreso: 100/740 (50 corregidos)
+2026-02-22 21:52:08,257 - INFO -    Progreso: 200/740 (100 corregidos)
+2026-02-22 21:52:08,261 - INFO -    Progreso: 300/740 (151 corregidos)
+2026-02-22 21:52:08,265 - INFO -    Progreso: 400/740 (207 corregidos)
+2026-02-22 21:52:08,271 - INFO -    Progreso: 500/740 (247 corregidos)
+2026-02-22 21:52:08,274 - INFO -    Progreso: 600/740 (299 corregidos)
+2026-02-22 21:52:08,278 - INFO -    Progreso: 700/740 (347 corregidos)
+2026-02-22 21:52:08,281 - INFO - ✅ Recategorizados 365/740 merchants
+
+2026-02-22 21:52:08,282 - INFO - ============================================================
+2026-02-22 21:52:08,282 - INFO - ✅ CORRECCIÓN COMPLETADA
+2026-02-22 21:52:08,282 - INFO - ============================================================
+2026-02-22 21:52:38,040 - INFO - ============================================================
+2026-02-22 21:52:38,040 - INFO - CORRECCIÓN DE CATEGORÍAS DE MERCHANTS
+2026-02-22 21:52:38,040 - INFO - ============================================================
+
+2026-02-22 21:52:38,040 - INFO - 🔧 Recategorizando merchants con Google Places Details...
+2026-02-22 21:52:38,041 - INFO -    Encontrados 375 merchants para recategorizar
+2026-02-22 21:52:51,337 - INFO -    Progreso: 50/375 (16 corregidos, 0 errores)
+2026-02-22 21:53:04,600 - INFO -    Progreso: 100/375 (30 corregidos, 0 errores)
+2026-02-22 21:53:18,361 - INFO -    Progreso: 150/375 (43 corregidos, 0 errores)
+2026-02-22 21:53:31,814 - INFO -    Progreso: 200/375 (61 corregidos, 0 errores)
+2026-02-22 21:53:45,357 - INFO -    Progreso: 250/375 (80 corregidos, 0 errores)
+2026-02-22 21:53:59,027 - INFO -    Progreso: 300/375 (126 corregidos, 0 errores)
+2026-02-22 21:54:13,497 - INFO -    Progreso: 350/375 (141 corregidos, 0 errores)
+2026-02-22 21:54:19,991 - INFO - ✅ Recategorizados 144/375 merchants (0 errores)
+
+2026-02-22 21:54:19,992 - INFO - ============================================================
+2026-02-22 21:54:19,992 - INFO - ✅ CORRECCIÓN COMPLETADA
+2026-02-22 21:54:19,993 - INFO - ============================================================
+2026-02-22 22:21:20,403 - INFO - ============================================================
+2026-02-22 22:21:20,403 - INFO - CORRECCIÓN DE CATEGORÍAS DE MERCHANTS
+2026-02-22 22:21:20,403 - INFO - ============================================================
+
+2026-02-22 22:21:20,404 - INFO - 🔧 Recategorizando merchants con Google Places Details...
+2026-02-22 22:21:20,404 - INFO -    Encontrados 231 merchants para recategorizar
+2026-02-22 22:21:34,537 - INFO -    Progreso: 50/231 (10 corregidos, 0 errores)
+2026-02-22 22:21:47,986 - INFO -    Progreso: 100/231 (16 corregidos, 0 errores)
+2026-02-22 22:22:01,046 - INFO -    Progreso: 150/231 (30 corregidos, 0 errores)
+2026-02-22 22:22:14,005 - INFO -    Progreso: 200/231 (37 corregidos, 0 errores)
+2026-02-22 22:22:23,532 - INFO - ✅ Recategorizados 40/231 merchants (0 errores)
+
+2026-02-22 22:22:23,533 - INFO - ============================================================
+2026-02-22 22:22:23,533 - INFO - ✅ CORRECCIÓN COMPLETADA
+2026-02-22 22:22:23,533 - INFO - ============================================================

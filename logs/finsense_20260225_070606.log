@@ -1,0 +1,613 @@
+[2026-02-25 07:06:06] [INFO    ] [finsense] ======================================================================
+[2026-02-25 07:06:06] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-25 07:06:06] [INFO    ] [finsense] ======================================================================
+[2026-02-25 07:06:06] [INFO    ] [finsense] Directorio entrada: input
+[2026-02-25 07:06:06] [INFO    ] [finsense] Maestro CSV: validate/Validacion_Categorias_Finsense_MASTER_v9.csv
+[2026-02-25 07:06:06] [INFO    ] [finsense] BD: finsense.db
+[2026-02-25 07:06:06] [INFO    ] [finsense] 
+[2026-02-25 07:06:06] [DEBUG   ] [finsense] Tablas de BD creadas/verificadas
+[2026-02-25 07:06:06] [INFO    ] [finsense] Cargando estado de BD...
+[2026-02-25 07:06:06] [DEBUG   ] [finsense] Cargados 2458 hashes únicos de BD (18 cuentas)
+[2026-02-25 07:06:06] [INFO    ] [finsense] Total en BD antes: 2458
+[2026-02-25 07:06:06] [INFO    ] [finsense] Inicializando pipeline...
+[2026-02-25 07:06:06] [DEBUG   ] [finsense] Cargadas 19 excepciones de clasificación
+[2026-02-25 07:06:06] [INFO    ] [finsense] Pipeline inicializado con 2458 transacciones conocidas en 18 cuentas
+[2026-02-25 07:06:06] [INFO    ] [finsense] 
+[2026-02-25 07:06:06] [INFO    ] [finsense] Procesando directorio: input
+[2026-02-25 07:06:06] [INFO    ] [finsense] Encontrados 21 CSVs y 0 PDFs en input
+[2026-02-25 07:06:06] [DEBUG   ] [finsense] Parser openbank parseó 13529 transacciones de openbank_TOTAL_ES3600730100550435513660_EUR.csv
+[2026-02-25 07:06:06] [DEBUG   ] [finsense]   openbank_TOTAL_ES3600730100550435513660_EUR.csv: parseo=13529, internos_dup=0, cross_dup=0, result=13529
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):  1406 tx ( 10.4%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):  5424 tx ( 40.1%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 2 (Merchants                ):  4402 tx ( 32.5%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 3 (Transferencias           ):   718 tx (  5.3%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 4 (Tokens                   ):   331 tx (  2.4%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):  1248 tx (  9.2%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ openbank_TOTAL_ES3600730100550435513660_EUR.csv | Total: 13529 | Nuevos: 13529 | Duplic: 0
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser abanca parseó 7 transacciones de ABANCA_ES5120800823473040166463.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   ABANCA_ES5120800823473040166463.csv: parseo=7, internos_dup=0, cross_dup=7, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ ABANCA_ES5120800823473040166463.csv           | Total:    7 | Nuevos:    0 | Duplic: 7 (de: 7x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser bankinter parseó 29 transacciones de Bankinter_01288700160105752044.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Bankinter_01288700160105752044.csv: parseo=29, internos_dup=0, cross_dup=28, result=1
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 3 (Transferencias           ):     1 tx (100.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Bankinter_01288700160105752044.csv            | Total:   29 | Nuevos:    1 | Duplic: 28 (de: 28x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser bankinter parseó 120 transacciones de Bankinter_01288700180105753633.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Bankinter_01288700180105753633.csv: parseo=120, internos_dup=0, cross_dup=117, result=3
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 2 (Merchants                ):     1 tx ( 33.3%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 3 (Transferencias           ):     2 tx ( 66.7%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Bankinter_01288700180105753633.csv            | Total:  120 | Nuevos:    3 | Duplic: 117 (de: 117x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser b100 parseó 148 transacciones de MovimientosB100_ES88208001000130433834426.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   MovimientosB100_ES88208001000130433834426.csv: parseo=148, internos_dup=0, cross_dup=147, result=1
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):     1 tx (100.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ MovimientosB100_ES88208001000130433834426.csv | Total:  148 | Nuevos:    1 | Duplic: 147 (de: 147x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser myinvestor parseó 10 transacciones de MyInvestor_ES5215447889746650686253.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   MyInvestor_ES5215447889746650686253.csv: parseo=10, internos_dup=0, cross_dup=9, result=1
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 3 (Transferencias           ):     1 tx (100.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ MyInvestor_ES5215447889746650686253.csv       | Total:   10 | Nuevos:    1 | Duplic: 9 (de: 9x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser myinvestor parseó 76 transacciones de MyInvestor_ES6115447889736650701175.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   MyInvestor_ES6115447889736650701175.csv: parseo=76, internos_dup=0, cross_dup=76, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ MyInvestor_ES6115447889736650701175.csv       | Total:   76 | Nuevos:    0 | Duplic: 76 (de: 76x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser myinvestor parseó 26 transacciones de MyInvestor_ES7715447889736650686240.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   MyInvestor_ES7715447889736650686240.csv: parseo=26, internos_dup=0, cross_dup=26, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ MyInvestor_ES7715447889736650686240.csv       | Total:   26 | Nuevos:    0 | Duplic: 26 (de: 26x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser myinvestor parseó 30 transacciones de Myinvestor_ES6015447889796650683633.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Myinvestor_ES6015447889796650683633.csv: parseo=30, internos_dup=0, cross_dup=30, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Myinvestor_ES6015447889796650683633.csv       | Total:   30 | Nuevos:    0 | Duplic: 30 (de: 30x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser myinvestor parseó 29 transacciones de Myinvestor_ES7415447889716653144178.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Myinvestor_ES7415447889716653144178.csv: parseo=29, internos_dup=0, cross_dup=28, result=1
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):     1 tx (100.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Myinvestor_ES7415447889716653144178.csv       | Total:   29 | Nuevos:    1 | Duplic: 28 (de: 28x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser openbank parseó 26 transacciones de Openbank_Fede_ES1900730100500502943470.xls.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Openbank_Fede_ES1900730100500502943470.xls.csv: parseo=26, internos_dup=0, cross_dup=26, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Openbank_Fede_ES1900730100500502943470.xls.csv | Total:   26 | Nuevos:    0 | Duplic: 26 (de: 26x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser openbank parseó 30 transacciones de Openbank_Miguel_ES6700730100510502943333.xls.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Openbank_Miguel_ES6700730100510502943333.xls.csv: parseo=30, internos_dup=0, cross_dup=30, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Openbank_Miguel_ES6700730100510502943333.xls.csv | Total:   30 | Nuevos:    0 | Duplic: 30 (de: 30x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser openbank parseó 81 transacciones de Openbank_Violeta_ES4200730100550502943296.xls.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Openbank_Violeta_ES4200730100550502943296.xls.csv: parseo=81, internos_dup=0, cross_dup=80, result=1
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):     1 tx (100.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Openbank_Violeta_ES4200730100550502943296.xls.csv | Total:   81 | Nuevos:    1 | Duplic: 80 (de: 80x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser revolut parseó 210 transacciones de Revolut_ES1215830001199090471794.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   Revolut_ES1215830001199090471794.csv: parseo=210, internos_dup=0, cross_dup=201, result=9
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     3 tx ( 33.3%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):     6 tx ( 66.7%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ Revolut_ES1215830001199090471794.csv          | Total:  210 | Nuevos:    9 | Duplic: 201 (de: 201x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser enablebanking parseó 2 transacciones de abanca_ES5120800823473040166463_EUR_20260213-180352.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   abanca_ES5120800823473040166463_EUR_20260213-180352.csv: parseo=2, internos_dup=0, cross_dup=2, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ abanca_ES5120800823473040166463_EUR_20260213-180352.csv | Total:    2 | Nuevos:    0 | Duplic: 2 (de: 2x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser enablebanking parseó 0 transacciones de abanca_ES8820800100013043834426_EUR_20260213-180402.csv
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ abanca_ES8820800100013043834426_EUR_20260213-180402.csv | Total:    0 | Nuevos:    0 | Duplic: 0
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv: parseo=25, internos_dup=0, cross_dup=25, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv | Total:   25 | Nuevos:    0 | Duplic: 25 (de: 25x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser enablebanking parseó 111 transacciones de enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv: parseo=111, internos_dup=0, cross_dup=111, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv | Total:  111 | Nuevos:    0 | Duplic: 111 (de: 111x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser mediolanum_old parseó 457 transacciones de mediolanum_ES2501865001680510084831.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   mediolanum_ES2501865001680510084831.csv: parseo=457, internos_dup=0, cross_dup=454, result=3
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     2 tx ( 66.7%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):     1 tx ( 33.3%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ mediolanum_ES2501865001680510084831.csv       | Total:  457 | Nuevos:    3 | Duplic: 454 (de: 454x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser openbank parseó 55 transacciones de openbank_ES2200730100510135698457.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   openbank_ES2200730100510135698457.csv: parseo=55, internos_dup=0, cross_dup=55, result=0
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ openbank_ES2200730100510135698457.csv         | Total:   55 | Nuevos:    0 | Duplic: 55 (de: 55x bd)
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de openbank_ES3600730100550435513660_EUR_20260213-180337.csv
+[2026-02-25 07:06:07] [DEBUG   ] [finsense]   openbank_ES3600730100550435513660_EUR_20260213-180337.csv: parseo=25, internos_dup=0, cross_dup=0, result=25
+[2026-02-25 07:06:07] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  4.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 1 (Exact match              ):    16 tx ( 64.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 2 (Merchants                ):     6 tx ( 24.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense]     Capa 4 (Tokens                   ):     2 tx (  8.0%)
+[2026-02-25 07:06:07] [INFO    ] [finsense] ✓ openbank_ES3600730100550435513660_EUR_20260213-180337.csv | Total:   25 | Nuevos:   25 | Duplic: 0
+[2026-02-25 07:06:07] [INFO    ] [finsense] 
+[2026-02-25 07:06:07] [INFO    ] [finsense] Total procesado: 13574 transacciones nuevas
+[2026-02-25 07:06:07] [INFO    ] [finsense] 
+[2026-02-25 07:06:07] [INFO    ] [finsense] Insertando transacciones en BD...
+[2026-02-25 07:06:07] [ERROR   ] [finsense] Error insertando transacciones: UNIQUE constraint failed: transacciones.hash
+[2026-02-25 07:06:07] [INFO    ] [finsense] Total en BD después: 2458
+[2026-02-25 07:06:07] [INFO    ] [finsense] 
+[2026-02-25 07:06:07] [INFO    ] [finsense] Exportando a Excel...
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Iniciando exportación a Excel: output/transacciones_20260225_070607.xlsx
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Transferencias sin pareja encontradas: 416
+[2026-02-25 07:06:07] [DEBUG   ] [finsense] Transacciones cargadas: 2458
+[2026-02-25 07:06:08] [INFO    ] [finsense] Excel exportado: output/transacciones_20260225_070607.xlsx
+[2026-02-25 07:06:08] [INFO    ] [finsense] ✓ Excel generado: output/transacciones_20260225_070607.xlsx
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] ESTADÍSTICAS DE TRANSACCIONES NUEVAS
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] 📅 Periodo: 2004-05-03 → 2026-02-11
+[2026-02-25 07:06:08] [INFO    ] [finsense] 📝 Total nuevas transacciones: 13,574
+[2026-02-25 07:06:08] [INFO    ] [finsense] 💰 Totales:
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Ingresos: +€2,424,891.47
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Gastos:   -€2,409,052.68
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Balance:   €15,838.79
+[2026-02-25 07:06:08] [WARNING ] [finsense] ⚠️  1248 transacciones sin clasificar (9.2%)
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] RESUMEN DE EJECUCIÓN
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] Timestamp: 2026-02-25 07:06:08
+[2026-02-25 07:06:08] [INFO    ] [finsense] Log guardado en: /home/pablo/apps/mis_finanzas_1.0/logs/finsense_20260225_070606.log
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] --- INFORME DE IMPORTACIÓN POR FICHERO ---
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] Fichero                                │   Total │  Nuevos │  Duplic │ Origen duplicado              
+[2026-02-25 07:06:08] [INFO    ] [finsense] ────────────────────────────────────────────────────────────────────────────────────────────────────────
+[2026-02-25 07:06:08] [INFO    ] [finsense] ABANCA_ES5120800823473040166463.csv    │       7 │       0 │       7 │ 7x bd                         
+[2026-02-25 07:06:08] [INFO    ] [finsense] Bankinter_01288700160105752044.csv     │      29 │       1 │      28 │ 28x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Bankinter_01288700180105753633.csv     │     120 │       3 │     117 │ 117x bd                       
+[2026-02-25 07:06:08] [INFO    ] [finsense] MovimientosB100_ES88208001000130433..  │     148 │       1 │     147 │ 147x bd                       
+[2026-02-25 07:06:08] [INFO    ] [finsense] MyInvestor_ES5215447889746650686253..  │      10 │       1 │       9 │ 9x bd                         
+[2026-02-25 07:06:08] [INFO    ] [finsense] MyInvestor_ES6115447889736650701175..  │      76 │       0 │      76 │ 76x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] MyInvestor_ES7715447889736650686240..  │      26 │       0 │      26 │ 26x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Myinvestor_ES6015447889796650683633..  │      30 │       0 │      30 │ 30x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Myinvestor_ES7415447889716653144178..  │      29 │       1 │      28 │ 28x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Openbank_Fede_ES1900730100500502943..  │      26 │       0 │      26 │ 26x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Openbank_Miguel_ES67007301005105029..  │      30 │       0 │      30 │ 30x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Openbank_Violeta_ES4200730100550502..  │      81 │       1 │      80 │ 80x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] Revolut_ES1215830001199090471794.csv   │     210 │       9 │     201 │ 201x bd                       
+[2026-02-25 07:06:08] [INFO    ] [finsense] abanca_ES5120800823473040166463_EUR..  │       2 │       0 │       2 │ 2x bd                         
+[2026-02-25 07:06:08] [INFO    ] [finsense] abanca_ES8820800100013043834426_EUR..  │       0 │       0 │       0 │ —                             
+[2026-02-25 07:06:08] [INFO    ] [finsense] enable_abanca_ES6620800100013043383..  │      25 │       0 │      25 │ 25x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] enable_abanca_ES9520800100083043383..  │     111 │       0 │     111 │ 111x bd                       
+[2026-02-25 07:06:08] [INFO    ] [finsense] mediolanum_ES2501865001680510084831..  │     457 │       3 │     454 │ 454x bd                       
+[2026-02-25 07:06:08] [INFO    ] [finsense] openbank_ES2200730100510135698457.csv  │      55 │       0 │      55 │ 55x bd                        
+[2026-02-25 07:06:08] [INFO    ] [finsense] openbank_ES3600730100550435513660_E..  │      25 │      25 │       0 │ —                             
+[2026-02-25 07:06:08] [INFO    ] [finsense] openbank_TOTAL_ES360073010055043551..  │   13529 │   13529 │       0 │ —                             
+[2026-02-25 07:06:08] [INFO    ] [finsense] ────────────────────────────────────────────────────────────────────────────────────────────────────────
+[2026-02-25 07:06:08] [INFO    ] [finsense] TOTAL                                  │   15026 │   13574 │    1452 │                               
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] --- Estadísticas de Procesamiento ---
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Ficheros encontrados:           21
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Ficheros procesados:            21
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Ficheros ignorados:             0
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Transacciones leídas:           13574
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Duplicados (mismo archivo):     0
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Duplicados (ya en BD):          1452
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Nuevas transacciones insertadas:0
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Merchants únicos detectados:    0
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Total en BD después:            2458
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] --- Clasificación por Capa (global) ---
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 0 (Reglas prioritarias      ):   1412 tx ( 10.4%)
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 1 (Exact match              ):   5450 tx ( 40.2%)
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 2 (Merchants                ):   4409 tx ( 32.5%)
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 3 (Transferencias           ):    722 tx (  5.3%)
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 4 (Tokens                   ):    333 tx (  2.5%)
+[2026-02-25 07:06:08] [INFO    ] [finsense]   Capa 5 (Sin clasificar           ):   1248 tx (  9.2%)
+[2026-02-25 07:06:08] [INFO    ] [finsense] 
+[2026-02-25 07:06:08] [WARNING ] [finsense] 
+[2026-02-25 07:06:08] [WARNING ] [finsense] --- ⚠ ADVERTENCIAS: Transferencias Internas sin Pareja ---
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13918 | Fecha: 2019-07-02 | Importe:       1.00 | [REVERTED] Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13919 | Fecha: 2019-07-02 | Importe:      10.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13920 | Fecha: 2019-07-03 | Importe:      50.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13922 | Fecha: 2019-07-03 | Importe:     200.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13924 | Fecha: 2019-07-04 | Importe:       1.00 | [REVERTED] Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13925 | Fecha: 2019-07-04 | Importe:      25.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13929 | Fecha: 2019-07-11 | Importe:      50.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13931 | Fecha: 2019-08-23 | Importe:       1.00 | [REVERTED] Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13932 | Fecha: 2019-08-29 | Importe:     130.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13934 | Fecha: 2019-08-30 | Importe:      30.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13937 | Fecha: 2019-08-30 | Importe:      10.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13939 | Fecha: 2019-09-17 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13941 | Fecha: 2019-09-18 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13943 | Fecha: 2019-09-19 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13945 | Fecha: 2019-09-22 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13947 | Fecha: 2019-09-23 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13949 | Fecha: 2019-09-24 | Importe:     250.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13951 | Fecha: 2019-09-25 | Importe:     150.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13953 | Fecha: 2019-09-26 | Importe:     100.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13955 | Fecha: 2019-09-27 | Importe:     100.00 | Una recarga de Apple Pay con *2919
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13957 | Fecha: 2019-10-21 | Importe:     150.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13959 | Fecha: 2019-10-23 | Importe:     150.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13961 | Fecha: 2019-10-23 | Importe:     100.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13963 | Fecha: 2019-10-24 | Importe:       1.00 | [REVERTED] Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13964 | Fecha: 2019-10-24 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13966 | Fecha: 2019-10-24 | Importe:      15.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13968 | Fecha: 2019-10-25 | Importe:     200.00 | Pago de FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13970 | Fecha: 2019-10-28 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13972 | Fecha: 2019-10-30 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13974 | Fecha: 2019-11-10 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13975 | Fecha: 2019-11-11 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13976 | Fecha: 2019-11-13 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13978 | Fecha: 2019-11-17 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13979 | Fecha: 2019-11-20 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13981 | Fecha: 2019-11-21 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13984 | Fecha: 2019-11-25 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13985 | Fecha: 2019-11-25 | Importe:       1.00 | [REVERTED] Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13987 | Fecha: 2019-11-26 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13989 | Fecha: 2019-11-28 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13991 | Fecha: 2019-12-15 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13993 | Fecha: 2019-12-16 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13995 | Fecha: 2019-12-18 | Importe:     200.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13997 | Fecha: 2020-01-27 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13999 | Fecha: 2020-01-29 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14001 | Fecha: 2020-01-30 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14003 | Fecha: 2020-02-17 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14005 | Fecha: 2020-02-19 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14007 | Fecha: 2020-02-20 | Importe:      50.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14009 | Fecha: 2020-02-20 | Importe:      30.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14011 | Fecha: 2020-03-08 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14013 | Fecha: 2020-03-10 | Importe:     250.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14015 | Fecha: 2020-03-11 | Importe:     200.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14257 | Fecha: 2020-04-08 | Importe:   15000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14259 | Fecha: 2020-05-05 | Importe:   10000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14022 | Fecha: 2020-05-15 | Importe:      20.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14270 | Fecha: 2020-05-22 | Importe:     200.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14271 | Fecha: 2020-05-25 | Importe:     800.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14275 | Fecha: 2020-06-05 | Importe:   15000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14280 | Fecha: 2020-07-03 | Importe:   -7200.00 | Transferencia
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14023 | Fecha: 2020-07-17 | Importe:      30.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14293 | Fecha: 2020-08-07 | Importe:    1000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14298 | Fecha: 2020-08-17 | Importe:     200.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14306 | Fecha: 2020-09-02 | Importe:     800.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14308 | Fecha: 2020-09-11 | Importe:     220.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14312 | Fecha: 2020-10-05 | Importe:     610.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14313 | Fecha: 2020-10-14 | Importe:     500.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14319 | Fecha: 2020-11-03 | Importe:     460.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14321 | Fecha: 2020-11-04 | Importe:     100.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14325 | Fecha: 2020-11-09 | Importe:     525.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14327 | Fecha: 2020-11-18 | Importe:      78.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14328 | Fecha: 2020-11-18 | Importe:     550.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14334 | Fecha: 2020-12-03 | Importe:     650.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14342 | Fecha: 2021-01-11 | Importe:     610.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14027 | Fecha: 2021-01-12 | Importe:      40.00 | Una recarga de Apple Pay con *2789
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14344 | Fecha: 2021-02-05 | Importe:     620.00 | Hipoteca
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14346 | Fecha: 2021-03-01 | Importe:     600.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14348 | Fecha: 2021-03-10 | Importe:      20.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14351 | Fecha: 2021-04-07 | Importe:    3630.00 | Hipoteca
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14353 | Fecha: 2021-04-20 | Importe:   -3000.00 | Transferencia
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14355 | Fecha: 2021-05-04 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14357 | Fecha: 2021-05-06 | Importe:     650.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14359 | Fecha: 2021-05-12 | Importe:   -2000.00 | Transferencia
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14363 | Fecha: 2021-06-04 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14370 | Fecha: 2021-07-08 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14377 | Fecha: 2021-08-13 | Importe:    3500.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14386 | Fecha: 2021-09-07 | Importe:    3500.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14394 | Fecha: 2021-10-08 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14399 | Fecha: 2021-11-08 | Importe:    3500.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14407 | Fecha: 2021-12-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14408 | Fecha: 2021-12-09 | Importe:   -6000.00 | Transferencia
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14413 | Fecha: 2021-12-21 | Importe:   -2000.00 | Transferencia
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14415 | Fecha: 2022-01-05 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14416 | Fecha: 2022-01-10 | Importe:    1000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14423 | Fecha: 2022-02-08 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14428 | Fecha: 2022-03-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14433 | Fecha: 2022-04-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14041 | Fecha: 2022-04-27 | Importe:      90.00 | Una recarga de Apple Pay con *4124
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14440 | Fecha: 2022-05-06 | Importe:     300.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14441 | Fecha: 2022-05-06 | Importe:    2700.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14449 | Fecha: 2022-05-30 | Importe:   -9700.00 | Transf. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14450 | Fecha: 2022-06-06 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14455 | Fecha: 2022-07-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14462 | Fecha: 2022-08-09 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14467 | Fecha: 2022-09-06 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14043 | Fecha: 2022-09-28 | Importe:    1000.00 | Recarga de *****
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14472 | Fecha: 2022-10-05 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14045 | Fecha: 2022-10-17 | Importe:     310.00 | Una recarga de Apple Pay con *4124
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14046 | Fecha: 2022-10-17 | Importe:     250.00 | Una recarga de Apple Pay con *4124
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14477 | Fecha: 2022-10-24 | Importe:   -3000.00 | Transf. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14048 | Fecha: 2022-10-25 | Importe:     200.00 | Una recarga de Apple Pay con *4124
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14050 | Fecha: 2022-10-27 | Importe:     850.00 | Una recarga de Apple Pay con *4124
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14053 | Fecha: 2022-10-28 | Importe:   -1042.46 | To Pablo Fernandez-Castanys Ortiz De Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14478 | Fecha: 2022-11-03 | Importe:   -6500.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14479 | Fecha: 2022-11-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14054 | Fecha: 2022-11-08 | Importe:     340.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14056 | Fecha: 2022-11-17 | Importe:     200.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14058 | Fecha: 2022-11-29 | Importe:    1130.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14060 | Fecha: 2022-12-04 | Importe:     370.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14486 | Fecha: 2022-12-05 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14062 | Fecha: 2022-12-13 | Importe:     200.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14064 | Fecha: 2022-12-18 | Importe:     210.00 | Recarga de *2010
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14038 | Fecha: 2023-01-05 | Importe:   -4060.00 | To Pablo Fernandez-Castanys Ortiz De Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14493 | Fecha: 2023-01-05 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14498 | Fecha: 2023-02-06 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14503 | Fecha: 2023-03-07 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14508 | Fecha: 2023-04-04 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14513 | Fecha: 2023-05-05 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14519 | Fecha: 2023-06-02 | Importe:    3000.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13315 | Fecha: 2023-06-13 | Importe:   17000.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13319 | Fecha: 2023-07-03 | Importe:    4600.00 | TRANS / Pablo Fernández-Castan
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13322 | Fecha: 2023-07-05 | Importe:     494.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13344 | Fecha: 2023-07-05 | Importe:     494.00 | TRANS /Cuenta Corriente Digita
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13324 | Fecha: 2023-07-06 | Importe:    1500.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13325 | Fecha: 2023-07-11 | Importe:    5000.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13326 | Fecha: 2023-07-25 | Importe:     150.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13345 | Fecha: 2023-07-25 | Importe:     150.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13348 | Fecha: 2023-08-03 | Importe:    3000.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13349 | Fecha: 2023-08-03 | Importe:    2500.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13350 | Fecha: 2023-08-03 | Importe:    4700.00 | TRANS /Pablo Fernandez-Castna
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14531 | Fecha: 2023-08-03 | Importe:    3000.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14536 | Fecha: 2023-08-18 | Importe:       5.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13354 | Fecha: 2023-09-05 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13355 | Fecha: 2023-09-05 | Importe:    2600.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13356 | Fecha: 2023-09-05 | Importe:    3370.00 | TRANS /Pablo Fernandez-Castna
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14538 | Fecha: 2023-09-05 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14539 | Fecha: 2023-09-06 | Importe:   -2100.00 | Transf. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14540 | Fecha: 2023-09-07 | Importe:     100.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14542 | Fecha: 2023-09-08 | Importe:   -2100.00 | Transf. Transf
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13614 | Fecha: 2023-09-28 | Importe:     460.00 | FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13363 | Fecha: 2023-10-02 | Importe:    6150.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14547 | Fecha: 2023-10-03 | Importe:    3001.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14548 | Fecha: 2023-10-09 | Importe:   -1800.00 | Transf. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14780 | Fecha: 2023-10-09 | Importe:   17305.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13366 | Fecha: 2023-11-03 | Importe:    8600.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13367 | Fecha: 2023-11-03 | Importe:    1200.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13329 | Fecha: 2023-11-06 | Importe:    4800.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13370 | Fecha: 2023-11-06 | Importe:    4800.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13371 | Fecha: 2023-11-07 | Importe:    4800.00 | TRANS /FERNANDEZ CASTANYS ORTI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14784 | Fecha: 2023-11-07 | Importe:    6796.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14554 | Fecha: 2023-11-10 | Importe:    1801.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14561 | Fecha: 2023-12-01 | Importe:     250.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13376 | Fecha: 2023-12-12 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13377 | Fecha: 2023-12-12 | Importe:    7990.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14564 | Fecha: 2023-12-12 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14789 | Fecha: 2023-12-14 | Importe:    5300.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13378 | Fecha: 2023-12-19 | Importe:     100.00 | TRANS /FERNANDEZ CASTANYS ORTI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13384 | Fecha: 2023-12-28 | Importe:      60.00 | TRANS /FERNANDEZ CASTANYS ORTI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13386 | Fecha: 2024-01-05 | Importe:    5300.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13387 | Fecha: 2024-01-05 | Importe:    2000.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13388 | Fecha: 2024-01-05 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14570 | Fecha: 2024-01-05 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14792 | Fecha: 2024-01-08 | Importe:    5300.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13333 | Fecha: 2024-01-27 | Importe:    6200.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13392 | Fecha: 2024-01-27 | Importe:    6200.00 | TRANS /PABLO FERNANDEZ-CASTANY
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13393 | Fecha: 2024-01-29 | Importe:    6500.00 | TRANS /V.M.Día-Pablo Fernandez
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13394 | Fecha: 2024-01-29 | Importe:     -10.00 | COMIS /V.M.Día-Pablo Fernandez
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13397 | Fecha: 2024-02-01 | Importe:    6200.00 | TRANS /FERNANDEZ CASTANYS ORTI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13399 | Fecha: 2024-02-05 | Importe:    2200.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13400 | Fecha: 2024-02-05 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14576 | Fecha: 2024-02-06 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13402 | Fecha: 2024-02-07 | Importe:    4000.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14797 | Fecha: 2024-02-08 | Importe:    4000.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14798 | Fecha: 2024-02-12 | Importe:     350.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14799 | Fecha: 2024-02-19 | Importe:     300.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13807 | Fecha: 2024-02-29 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13836 | Fecha: 2024-02-29 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13409 | Fecha: 2024-03-04 | Importe:    2600.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13410 | Fecha: 2024-03-04 | Importe:    5900.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13411 | Fecha: 2024-03-04 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13806 | Fecha: 2024-03-05 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13835 | Fecha: 2024-03-05 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14588 | Fecha: 2024-03-05 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14801 | Fecha: 2024-03-05 | Importe:    5900.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13417 | Fecha: 2024-04-02 | Importe:    4900.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13420 | Fecha: 2024-04-02 | Importe:    2300.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13421 | Fecha: 2024-04-02 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14593 | Fecha: 2024-04-03 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14806 | Fecha: 2024-04-03 | Importe:    4900.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14595 | Fecha: 2024-04-04 | Importe:     800.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13833 | Fecha: 2024-04-23 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13804 | Fecha: 2024-04-29 | Importe:    -180.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13427 | Fecha: 2024-05-02 | Importe:    4000.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13428 | Fecha: 2024-05-02 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13429 | Fecha: 2024-05-02 | Importe:    5600.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13803 | Fecha: 2024-05-03 | Importe:     180.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13832 | Fecha: 2024-05-03 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14597 | Fecha: 2024-05-03 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14811 | Fecha: 2024-05-03 | Importe:    5600.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13802 | Fecha: 2024-05-23 | Importe:    -180.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13831 | Fecha: 2024-05-23 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14600 | Fecha: 2024-05-23 | Importe:     400.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13434 | Fecha: 2024-06-03 | Importe:    3001.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13435 | Fecha: 2024-06-03 | Importe:    3000.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13436 | Fecha: 2024-06-03 | Importe:    3100.00 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14602 | Fecha: 2024-06-04 | Importe:    3001.00 | Transf.de PABLO FERNANDEZ-CASTANYS ORTIZ
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14816 | Fecha: 2024-06-05 | Importe:    9100.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13829 | Fecha: 2024-06-19 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13444 | Fecha: 2024-06-21 | Importe:    9500.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14819 | Fecha: 2024-06-24 | Importe:    9500.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14605 | Fecha: 2024-06-26 | Importe:    3001.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14606 | Fecha: 2024-06-27 | Importe:   -3000.00 | Transf. Transf
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13828 | Fecha: 2024-06-28 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14607 | Fecha: 2024-07-02 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13445 | Fecha: 2024-07-04 | Importe:     300.00 | TRANS /Pablo Fernandez-Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14824 | Fecha: 2024-07-05 | Importe:     300.00 | Ingreso aceptado: ES6001288700180105753633 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14825 | Fecha: 2024-07-05 | Importe:     500.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14827 | Fecha: 2024-07-26 | Importe:    2000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14610 | Fecha: 2024-08-05 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14613 | Fecha: 2024-08-09 | Importe:     100.00 | Transf.de FERNANDEZ CASTANYS ORTIZ DE VI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13916 | Fecha: 2024-08-14 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14636 | Fecha: 2024-08-14 | Importe:     500.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13894 | Fecha: 2024-08-21 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13883 | Fecha: 2024-08-23 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13873 | Fecha: 2024-08-26 | Importe:     550.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13798 | Fecha: 2024-08-29 | Importe:     195.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13826 | Fecha: 2024-08-29 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13859 | Fecha: 2024-08-29 | Importe:     500.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13861 | Fecha: 2024-08-29 | Importe:      40.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13458 | Fecha: 2024-08-30 | Importe:      30.00 | TRANS /FERNANDEZ CASTANYS ORTI
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13855 | Fecha: 2024-08-30 | Importe:    -448.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14835 | Fecha: 2024-08-30 | Importe:    2000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14648 | Fecha: 2024-09-03 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13797 | Fecha: 2024-09-09 | Importe:      50.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO Regalo cumpleaños
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13796 | Fecha: 2024-09-17 | Importe:    -245.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13854 | Fecha: 2024-09-17 | Importe:    -100.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14764 | Fecha: 2024-09-23 | Importe:     -25.44 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Veteranos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14763 | Fecha: 2024-09-26 | Importe:      -8.40 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13795 | Fecha: 2024-09-27 | Importe:     245.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13853 | Fecha: 2024-09-27 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14840 | Fecha: 2024-09-30 | Importe:    2000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14652 | Fecha: 2024-10-04 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14762 | Fecha: 2024-10-07 | Importe:     -20.31 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14760 | Fecha: 2024-10-08 | Importe:       5.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14761 | Fecha: 2024-10-08 | Importe:      80.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13459 | Fecha: 2024-10-11 | Importe:      28.95 | TRANS /Pablo Fernandez Castany
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13823 | Fecha: 2024-10-14 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14759 | Fecha: 2024-10-18 | Importe:     -19.46 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Compra veteranos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13822 | Fecha: 2024-10-30 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14758 | Fecha: 2024-10-30 | Importe:      55.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14847 | Fecha: 2024-10-31 | Importe:    2000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14655 | Fecha: 2024-11-06 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13794 | Fecha: 2024-11-14 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13821 | Fecha: 2024-11-18 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14756 | Fecha: 2024-11-18 | Importe:    -127.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13793 | Fecha: 2024-11-29 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13820 | Fecha: 2024-11-29 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14755 | Fecha: 2024-11-29 | Importe:     127.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13792 | Fecha: 2024-12-02 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO regalo reyes
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13819 | Fecha: 2024-12-02 | Importe:     100.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO regalo reyes
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13852 | Fecha: 2024-12-02 | Importe:      60.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO regalo reyes menos plancha pel
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14855 | Fecha: 2024-12-02 | Importe:    1200.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14659 | Fecha: 2024-12-03 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13818 | Fecha: 2024-12-09 | Importe:     -20.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Camiseta
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13817 | Fecha: 2024-12-16 | Importe:     -16.50 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13851 | Fecha: 2024-12-16 | Importe:      20.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14862 | Fecha: 2024-12-31 | Importe:    2000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14662 | Fecha: 2025-01-06 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13791 | Fecha: 2025-01-24 | Importe:    -300.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13816 | Fecha: 2025-01-24 | Importe:    -200.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13790 | Fecha: 2025-01-31 | Importe:     300.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13815 | Fecha: 2025-01-31 | Importe:     200.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14873 | Fecha: 2025-02-03 | Importe:    1100.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14665 | Fecha: 2025-02-11 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13789 | Fecha: 2025-02-19 | Importe:     -21.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Compra camiseta
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14876 | Fecha: 2025-02-28 | Importe:    2500.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13787 | Fecha: 2025-03-03 | Importe:     -12.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13788 | Fecha: 2025-03-03 | Importe:      -5.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Regalo mama
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13814 | Fecha: 2025-03-03 | Importe:      -5.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13848 | Fecha: 2025-03-03 | Importe:      -3.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14668 | Fecha: 2025-03-04 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13786 | Fecha: 2025-03-10 | Importe:     -76.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13813 | Fecha: 2025-03-11 | Importe:    -250.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14882 | Fecha: 2025-03-13 | Importe:     500.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13812 | Fecha: 2025-03-17 | Importe:     250.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14885 | Fecha: 2025-03-31 | Importe:    3000.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14671 | Fecha: 2025-04-03 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14749 | Fecha: 2025-04-25 | Importe:    -127.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14748 | Fecha: 2025-04-29 | Importe:     127.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14893 | Fecha: 2025-04-30 | Importe:    1500.00 | Ingreso aceptado: ES3600730100550435513660 a
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13785 | Fecha: 2025-05-05 | Importe:    -200.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13811 | Fecha: 2025-05-05 | Importe:    -200.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13845 | Fecha: 2025-05-05 | Importe:    -150.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14674 | Fecha: 2025-05-06 | Importe:    3001.00 | Tu retirada de la cuenta de compensacion
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14679 | Fecha: 2025-06-01 | Importe:    3001.00 | Transf. Inm. Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14680 | Fecha: 2025-06-03 | Importe:    -100.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14746 | Fecha: 2025-06-06 | Importe:    -127.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14982 | Fecha: 2025-06-11 | Importe:      -1.00 | for Pablo Fernandez-Castanys Ortiz de Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15009 | Fecha: 2025-06-19 | Importe:   -6000.00 | for Pablo Fernandez-Castanys Ortiz de Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13810 | Fecha: 2025-06-26 | Importe:     -65.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13809 | Fecha: 2025-06-30 | Importe:      65.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14744 | Fecha: 2025-06-30 | Importe:     127.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14683 | Fecha: 2025-07-01 | Importe:    3001.00 | Transf. Inm. Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14684 | Fecha: 2025-07-02 | Importe:   -2350.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13784 | Fecha: 2025-07-03 | Importe:     -31.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15106 | Fecha: 2025-07-20 | Importe:    -500.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14742 | Fecha: 2025-07-29 | Importe:    -127.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14686 | Fecha: 2025-08-01 | Importe:    3001.00 | Transf. Inm. Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14687 | Fecha: 2025-08-02 | Importe:   -2300.00 | Transf. Inm. Transf
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15142 | Fecha: 2025-08-04 | Importe:    -350.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15189 | Fecha: 2025-08-21 | Importe:    -100.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15200 | Fecha: 2025-08-25 | Importe:     -50.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14740 | Fecha: 2025-08-28 | Importe:    1500.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15213 | Fecha: 2025-08-30 | Importe:    -150.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14068 | Fecha: 2025-09-18 | Importe:      30.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14734 | Fecha: 2025-09-18 | Importe:     -60.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14070 | Fecha: 2025-09-19 | Importe:     -10.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14071 | Fecha: 2025-09-24 | Importe:      -8.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14072 | Fecha: 2025-09-29 | Importe:      -5.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14074 | Fecha: 2025-09-29 | Importe:     -12.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14733 | Fecha: 2025-09-29 | Importe:    1500.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15278 | Fecha: 2025-09-29 | Importe:    -125.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15279 | Fecha: 2025-09-29 | Importe:    -600.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14075 | Fecha: 2025-09-30 | Importe:      -6.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14076 | Fecha: 2025-09-30 | Importe:       0.45 | Transferencia de un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15290 | Fecha: 2025-10-01 | Importe:    -115.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14077 | Fecha: 2025-10-02 | Importe:      -4.30 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14727 | Fecha: 2025-10-02 | Importe:    -180.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14726 | Fecha: 2025-10-03 | Importe:    -700.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14078 | Fecha: 2025-10-04 | Importe:      15.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14079 | Fecha: 2025-10-04 | Importe:      -6.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14723 | Fecha: 2025-10-06 | Importe:     -29.05 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernández Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14724 | Fecha: 2025-10-06 | Importe:     -34.32 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernández Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14725 | Fecha: 2025-10-06 | Importe:    4800.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15308 | Fecha: 2025-10-07 | Importe:     -50.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15316 | Fecha: 2025-10-09 | Importe:    -545.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14080 | Fecha: 2025-10-13 | Importe:      -5.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14721 | Fecha: 2025-10-13 | Importe:    -100.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14720 | Fecha: 2025-10-17 | Importe:     500.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14081 | Fecha: 2025-10-18 | Importe:      16.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14082 | Fecha: 2025-10-18 | Importe:      -8.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14718 | Fecha: 2025-10-20 | Importe:     -80.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14719 | Fecha: 2025-10-20 | Importe:     -50.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14717 | Fecha: 2025-10-21 | Importe:     -50.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14716 | Fecha: 2025-10-22 | Importe:    -400.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14715 | Fecha: 2025-10-23 | Importe:    -100.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14088 | Fecha: 2025-10-27 | Importe:     -10.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14147 | Fecha: 2025-10-29 | Importe:      15.00 | Move to save día 28/10
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14713 | Fecha: 2025-10-29 | Importe:    -175.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14712 | Fecha: 2025-10-30 | Importe:   -2210.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB CONCEPTO: Renta
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15374 | Fecha: 2025-10-30 | Importe:   -1100.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15375 | Fecha: 2025-10-30 | Importe:    -150.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14699 | Fecha: 2025-11-01 | Importe:    3001.00 | Transf. Inm. Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14700 | Fecha: 2025-11-02 | Importe:   -2300.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14089 | Fecha: 2025-11-07 | Importe:     500.00 | Pago de PABLO FERNANDEZ CASTANYS ORTIZ DE VILLAJOS
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15430 | Fecha: 2025-11-13 | Importe:    -100.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14097 | Fecha: 2025-11-17 | Importe:     -85.00 | To Pablo Fernandez-Castanys Ortiz De Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15432 | Fecha: 2025-11-19 | Importe:    -100.00 | for FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14098 | Fecha: 2025-11-22 | Importe:      15.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14099 | Fecha: 2025-11-22 | Importe:      20.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14102 | Fecha: 2025-11-25 | Importe:      -5.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14131 | Fecha: 2025-11-27 | Importe:    -250.00 | TRASPASO DESDE HUCHA PRINCIPAL 12:3 6:14
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14703 | Fecha: 2025-11-27 | Importe:     -50.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15449 | Fecha: 2025-11-29 | Importe:    -400.00 | Outgoing transfer for Pablo Fernández Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14704 | Fecha: 2025-12-01 | Importe:    3001.00 | Transf. Inm. Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13536 | Fecha: 2025-12-02 | Importe:    1400.00 | FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14705 | Fecha: 2025-12-02 | Importe:   -2250.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13628 | Fecha: 2025-12-04 | Importe:    -785.54 | Transferencia desde MyInvestor
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13694 | Fecha: 2025-12-04 | Importe:    -225.74 | Transferencia desde MyInvestor
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13724 | Fecha: 2025-12-04 | Importe:    -225.87 | Transferencia desde MyInvestor
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13841 | Fecha: 2025-12-09 | Importe:     -80.00 | TRANSFERENCIA A FAVOR DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PAB
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13843 | Fecha: 2025-12-09 | Importe:      70.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13844 | Fecha: 2025-12-09 | Importe:      20.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO Resto regalo cúmplelos abuelos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14109 | Fecha: 2025-12-09 | Importe:      10.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14110 | Fecha: 2025-12-09 | Importe:      -3.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14138 | Fecha: 2025-12-10 | Importe:    -250.00 | TRASPASO DESDE HUCHA PRINCIPAL 11:1 1:24
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14111 | Fecha: 2025-12-13 | Importe:      -8.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14706 | Fecha: 2025-12-17 | Importe:     -50.00 | Transf. Inm. Concepto no especificado
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14140 | Fecha: 2025-12-18 | Importe:    -150.00 | TRASPASO DESDE HUCHA PRINCIPAL 21:0 4:29
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13488 | Fecha: 2025-12-19 | Importe:    -100.00 | Transferencia enviada
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13756 | Fecha: 2025-12-22 | Importe:   -1000.00 | Transferencia desde MyInvestor
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13478 | Fecha: 2025-12-23 | Importe:     200.00 | FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13749 | Fecha: 2025-12-24 | Importe:    -311.57 | Transferencia desde MyInvestor
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13471 | Fecha: 2025-12-26 | Importe:     -50.00 | Transferencia enviada
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13473 | Fecha: 2025-12-26 | Importe:     -30.00 | Move to save día 25/12
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13468 | Fecha: 2025-12-27 | Importe:   -2954.97 | Transferencia enviada
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13309 | Fecha: 2025-12-29 | Importe:   -1000.00 | Movimiento Abanca
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14251 | Fecha: 2025-12-29 | Importe:    -100.00 | TRASPASO DESDE CUENTA HEALTH 29/12/ 2025
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14252 | Fecha: 2025-12-29 | Importe:     -70.00 | TRASPASO DESDE CUENTA HEALTH 29/12/ 2025
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13312 | Fecha: 2025-12-30 | Importe:    -400.00 | Movimiento Abanca
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14112 | Fecha: 2025-12-31 | Importe:      20.00 | Una recarga de Apple Pay con *4012
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14113 | Fecha: 2025-12-31 | Importe:      -8.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14115 | Fecha: 2026-01-03 | Importe:      -8.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14116 | Fecha: 2026-01-03 | Importe:      -4.00 | Transferencia a un cliente de Revolut
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14253 | Fecha: 2026-01-05 | Importe:    -800.00 | TRASPASO DESDE CUENTA HEALTH 03/01/ 2026
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14254 | Fecha: 2026-01-07 | Importe:     -34.00 | TRASPASO DESDE CUENTA HEALTH 07/01/ 2026
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13840 | Fecha: 2026-01-08 | Importe:      85.00 | TRANSFERENCIA DE FERNANDEZ CASTANYS ORTIZ DE VILLAJOS PABLO, CONCEPTO Regalo reyes
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13719 | Fecha: 2026-01-09 | Importe:      70.00 | Regalo reyes
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13314 | Fecha: 2026-01-12 | Importe:     -26.00 | Movimiento Abanca
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 13838 | Fecha: 2026-01-12 | Importe:     -17.00 | TRANSFERENCIA INMEDIATA A FAVOR DE Pablo Fernandez-Castanys
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15648 | Fecha: 2026-01-16 | Importe:      -8.00 | Outgoing transfer for Federico Fernandez-Castanys Arroyo (+34-
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15675 | Fecha: 2026-01-24 | Importe:       6.00 | Incoming transfer from FERNANDEZ CASTANYS ORTIZ VILLAJOS,PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 14120 | Fecha: 2026-01-29 | Importe:   -4025.00 | TRANSFERENCIA INTERNA NOMINA
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15699 | Fecha: 2026-01-30 | Importe:     -69.00 | Outgoing transfer for Federico Fernandez Castanys Arroyo
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15700 | Fecha: 2026-01-30 | Importe:     -74.00 | Outgoing transfer for Violeta Fernandez Castanys Arroyo
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15708 | Fecha: 2026-02-01 | Importe:   -3001.00 | Outgoing transfer for Pablo Fernandez-Castanys Ortiz de Villajos
+[2026-02-25 07:06:08] [WARNING ] [finsense]   ID: 15717 | Fecha: 2026-02-02 | Importe:    2275.00 | Incoming transfer from FERNANDEZ CASTANYS ORTIZ VILLAJOS,PABLO
+[2026-02-25 07:06:08] [WARNING ] [finsense]   Total sin pareja: 416
+[2026-02-25 07:06:08] [WARNING ] [finsense] 
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================
+[2026-02-25 07:06:08] [INFO    ] [finsense] FIN DE EJECUCIÓN
+[2026-02-25 07:06:08] [INFO    ] [finsense] ================================================================================

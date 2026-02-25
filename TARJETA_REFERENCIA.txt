@@ -1,0 +1,139 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    TARJETA DE REFERENCIA RÁPIDA                           ║
+║                     mis_finanzas_1.0 (2026-02-17)                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 DOCUMENTOS PRINCIPALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[MAESTRO]     AGENTS.md                  ← Haiku lee esto
+[GUÍA]        GUIA_COMUNICACION_HAIKU    ← Tú lees esto antes de pedir cambios
+[ESTADO]      RESUMEN_PROYECTO_2026      ← Visión general rápida
+[PLAN]        PLAN_MEJORA_COMUNICACION   ← Explicación de cambios
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔑 PRINCIPIOS CLAVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ NUNCA                          ✅ SIEMPRE
+────────────────────────────────────────────────────────────────
+Parchear BD directamente          Modificar reglas en classifier/
+Editar CSVs a mano                Reprocesar con reclassify_all.py
+Scripts one-off                   Verificar con SQL query
+Olvidar conn.close()              Confirmar número coincide
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ COMANDOS DIARIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROCESAR CSVs NUEVOS
+  python3 process_transactions.py
+
+REPROCESAR TRAS CAMBIAR REGLAS
+  python3 reclassify_all.py
+
+PREGUNTAS LLM
+  python3 ask.py "¿cuánto gasté en restaurantes en enero?"
+
+VERIFICAR BD
+  sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"
+
+TESTS
+  python3 test_parsers_manual.py
+  python3 test_pipeline_manual.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 FLUJO DE CAMBIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. TÚ PIDES:
+   "Reducir Cat2=Otros a < 300"
+   Método: GUIA_COMUNICACION_HAIKU.md
+   
+2. HAIKU MODIFICA:
+   classifier/merchants.py → Añade regla
+   
+3. HAIKU REPROCESA:
+   python3 reclassify_all.py
+   
+4. HAIKU VERIFICA:
+   SELECT COUNT(*) FROM transacciones WHERE cat2='Otros'
+   
+5. TÚ VALIDÁS:
+   "¿391 → 285?" "¿Sin regresiones?" → ✅ DONE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 ESTADO ACTUAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Transacciones:    15,912 ✅
+Cobertura:        98.5% ✅
+Accuracy:         100% ✅
+Asistente LLM:    Operativo ✅
+Estado:           PRODUCCIÓN ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🗂️ DÓNDE HACER CAMBIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Merchant keywords     → classifier/merchants.py
+Reglas prioritarias   → classifier/engine.py
+Tokens heurísticos    → classifier/tokens.py
+Transferencias        → classifier/transfers.py
+Exact match           → classifier/exact_match.py
+Combinaciones válidas → classifier/valid_combos.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ ESCALADA A PLAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Si necesitas:
+• Nueva tabla en BD
+• Cambiar schema
+• Modificar constraints
+• 2+ intentos fallidos
+
+Usar formato:
+[ESCALADO A PLAN REQUERIDO]
+Problema: ...
+Evidencia: ...
+Hipótesis: ...
+Bloqueo: ...
+Solicitud: ...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🆘 TROUBLESHOOTING RÁPIDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"No se pudo detectar el banco"
+  → Renombra: openbank_ES22...csv
+
+"Transacciones sin clasificar"
+  → python3 analyze_unclassified.py
+  → Añade regla en classifier/
+
+"Los cambios no se ven"
+  → Ejecutaste reclassify_all.py?
+  → Verificaste con SELECT COUNT?
+
+"BD locked"
+  → conn.close() después de usar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📞 REFERENCIA RÁPIDA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Usar:                               Ver:
+"¿Qué comandos uso?"               → QUICKSTART.md
+"¿Cuál es el estado?"              → RESUMEN_PROYECTO_2026.md
+"Quiero pedir un cambio"           → GUIA_COMUNICACION_HAIKU.md
+"¿Cómo funciona?"                  → AGENTS.md
+"¿Por qué NUNCA parchear?"         → REGLAS_PROYECTO.md
+"¿Qué reglas están activas?"       → REGLAS_IMPLEMENTADAS.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Última actualización: 2026-02-17
+Versión: 1.0
+Imprime esto o mantén a mano como referencia 🚀

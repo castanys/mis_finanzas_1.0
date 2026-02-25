@@ -1,0 +1,9 @@
+[2026-02-20 22:31:20] [INFO    ] [finsense] ======================================================================
+[2026-02-20 22:31:20] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-20 22:31:20] [INFO    ] [finsense] ======================================================================
+[2026-02-20 22:31:20] [DEBUG   ] [finsense] Cargadas 8 excepciones de clasificación
+[2026-02-20 22:31:20] [INFO    ] [finsense] Pipeline inicializado con 0 transacciones conocidas en 0 cuentas
+[2026-02-20 22:31:25] [DEBUG   ] [finsense] Parser trade_republic_pdf parseó 920 transacciones de Extracto de cuenta.pdf
+[2026-02-20 22:31:25] [INFO    ] [finsense] 📦 PDF archivado → input/procesados/Extracto de cuenta_20260220_223125.pdf
+[2026-02-20 22:31:27] [DEBUG   ] [finsense] Parser trade_republic_pdf parseó 304 transacciones de Extracto de cuenta (1).pdf
+[2026-02-20 22:31:27] [INFO    ] [finsense] 📦 PDF archivado → input/procesados/Extracto de cuenta (1)_20260220_223127.pdf

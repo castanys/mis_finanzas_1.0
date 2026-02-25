@@ -1,0 +1,76 @@
+2026-02-22 21:42:58,847 - INFO - ============================================================
+2026-02-22 21:42:58,847 - INFO - RELLENO DE UBICACIÓN DE MERCHANTS - INICIO
+2026-02-22 21:42:58,847 - INFO - ============================================================
+
+2026-02-22 21:42:58,847 - INFO - 📊 Estado inicial:
+2026-02-22 21:42:58,848 - INFO -    Merchants con city: 8
+2026-02-22 21:42:58,848 - INFO -    Merchants con country: 8
+2026-02-22 21:42:58,848 - INFO -    Merchants con place_id pero sin ubicación: 734
+
+2026-02-22 21:42:58,848 - INFO - 🌍 Rellenando city/country desde Google Places Details...
+2026-02-22 21:42:58,848 - ERROR - ❌ Error fatal: no such column: id
+Traceback (most recent call last):
+  File "/home/pablo/apps/mis_finanzas_1.0/fill_merchant_locations.py", line 133, in <module>
+    filled, errors = fill_merchant_locations_from_place_id()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pablo/apps/mis_finanzas_1.0/fill_merchant_locations.py", line 44, in fill_merchant_locations_from_place_id
+    cursor.execute("""
+sqlite3.OperationalError: no such column: id
+2026-02-22 21:43:11,272 - INFO - ============================================================
+2026-02-22 21:43:11,272 - INFO - RELLENO DE UBICACIÓN DE MERCHANTS - INICIO
+2026-02-22 21:43:11,272 - INFO - ============================================================
+
+2026-02-22 21:43:11,272 - INFO - 📊 Estado inicial:
+2026-02-22 21:43:11,273 - INFO -    Merchants con city: 8
+2026-02-22 21:43:11,273 - INFO -    Merchants con country: 8
+2026-02-22 21:43:11,273 - INFO -    Merchants con place_id pero sin ubicación: 734
+
+2026-02-22 21:43:11,273 - INFO - 🌍 Rellenando city/country desde Google Places Details...
+2026-02-22 21:43:11,275 - INFO -    Encontrados 734 merchants sin city/country
+2026-02-22 21:43:25,313 - INFO -    Progreso: 50/734 (✅ 50, ⚠️  0)
+2026-02-22 21:43:39,242 - INFO -    Progreso: 100/734 (✅ 100, ⚠️  0)
+2026-02-22 21:43:53,557 - INFO -    Progreso: 150/734 (✅ 150, ⚠️  0)
+2026-02-22 21:44:07,680 - INFO -    Progreso: 200/734 (✅ 200, ⚠️  0)
+2026-02-22 21:44:21,697 - INFO -    Progreso: 250/734 (✅ 250, ⚠️  0)
+2026-02-22 21:44:35,691 - INFO -    Progreso: 300/734 (✅ 300, ⚠️  0)
+2026-02-22 21:44:49,538 - INFO -    Progreso: 350/734 (✅ 350, ⚠️  0)
+2026-02-22 21:45:03,026 - INFO -    Progreso: 400/734 (✅ 400, ⚠️  0)
+2026-02-22 21:45:16,886 - INFO -    Progreso: 450/734 (✅ 450, ⚠️  0)
+2026-02-22 21:45:30,514 - INFO -    Progreso: 500/734 (✅ 500, ⚠️  0)
+2026-02-22 21:45:44,237 - INFO -    Progreso: 550/734 (✅ 550, ⚠️  0)
+2026-02-22 21:45:57,588 - INFO -    Progreso: 600/734 (✅ 600, ⚠️  0)
+2026-02-22 21:46:11,973 - INFO -    Progreso: 650/734 (✅ 650, ⚠️  0)
+2026-02-22 21:46:26,035 - INFO -    Progreso: 700/734 (✅ 700, ⚠️  0)
+2026-02-22 21:46:35,532 - INFO - ✅ Rellenados 734/734 merchants
+2026-02-22 21:46:35,533 - INFO -    Errores: 0
+
+2026-02-22 21:46:35,533 - INFO - 📊 Estado final:
+2026-02-22 21:46:35,534 - INFO -    Merchants con city: 742 (Δ +734)
+2026-02-22 21:46:35,534 - INFO -    Merchants con country: 742 (Δ +734)
+2026-02-22 21:46:35,534 - INFO -    Merchants con place_id pero sin ubicación: 0 (Δ -734)
+
+2026-02-22 21:46:35,534 - INFO - ============================================================
+2026-02-22 21:46:35,534 - INFO - ✅ RELLENO COMPLETADO
+2026-02-22 21:46:35,534 - INFO - ============================================================
+2026-02-22 21:47:31,356 - INFO - ============================================================
+2026-02-22 21:47:31,356 - INFO - RELLENO DE UBICACIÓN DE MERCHANTS - INICIO
+2026-02-22 21:47:31,356 - INFO - ============================================================
+
+2026-02-22 21:47:31,356 - INFO - 📊 Estado inicial:
+2026-02-22 21:47:31,357 - INFO -    Merchants con city: 742
+2026-02-22 21:47:31,357 - INFO -    Merchants con country: 742
+2026-02-22 21:47:31,357 - INFO -    Merchants con place_id pero sin ubicación: 0
+
+2026-02-22 21:47:31,357 - INFO - 🌍 Rellenando city/country desde Google Places Details...
+2026-02-22 21:47:31,357 - INFO -    Encontrados 0 merchants sin city/country
+2026-02-22 21:47:31,357 - INFO - ✅ Rellenados 0/0 merchants
+2026-02-22 21:47:31,357 - INFO -    Errores: 0
+
+2026-02-22 21:47:31,357 - INFO - 📊 Estado final:
+2026-02-22 21:47:31,358 - INFO -    Merchants con city: 742 (Δ +0)
+2026-02-22 21:47:31,358 - INFO -    Merchants con country: 742 (Δ +0)
+2026-02-22 21:47:31,358 - INFO -    Merchants con place_id pero sin ubicación: 0 (Δ 0)
+
+2026-02-22 21:47:31,358 - INFO - ============================================================
+2026-02-22 21:47:31,358 - INFO - ✅ RELLENO COMPLETADO
+2026-02-22 21:47:31,358 - INFO - ============================================================

@@ -1,0 +1,232 @@
+[2026-02-21 18:45:52] [INFO    ] [finsense] ======================================================================
+[2026-02-21 18:45:52] [INFO    ] [finsense] INICIANDO FINSENSE
+[2026-02-21 18:45:52] [INFO    ] [finsense] ======================================================================
+[2026-02-21 18:45:52] [INFO    ] [finsense] Directorio entrada: input
+[2026-02-21 18:45:52] [INFO    ] [finsense] Maestro CSV: validate/Validacion_Categorias_Finsense_MASTER_v9.csv
+[2026-02-21 18:45:52] [INFO    ] [finsense] BD: finsense.db
+[2026-02-21 18:45:52] [INFO    ] [finsense] 
+[2026-02-21 18:45:52] [INFO    ] [finsense] Cargando estado de BD...
+[2026-02-21 18:45:52] [DEBUG   ] [finsense] Cargados 0 hashes de BD (0 cuentas)
+[2026-02-21 18:45:52] [INFO    ] [finsense] Total en BD antes: 0
+[2026-02-21 18:45:52] [INFO    ] [finsense] Inicializando pipeline...
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Cargadas 8 excepciones de clasificación
+[2026-02-21 18:45:53] [INFO    ] [finsense] Pipeline inicializado con 0 transacciones conocidas en 0 cuentas
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] Procesando directorio: input
+[2026-02-21 18:45:53] [INFO    ] [finsense] Encontrados 21 CSVs y 0 PDFs en input
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser openbank parseó 13529 transacciones de openbank_TOTAL_ES3600730100550435513660_EUR.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   openbank_TOTAL_ES3600730100550435513660_EUR.csv: parseo=13529, internos_dup=0, cross_dup=222, result=13307
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):   183 tx (  1.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):  6433 tx ( 47.5%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):  4137 tx ( 30.6%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 3 (Transferencias           ):   739 tx (  5.5%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 4 (Tokens                   ):   439 tx (  3.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):  1598 tx ( 11.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ openbank_TOTAL_ES3600730100550435513660_EUR.csv | Total: 13529 | Nuevos: 13529 | Duplic: 222 (de: 222x openbank_TOTAL_ES3600730100550435513660_EUR.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser abanca parseó 7 transacciones de ABANCA_ES5120800823473040166463.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   ABANCA_ES5120800823473040166463.csv: parseo=7, internos_dup=0, cross_dup=0, result=7
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):     6 tx ( 85.7%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):     1 tx ( 14.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ ABANCA_ES5120800823473040166463.csv           | Total:    7 | Nuevos:    7 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser b100 parseó 148 transacciones de MovimientosB100_ES88208001000130433834426.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   MovimientosB100_ES88208001000130433834426.csv: parseo=148, internos_dup=0, cross_dup=1, result=147
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):   127 tx ( 85.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    21 tx ( 14.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ MovimientosB100_ES88208001000130433834426.csv | Total:  148 | Nuevos:  148 | Duplic: 1 (de: 1x MovimientosB100_ES88208001000130433834426.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser myinvestor parseó 10 transacciones de MyInvestor_ES5215447889746650686253.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   MyInvestor_ES5215447889746650686253.csv: parseo=10, internos_dup=0, cross_dup=1, result=9
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx ( 10.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):     6 tx ( 60.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):     3 tx ( 30.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ MyInvestor_ES5215447889746650686253.csv       | Total:   10 | Nuevos:   10 | Duplic: 1 (de: 1x MyInvestor_ES5215447889746650686253.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser myinvestor parseó 76 transacciones de MyInvestor_ES6115447889736650701175.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   MyInvestor_ES6115447889736650701175.csv: parseo=76, internos_dup=0, cross_dup=0, result=76
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  1.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    69 tx ( 90.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):     6 tx (  7.9%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ MyInvestor_ES6115447889736650701175.csv       | Total:   76 | Nuevos:   76 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser myinvestor parseó 26 transacciones de MyInvestor_ES7715447889736650686240.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   MyInvestor_ES7715447889736650686240.csv: parseo=26, internos_dup=0, cross_dup=0, result=26
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  3.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    24 tx ( 92.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):     1 tx (  3.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ MyInvestor_ES7715447889736650686240.csv       | Total:   26 | Nuevos:   26 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser myinvestor parseó 30 transacciones de Myinvestor_ES6015447889796650683633.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Myinvestor_ES6015447889796650683633.csv: parseo=30, internos_dup=0, cross_dup=0, result=30
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  3.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    28 tx ( 93.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):     1 tx (  3.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Myinvestor_ES6015447889796650683633.csv       | Total:   30 | Nuevos:   30 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser myinvestor parseó 29 transacciones de Myinvestor_ES7415447889716653144178.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Myinvestor_ES7415447889716653144178.csv: parseo=29, internos_dup=0, cross_dup=1, result=28
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  3.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    23 tx ( 79.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):     5 tx ( 17.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Myinvestor_ES7415447889716653144178.csv       | Total:   29 | Nuevos:   29 | Duplic: 1 (de: 1x Myinvestor_ES7415447889716653144178.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser preprocessed parseó 1000 transacciones de Openbank_ES3600730100550435513660.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Openbank_ES3600730100550435513660.csv: parseo=1000, internos_dup=0, cross_dup=994, result=6
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     9 tx (  0.9%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):   378 tx ( 37.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):   244 tx ( 24.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 3 (Transferencias           ):   129 tx ( 12.9%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 4 (Tokens                   ):    94 tx (  9.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 5 (Sin clasificar           ):   146 tx ( 14.6%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Openbank_ES3600730100550435513660.csv         | Total: 1000 | Nuevos: 1000 | Duplic: 994 (de: 994x openbank_TOTAL_ES3600730100550435513660_EUR.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser openbank parseó 26 transacciones de Openbank_Fede_ES1900730100500502943470.xls.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Openbank_Fede_ES1900730100500502943470.xls.csv: parseo=26, internos_dup=0, cross_dup=0, result=26
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    26 tx (100.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Openbank_Fede_ES1900730100500502943470.xls.csv | Total:   26 | Nuevos:   26 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser openbank parseó 30 transacciones de Openbank_Miguel_ES6700730100510502943333.xls.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Openbank_Miguel_ES6700730100510502943333.xls.csv: parseo=30, internos_dup=0, cross_dup=0, result=30
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    29 tx ( 96.7%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 3 (Transferencias           ):     1 tx (  3.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Openbank_Miguel_ES6700730100510502943333.xls.csv | Total:   30 | Nuevos:   30 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser openbank parseó 81 transacciones de Openbank_Violeta_ES4200730100550502943296.xls.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Openbank_Violeta_ES4200730100550502943296.xls.csv: parseo=81, internos_dup=0, cross_dup=1, result=80
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    27 tx ( 33.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):    48 tx ( 59.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 4 (Tokens                   ):     6 tx (  7.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Openbank_Violeta_ES4200730100550502943296.xls.csv | Total:   81 | Nuevos:   81 | Duplic: 1 (de: 1x Openbank_Violeta_ES4200730100550502943296.xls.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser revolut parseó 210 transacciones de Revolut_ES1215830001199090471794.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   Revolut_ES1215830001199090471794.csv: parseo=210, internos_dup=0, cross_dup=9, result=201
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):   210 tx (100.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ Revolut_ES1215830001199090471794.csv          | Total:  210 | Nuevos:  210 | Duplic: 9 (de: 9x Revolut_ES1215830001199090471794.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser trade_republic_csv parseó 920 transacciones de TradeRepublic_ES8015860001420977164411.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   TradeRepublic_ES8015860001420977164411.csv: parseo=920, internos_dup=0, cross_dup=6, result=914
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):    12 tx (  1.3%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):   902 tx ( 98.7%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ TradeRepublic_ES8015860001420977164411.csv    | Total:  920 | Nuevos:  914 | Duplic: 6 (de: 6x TradeRepublic_ES8015860001420977164411.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser enablebanking parseó 2 transacciones de abanca_ES5120800823473040166463_EUR_20260213-180352.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   abanca_ES5120800823473040166463_EUR_20260213-180352.csv: parseo=2, internos_dup=0, cross_dup=0, result=2
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx ( 50.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):     1 tx ( 50.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ abanca_ES5120800823473040166463_EUR_20260213-180352.csv | Total:    2 | Nuevos:    2 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser enablebanking parseó 0 transacciones de abanca_ES8820800100013043834426_EUR_20260213-180402.csv
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ abanca_ES8820800100013043834426_EUR_20260213-180402.csv | Total:    0 | Nuevos:    0 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv: parseo=25, internos_dup=0, cross_dup=0, result=25
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):    22 tx ( 88.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):     3 tx ( 12.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ enable_abanca_ES66208001000130433834434_EUR_20260214-221642.csv | Total:   25 | Nuevos:   25 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser enablebanking parseó 111 transacciones de enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv: parseo=111, internos_dup=0, cross_dup=0, result=111
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):   107 tx ( 96.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):     4 tx (  3.6%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ enable_abanca_ES95208001000830433834442_EUR_20260214-221634.csv | Total:  111 | Nuevos:  111 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser mediolanum_old parseó 457 transacciones de mediolanum_ES2501865001680510084831.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   mediolanum_ES2501865001680510084831.csv: parseo=457, internos_dup=0, cross_dup=3, result=454
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     8 tx (  1.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):   449 tx ( 98.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ mediolanum_ES2501865001680510084831.csv       | Total:  457 | Nuevos:  457 | Duplic: 3 (de: 3x mediolanum_ES2501865001680510084831.csv)
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser openbank parseó 55 transacciones de openbank_ES2200730100510135698457.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   openbank_ES2200730100510135698457.csv: parseo=55, internos_dup=0, cross_dup=0, result=55
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    55 tx (100.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ openbank_ES2200730100510135698457.csv         | Total:   55 | Nuevos:   55 | Duplic: 0
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Parser enablebanking parseó 25 transacciones de openbank_ES3600730100550435513660_EUR_20260213-180337.csv
+[2026-02-21 18:45:53] [DEBUG   ] [finsense]   openbank_ES3600730100550435513660_EUR_20260213-180337.csv: parseo=25, internos_dup=0, cross_dup=11, result=14
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Clasificación por capa:
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 0 (Reglas prioritarias      ):     1 tx (  4.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 1 (Exact match              ):    16 tx ( 64.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 2 (Merchants                ):     4 tx ( 16.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]     Capa 4 (Tokens                   ):     4 tx ( 16.0%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ✓ openbank_ES3600730100550435513660_EUR_20260213-180337.csv | Total:   25 | Nuevos:   25 | Duplic: 11 (de: 4x Openbank_ES3600730100550435513660.csv, 7x openbank_TOTAL_ES3600730100550435513660_EUR.csv)
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] Total procesado: 16791 transacciones nuevas
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] Insertando transacciones en BD...
+[2026-02-21 18:45:53] [ERROR   ] [finsense] Error insertando transacciones: UNIQUE constraint failed: transacciones.hash
+[2026-02-21 18:45:53] [INFO    ] [finsense] Total en BD después: 0
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] Exportando a Excel...
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Iniciando exportación a Excel: output/transacciones_20260221_184553.xlsx
+[2026-02-21 18:45:53] [DEBUG   ] [finsense] Transacciones cargadas: 0
+[2026-02-21 18:45:53] [ERROR   ] [finsense] Error exportando Excel: "None of [Index(['id', 'fecha', 'importe', 'descripcion', 'banco', 'cuenta', 'tipo',\n       'cat1', 'cat2', 'hash', 'id_contrapartida'],\n      dtype='str')] are in the [columns]"
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] ESTADÍSTICAS DE TRANSACCIONES NUEVAS
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] 📅 Periodo: 2004-05-03 → 2026-02-13
+[2026-02-21 18:45:53] [INFO    ] [finsense] 📝 Total nuevas transacciones: 16,791
+[2026-02-21 18:45:53] [INFO    ] [finsense] 💰 Totales:
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Ingresos: +€3,181,077.77
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Gastos:   -€3,183,044.94
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Balance:   €-1,967.17
+[2026-02-21 18:45:53] [WARNING ] [finsense] ⚠️  1753 transacciones sin clasificar (10.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] RESUMEN DE EJECUCIÓN
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] Timestamp: 2026-02-21 18:45:53
+[2026-02-21 18:45:53] [INFO    ] [finsense] Log guardado en: /home/pablo/apps/mis_finanzas_1.0/logs/finsense_20260221_184552.log
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] --- INFORME DE IMPORTACIÓN POR FICHERO ---
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] Fichero                                │   Total │  Nuevos │  Duplic │ Origen duplicado              
+[2026-02-21 18:45:53] [INFO    ] [finsense] ────────────────────────────────────────────────────────────────────────────────────────────────────────
+[2026-02-21 18:45:53] [INFO    ] [finsense] ABANCA_ES5120800823473040166463.csv    │       7 │       7 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] MovimientosB100_ES88208001000130433..  │     148 │     148 │       1 │ 1x MovimientosB100_ES88...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] MyInvestor_ES5215447889746650686253..  │      10 │      10 │       1 │ 1x MyInvestor_ES5215447...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] MyInvestor_ES6115447889736650701175..  │      76 │      76 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] MyInvestor_ES7715447889736650686240..  │      26 │      26 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] Myinvestor_ES6015447889796650683633..  │      30 │      30 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] Myinvestor_ES7415447889716653144178..  │      29 │      29 │       1 │ 1x Myinvestor_ES7415447...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] Openbank_ES3600730100550435513660.csv  │    1000 │    1000 │     994 │ 994x openbank_TOTAL_ES360...  
+[2026-02-21 18:45:53] [INFO    ] [finsense] Openbank_Fede_ES1900730100500502943..  │      26 │      26 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] Openbank_Miguel_ES67007301005105029..  │      30 │      30 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] Openbank_Violeta_ES4200730100550502..  │      81 │      81 │       1 │ 1x Openbank_Violeta_ES4...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] Revolut_ES1215830001199090471794.csv   │     210 │     210 │       9 │ 9x Revolut_ES1215830001...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] TradeRepublic_ES8015860001420977164..  │     920 │     914 │       6 │ 6x TradeRepublic_ES8015...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] abanca_ES5120800823473040166463_EUR..  │       2 │       2 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] abanca_ES8820800100013043834426_EUR..  │       0 │       0 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] enable_abanca_ES6620800100013043383..  │      25 │      25 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] enable_abanca_ES9520800100083043383..  │     111 │     111 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] mediolanum_ES2501865001680510084831..  │     457 │     457 │       3 │ 3x mediolanum_ES2501865...    
+[2026-02-21 18:45:53] [INFO    ] [finsense] openbank_ES2200730100510135698457.csv  │      55 │      55 │       0 │ —                             
+[2026-02-21 18:45:53] [INFO    ] [finsense] openbank_ES3600730100550435513660_E..  │      25 │      25 │      11 │ 4x Openbank_ES360073010..., 7x openbank_TOTAL_ES360...
+[2026-02-21 18:45:53] [INFO    ] [finsense] openbank_TOTAL_ES360073010055043551..  │   13529 │   13529 │     222 │ 222x openbank_TOTAL_ES360...  
+[2026-02-21 18:45:53] [INFO    ] [finsense] ────────────────────────────────────────────────────────────────────────────────────────────────────────
+[2026-02-21 18:45:53] [INFO    ] [finsense] TOTAL                                  │   16797 │   16791 │    1249 │                               
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] --- Estadísticas de Procesamiento ---
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Ficheros encontrados:           21
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Ficheros procesados:            21
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Ficheros ignorados:             0
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Transacciones leídas:           16791
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Duplicados (mismo archivo):     0
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Duplicados (ya en BD):          1249
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Nuevas transacciones insertadas:0
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Merchants únicos detectados:    0
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Total en BD después:            0
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] --- Clasificación por Capa (global) ---
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 0 (Reglas prioritarias      ):    475 tx (  2.8%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 1 (Exact match              ):   8710 tx ( 51.9%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 2 (Merchants                ):   4441 tx ( 26.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 3 (Transferencias           ):    869 tx (  5.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 4 (Tokens                   ):    543 tx (  3.2%)
+[2026-02-21 18:45:53] [INFO    ] [finsense]   Capa 5 (Sin clasificar           ):   1753 tx ( 10.4%)
+[2026-02-21 18:45:53] [INFO    ] [finsense] 
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
+[2026-02-21 18:45:53] [INFO    ] [finsense] FIN DE EJECUCIÓN
+[2026-02-21 18:45:53] [INFO    ] [finsense] ================================================================================
