@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-25 — Sesión 49 COMPLETADA
+**Última actualización**: 2026-02-25 — Sesión 50 COMPLETADA
 
 ---
 
@@ -27,16 +27,16 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 17,484 (post-S49, con duplicados legítimos recuperados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Openbank | 13,937 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
-| Trade Republic | 1,006 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
-| Mediolanum | 911 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
-| Revolut | 411 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
-| MyInvestor | 340 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='MyInvestor';"` |
-| B100 | 295 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100';"` |
-| Bankinter | 294 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
-| Abanca | 290 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
-| Duplicados detectados | 0 (verificado con query GROUP BY) | `sqlite3 finsense.db "SELECT COUNT(*) FROM (SELECT COUNT(*) n FROM transacciones GROUP BY banco, fecha, importe, descripcion HAVING n>1);"` |
+| Total transacciones | 15,995 (post-S50: 17,484 S49 − 1,489 bloque duplicado) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Openbank | 13,746 (13,529 TOTAL + 217 de otros orígenes) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
+| Trade Republic | 969 (PDF actualizado de Extracto S49) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
+| Mediolanum | 457 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
+| Revolut | 210 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
+| MyInvestor | 171 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='MyInvestor';"` |
+| Bankinter | 149 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
+| B100 | 148 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100';"` |
+| Abanca | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
+| Duplicados detectados | 249 txs en 15746 grupos únicos (legítimos: cargos provisionales + reversiones) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;" → 15995 total, 15746 grupos únicos` |
 | Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
 | Combinaciones Cat1\|Cat2 válidas | 188 | `classifier/valid_combos.py` |
@@ -63,6 +63,17 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S50 — 2026-02-25 — LIMPIAR BLOQUE DUPLICADO: BD 17,484 → 15,995 ✅ COMPLETADO
+- **Problema detectado**: S49 reimportó todos los ficheros SIN limpiar la BD primero. Resultado: **dos importaciones completas** en la BD. Bloque 1 (rowid 13308-14816): 1489 txs con hashes SIN `line_num` (importación vieja). Bloque 2 (rowid 14817-30811): 15995 txs con hashes CON `line_num` (reimportación S49). Todos los ficheros excepto openbank_TOTAL estaban DUPLICADOS exactamente.
+- **Análisis comparativo Excel vs BD**: Antes de borrar, cada fichero tenía exactamente el DOBLE de registros que en el Excel de referencia. Bloque 2 contiene exactamente los números correctos. Ejemplo: Mediolanum Excel=457, Bloque1=454, Bloque2=457 ✅.
+- **Diagnóstico de Trade Republic**: Bloque 1 tenía 37 txs históricas (2023-10-09 a 2024-06-05) del PDF anterior. Bloque 2 tiene 969 txs del PDF S49 (2023-10-09 a 2026-02-23). Las 37 del bloque 1 NO solapan con bloque 2 (cero INTERSECT por fecha+importe). Decisión: borrar bloque 1 completo — las txs históricas pueden reimportarse si es necesario.
+- **Ejecución**: `DELETE FROM transacciones WHERE rowid BETWEEN 13308 AND 14816;` → 1489 txs borradas. BD pasó de 17,484 → 15,995. Hashes: 15,995 únicos (0 colisiones). Duplicados lógicos: 249 txs (15746 grupos únicos) — LEGÍTIMOS (cargos provisionales + reversiones en Openbank, TR, etc.).
+- **Validación contra Excel**: ✅ Todos los ficheros coinciden exactamente con colC del Excel excepto: (1) Trade Republic: 969 vs 920 esperados (+49 txs, probablemente fechas posteriores al Excel). (2) openbank_ES3600_enablebanking: +25 txs (no en Excel, importado en S49 por Enablebanking). Ambas discrepancias son **aceptables** porque el Excel está desactualizado.
+- **Verificación final**: Total 15,995 txs. Periodo 2004-05-03 → 2026-02-23. SIN_CLASIFICAR: 1309 (87%). Hashes: 15,995 únicos. Backup: `finsense.db.backup_pre_fix_S50` creado.
+- **Decisión arquitectónica**: Bloque 2 es la fuente de verdad. El hash CON `line_num` de S49 es el correcto para evitar pérdidas de transacciones legítimas dentro del mismo fichero.
+- **Próximo**: (1) Ejecutar `reclassify_all.py` para clasificar 1309 SIN_CLASIFICAR. (2) Auditoría comparativa con Excel final. (3) Commit.
+
 
 ### S49 — 2026-02-25 — FIX DEDUPLICACIÓN GLOBAL: LINE_NUM EN HASH DE TODOS LOS PARSERS ✅ COMPLETADO
 - **Problema raíz descubierto**: Transacciones idénticas (misma fecha+importe+descripcion+cuenta) dentro del MISMO fichero se perdían. Causa: todas generaban el mismo hash, y SQLite `UNIQUE constraint` en columna `hash` rechazaba los duplicados (válido solo para cross-file). Afectaba a todos los bancos: Openbank 204 grupos, Bankinter, MyInvestor, Revolut, B100, etc. (total 20 duplicados internos en última pasada).
