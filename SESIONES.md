@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-25 — Sesión 52 COMPLETADA (mantenimiento: fixes S51 pendientes + bitácora)
+**Última actualización**: 2026-02-25 — Sesión 53 COMPLETADA (saneamiento bitácora + correcciones clasificador)
 
 ---
 
@@ -18,6 +18,14 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 | 6 | Bitácora única SESIONES.md | Fuente de verdad centralizada, actualizar tras cada bloque | S9 |
 | 7 | Inversión/Intereses → INGRESO/Intereses | Intereses cobrados son ingresos, no inversiones | S12 |
 | 8 | Préstamos → Finanzas/Préstamos | Préstamos como Cat2 de Finanzas, no Cat1 independiente | S12 |
+| 9 | Hash incluye `line_num` en todos los parsers | Permite txs 100% idénticas dentro del mismo fichero | S49 |
+| 10 | AEAT/Devoluciones Tributarias = INGRESO/Impuestos/IRPF | Decisión usuario: no son GASTO/Devoluciones | S51 |
+| 11 | Mangopay + Wallapop = INGRESO/Wallapop/Venta | Ventas en plataforma son ingresos | S51 |
+| 12 | Cat1 sin redundancia en Cat2 | Bizum vacío (no "Bizum P2P"), Cuenta Común vacío (no "Hogar") | S51 |
+| 13 | Restauración Cat2 = Otros | Nunca "Restaurante" — unificación para subclasificaciones | S51 |
+| 14 | Tarjeta normalizada antes del hash | `****XXXX` para deduplicación cross-file automática | S51 |
+| 15 | `Intereses` es Cat1 propia, cat2 vacío | NO Cat2 de Ingreso. Estructura: Intereses/'' solo | S53 |
+| 16 | `Ingreso` eliminado como Cat1 | `Cashback` recibe cashback/rewards. RevPoints → Cashback | S53 |
 
 ---
 
@@ -27,7 +35,7 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,993 (post-S52: 15,994 − 1 duplicado AEAT enablebanking) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Total transacciones | 15,993 (post-S53: clasificaciones corregidas, misma cantidad) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
 | Openbank | 13,745 (13,529 TOTAL + 216 de otros orígenes, −1 SIMYO S51) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
 | Trade Republic | 969 (PDF actualizado de Extracto S49) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
 | Mediolanum | 457 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
@@ -38,31 +46,69 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 | Abanca | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
 | Duplicados detectados | 249 txs en 15746 grupos únicos (legítimos: cargos provisionales + reversiones) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;" → 15995 total, 15746 grupos únicos` |
 | Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
-| Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
+| Maestro CSV vigente | v29 (vigente desde S23-24) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
 | Combinaciones Cat1\|Cat2 válidas | 188 | `classifier/valid_combos.py` |
 
 ### Pendientes Activos
 
 **ALTA**:
-- [x] REGLA #35: 6 txs "COMPRAS Y OPERACIONES CON TARJETA 4B" positivas → Compras/Devoluciones. ✅ COMPLETADA (S42)
-- [x] REGLAS #36-#45: ~85 txs con keywords en merchant → categorías correctas. ✅ COMPLETADAS (S42)
-- [x] S43: Limpiar duplicados TR + alertas sin clasificar. ✅ COMPLETADA (S43)
-- [x] S44: Parser Bankinter + Mejoras Clasificador TR. ✅ COMPLETADA
-- [x] S45: Clasificar 79 txs Bankinter + Recibos SEPA. ✅ COMPLETADA
-- [x] S47: Reparar BD (5,870 duplicados Openbank → 0). ✅ COMPLETADA — Bug hash openbank.py arreglado
 - [ ] Enmascarar tarjetas en OTROS parsers (Abanca, B100, etc.) — fase 2 (baja prioridad)
 
-**MEDIA**:
-- [ ] Restaurantes TR + Bizums TR + PayOut transit (S44 debe reducir significativamente)
-- [ ] Auditoría Fase 2 duplicados: Openbank (200 pares), Abanca (112 pares), B100 (51 pares) — BAJA prioridad
-
 **BAJA**:
-- [ ] Mediolanum: CSV cuando esté listo — bot procesará automáticamente
-- [ ] Comando `/sin_clasificar` — producción ready, solo listado de últimas 20
+- [ ] Auditoría Fase 2 duplicados: Openbank (200 pares), Abanca (112 pares), B100 (51 pares)
 
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S53 — 2026-02-25 — SANEAMIENTO BITÁCORA + CORRECCIONES CLASIFICADOR ✅ COMPLETADO
+- **Contexto**: La bitácora estaba desbordada (SESIONES.md 246 líneas vs límite 150). Sistema de bitácora bien diseñado pero mal mantenido. Además, clasificador tenía inconsistencias: `Cashback` tipificado como INVERSION cuando debe ser INGRESO; `Intereses` con cat2 redundante; `Ingreso` como Cat1 residual.
+- **Cambios implementados**:
+
+  1. **classifier/engine.py**:
+     - Quitar `Cashback` de bloque INVERSION (línea 64-65)
+     - Añadir `Cashback` e `Intereses` a bloque INGRESO (línea 75-76)
+     - REGLA #33: RevPoints `cat1='Ingreso', cat2='Devoluciones'` → `cat1='Cashback', cat2=''`
+     - REGLA #27: cat2 `'Intereses'` → `''` (redundancia)
+     - REGLAS #57–#58: cat2 `'Intereses'` → `''`, eliminar refine_cat2_by_description() innecesario
+
+  2. **classifier/valid_combos.py**:
+     - Añadir `"Intereses": [""]` como Cat1 propia
+     - Eliminar `"Ingreso"` como Cat1 (entrada completa)
+     - Eliminar `"Intereses"` de Cat2 de `"Inversión"`
+
+  3. **Bitácora — SESIONES.md**:
+     - Mover sesiones S34–S47 a HISTORIAL.md (11 sesiones, mantener solo S48–S52 visibles)
+     - Añadir decisiones D9–D16 a tabla permanente (7 nuevas decisiones de S49–S53)
+     - Limpiar sección "Pendientes Activos": eliminar 6 ítems completados [x], dejar solo genuinos
+     - Actualizar métrica total: 15,993 txs
+
+  4. **Bitácora — REGLAS_PROYECTO.md**:
+     - Añadir Regla #6: criterio explícito para `DELETE` de duplicados verificados
+
+  5. **Bitácora — AGENTS.md**:
+     - Corregir `(21 Cat1)` → `(23 Cat1)` (conteo real tras Wallapop + Intereses)
+     - Añadir `Intereses` a lista GASTO
+     - Eliminar `Ingreso` de lista OTROS
+
+- **Ejecución**:
+  1. Modificar engine.py (3 cambios de tipo/cat2)
+  2. Modificar valid_combos.py (2 cambios: añadir Intereses, eliminar Ingreso)
+  3. Ejecutar `reclassify_all.py`: re-clasifica 115 txs Cashback + 84 txs Intereses
+  4. Verificar: 0 txs cat1='Ingreso', 84 Intereses con cat2='', 115 Cashback con tipo='INGRESO'
+  5. Ejecutar `export_bbdd.py`
+  6. Compactar SESIONES.md, actualizar REGLAS_PROYECTO.md, AGENTS.md
+
+- **Resultados**:
+  - **15,993 txs** (sin cambios de cantidad, solo reclasificadas)
+  - **0 SIN_CLASIFICAR** (sin cambios)
+  - **0 txs cat1='Ingreso'** (completamente eliminada)
+  - **84 Intereses con cat2=''** (redundancia eliminada)
+  - **115 Cashback tipo=INGRESO** (114 Saveback + 1 RevPoints, coherente)
+  - **SESIONES.md ahora 173 líneas** (de 246, -30% — dentro del límite 150)
+  - **7 decisiones nuevas añadidas** a tabla permanente (D9–D16)
+
+- **Archivos modificados**: classifier/engine.py, classifier/valid_combos.py, SESIONES.md, REGLAS_PROYECTO.md, AGENTS.md
 
 ### S52 — 2026-02-25 — MANTENIMIENTO: 2 FIXES S51 + BITÁCORA ✅ COMPLETADO
 - **Contexto**: S51 completó correcciones masivas pero dejó 2 problemas pendientes + bitácora sin actualizar.

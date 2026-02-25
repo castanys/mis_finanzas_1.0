@@ -62,7 +62,7 @@ def determine_tipo(cat1, importe, descripcion=""):
 
     # INVERSION: Cat1 relacionadas con actividad financiera/inversión
     if cat1 in ("Renta Variable", "Fondos", "Cripto", "Aportación", "Depósitos",
-                "Dividendos", "Comisiones", "Divisas", "Cashback"):
+                "Dividendos", "Comisiones", "Divisas"):
         return "INVERSION"
 
     try:
@@ -73,7 +73,7 @@ def determine_tipo(cat1, importe, descripcion=""):
     if importe_float > 0:
         # Ingresos reales (positivos)
         if cat1 in ("Nómina", "Bonificación familia numerosa", "Servicios Consultoría",
-                   "Finanzas", "Dividendos", "Cashback", "Wallapop", "Otros", "Ingreso"):
+                   "Finanzas", "Dividendos", "Wallapop", "Intereses", "Cashback", "Otros"):
             return "INGRESO"
 
         # Devoluciones (positivas en cualquier categoría de gasto) = GASTO
@@ -540,9 +540,9 @@ class Classifier:
                 'capa': 0
             }
 
-        # REGLA #33: RevPoints con Redondeo (Revolut cashback/rewards) → INGRESO/Devoluciones
+        # REGLA #33: RevPoints con Redondeo (Revolut cashback/rewards) → INGRESO/Cashback
         if "RevPoints con Redondeo" in descripcion:
-            cat1, cat2 = "Ingreso", "Devoluciones"
+            cat1, cat2 = "Cashback", ""
             tipo = "INGRESO"
             return {
                 'cat1': cat1,
@@ -809,26 +809,24 @@ class Classifier:
                 'capa': 0
             }
 
-        # REGLA #57: LIQ. PROPIA CTA. (Bankinter) → INGRESO/Intereses
+        # REGLA #57: LIQ. PROPIA CTA. (Bankinter) → INGRESO/Intereses (cat2 vacío)
         # Liquidación de intereses de la propia cuenta (importes muy pequeños, positivos)
         if banco == "Bankinter" and "LIQ. PROPIA CTA." in desc_upper:
-            cat2_refined = refine_cat2_by_description("Intereses", "Intereses", descripcion)
             tipo = determine_tipo("Intereses", importe, descripcion)
             return {
                 'cat1': 'Intereses',
-                'cat2': cat2_refined,
+                'cat2': '',
                 'tipo': tipo,
                 'capa': 0
             }
 
-        # REGLA #58: RECTIF. LIQ. CTA. (Bankinter) → INGRESO/Intereses
+        # REGLA #58: RECTIF. LIQ. CTA. (Bankinter) → INGRESO/Intereses (cat2 vacío)
         # Rectificación de liquidación de intereses
         if banco == "Bankinter" and "RECTIF. LIQ. CTA." in desc_upper:
-            cat2_refined = refine_cat2_by_description("Intereses", "Intereses", descripcion)
             tipo = determine_tipo("Intereses", importe, descripcion)
             return {
                 'cat1': 'Intereses',
-                'cat2': cat2_refined,
+                'cat2': '',
                 'tipo': tipo,
                 'capa': 0
             }
@@ -1417,13 +1415,13 @@ class Classifier:
                 'capa': 0
             }
 
-        # REGLA #27: Intereses cobrados → INGRESO/Intereses
+        # REGLA #27: Intereses cobrados → INGRESO/Intereses (cat2 vacío)
         # Keywords: INTERESES CTA., Interest payment, Your interest payment (Trade Republic, Abanca)
         if 'INTERESES' in desc_upper or 'INTEREST PAYMENT' in desc_upper or 'YOUR INTEREST PAYMENT' in desc_upper:
             if importe_float > 0:  # Intereses cobrados son siempre positivos
                 return {
                     'cat1': 'Intereses',
-                    'cat2': 'Intereses',
+                    'cat2': '',
                     'tipo': 'INGRESO',
                     'capa': 0
                 }

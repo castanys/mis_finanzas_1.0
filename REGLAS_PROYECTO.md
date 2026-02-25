@@ -47,7 +47,7 @@ Cat2 puede añadirse si:
 - Existe evidencia en la BD de al menos 2 transacciones que la necesiten
 - Se agrega a `valid_combos.py` antes de usar
 
-Las 21 Cat1 existentes están en `AGENTS.md` (sección Taxonomía de Referencia).
+Las 23 Cat1 existentes están en `AGENTS.md` (sección Taxonomía de Referencia).
 
 ---
 
@@ -78,6 +78,18 @@ UPDATE transacciones SET cat1='X', cat2='Y' WHERE ...
 4. Documentar en SESIONES.md
 
 La BD debe reflejar SIEMPRE el estado que definen las reglas de código, nunca al revés.
+
+---
+
+## Regla #6: DELETE directo permitido solo para duplicados verificados
+
+**PERMITIDO únicamente si**:
+1. Se identifica el id exacto a borrar (query con WHERE id=...)
+2. Se conserva la versión canónica (openbank_TOTAL > enablebanking)
+3. Se verifica COUNT(*) antes y después
+4. Se documenta en SESIONES.md con números reales
+
+**PROHIBIDO**: DELETE masivo sin ids exactos verificados
 
 ---
 

@@ -57,11 +57,11 @@ python3 test_parsers_manual.py         # Tests del clasificador
 
 ---
 
-## Taxonomía de Referencia (21 Cat1)
+## Taxonomía de Referencia (23 Cat1)
 
-**GASTO**: Alimentación, Compras, Deportes, Efectivo, Finanzas, Impuestos, Ocio y Cultura, Recibos, Restauración, Ropa y Calzado, Salud y Belleza, Seguros, Servicios Consultoría, Suscripciones, Transporte, Viajes, Vivienda, Wallapop
+**GASTO**: Alimentación, Compras, Deportes, Efectivo, Finanzas, Impuestos, Intereses, Ocio y Cultura, Recibos, Restauración, Ropa y Calzado, Salud y Belleza, Seguros, Servicios Consultoría, Suscripciones, Transporte, Viajes, Vivienda, Wallapop
 
-**OTROS**: Ingreso, Nómina, Liquidación, Transferencia, Inversión
+**OTROS**: Nómina, Liquidación, Transferencia, Inversión, Cashback
 
 **Regla**: NO crear Cat1 nuevas sin aprobación explícita. Ver REGLAS_PROYECTO.md #3.
 
