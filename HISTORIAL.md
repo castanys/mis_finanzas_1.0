@@ -651,3 +651,51 @@ Este archivo es la fuente de verdad histórica del proyecto. Cada 5 sesiones com
 4. Commit incluye ambos archivos: `git add SESIONES.md HISTORIAL.md`
 
 No requiere lectura en cada sesión (costo de tokens: cero). Solo se consulta si necesitas analizar el historial del proyecto.
+
+---
+
+## Fase 4 — Automatización, Duplicados y Fixes (S34–S47)
+
+### S47 — 2026-02-24 — REPARAR BD: BUG HASH OPENBANK (5,870 DUPLICADOS → 0) ✅ COMPLETADO
+- **Hecho**: ✅ Bug en lógica de hash openbank.py fue la causa. Función normalizadora solo enmascaraba para hash pero no para DESC, causando inconsistencia. TODOS los parsers deben mantener DESC y HASH sincronizados. Guard de sanidad previene futuros bugs.
+- **Métrica**: 5,870 duplicados corregidos → 0. BD pasó de 21,655 txs corrompidas a 15,785 txs limpias. 0 duplicados verificados. Commit 390c14e.
+
+### S45 — 2026-02-24 — CLASIFICAR BANKINTER + RECIBOS SEPA CAMUFLADOS ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Lógica Bankinter en transfers.py**: Añadida función `is_internal_transfer()` con patrones flexibles para Bankinter. (2) **REGLAS #55-64 en engine.py**: 10 nuevas reglas específicas. (3) **REGLA #65 Recibos SEPA camuflados**: Detecta "SEPA DIRECT DEBIT TRANSFER TO..." y reclasifica por acreedor. (4) **Resultado**: Bankinter 79→0 SIN_CLASIFICAR (100% ✅), Recibos SEPA 5 txs reclasificadas. Bankinter 145 txs, 0 SIN_CLASIFICAR. Commit 00163b6.
+- **Métrica**: 79 txs Bankinter clasificadas. 5 Recibos SEPA reclasificados. 10 nuevas reglas. BD: 21,655 txs, 1,066 SIN_CLASIFICAR (4.9%).
+
+### S44 — 2026-02-24 — PARSER BANKINTER + MEJORAS CLASIFICADOR TR ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Parser Bankinter**: Nuevo archivo `parsers/bankinter.py` (~130 líneas) con detección de CSV format, conversión cuenta 20-dígitos a IBAN con check digit, parsing números españoles sin separador miles. (2) **Registro en pipeline.py**: Import BankinterParser, added a dict `self.parsers['bankinter']`, detección en `detect_bank()`. (3) **Mejoras Transfers**: Patrón genérico para TR Bizums cortos/apodos, lista `own_ibans` actualizada. (4) **Mejoras Merchants**: Fallback a descripción completa para restaurantes. (5) **Config cuentas.json**: Añadidas 2 cuentas Bankinter. Commit S44.
+- **Métrica**: 1,006 txs TR nuevas. 6 parsers creados/mejorados. BD: 21,510 txs totales.
+
+### S43 — 2026-02-24 — DUPLICADOS + ALERTAS SIN CLASIFICAR ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Diagnóstico crítico**: 99 txs sin clasificar. (2) **Duplicados encontrados**: Openbank SIMYO (tarjeta completa vs enmascarada) + AECC de TR (texto truncado vs completo). (3) **Fix preventivo en openbank.py**: `_normalize_description_for_hash()` para enmascarar tarjetas antes de generar hash. (4) **Alertas bot**: Post-importación muestra contador de txs sin clasificar + comando `/sin_clasificar`. (5) **Limpiezas**: Borradas 1,027 txs TR → BD 15,661→14,634 txs. Commit 00e31d2.
+- **Métrica**: 1,027 txs borradas. 99 sin clasificar identificadas. 2 ficheros modificados.
+
+### S42 — 2026-02-24 — PUSH DIARIO: SOLO ENVIAR SI HAY CAMBIOS ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Problema**: `push_diario()` enviaba mensaje diario sin verificar cambios. (2) **Solución**: Detección de cambios usando `MAX(rowid)` de `transacciones` vs. valor guardado en tabla `bot_estado`. (3) **Lógica**: Si `max_rowid == ultimo_rowid` → omitir push, si diferente → generar, enviar y guardar nuevo rowid. (4) **Testing**: 3 ejecuciones simuladas correctamente. Commit S42.
+- **Métrica**: ~35 líneas de código nuevo. Tabla `bot_estado` implementada. Bot PID 2631620.
+
+### S41 — 2026-02-24 — INTEGRACIÓN CLAUDE API (FALLBACK LLM) ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Instalación paquete `anthropic`**: v0.83.0 + 9 deps. (2) **Configuración `.env`**: Clave ANTHROPIC_API_KEY actualizada. (3) **Cadena fallback LLM**: Intenta Qwen → Claude API → formato crudo. (4) **Resultado**: Bot funciona con Qwen. Fallback Claude listo cuando haya clave con acceso a modelos.
+- **Métrica**: +anthropic deps, fallback chain implementada. Bot operativo.
+
+### S40 — 2026-02-24 — FIX DOCUMENTO HANDLER + HISTORIAL.MD PERMANENTE ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Fix en `bot_telegram.py`** (línea 513-518): `if file_path.exists()` antes de `shutil.move()`. (2) **Compactación SESIONES.md**: 143→82 líneas (-43%). (3) **Creación HISTORIAL.md**: Archivo permanente (653 líneas) con S1-S40 completos. Nunca se compacta ni se borra. (4) **Actualización AGENTS.md**: Protocolo compactación. Commit 31367a1.
+- **Métrica**: SESIONES.md -43%, HISTORIAL.md +653 líneas. Coste tokens: cero.
+
+### S39 — 2026-02-24 — IMPORTACIÓN DE FICHEROS VÍA TELEGRAM ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Desactivado sync de pytr**: CSV descartado, solo PDFs vía Telegram. (2) **Nuevo handler de documentos**: `async def documento_handler()` (~130 líneas) que verifica autorización, descarga a input/, ejecuta process_transactions.py, parsea resultado, notifica al usuario, archiva en procesados/. (3) **Registro del handler**: `MessageHandler(filters.Document.ALL, documento_handler)` en main(). (4) **Actualización /ayuda**: sección "Importar documentos". (5) **Pruebas**: 840 txs nuevas importadas desde PDF TR.
+- **Métrica**: +130 líneas handler. Bot funcional. BD: 15,661 txs.
+
+### S38 — 2026-02-24 — LIMPIEZA DE DUPLICADOS TR ✅ COMPLETADO
+- **Hecho**: ✅ (1) **Investigación**: 679 pares duplicados lógicos identificados. (2) **Ejecución**: Eliminadas 924 txs del CSV de S23. Carpeta `input/descartados/` creada con CSV movido. PDFs archivados en `input/archivo_tr/`. (3) **Resultado**: BD 15,745→14,821 txs (-924). TR: 187 txs solo de PDFs (cero contaminación). Decisión: CSV descartado definitivamente. TR usa solo PDFs.
+- **Métrica**: 924 txs eliminadas. BD limpia.
+
+### S35 — 2026-02-23 — BLOQUE 2: AUTOMATIZACIÓN TRADE REPUBLIC ✅ COMPLETADO
+- **Hecho**: ✅ `sync_trade_republic.py` (395 líneas) + integración bot_telegram.py. Instalado pytr v0.4.6. Sync automático diario a las 12:00 con deduplicación correcta.
+- **Métrica**: Bot corriendo (PID 2247104). 3 jobs programados. Tests: dry-run ✅, real ✅.
+
+### S34 — 2026-02-23 — BLOQUE 3: SISTEMA 3-LEVEL DE MENSAJES ✅ COMPLETADO
+- **Hecho**: ✅ SISTEMA 3-LEVEL IMPLEMENTADO. (1) **Daily (12:00)**: 8 ángulos aleatorios + 5 tonos rotativos. (2) **Monthly (día 1, 08:00)**: 3 ángulos rotativos. (3) **Annual (1 ene, 08:00)**: Revisión anual fija con proyección FIRE. Bot reiniciado (PID 2218166). Scheduler: 3 jobs registrados.
+- **Métrica**: advisor.py: +560 líneas.
