@@ -129,7 +129,14 @@ class OpenbankParser(BankParser):
         Parse Openbank "TOTAL" format with clean columns.
 
         Format: Fecha valor;Concepto;Importe;Cuenta;Saldo
+        
+        IMPORTANTE: El hash INCLUYE el número de línea para permitir transacciones
+        idénticas (misma fecha+importe+descripcion+cuenta) dentro del mismo fichero.
+        Esto es necesario porque el TOTAL tiene 204 grupos de transacciones reales
+        100% duplicadas que NO son duplicados cross-file sino transacciones distintas
+        (ej: 5 compras el mismo día por el mismo monto en el mismo comercio).
         """
+        import hashlib
         records = []
         line_num = 2  # Start at 2 (after header)
 
@@ -176,6 +183,11 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
+            # CUSTOM HASH PARA TOTAL FORMAT: incluye número de línea
+            # Esto permite transacciones idénticas dentro del mismo fichero
+            raw_hash = f"{fecha_iso}|{importe:.2f}|{concepto}|{iban}|line_{line_num}"
+            hash_val = hashlib.sha256(raw_hash.encode()).hexdigest()
+
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -183,7 +195,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
+                "hash": hash_val
             }
             records.append(record)
             line_num += 1

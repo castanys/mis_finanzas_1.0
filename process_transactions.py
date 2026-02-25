@@ -127,8 +127,19 @@ def load_known_hashes(db_path: str = 'finsense.db') -> dict:
     """
     Cargar hashes conocidos desde la BD para deduplicación.
     
+    Formato compatible con pipeline.py:
+    {cuenta: {hash: {source_file: count}}}
+    
+    Ejemplo:
+    {
+        'ES3600730100550435513660': {
+            'abc123hash': {'bd': 2},  # Este hash aparece 2 veces en la BD
+            'def456hash': {'bd': 1}   # Este hash aparece 1 vez en la BD
+        }
+    }
+    
     Returns:
-        Dict {cuenta: {hash: source_file}}
+        Dict con estructura anidada para compatible con pipeline
     """
     logger = get_logger()
     known_hashes = {}
@@ -141,16 +152,23 @@ def load_known_hashes(db_path: str = 'finsense.db') -> dict:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         
-        cursor.execute('SELECT cuenta, hash FROM transacciones')
+        # Contar cuántas veces aparece cada hash por cuenta
+        cursor.execute('''
+            SELECT cuenta, hash, COUNT(*) as hash_count
+            FROM transacciones
+            GROUP BY cuenta, hash
+        ''')
         rows = cursor.fetchall()
         
-        for cuenta, hash_val in rows:
+        for cuenta, hash_val, hash_count in rows:
             if cuenta not in known_hashes:
                 known_hashes[cuenta] = {}
-            # No guardamos source_file aquí, solo que existe el hash
-            known_hashes[cuenta][hash_val] = 'bd'
+            # Formato esperado por pipeline: {hash: {source_file: count}}
+            # Como proviene de BD, usamos 'bd' como source_file
+            known_hashes[cuenta][hash_val] = {'bd': hash_count}
         
-        logger.debug(f"Cargados {sum(len(h) for h in known_hashes.values())} hashes de BD ({len(known_hashes)} cuentas)")
+        total_hashes = sum(len(h) for h in known_hashes.values())
+        logger.debug(f"Cargados {total_hashes} hashes únicos de BD ({len(known_hashes)} cuentas)")
         
         conn.close()
     except Exception as e:

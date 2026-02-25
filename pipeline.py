@@ -80,7 +80,16 @@ class TransactionPipeline:
                 self.excepciones = data.get('excepciones', [])
             self.logger.debug(f"Cargadas {len(self.excepciones)} excepciones de clasificación")
 
-        total_known = sum(len(hashes) for hashes in self.known_hashes.values())
+        # Calcular total conocido: sum de counts en todos los hashes de todas las cuentas
+        total_known = 0
+        for cuenta_hashes in self.known_hashes.values():
+            for hash_info in cuenta_hashes.values():
+                if isinstance(hash_info, dict):
+                    # Nuevo formato: {filename: count}
+                    total_known += sum(hash_info.values())
+                else:
+                    # Formato antiguo (por compatibilidad)
+                    total_known += 1
         self.logger.info(f"Pipeline inicializado con {total_known} transacciones conocidas en {len(self.known_hashes)} cuentas")
 
     def check_excepcion(self, fecha: str, importe: float, banco: str) -> Optional[Dict]:
@@ -305,35 +314,62 @@ class TransactionPipeline:
                 self.known_hashes[account] = {}
 
             # Deduplicate: BOTH internal (within same file) AND cross-file
+            # NEW LOGIC: Usar contador de ocurrencias por hash para permitir txs idénticas legítimas
             filtered_records = []
-            file_hashes_seen = set()  # Track hashes seen WITHIN THIS FILE only
+            file_hash_count = {}  # {hash: contador de ocurrencias en este fichero}
             duplicados_internos = 0
             duplicados_cross = 0
             
+            # PASO 1: Contar ocurrencias de cada hash dentro del fichero actual
             for r in records:
                 hash_val = r['hash']
-
-                # Check 1: Is this hash already in known_hashes from OTHER files?
+                file_hash_count[hash_val] = file_hash_count.get(hash_val, 0) + 1
+            
+            # PASO 2: Procesar records con lógica de contador
+            file_hash_seen_count = {}  # {hash: cuántos hemos visto hasta ahora en este procesamiento}
+            
+            for r in records:
+                hash_val = r['hash']
+                
+                # ¿Cuántas veces hemos visto este hash hasta ahora en este fichero?
+                current_occurrence = file_hash_seen_count.get(hash_val, 0) + 1
+                file_hash_seen_count[hash_val] = current_occurrence
+                
+                # ¿Cuántas veces existe este hash en ficheros anteriores (cross-file)?
+                cross_file_count = 0
+                cross_file_origin = None
                 if hash_val in self.known_hashes[account]:
-                    # Cross-file duplicate - SKIP
+                    # known_hashes[account][hash] ahora es un dict {filename: count}
+                    for fname, count in self.known_hashes[account][hash_val].items():
+                        cross_file_count += count
+                        if not cross_file_origin:
+                            cross_file_origin = fname
+                
+                # Lógica: si esta es la ocurrencia número N dentro de este fichero,
+                # y ya hay M ocurrencias en ficheros anteriores, entonces:
+                # - Si N <= M: es un duplicado cross-file
+                # - Si N > M: es una transacción genuinamente nueva (duplicado legítimo dentro del mismo fichero)
+                if current_occurrence <= cross_file_count:
+                    # Duplicado cross-file - SKIP
                     duplicados_cross += 1
                     duplicados_bd += 1
-                    origen_fichero = self.known_hashes[account][hash_val]
-                    dup_origen_contador[origen_fichero] = dup_origen_contador.get(origen_fichero, 0) + 1
+                    dup_origen_contador[cross_file_origin] = dup_origen_contador.get(cross_file_origin, 0) + 1
                     continue
                 
-                # Check 2: Is this hash already seen WITHIN THIS FILE?
-                if hash_val in file_hashes_seen:
-                    # Internal duplicate - SKIP
-                    duplicados_internos += 1
-                    duplicados_bd += 1
-                    dup_origen_contador[filename] = dup_origen_contador.get(filename, 0) + 1
-                    continue
-                
-                # Hash is unique (not seen before) - KEEP
+                # Hash es nuevo o es una ocurrencia adicional - KEEP
                 filtered_records.append(r)
-                file_hashes_seen.add(hash_val)
-                self.known_hashes[account][hash_val] = filename
+            
+            # PASO 3: Actualizar known_hashes SOLO con los hashes que fueron realmente insertados
+            # Contar cuántas de cada hash fueron realmente insertadas en filtered_records
+            inserted_hash_count = {}
+            for r in filtered_records:
+                hash_val = r['hash']
+                inserted_hash_count[hash_val] = inserted_hash_count.get(hash_val, 0) + 1
+            
+            for hash_val, count_inserted in inserted_hash_count.items():
+                if hash_val not in self.known_hashes[account]:
+                    self.known_hashes[account][hash_val] = {}
+                self.known_hashes[account][hash_val][filename] = count_inserted
             
             # Debug
             if total_original > 0:
