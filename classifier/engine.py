@@ -956,6 +956,30 @@ class Classifier:
                     'capa': 0
                 }
 
+        # REGLA #66: Trade Republic PayOut to transit → TRANSFERENCIA/Externa
+        # "PayOut to transit" son transferencias salientes de TR a cuentas externas
+        # Negativas, variados importes, sin destinatario específico → Externa
+        if "PAYOUT TO TRANSIT" in desc_upper:
+            tipo = determine_tipo("Externa", importe, descripcion)
+            return {
+                'cat1': 'Externa',
+                'cat2': 'PayOut',
+                'tipo': tipo,
+                'capa': 0
+            }
+
+        # REGLA #67: Trade Republic Bizum cortos truncados (sin "Outgoing/Incoming transfer")
+        # Patrón: "for <nombre>" o "from <nombre>" (sin "Outgoing/Incoming transfer" al inicio)
+        # Estos son Bizums donde el PDF parser truncó la descripción
+        if banco == "Trade Republic" and (desc_upper.startswith("FOR ") or desc_upper.startswith("FROM ")):
+            tipo = determine_tipo("Bizum", importe, descripcion)
+            return {
+                'cat1': 'Bizum',
+                'cat2': 'Bizum P2P',
+                'tipo': tipo,
+                'capa': 0
+            }
+
          # REGLA #6: Patrón "COMPRA EN" (histórico de Openbank, pero aplicar a todos)
          # Detecta transacciones en formato: "COMPRA EN <MERCHANT>, CON LA TARJETA..."
         # Si extract_merchant() logró extraer un merchant, procesa aquí.

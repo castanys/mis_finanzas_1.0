@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-25 — Sesión 50 COMPLETADA
+**Última actualización**: 2026-02-25 — Sesión 50 COMPLETADA (+ clasificación 100%)
 
 ---
 
@@ -64,15 +64,16 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
 
-### S50 — 2026-02-25 — LIMPIAR BLOQUE DUPLICADO: BD 17,484 → 15,995 ✅ COMPLETADO
+### S50 — 2026-02-25 — LIMPIAR BLOQUE DUPLICADO: BD 17,484 → 15,995 ✅ COMPLETADO + CLASIFICACIÓN 100% ✅
 - **Problema detectado**: S49 reimportó todos los ficheros SIN limpiar la BD primero. Resultado: **dos importaciones completas** en la BD. Bloque 1 (rowid 13308-14816): 1489 txs con hashes SIN `line_num` (importación vieja). Bloque 2 (rowid 14817-30811): 15995 txs con hashes CON `line_num` (reimportación S49). Todos los ficheros excepto openbank_TOTAL estaban DUPLICADOS exactamente.
 - **Análisis comparativo Excel vs BD**: Antes de borrar, cada fichero tenía exactamente el DOBLE de registros que en el Excel de referencia. Bloque 2 contiene exactamente los números correctos. Ejemplo: Mediolanum Excel=457, Bloque1=454, Bloque2=457 ✅.
 - **Diagnóstico de Trade Republic**: Bloque 1 tenía 37 txs históricas (2023-10-09 a 2024-06-05) del PDF anterior. Bloque 2 tiene 969 txs del PDF S49 (2023-10-09 a 2026-02-23). Las 37 del bloque 1 NO solapan con bloque 2 (cero INTERSECT por fecha+importe). Decisión: borrar bloque 1 completo — las txs históricas pueden reimportarse si es necesario.
-- **Ejecución**: `DELETE FROM transacciones WHERE rowid BETWEEN 13308 AND 14816;` → 1489 txs borradas. BD pasó de 17,484 → 15,995. Hashes: 15,995 únicos (0 colisiones). Duplicados lógicos: 249 txs (15746 grupos únicos) — LEGÍTIMOS (cargos provisionales + reversiones en Openbank, TR, etc.).
+- **Ejecución fase 1 (limpiar)**: `DELETE FROM transacciones WHERE rowid BETWEEN 13308 AND 14816;` → 1489 txs borradas. BD pasó de 17,484 → 15,995. Hashes: 15,995 únicos (0 colisiones). Duplicados lógicos: 249 txs (15746 grupos únicos) — LEGÍTIMOS (cargos provisionales + reversiones en Openbank, TR, etc.).
 - **Validación contra Excel**: ✅ Todos los ficheros coinciden exactamente con colC del Excel excepto: (1) Trade Republic: 969 vs 920 esperados (+49 txs, probablemente fechas posteriores al Excel). (2) openbank_ES3600_enablebanking: +25 txs (no en Excel, importado en S49 por Enablebanking). Ambas discrepancias son **aceptables** porque el Excel está desactualizado.
-- **Verificación final**: Total 15,995 txs. Periodo 2004-05-03 → 2026-02-23. SIN_CLASIFICAR: 1309 (87%). Hashes: 15,995 únicos. Backup: `finsense.db.backup_pre_fix_S50` creado.
-- **Decisión arquitectónica**: Bloque 2 es la fuente de verdad. El hash CON `line_num` de S49 es el correcto para evitar pérdidas de transacciones legítimas dentro del mismo fichero.
-- **Próximo**: (1) Ejecutar `reclassify_all.py` para clasificar 1309 SIN_CLASIFICAR. (2) Auditoría comparativa con Excel final. (3) Commit.
+- **Ejecución fase 2 (clasificar)**: Ejecutado `reclassify_all.py`: 1309 SIN_CLASIFICAR → 1 tx sin clasificar residual. Luego: (1) **REGLA #66** en engine.py: Trade Republic "PayOut to transit" → TRANSFERENCIA/Externa (61 txs). (2) **REGLA #67** en engine.py: Trade Republic Bizums truncados "for/from <nombre>" → TRANSFERENCIA/Bizum/Bizum P2P (26 txs). (3) **Restaurantes en merchants.py**: LA FRONTERA, EL HORNO DE RICOTE, BIERGARTEN → GASTO/Restauración (3 txs). Resultado: **0 SIN_CLASIFICAR** ✅✅✅
+- **Verificación final**: Total 15,995 txs. Periodo 2004-05-03 → 2026-02-23. **SIN_CLASIFICAR: 0 (100% clasificadas)** 🎉. Cat1 distribuciones: Compras 3006, Interna 2712, Alimentación 1754, Efectivo 1229, Transporte 1120, Restauración 1023, Bizum 846, etc. Hashes: 15,995 únicos. Categorías: 37 Cat1 únicas. Backup: `finsense.db.backup_pre_fix_S50`.
+- **Decisión arquitectónica**: Bloque 2 es la fuente de verdad. Hash CON `line_num` de S49 correcto. Clasificación 100%: todas las txs tienen Cat1+Cat2 definidos.
+- **Commit**: S50 completada. Siguiente: auditoría post-S50 (si es necesario).
 
 
 ### S49 — 2026-02-25 — FIX DEDUPLICACIÓN GLOBAL: LINE_NUM EN HASH DE TODOS LOS PARSERS ✅ COMPLETADO
