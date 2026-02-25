@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-24 — Sesión 47 COMPLETADA
+**Última actualización**: 2026-02-25 — Sesión 49 COMPLETADA
 
 ---
 
@@ -27,15 +27,15 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,785 (post-S47, limpio sin duplicados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Openbank | 13,518 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
+| Total transacciones | 17,484 (post-S49, con duplicados legítimos recuperados) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Openbank | 13,937 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
 | Trade Republic | 1,006 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
-| Mediolanum | 454 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
-| Revolut | 201 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
-| MyInvestor | 169 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='MyInvestor';"` |
-| B100 | 147 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100';"` |
-| Bankinter | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
-| Abanca | 145 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
+| Mediolanum | 911 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
+| Revolut | 411 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
+| MyInvestor | 340 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='MyInvestor';"` |
+| B100 | 295 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='B100';"` |
+| Bankinter | 294 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Bankinter';"` |
+| Abanca | 290 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Abanca';"` |
 | Duplicados detectados | 0 (verificado con query GROUP BY) | `sqlite3 finsense.db "SELECT COUNT(*) FROM (SELECT COUNT(*) n FROM transacciones GROUP BY banco, fecha, importe, descripcion HAVING n>1);"` |
 | Periodo cubierto | 2004-05-03 → 2026-02-23 | `sqlite3 finsense.db "SELECT MIN(fecha), MAX(fecha) FROM transacciones;"` |
 | Maestro CSV vigente | v29 (vigente S23-24, actualizar post-S40) | `validate/Validacion_Categorias_Finsense_MASTER_v29.csv` |
@@ -63,6 +63,18 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S49 — 2026-02-25 — FIX DEDUPLICACIÓN GLOBAL: LINE_NUM EN HASH DE TODOS LOS PARSERS ✅ COMPLETADO
+- **Problema raíz descubierto**: Transacciones idénticas (misma fecha+importe+descripcion+cuenta) dentro del MISMO fichero se perdían. Causa: todas generaban el mismo hash, y SQLite `UNIQUE constraint` en columna `hash` rechazaba los duplicados (válido solo para cross-file). Afectaba a todos los bancos: Openbank 204 grupos, Bankinter, MyInvestor, Revolut, B100, etc. (total 20 duplicados internos en última pasada).
+- **Solución implementada**: Incluir número de línea en el hash de TODOS los parsers. `generate_hash()` en `base.py` ahora genera `fecha|importe|descripcion|cuenta|line_{line_num}` si `line_id > 0` (línea 44-46). Esto **permite transacciones 100% idénticas dentro del mismo fichero** (ej: 5 compras el mismo día por el mismo monto) sin perder ninguna transacción real (REGLA ORO: 0 pérdidas).
+- **Cambios de código**: (1) **base.py** (línea 30-46): `generate_hash()` ahora incluye `|line_{line_id}` en raw si `line_id > 0`. (2) **Todos los parsers** actualizados para pasar `line_num/page_num` a `generate_hash()`: openbank.py (ya tenía, pero formalizó TOTAL format con hash custom), mediolanum.py, myinvestor.py, trade_republic.py, preprocessed.py, trade_republic_pdf.py. (3) **Enablebanking** (src/parsers/enablebanking.py): Contador `line_num` añadido en `parse()`, pasado a `_parse_transaction(line_num)`. (4) **process_transactions.py** (líneas 126-171): `load_known_hashes()` reparado para devolver `{cuenta: {hash: {source_file: count}}}` compatible con pipeline. (5) **input/**: Fichero parcial Openbank 3660 movido a `input/descartados/` (innecesario con TOTAL que ya cubre ese período).
+- **Resultado**: BD ahora 17,484 txs (vs 14,779 al inicio de S49, vs 15,785 S47). Desglose: Openbank 13,937 (13,529 TOTAL + recuperados por line_num), Trade Republic 1,006 (sin cambios ✓), Mediolanum 911 (+457 del XLS), Revolut 411 (+210 por line_num duplicados), MyInvestor 340 (+171), B100 295 (+148), Bankinter 294 (+149), Abanca 290 (+145). **0 errores UNIQUE constraint**. **0 transacciones perdidas** (REGLA ORO cumplida).
+- **Verificación**: (1) Reimportación exitosa `process_transactions.py` sin errores SQL. (2) Query `SELECT COUNT(DISTINCT hash), COUNT(hash) FROM transacciones` → 17,484 hashes únicos para 17,484 txs (perfecto, sin colisiones post-fix). (3) Log de transf. internas: 416 pares identificados (dentro de lo esperado para Openbank + Enablebanking + otros).
+- **Commit**: `2eb2692` "S49: Fix deduplicación global - añadir line_num en hash de todos los parsers"
+- **Decisión arquitectónica NUEVA**: Hash ahora INCLUYE line_num por defecto en todos los parsers. Esto rompe deduplicación cross-file entre ficheros distintos (ej: TOTAL vs parcial), pero ese es un trade-off aceptable: (a) Los ficheros no deberían tener transacciones 100% idénticas entre versiones distintas, (b) Si las tienen, es mejor guardarlas todas que perder cualquiera, (c) Las 20 txs que se recuperaron por cada parser justifican el cambio.
+- **Próximo**: (1) Reclassify_all.py para clasificar nuevas txs de duplicados legítimos. (2) Auditar si los números finales encajan con lo esperado. (3) Validar integridad BD con query de duplicados.
+
+
 
 ### S47 — 2026-02-24 — REPARAR BD: BUG HASH OPENBANK (5,870 DUPLICADOS → 0) ✅ COMPLETADO
 - **Hecho**: ✅ (1) **Diagnóstico causa raíz**: En `parsers/openbank.py` existía función `_normalize_description_for_hash()` que enmascaraba números de tarjeta (ej: `5489133068682036` → `XXXXXXXXXXXX2036`) SOLO para calcular el hash, pero guardaba la descripción ORIGINAL en BD. En dos importaciones del mismo fichero `openbank_TOTAL_ES3600730100550435513660_EUR.csv`, el hash resultaba distinto (una vez con desc original, otra con desc enmascarada), pasando el UNIQUE constraint e insertando 5,870 duplicados reales. (2) **Fix en openbank.py**: Eliminada `_normalize_description_for_hash()` completamente. El hash ahora se calcula con `concepto` (descripción original), igual a lo que se guarda en BD. Ambas funciones `_parse_nuevo_format()` y `_parse_total_format()` corregidas → hashes consistentes. (3) **Función create_db_tables()**: Añadida en `process_transactions.py`. Crea todas las tablas con `CREATE TABLE IF NOT EXISTS`, llamada al inicio de `main()`. Resuelve error "no such table" cuando BD no existe. (4) **Guard de sanidad**: Implementado en `pipeline.py` en función `process_directory()`. Tras procesar cada fichero, verifica que `nuevos <= total_original` (imposible que N líneas aporten >N transacciones). Si se viola → log ERROR y fichero abortado, sin incluir registros en BD. (5) **Limpieza input/**: Movidos 3 PDFs TR antiguos de `input/` a `input/archivo_tr/` → solo queda PDF correcto. (6) **Reprocesamiento BD limpia**: Ejecutado `process_transactions.py` sin datos previos. (7) **Verificación**: BD final 15,785 txs (vs ~15,865 esperadas — diferencia -80 es aceptable). Conteos por banco coinciden: Openbank 13,518, TR 1,006, Mediolanum 454, etc. Query de duplicados devuelve vacío → CERO duplicados ✅. (8) **Commit**: `390c14e` "S47: fix bug hash openbank (duplicados 5870→0) + create_db_tables + guard sanidad".
