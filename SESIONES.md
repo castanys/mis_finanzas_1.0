@@ -1,6 +1,6 @@
 # SESIONES.md — mis_finanzas_1.0
 
-**Última actualización**: 2026-02-25 — Sesión 50 COMPLETADA (+ clasificación 100%)
+**Última actualización**: 2026-02-25 — Sesión 51 COMPLETADA (correcciones clasificación final)
 
 ---
 
@@ -27,8 +27,8 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 
 | Métrica | Valor | Cómo verificar |
 |---------|-------|----------------|
-| Total transacciones | 15,995 (post-S50: 17,484 S49 − 1,489 bloque duplicado) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
-| Openbank | 13,746 (13,529 TOTAL + 217 de otros orígenes) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
+| Total transacciones | 15,994 (post-S51: 15,995 − 1 duplicado SIMYO) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones;"` |
+| Openbank | 13,745 (13,529 TOTAL + 216 de otros orígenes, −1 SIMYO S51) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Openbank';"` |
 | Trade Republic | 969 (PDF actualizado de Extracto S49) | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Trade Republic';"` |
 | Mediolanum | 457 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Mediolanum';"` |
 | Revolut | 210 | `sqlite3 finsense.db "SELECT COUNT(*) FROM transacciones WHERE banco='Revolut';"` |
@@ -63,6 +63,57 @@ Estas decisiones ya se tomaron. No volver a preguntar ni proponer alternativas.
 ---
 
 ## 🟢 Últimas Sesiones (máx 5 — las anteriores van a ARCHIVO)
+
+### S51 — 2026-02-25 — CORRECCIONES FINALES CLASIFICACIÓN ✅ COMPLETADO
+- **Contexto**: Post-S50 usuario identificó 11 problemas en la clasificación.
+- **Cambios implementados**:
+
+  1. **merchants.py**:
+     - Reemplazar todas 39 `"Restaurante"` → `"Otros"` (línea 172-672)
+     - Añadir: OPENROUTER → Suscripciones/Software/IA; NAMECHEAP → Suscripciones/Dominios; ORTONOVA → Salud y Belleza/Dental
+  
+  2. **engine.py** (nuevas reglas):
+     - **REGLA #69**: AEAT/Devoluciones Tributarias → INGRESO/Impuestos/IRPF (detecta "DEVOLUCIONES TRIBUTARIAS" o "AEAT APL", **antes** de la regla genérica de devoluciones)
+     - **REGLA #70-#71**: Mangopay → INGRESO/Wallapop/Venta (detecta "MANGOPAY" + "WALLAPOP" O banco=TR + "from Mangopay")
+     - **REGLA #67 modificada**: Quitar cat2='Bizum P2P' → vacío (redundante con cat1=Bizum)
+     - **REGLA #54 modificada**: Quitar cat2='Hogar' → vacío (redundante con cat1=Cuenta Común)
+     - **Reglas de intereses (#57, #58, línea 1422)**: Cambiar cat1='Ingreso' → cat1='Intereses' (REGLA #17: Capgemini Retrocesión también)
+  
+  3. **parsers/openbank.py**:
+     - Función `normalize_card_number()` para deduplicación cross-file: reemplaza números de tarjeta completos (5489133068682036) o enmascarados (XXXXXXXXXXXX2036) por formato canónico `****XXXX` **antes** del hash
+     - Aplicado a ambos formatos (_parse_nuevo_format y _parse_total_format)
+  
+- **Ejecución**:
+  1. `reclassify_all.py`: re-clasifica todas 15,995 txs con nuevas reglas
+  2. Actualizar BD directamente: Restaurante→Otros (198 txs), Ortonova Farmacia→Dental (3 txs), OPENROUTER cat2, cambios de categorías
+  3. `DELETE FROM transacciones WHERE id=30810` (duplicado SIMYO enmascarado, mantener 29304 con tarjeta completa)
+  4. `export_bbdd.py`: exportar Excel final
+
+- **Resultados finales**:
+  - **15,994 txs** (15,995 − 1 duplicado SIMYO eliminado)
+  - **0 SIN_CLASIFICAR** (100% clasificadas)
+  - **38 Cat1 únicas** (añadida Wallapop vs S50)
+  - **Cambios por categoría**:
+    - Restauración: 198 Restaurante → Otros (284 Otros totales; antes 57 Otros)
+    - Wallapop: 37 txs nuevas (35 ingresos Mangopay + 2 residuales)
+    - Impuestos: 294 txs (incluyendo 1 AEAT S50 que fue Compras/Devoluciones)
+    - Bizum: 890 txs sin cat2 (antes 106 Bizum P2P)
+    - Cuenta Común: 427 txs sin cat2 (antes 59 con Hogar)
+    - Intereses: 84 txs (antes dispersas en "Ingreso")
+  - **Cat2 vacías**: 5,042 txs (normal: Bizum, Wallapop, Ingreso, Nómina, etc.)
+  - **Hashes**: 15,994 únicos (0 colisiones) — deduplicador cross-file normaliza tarjetas
+  - **Periodo**: 2004-05-03 → 2026-02-23
+  - **Backup**: `finsense.db.backup_pre_fix_S50` (contiene estado S50 pre-S51)
+
+- **Decisiones arquitectónicas nuevas**:
+  - AEAT/Devoluciones Tributarias = INGRESO (decisión del usuario, no GASTO/Devoluciones)
+  - Mangopay + Wallapop = INGRESO/Wallapop (ventas en plataforma)
+  - Cat1 SIN redundancia en Cat2 (Bizum vacío, no "Bizum P2P")
+  - Restauración Cat2 = solo Otros (unificación: Bar, Cafetería, etc. para subclasificaciones; Otros para genéricos)
+  - Tarjeta normalizada en parser (cross-file deduplicación automática)
+
+- **Archivos modificados**: classifier/engine.py, classifier/merchants.py, parsers/openbank.py
+- **Commit**: `ae9c426` (S51)
 
 ### S50 — 2026-02-25 — LIMPIAR BLOQUE DUPLICADO: BD 17,484 → 15,995 ✅ COMPLETADO + CLASIFICACIÓN 100% ✅
 - **Problema detectado**: S49 reimportó todos los ficheros SIN limpiar la BD primero. Resultado: **dos importaciones completas** en la BD. Bloque 1 (rowid 13308-14816): 1489 txs con hashes SIN `line_num` (importación vieja). Bloque 2 (rowid 14817-30811): 15995 txs con hashes CON `line_num` (reimportación S49). Todos los ficheros excepto openbank_TOTAL estaban DUPLICADOS exactamente.
