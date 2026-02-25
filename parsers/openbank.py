@@ -21,6 +21,36 @@ from typing import List, Dict
 from .base import BankParser
 
 
+def normalize_card_number(concepto: str) -> str:
+    """
+    Normalizar números de tarjeta en la descripción para deduplicación cross-file.
+    
+    Problema: El archivo TOTAL tiene números de tarjeta completos (5489133068682036)
+    mientras que enablebanking los enmascara (XXXXXXXXXXXX2036). Ambos se refieren
+    a la misma transacción, pero generan hashes distintos.
+    
+    Solución: Reemplazar ambos patrones por una forma canónica ****XXXX (últimos 4 dígitos).
+    
+    Args:
+        concepto: Descripción original de la transacción
+        
+    Returns:
+        Descripción con números de tarjeta normalizados
+    """
+    # Patrón 1: Números enmascarados "XXXXXXXXXXXX2036" → extraer últimos 4 dígitos
+    # Patrón 2: Números completos "5489133068682036" → extraer últimos 4 dígitos
+    
+    # Encontrar patrones de tarjeta enmascarada (X seguido de dígitos)
+    # Ej: "CON LA TARJETA : XXXXXXXXXXXX2036" → "CON LA TARJETA : ****2036"
+    concepto = re.sub(r'[X]+(\d{4})', r'****\1', concepto)
+    
+    # Encontrar patrones de tarjeta completa (secuencia de 16 dígitos)
+    # Ej: "CON LA TARJETA : 5489133068682036" → "CON LA TARJETA : ****2036"
+    concepto = re.sub(r'\b\d{12}(\d{4})\b', r'****\1', concepto)
+    
+    return concepto
+
+
 class OpenbankParser(BankParser):
     """Parser para CSV de Openbank (ambos formatos)."""
 
@@ -110,6 +140,9 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
+            # Normalizar número de tarjeta en concepto para deduplicación cross-file
+            concepto_for_hash = normalize_card_number(concepto)
+
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -117,7 +150,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
+                "hash": self.generate_hash(fecha_iso, importe, concepto_for_hash, iban, line_num)
             }
             records.append(record)
             line_num += 1
@@ -183,9 +216,12 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
+            # Normalizar número de tarjeta en concepto para deduplicación cross-file
+            concepto_for_hash = normalize_card_number(concepto)
+
             # CUSTOM HASH PARA TOTAL FORMAT: incluye número de línea
             # Esto permite transacciones idénticas dentro del mismo fichero
-            raw_hash = f"{fecha_iso}|{importe:.2f}|{concepto}|{iban}|line_{line_num}"
+            raw_hash = f"{fecha_iso}|{importe:.2f}|{concepto_for_hash}|{iban}|line_{line_num}"
             hash_val = hashlib.sha256(raw_hash.encode()).hexdigest()
 
             record = {

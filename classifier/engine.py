@@ -238,6 +238,41 @@ class Classifier:
         # === REGLAS PRIORITARIAS (antes de Exact Match) ===
         desc_upper = descripcion.upper()
 
+        # REGLA #69: AEAT/Devoluciones Tributarias → INGRESO/Impuestos/IRPF (S51)
+        # Detecta: "DEVOLUCIONES TRIBUTARIAS" o "AEAT APL" (incluso si importe>0)
+        if ("DEVOLUCIONES TRIBUTARIAS" in desc_upper or "AEAT APL" in desc_upper):
+            cat2_refined = refine_cat2_by_description("Impuestos", "IRPF", descripcion)
+            tipo = determine_tipo("Impuestos", importe, descripcion)
+            return {
+                'cat1': 'Impuestos',
+                'cat2': cat2_refined,
+                'tipo': 'INGRESO',
+                'capa': 0
+            }
+
+        # REGLA #70: Mangopay → INGRESO/Wallapop (S51)
+        # Detecta: Mangopay + Wallapop = ventas en Wallapop
+        if ("MANGOPAY" in desc_upper and "WALLAPOP" in desc_upper):
+            tipo = determine_tipo("Wallapop", importe, descripcion)
+            return {
+                'cat1': 'Wallapop',
+                'cat2': 'Venta',
+                'tipo': 'INGRESO',
+                'capa': 0
+            }
+
+        # REGLA #71: Mangopay en TR (solo "from Mangopay") → INGRESO/Wallapop (S51)
+        # Para los Bizums truncados que solo dicen "from Mangopay" sin Wallapop explícito
+        if (banco == "Trade Republic" and "FROM MANGOPAY" in desc_upper and 
+            "WALLAPOP" not in desc_upper):
+            tipo = determine_tipo("Wallapop", importe, descripcion)
+            return {
+                'cat1': 'Wallapop',
+                'cat2': 'Venta',
+                'tipo': 'INGRESO',
+                'capa': 0
+            }
+
         # REGLA PRIORITARIA: Detectar devoluciones explícitas (importe positivo + keywords)
         # Esto se aplica ANTES de capas normales para forzar Cat2='Devoluciones'
         try:
@@ -745,7 +780,7 @@ class Classifier:
             tipo = determine_tipo("Cuenta Común", importe, descripcion)
             return {
                 'cat1': 'Cuenta Común',
-                'cat2': 'Hogar',
+                'cat2': '',  # Hogar removed (S51) - redundant descriptor
                 'tipo': tipo,
                 'capa': 0
             }
@@ -777,10 +812,10 @@ class Classifier:
         # REGLA #57: LIQ. PROPIA CTA. (Bankinter) → INGRESO/Intereses
         # Liquidación de intereses de la propia cuenta (importes muy pequeños, positivos)
         if banco == "Bankinter" and "LIQ. PROPIA CTA." in desc_upper:
-            cat2_refined = refine_cat2_by_description("Ingreso", "Intereses", descripcion)
-            tipo = determine_tipo("Ingreso", importe, descripcion)
+            cat2_refined = refine_cat2_by_description("Intereses", "Intereses", descripcion)
+            tipo = determine_tipo("Intereses", importe, descripcion)
             return {
-                'cat1': 'Ingreso',
+                'cat1': 'Intereses',
                 'cat2': cat2_refined,
                 'tipo': tipo,
                 'capa': 0
@@ -789,10 +824,10 @@ class Classifier:
         # REGLA #58: RECTIF. LIQ. CTA. (Bankinter) → INGRESO/Intereses
         # Rectificación de liquidación de intereses
         if banco == "Bankinter" and "RECTIF. LIQ. CTA." in desc_upper:
-            cat2_refined = refine_cat2_by_description("Ingreso", "Intereses", descripcion)
-            tipo = determine_tipo("Ingreso", importe, descripcion)
+            cat2_refined = refine_cat2_by_description("Intereses", "Intereses", descripcion)
+            tipo = determine_tipo("Intereses", importe, descripcion)
             return {
-                'cat1': 'Ingreso',
+                'cat1': 'Intereses',
                 'cat2': cat2_refined,
                 'tipo': tipo,
                 'capa': 0
@@ -971,14 +1006,17 @@ class Classifier:
         # REGLA #67: Trade Republic Bizum cortos truncados (sin "Outgoing/Incoming transfer")
         # Patrón: "for <nombre>" o "from <nombre>" (sin "Outgoing/Incoming transfer" al inicio)
         # Estos son Bizums donde el PDF parser truncó la descripción
+        # NOTA: Eliminada cat2='Bizum P2P' (S51) - redundante con cat1=Bizum
         if banco == "Trade Republic" and (desc_upper.startswith("FOR ") or desc_upper.startswith("FROM ")):
-            tipo = determine_tipo("Bizum", importe, descripcion)
-            return {
-                'cat1': 'Bizum',
-                'cat2': 'Bizum P2P',
-                'tipo': tipo,
-                'capa': 0
-            }
+            # Skip Wallapop Bizums - they're handled in REGLA #71
+            if "WALLAPOP" not in desc_upper:
+                tipo = determine_tipo("Bizum", importe, descripcion)
+                return {
+                    'cat1': 'Bizum',
+                    'cat2': '',
+                    'tipo': tipo,
+                    'capa': 0
+                }
 
          # REGLA #6: Patrón "COMPRA EN" (histórico de Openbank, pero aplicar a todos)
          # Detecta transacciones en formato: "COMPRA EN <MERCHANT>, CON LA TARJETA..."
@@ -1258,7 +1296,7 @@ class Classifier:
         # REGLA #17: Retrocesión de gastos duplicados (Capgemini) → INGRESO/Otros/Retrocesión
         if 'CAPGEMINI' in desc_upper and 'RETROCESION' in desc_upper:
             return {
-                'cat1': 'Ingreso',
+                'cat1': 'Retrocesión',
                 'cat2': 'Retrocesión',
                 'tipo': 'INGRESO',
                 'capa': 0
@@ -1384,7 +1422,7 @@ class Classifier:
         if 'INTERESES' in desc_upper or 'INTEREST PAYMENT' in desc_upper or 'YOUR INTEREST PAYMENT' in desc_upper:
             if importe_float > 0:  # Intereses cobrados son siempre positivos
                 return {
-                    'cat1': 'Ingreso',
+                    'cat1': 'Intereses',
                     'cat2': 'Intereses',
                     'tipo': 'INGRESO',
                     'capa': 0
