@@ -18,30 +18,32 @@ Después de CUALQUIER bloque de trabajo:
 ## Protocolo de Trabajo
 
 ### Inicio de sesión
-1. Leer `SESIONES.md` (decisiones + estado actual)
-2. Leer `REGLAS_PROYECTO.md` (reglas #1-#5)
-3. Identificar pendiente o esperar instrucción
+1. Leer `ESTADO.md` (métricas + decisiones + pendientes, ~1.5K tokens)
+2. Leer `SESIONES.md` (últimas 3 sesiones compactas, ~4K tokens)
+3. Leer `REGLAS_PROYECTO.md` (reglas #1-#5, ~3K tokens)
+4. Identificar pendiente o esperar instrucción
 
 ### Fin de bloque
 1. Ejecutar verificación (query/test/logs)
-2. Actualizar SESIONES.md: métrica nueva + pendiente marcado + entrada S[N]
-3. Commit: `git add SESIONES.md && git commit -m "sesión [N]: descripción"`
+2. Actualizar ESTADO.md: nuevas métricas + decisión (si la hay) + pendientes
+3. Actualizar SESIONES.md: nueva entrada S[N] en formato compacto (4–5 líneas)
+4. Commit: `git add ESTADO.md SESIONES.md && git commit -m "sesión [N]: descripción"`
 
 ### Escalado
 Si bloque falla 2+ veces → PARAR. Documentar en SESIONES.md como BLOQUEADO. Pedir decisión.
 
 ---
 
-## Compactación de SESIONES.md (cada 5 sesiones)
+## Protocolo de Rotación de Sesiones
 
-1. Dejar solo últimas 5 sesiones en "Últimas Sesiones"
-2. **Mover sesiones antiguas COMPLETAS a HISTORIAL.md** (sin resumir, sin cortar)
-3. Eliminar secciones "Resúmenes Compactados" y "Historial de Cambios Recientes" de SESIONES.md
-4. Commit: `git add SESIONES.md HISTORIAL.md && git commit -m "compactar: sesiones [rango] → HISTORIAL.md"`
+**Límites**: ESTADO.md ≤50, SESIONES.md ≤120 (últimas 3 sesiones), AGENTS.md ≤80, REGLAS_PROYECTO.md ≤100
+
+**Rotación automática**: 
+1. Mantener siempre 3 sesiones en "Últimas Sesiones" de SESIONES.md
+2. Al llegar a 4 sesiones, mover la más antigua a HISTORIAL.md (completa, sin resumir)
+3. Commit: `git add ESTADO.md SESIONES.md HISTORIAL.md && git commit -m "compactar: sesión [N] → HISTORIAL.md"`
 
 **Nota**: HISTORIAL.md es archivo permanente, nunca se compacta ni se borra.
-
-Límites: SESIONES.md ≤150, AGENTS.md ≤80, REGLAS_PROYECTO.md ≤100 líneas, HISTORIAL.md sin límite.
 
 ---
 
