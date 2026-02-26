@@ -10,14 +10,14 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Total transacciones** | 15,993 |
+| **Total transacciones** | 15,999 |
 | **SIN_CLASIFICAR** | 0 (100% cobertura) |
 | **Período** | 2004-05-03 → 2026-02-23 |
-| **Hashes únicos** | 15,993 (0 colisiones) |
+| **Hashes únicos** | 15,999 (0 colisiones) |
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 54 |
+| **Sesiones completadas** | 55 |
 
 ---
 

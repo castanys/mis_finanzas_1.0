@@ -25,9 +25,9 @@
 - Quitar normalización del hash en b100.py
 - Ejecutar process_transactions.py → validar 0 nuevas en todos ficheros ✅
 
-**Resultado**: 15,993 txs | 0 nuevas | todos ficheros 100% duplicados detectados correctamente | D14 actualizada
+**Resultado**: 15,999 txs | 0 nuevas | todos ficheros 100% duplicados detectados correctamente | D14 actualizada
 
-**Commits**: `XXXXX` (pending)
+**Commits**: `30d87fff`
 
 ---
 
