@@ -635,6 +635,26 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.warning(f"⚠️ Error Markdown, enviando sin formato: {markdown_err}")
             await update.message.reply_text(response)
         
+        # ===== BLOQUE NUEVO: Enviar análisis del día si hay nuevas transacciones =====
+        if result.returncode == 0 and nuevas_txs > 0:
+            try:
+                logger.info("📊 Generando análisis del día tras importación...")
+                await update.message.reply_text("📊 Generando estado financiero del día...")
+                
+                # Generar prompt con ángulo aleatorio (igual que push diario)
+                prompt = generate_daily_message()
+                
+                # Llamar al LLM
+                mensaje_diario = generar_mensaje_con_llm(prompt)
+                
+                # Enviar análisis
+                await update.message.reply_text(mensaje_diario, parse_mode="Markdown")
+                logger.info("✅ Análisis del día enviado tras importación")
+            
+            except Exception as e:
+                logger.warning(f"⚠️ Error generando análisis del día: {e}")
+                # No detener el flujo si falla el análisis — el PDF ya se procesó correctamente
+        
         # Mover archivo a procesados/ si todo fue bien
         if result.returncode == 0:
             processed_dir = input_dir / "procesados"
