@@ -2,13 +2,28 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-25 — Sesión 53 COMPLETADA
+**Última actualización**: 2026-02-25 — Sesión 54 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S54 — 2026-02-25 — ENMASCARAR TARJETAS EN ABANCA Y B100 ✅
+
+**Acciones**:
+- Agregar normalize_card_number() a base.py (reutilizable)
+- Actualizar Openbank para usar versión de base.py
+- Implementar normalización en Abanca (antes del hash)
+- Implementar normalización en B100 (antes del hash)
+- Ejecutar reclassify_all.py
+
+**Resultado**: 15,993 txs | 0 SIN_CLASIFICAR | Abanca 145 txs, B100 148 txs enmascararadas | 0 cambios clasificación
+
+**Commit**: `da99adc`
+
+---
 
 ### S53 — 2026-02-25 — SANEAMIENTO BITÁCORA + CORRECCIONES CLASIFICADOR ✅
 
@@ -36,28 +51,6 @@
 **Resultado**: 15,993 txs (−1 duplicado) | 0 SIN_CLASIFICAR | 0 anomalías tipo='GASTO' AND cat1='Ingreso'
 
 **Commits**: `f29f258`, `115911f`
-
----
-
-### S51 — 2026-02-25 — CORRECCIONES FINALES CLASIFICACIÓN ✅
-
-**Acciones**:
-- merchants.py: reemplazar 39 Restaurante → Otros
-- engine.py: REGLAS #69–#71 (AEAT → INGRESO, Mangopay → Wallapop)
-- openbank.py: normalize_card_number() para deduplicación cross-file
-- Ejecutar reclassify_all.py
-- DELETE id=30810 (SIMYO duplicado)
-
-**Cambios principales**:
-- Restauración: 1,023 txs | Cat2 unificada a "Otros"
-- Wallapop: 37 txs INGRESO nuevas
-- Impuestos: 294 txs (incluyendo AEAT como INGRESO)
-- Bizum: 890 txs sin cat2 redundante
-- Intereses: 84 txs reclasificadas
-
-**Resultado**: 15,994 txs | 0 SIN_CLASIFICAR | 100% clasificadas
-
-**Commit**: `ae9c426`
 
 ---
 

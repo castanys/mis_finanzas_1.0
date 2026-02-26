@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-25 — S53 COMPLETADA
+**Última actualización**: 2026-02-25 — S54 COMPLETADA
 
 ---
 
@@ -17,7 +17,7 @@
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 53 |
+| **Sesiones completadas** | 54 |
 
 ---
 
@@ -48,7 +48,6 @@
 
 | Prioridad | Tarea | Notas |
 |-----------|-------|-------|
-| BAJA | Enmascarar tarjetas en Abanca, B100 | Fase 2 — solo Openbank hecho (S51) |
 | BAJA | Auditoría Fase 2 duplicados | Openbank 200 pares, Abanca 112, B100 51 |
 
 ---
@@ -57,7 +56,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S53 | 2026-02-25 | ✅ COMPLETADA | Saneamiento bitácora + correcciones clasificador |
+| S54 | 2026-02-25 | ✅ COMPLETADA | Enmascarar tarjetas en Abanca y B100 |
 
 ---
 
