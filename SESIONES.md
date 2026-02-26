@@ -30,7 +30,7 @@
 
 **Verificación**: reclassify_all.py ✅ + process_transactions.py (0 nuevas en TODOS ficheros) ✅ | 15,999 txs
 
-**Commits**: (pendiente)
+**Commits**: `f37f5461`
 
 **Impacto**:
 - ORTONOVA: 3 txs Farmacia → Médico ✅
