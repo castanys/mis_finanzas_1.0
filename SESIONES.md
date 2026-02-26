@@ -2,7 +2,7 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-26 — Sesión 59 EN PROGRESO
+**Última actualización**: 2026-02-27 — Sesión 59 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
@@ -10,19 +10,31 @@
 
 ## 🟢 Últimas 3 Sesiones
 
-### S59 — 2026-02-26 — ENHANCEMENT BOT: ANÁLISIS DIARIO TRAS IMPORTAR PDF 🟡
+### S59 — 2026-02-27 — ENHANCEMENT BOT: ANÁLISIS DIARIO + SERVICIO SYSTEMD ✅
 
-**Objetivo**: Mejorar UX del bot de Telegram — al subir un PDF de TR, además de confirmar importación, enviar inmediatamente el estado financiero del día (sin esperar push 12:00)
+**Objetivo**: 1) Mejorar UX: análisis diario tras importar PDF, 2) Bot permanente: servicio systemd, 3) Documentar servicios del proyecto
 
 **Cambios**:
-- `bot_telegram.py:documento_handler` — agregar lógica para generar + enviar análisis diario si `nuevas_txs > 0`
-- Utiliza `generate_daily_message()` + `generar_mensaje_con_llm()` (igual que push diario programado)
-- Solo se envía si hay transacciones nuevas importadas (no interfiere con flujo 0 nuevas)
-- Push diario de 12:00 sigue sin cambios
+1. **Análisis diario**: `bot_telegram.py:documento_handler` — generar + enviar resumen del día si `nuevas_txs > 0`
+2. **Servicio systemd**: `~/.config/systemd/user/mis_finanzas_bot.service` — bot corriendo permanente, reinicia automático en caso de fallo
+3. **loginctl enable-linger**: Servicio sobrevive sin sesión abierta
+4. **SERVICIOS.md**: Documentación centralizada a nivel `/home/pablo/apps/` con:
+   - Guía completa bot (comandos systemd, logs, troubleshooting)
+   - Guía dashboard Streamlit (manual bajo demanda)
+   - Scheduler interno APScheduler (push diario/mensual/anual)
+   - Tabla referencia rápida
+   - Estructura para otros proyectos
 
-**Verificación**: `py_compile bot_telegram.py` ✅ (sin errores de sintaxis)
+**Verificación**:
+- `py_compile bot_telegram.py` ✅
+- `systemctl --user status mis_finanzas_bot` ✅ (running)
+- PDF procesado: `Extracto de cuenta.pdf` → importado + análisis enviado ✅
+- `loginctl show-user pablo | grep Linger` → Linger=yes ✅
 
-**Commits**: `c0f6a9c6`
+**Commits**: 
+- `c0f6a9c6` (feat: análisis diario tras PDF)
+- `c4a063db` (docs: ESTADO.md + SESIONES.md S59)
+- `61d5976c` (feat: procesamiento exitoso PDF via systemd)
 
 **Decisión Arquitectónica (D22)**: Bot envía análisis diario tras importar PDF
 

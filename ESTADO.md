@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-26 — S59 EN PROGRESO (bot enhancement)
+**Última actualización**: 2026-02-27 — S59 COMPLETADA (bot systemd + análisis diario)
 
 ---
 
@@ -62,7 +62,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S59 | 2026-02-26 | 🟡 EN PROGRESO | Enhancement bot: análisis diario tras importar PDF (via bot_telegram.py documento_handler) |
+| S59 | 2026-02-27 | ✅ COMPLETADA | Enhancement bot: 1) análisis diario tras importar PDF, 2) servicio systemd permanente, 3) SERVICIOS.md a nivel apps |
 
 ---
 
