@@ -109,9 +109,6 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
-            # Normalizar número de tarjeta en concepto para deduplicación cross-file
-            concepto_for_hash = self.normalize_card_number(concepto)
-
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -119,7 +116,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": self.generate_hash(fecha_iso, importe, concepto_for_hash, iban, line_num)
+                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
             }
             records.append(record)
             line_num += 1
@@ -185,14 +182,6 @@ class OpenbankParser(BankParser):
                 line_num += 1
                 continue
 
-            # Normalizar número de tarjeta en concepto para deduplicación cross-file
-            concepto_for_hash = self.normalize_card_number(concepto)
-
-            # CUSTOM HASH PARA TOTAL FORMAT: incluye número de línea
-            # Esto permite transacciones idénticas dentro del mismo fichero
-            raw_hash = f"{fecha_iso}|{importe:.2f}|{concepto_for_hash}|{iban}|line_{line_num}"
-            hash_val = hashlib.sha256(raw_hash.encode()).hexdigest()
-
             record = {
                 "fecha": fecha_iso,
                 "importe": importe,
@@ -200,7 +189,7 @@ class OpenbankParser(BankParser):
                 "banco": self.BANK_NAME,
                 "cuenta": iban,
                 "line_num": line_num,
-                "hash": hash_val
+                "hash": self.generate_hash(fecha_iso, importe, concepto, iban, line_num)
             }
             records.append(record)
             line_num += 1

@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-25 — S54 COMPLETADA
+**Última actualización**: 2026-02-26 — S55 COMPLETADA
 
 ---
 
@@ -38,7 +38,7 @@
 | 11 | Mangopay + Wallapop = INGRESO/Wallapop | Ventas en plataforma son ingresos | S51 |
 | 12 | Cat1 sin redundancia en Cat2 | Bizum vacío, no "Bizum P2P" | S51 |
 | 13 | Restauración Cat2 = Otros | Unificación para subclasificaciones | S51 |
-| 14 | Tarjeta normalizada antes del hash | `****XXXX` para deduplicación cross-file | S51 |
+| 14 | NO normalizar tarjeta EN el hash | Hashes generados pre-normalizacion, mantener compatibilidad BD | S55 |
 | 15 | `Intereses` = Cat1 propia, cat2 vacío | NO es Cat2 de Ingreso | S53 |
 | 16 | `Ingreso` eliminada como Cat1 | Cashback recibe cashback/rewards | S53 |
 
@@ -56,7 +56,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S54 | 2026-02-25 | ✅ COMPLETADA | Enmascarar tarjetas en Abanca y B100 |
+| S55 | 2026-02-26 | ✅ COMPLETADA | Revertir normalize_card en hash (S54 causó inconsistencia BD-CSV) |
 
 ---
 

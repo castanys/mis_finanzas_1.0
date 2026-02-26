@@ -71,9 +71,6 @@ class AbancaParser(BankParser):
                 else:
                     descripcion = "Movimiento Abanca"
 
-                # Normalizar número de tarjeta en concepto para deduplicación cross-file
-                descripcion_for_hash = self.normalize_card_number(descripcion)
-
                 record = {
                     "fecha": fecha_iso,
                     "importe": importe,
@@ -81,7 +78,7 @@ class AbancaParser(BankParser):
                     "banco": self.BANK_NAME,
                     "cuenta": iban,
                     "line_num": line_num,
-                    "hash": self.generate_hash(fecha_iso, importe, descripcion_for_hash, iban, line_num)
+                    "hash": self.generate_hash(fecha_iso, importe, descripcion, iban, line_num)
                 }
                 records.append(record)
                 line_num += 1

@@ -2,13 +2,34 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-25 — Sesión 54 COMPLETADA
+**Última actualización**: 2026-02-26 — Sesión 55 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S55 — 2026-02-26 — DIAGNOSTICAR Y REVERTIR ERROR EN S54 (normalize_card en hash) ✅
+
+**Problema**: S54 aplicó `normalize_card_number()` ANTES del hash en Openbank/Abanca/B100. Los CSV actuales generaban hashes nuevos que no coincidían con los hashes en BD → pipeline detectaba 4.350 "nuevas" falsas → UNIQUE constraint fallaba.
+
+**Diagnóstico**:
+- Primeras 1.147 txs del TOTAL: sin tarjetas → hashes coincidían
+- Siguientes 4.247 txs del TOTAL: con tarjetas → hashes NO coincidían (normalize_card cambió descripción)
+- Abanca: 4 nuevas | Openbank_Violeta: 54 nuevas | Total: 4.350
+
+**Solución** (revertir S54 parcialmente):
+- Quitar normalización del hash en openbank.py (_parse_nuevo_format + _parse_total_format)
+- Quitar normalización del hash en abanca.py
+- Quitar normalización del hash en b100.py
+- Ejecutar process_transactions.py → validar 0 nuevas en todos ficheros ✅
+
+**Resultado**: 15,993 txs | 0 nuevas | todos ficheros 100% duplicados detectados correctamente | D14 actualizada
+
+**Commits**: `XXXXX` (pending)
+
+---
 
 ### S54 — 2026-02-25 — ENMASCARAR TARJETAS EN ABANCA Y B100 + LIMPIEZA ✅
 
