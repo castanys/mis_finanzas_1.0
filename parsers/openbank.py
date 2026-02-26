@@ -16,7 +16,6 @@ Ambos:
 - Fechas: DD/MM/YYYY
 """
 import csv
-import re
 from typing import List, Dict
 from .base import BankParser
 
