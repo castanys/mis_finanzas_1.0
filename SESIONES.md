@@ -2,13 +2,31 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-26 — Sesión 58 COMPLETADA
+**Última actualización**: 2026-02-26 — Sesión 59 EN PROGRESO
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S59 — 2026-02-26 — ENHANCEMENT BOT: ANÁLISIS DIARIO TRAS IMPORTAR PDF 🟡
+
+**Objetivo**: Mejorar UX del bot de Telegram — al subir un PDF de TR, además de confirmar importación, enviar inmediatamente el estado financiero del día (sin esperar push 12:00)
+
+**Cambios**:
+- `bot_telegram.py:documento_handler` — agregar lógica para generar + enviar análisis diario si `nuevas_txs > 0`
+- Utiliza `generate_daily_message()` + `generar_mensaje_con_llm()` (igual que push diario programado)
+- Solo se envía si hay transacciones nuevas importadas (no interfiere con flujo 0 nuevas)
+- Push diario de 12:00 sigue sin cambios
+
+**Verificación**: `py_compile bot_telegram.py` ✅ (sin errores de sintaxis)
+
+**Commits**: `c0f6a9c6`
+
+**Decisión Arquitectónica (D22)**: Bot envía análisis diario tras importar PDF
+
+---
 
 ### S58 — 2026-02-26 — 3 FIXES USUARIO: ORTONOVA, GRANADINA, AMAZON ✅
 

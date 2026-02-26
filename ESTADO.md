@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-26 — S58 COMPLETADA (3 fixes usuario)
+**Última actualización**: 2026-02-26 — S59 EN PROGRESO (bot enhancement)
 
 ---
 
@@ -46,6 +46,7 @@
 | 19 | ORTONOVA (Clínica dental) = Salud y Belleza/Médico | Excluida de regla FARMAC/CLINIC genérica (S51→S58) | S58 |
 | 20 | RESTAURANTE GRANADINA = Restauración/Otros | Excluida del refinamiento genérico de "Restaurante" | S58 |
 | 21 | Devoluciones Amazon (importe>0) = Compras/Amazon | No son Compras/Devoluciones para análisis neto correcto | S58 |
+| 22 | Bot envía análisis diario tras importar PDF | Genera resumen del día inmediatamente tras procesar (no espera push 12:00) | S59 |
 
 ---
 
@@ -61,7 +62,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S58 | 2026-02-26 | ✅ COMPLETADA | 3 fixes usuario: ORTONOVA (3 txs Farmacia→Médico), GRANADINA (1 tx Restaurante→Otros), Amazon devol. (14 txs Compras/Devoluciones→Compras/Amazon) |
+| S59 | 2026-02-26 | 🟡 EN PROGRESO | Enhancement bot: análisis diario tras importar PDF (via bot_telegram.py documento_handler) |
 
 ---
 
