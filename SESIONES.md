@@ -2,13 +2,42 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-26 — Sesión 57 COMPLETADA
+**Última actualización**: 2026-02-26 — Sesión 58 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S58 — 2026-02-26 — 3 FIXES USUARIO: ORTONOVA, GRANADINA, AMAZON ✅
+
+**Problemas reportados**:
+1. CLINICA ORTONOVA (Apple Pay): sigue siendo Farmacia, debería ser Médico/Dental (3 txs)
+2. RESTAURANTE GRANADINA: sigue siendo Restaurante, usuario pide quitar ese cat2 (1 tx)
+3. Devoluación Amazon id=15694: en cat2=Devoluciones, debería estar en Compras para análisis neto correcto
+
+**Diagnóstico**:
+- ORTONOVA: REGLA #31 (Capa 0) clasifica "COMPRA EN" + "CLINIC" como Farmacia antes de merchants.py que tiene Médico
+- GRANADINA: refine_cat2_by_description() detecta palabra "RESTAURANTE" y sobreescribe a Restaurante
+- Amazon: importe positivo (devolución) → cat2=Devoluciones separa del análisis Compras/Amazon (neto negativo)
+
+**Solución**:
+- Fix 1: engine.py:515 excluir ORTONOVA de regla FARMAC/CLINIC → baja a merchants.py (Médico)
+- Fix 2: engine.py:34 excluir GRANADINA del refinamiento de "Restaurante" → queda Otros
+- Fix 3: engine.py:289-297 cambiar Amazon refunds: cat2=Devoluciones → cat2=Amazon
+- Extra: merchants.py:160 cambiar ORTONOVA cat2 Dental → Médico (consistencia Google Places)
+
+**Verificación**: reclassify_all.py ✅ + process_transactions.py (0 nuevas en TODOS ficheros) ✅ | 15,999 txs
+
+**Commits**: (pendiente)
+
+**Impacto**:
+- ORTONOVA: 3 txs Farmacia → Médico ✅
+- GRANADINA: 1 tx Restaurante → Otros ✅
+- Amazon devoluciones: 14 txs Compras/Devoluciones → Compras/Amazon ✅
+
+---
 
 ### S57 — 2026-02-26 — 3 FIXES CLASIFICADOR: REVOLUT, NAMECHEAP, GITHUB ✅
 

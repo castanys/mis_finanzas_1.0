@@ -31,7 +31,7 @@ def refine_cat2_by_description(cat1, cat2, descripcion):
     # Solo aplicar refinamientos a Restauración
     if cat1 == 'Restauración':
         # RESTAURANTE o ARROCERIA → Restaurante
-        if 'RESTAURANTE' in desc_upper or 'ARROCERIA' in desc_upper:
+        if ('RESTAURANTE' in desc_upper or 'ARROCERIA' in desc_upper) and 'GRANADINA' not in desc_upper:
             return 'Restaurante'
         # CHURRERIA → Churrería
         elif 'CHURRERIA' in desc_upper or 'CHURRERÍA' in desc_upper:
@@ -287,12 +287,10 @@ class Classifier:
             
             # Amazon refunds
             if any(kw in desc_upper for kw in amazon_keywords):
-                cat2_refined = refine_cat2_by_description("Compras", "Devoluciones", descripcion)
-                tipo = determine_tipo("Compras", importe, descripcion)
                 return {
                     'cat1': 'Compras',
-                    'cat2': cat2_refined,
-                    'tipo': tipo,
+                    'cat2': 'Amazon',
+                    'tipo': determine_tipo("Compras", importe, descripcion),
                     'capa': 0
                 }
             
@@ -512,7 +510,7 @@ class Classifier:
                  cat1, cat2 = "Ropa y Calzado", "Ropa y Accesorios"
              elif any(keyword in desc_upper for keyword in ["TEATRO", "CIRCO", "VOYAGER"]):
                  cat1, cat2 = "Ocio y Cultura", "Entradas"
-             elif any(keyword in desc_upper for keyword in ["FARMAC", "CLINIC"]):
+             elif any(keyword in desc_upper for keyword in ["FARMAC", "CLINIC"]) and "ORTONOVA" not in desc_upper:
                  cat1, cat2 = "Salud y Belleza", "Farmacia"
              elif any(keyword in desc_upper for keyword in ["SUPERMERCADO", "SUPERDUMBO"]):
                  cat1, cat2 = "Alimentación", "Supermercado"

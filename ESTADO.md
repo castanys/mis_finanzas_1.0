@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-26 — S57 COMPLETADA (3 fixes clasificador)
+**Última actualización**: 2026-02-26 — S58 COMPLETADA (3 fixes usuario)
 
 ---
 
@@ -43,6 +43,9 @@
 | 16 | `Ingreso` eliminada como Cat1 | Cashback recibe cashback/rewards | S53 |
 | 17 | Revolut XXXX* = TRANSFERENCIA/Interna | Recargas Revolut son transferencias internas | S57 |
 | 18 | NAMECHEAP/GitHub con exchange rate = Suscripciones | No son divisas aunque lleven $ en descripción | S57 |
+| 19 | ORTONOVA (Clínica dental) = Salud y Belleza/Médico | Excluida de regla FARMAC/CLINIC genérica (S51→S58) | S58 |
+| 20 | RESTAURANTE GRANADINA = Restauración/Otros | Excluida del refinamiento genérico de "Restaurante" | S58 |
+| 21 | Devoluciones Amazon (importe>0) = Compras/Amazon | No son Compras/Devoluciones para análisis neto correcto | S58 |
 
 ---
 
@@ -58,7 +61,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S57 | 2026-02-26 | ✅ COMPLETADA | 3 fixes clasificador: Revolut (87 txs GASTO→TRANSFERENCIA), Namecheap (1 tx Divisas→Suscripciones), GitHub (2 txs Divisas→Suscripciones) |
+| S58 | 2026-02-26 | ✅ COMPLETADA | 3 fixes usuario: ORTONOVA (3 txs Farmacia→Médico), GRANADINA (1 tx Restaurante→Otros), Amazon devol. (14 txs Compras/Devoluciones→Compras/Amazon) |
 
 ---
 

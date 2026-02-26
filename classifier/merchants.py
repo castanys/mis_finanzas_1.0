@@ -157,7 +157,7 @@ MERCHANT_RULES = [
     ("FARMACIA CRESPO", "Salud y Belleza", "Farmacia"),
     ("MARIA DOLORES CRESPO", "Salud y Belleza", "Farmacia"),
     ("FARMACIA", "Salud y Belleza", "Farmacia"),
-    ("ORTONOVA", "Salud y Belleza", "Dental"),  # Clínica dental Ortonova (S51)
+    ("ORTONOVA", "Salud y Belleza", "Médico"),  # Clínica dental Ortonova (S51, Google Places)
     ("HAVANA OLD", "Salud y Belleza", "Peluquería"),
     ("PELUQUERIA JAVIER CONESA", "Salud y Belleza", "Peluquería"),
     ("PELUQUERIA", "Salud y Belleza", "Peluquería"),
