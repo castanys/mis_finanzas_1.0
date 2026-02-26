@@ -2,13 +2,36 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-26 — Sesión 55 COMPLETADA
+**Última actualización**: 2026-02-26 — Sesión 57 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S57 — 2026-02-26 — 3 FIXES CLASIFICADOR: REVOLUT, NAMECHEAP, GITHUB ✅
+
+**Problemas reportados**:
+1. REVOLUT**4173* (2026-02-09, -30€): clasificada como GASTO en vez de TRANSFERENCIA (87 txs afectadas)
+2. NAME-CHEAP.COM* 44N5LS (2,20 $): clasificada como Divisas/INVERSION en vez de Suscripciones/Dominios (1 tx)
+3. GITHUB, INC. (10,00 $): clasificada como Divisas/INVERSION en vez de Suscripciones (2 txs)
+
+**Diagnóstico**:
+- Revolut: merchants.py línea 285 tenía cat1='Transferencia' (inválida para determine_tipo). Debería ser cat1='Interna'
+- Namecheap: descripción contiene "exchange rate" → token EXCHANGE clasifica como Divisas antes que regla merchant
+- GitHub: exact_match del CSV maestro las marcaba como Divisas (histórico) → prevalía sobre regla merchant
+
+**Solución**:
+- Fix 1: merchants.py:285 cambiar cat1='Transferencia' → cat1='Interna' (87 Revolut: GASTO→TRANSFERENCIA)
+- Fix 2: engine.py REGLA #29 para NAMECHEAP antes del token EXCHANGE (1 tx: Divisas→Suscripciones/Dominios)
+- Fix 3: engine.py REGLA #30 para GITHUB desde Trade Republic antes del token EXCHANGE (2 txs: Divisas→Suscripciones/Otros)
+
+**Verificación**: reclassify_all.py ✅ + process_transactions.py (0 nuevas en TODOS ficheros) ✅ | 15,999 txs
+
+**Commits**: `dfa23c1e`
+
+---
 
 ### S55 — 2026-02-26 — DIAGNOSTICAR Y REVERTIR ERROR EN S54 (normalize_card en hash) ✅
 
@@ -28,6 +51,21 @@
 **Resultado**: 15,999 txs | 0 nuevas | todos ficheros 100% duplicados detectados correctamente | D14 actualizada
 
 **Commits**: `30d87fff`
+
+---
+
+### S56 — 2026-02-26 — CORRECCIONES DOCUMENTALES: ESTADO.md Y SESIONES.md ✅
+
+**Problema**: ESTADO.md y SESIONES.md tenían inconsistencias post-S55:
+- Total txs: 15,993 (incorrecto) vs 15,999 verificado en BD
+- Sesiones completadas: 54 (incorrecto) vs 55
+- Commit S55: `XXXXX (pending)` (incorrecto) vs `30d87fff`
+
+**Acciones**: Actualizar ESTADO.md + SESIONES.md con métricas correctas
+
+**Resultado**: Documentación consistente | 15,999 txs | Commit S55 verificado
+
+**Commits**: `694fa56c`
 
 ---
 

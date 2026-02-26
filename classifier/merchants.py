@@ -281,8 +281,8 @@ MERCHANT_RULES = [
     ("MCR BUSINESS", "Servicios Consultoría", ""),
 
      # ===== PATRONES ESPECIALES =====
-    # Revolut con formato especial (Revolut**XXXX*)
-    ("REVOLUT**", "Transferencia", "Interna"),
+    # Revolut con formato especial (Revolut**XXXX*) → Transferencias internas
+    ("REVOLUT**", "Interna", ""),
     
      # ===== REGLAS GENERADAS AUTOMÁTICAMENTE =====
 

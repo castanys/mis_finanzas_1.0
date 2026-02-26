@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-26 — S55 COMPLETADA
+**Última actualización**: 2026-02-26 — S57 COMPLETADA (3 fixes clasificador)
 
 ---
 
@@ -41,6 +41,8 @@
 | 14 | NO normalizar tarjeta EN el hash | Hashes generados pre-normalizacion, mantener compatibilidad BD | S55 |
 | 15 | `Intereses` = Cat1 propia, cat2 vacío | NO es Cat2 de Ingreso | S53 |
 | 16 | `Ingreso` eliminada como Cat1 | Cashback recibe cashback/rewards | S53 |
+| 17 | Revolut XXXX* = TRANSFERENCIA/Interna | Recargas Revolut son transferencias internas | S57 |
+| 18 | NAMECHEAP/GitHub con exchange rate = Suscripciones | No son divisas aunque lleven $ en descripción | S57 |
 
 ---
 
@@ -56,7 +58,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S55 | 2026-02-26 | ✅ COMPLETADA | Revertir normalize_card en hash (S54 causó inconsistencia BD-CSV) |
+| S57 | 2026-02-26 | ✅ COMPLETADA | 3 fixes clasificador: Revolut (87 txs GASTO→TRANSFERENCIA), Namecheap (1 tx Divisas→Suscripciones), GitHub (2 txs Divisas→Suscripciones) |
 
 ---
 

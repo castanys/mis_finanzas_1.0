@@ -1436,6 +1436,27 @@ class Classifier:
                 'capa': 0
             }
 
+
+        # REGLA #29: Namecheap (NAME-CHEAP/NAMECHEAP) → Suscripciones/Dominios
+        # Prioridad: antes del token EXCHANGE para evitar confundir con divisas
+        if 'NAME-CHEAP' in desc_upper or 'NAMECHEAP' in desc_upper:
+            return {
+                'cat1': 'Suscripciones',
+                'cat2': 'Dominios',
+                'tipo': 'GASTO',
+                'capa': 0
+            }
+
+        # REGLA #30: GitHub desde Trade Republic → Suscripciones
+        # Prioridad: antes del token EXCHANGE para evitar confundir con divisas
+        if 'GITHUB' in desc_upper and banco == 'Trade Republic':
+            return {
+                'cat1': 'Suscripciones',
+                'cat2': 'Otros',
+                'tipo': 'GASTO',
+                'capa': 0
+            }
+
         # === CAPA 1: Exact Match ===
         # IMPORTANTE: Skip Exact Match para Bizums - deben detectarse en Capa 3
         # para garantizar que SIEMPRE se clasifiquen como Bizum, no como Interna
