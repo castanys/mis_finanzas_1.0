@@ -10,7 +10,7 @@
 
 ## 🟢 Últimas 3 Sesiones
 
-### S54 — 2026-02-25 — ENMASCARAR TARJETAS EN ABANCA Y B100 ✅
+### S54 — 2026-02-25 — ENMASCARAR TARJETAS EN ABANCA Y B100 + LIMPIEZA ✅
 
 **Acciones**:
 - Agregar normalize_card_number() a base.py (reutilizable)
@@ -18,10 +18,11 @@
 - Implementar normalización en Abanca (antes del hash)
 - Implementar normalización en B100 (antes del hash)
 - Ejecutar reclassify_all.py
+- Eliminar import re muerto en openbank.py
 
-**Resultado**: 15,993 txs | 0 SIN_CLASIFICAR | Abanca 145 txs, B100 148 txs enmascararadas | 0 cambios clasificación
+**Resultado**: 15,993 txs | 0 SIN_CLASIFICAR | Abanca 145 txs, B100 148 txs enmascaradas | 0 cambios clasificación | code cleanup ✅
 
-**Commit**: `da99adc`
+**Commits**: `da99adc`, `625264d0`
 
 ---
 
