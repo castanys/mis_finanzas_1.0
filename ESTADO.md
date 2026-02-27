@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S60 EN PROGRESO (fixes usuario: modelo Claude + Restauración/Otros)
+**Última actualización**: 2026-02-27 — S60 COMPLETADA (fixes usuario: modelo Claude + Restauración/Otros)
 
 ---
 
@@ -10,18 +10,18 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Total transacciones** | 16,012 |
+| **Total transacciones** | 16,020 |
 | **SIN_CLASIFICAR** | 0 (100% cobertura) |
 | **Período** | 2004-05-03 → 2026-02-23 |
 | **Hashes únicos** | 15,999 (0 colisiones) |
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 55 |
+| **Sesiones completadas** | 60 |
 
 ---
 
-## 🔴 Decisiones Arquitectónicas (D1–D16)
+## 🔴 Decisiones Arquitectónicas (D1–D24)
 
 | # | Decisión | Por qué | Sesión |
 |---|----------|---------|--------|
@@ -64,7 +64,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S60 | 2026-02-27 | 🟡 EN PROGRESO | 3 fixes: 1) Modelo Claude haiku-4-5, 2) Restauración/Otros (197 txs reclasificadas), 3) API key añadida |
+| S60 | 2026-02-27 | ✅ COMPLETADA | 3 fixes: 1) Modelo Claude haiku-4-5, 2) Restauración/Otros (197 txs reclasificadas), 3) Bot permanente vía systemd |
 
 ---
 
