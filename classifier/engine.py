@@ -159,6 +159,32 @@ def lookup_merchant_from_db(merchant_name: str) -> Optional[Tuple[str, str]]:
         return None
 
 
+def build_result(cat1: str, cat2: str, tipo: str, capa, merchant_name: Optional[str] = None) -> Dict:
+    """
+    Constructor de diccionarios de resultado de clasificación.
+    Incluye merchant_name si está disponible.
+    
+    Args:
+        cat1: Categoría 1
+        cat2: Categoría 2
+        tipo: Tipo de transacción
+        capa: Capa en que se clasificó
+        merchant_name: Nombre del merchant (opcional)
+        
+    Returns:
+        Diccionario con resultado de clasificación
+    """
+    result = {
+        'cat1': cat1,
+        'cat2': cat2,
+        'tipo': tipo,
+        'capa': capa
+    }
+    if merchant_name:
+        result['merchant_name'] = merchant_name
+    return result
+
+
 class Classifier:
     """
     Clasificador de transacciones bancarias basado en reglas.
@@ -217,8 +243,11 @@ class Classifier:
             cuenta: Número de cuenta IBAN (opcional, para reglas específicas por cuenta)
 
         Returns:
-            Diccionario con cat1, cat2, tipo
+            Diccionario con cat1, cat2, tipo, merchant_name (si es extraíble)
         """
+        # Extraer merchant name al inicio (se usa en todos los retornos)
+        merchant_name = extract_merchant(descripcion, banco)
+        
         # === CAPA 0: Excepciones manuales ===
         if fecha:
             exc = self.check_excepcion(fecha, importe, banco)
@@ -229,11 +258,9 @@ class Classifier:
                     'cat1': exc['cat1'],
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
-
-        # Extraer merchant name si es posible
-        merchant_name = extract_merchant(descripcion, banco)
 
         # === REGLAS PRIORITARIAS (antes de Exact Match) ===
         desc_upper = descripcion.upper()
@@ -247,7 +274,8 @@ class Classifier:
                 'cat1': 'Impuestos',
                 'cat2': cat2_refined,
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #70: Mangopay → INGRESO/Wallapop (S51)
@@ -258,7 +286,8 @@ class Classifier:
                 'cat1': 'Wallapop',
                 'cat2': 'Venta',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #71: Mangopay en TR (solo "from Mangopay") → INGRESO/Wallapop (S51)
@@ -270,7 +299,8 @@ class Classifier:
                 'cat1': 'Wallapop',
                 'cat2': 'Venta',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA PRIORITARIA: Detectar devoluciones explícitas (importe positivo + keywords)
@@ -291,7 +321,8 @@ class Classifier:
                     'cat1': 'Compras',
                     'cat2': 'Amazon',
                     'tipo': determine_tipo("Compras", importe, descripcion),
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # Devoluciones explícitas en descripción
@@ -312,7 +343,8 @@ class Classifier:
                             'cat1': cat1,
                             'cat2': cat2_refined,
                             'tipo': tipo,
-                            'capa': 0
+                            'capa': 0,
+                            'merchant_name': merchant_name
                         }
                 # Si no hay merchant, intentar con exact match
                 exact_result = lookup_exact(descripcion, self.exact_match_dict)
@@ -325,7 +357,8 @@ class Classifier:
                             'cat1': cat1,
                             'cat2': cat2_refined,
                             'tipo': tipo,
-                            'capa': 0
+                            'capa': 0,
+                            'merchant_name': merchant_name
                         }
                 # Default a Compras/Devoluciones si no se identifica la categoría
                 cat2_refined = refine_cat2_by_description("Compras", "Devoluciones", descripcion)
@@ -334,7 +367,8 @@ class Classifier:
                     'cat1': 'Compras',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #0B: Corrección de combinación inválida Compras/Alojamiento → Viajes/Alojamiento
@@ -489,7 +523,8 @@ class Classifier:
                     'cat1': 'Transporte',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #29: Restauración en patrón "COMPRA EN" (BAR, CERVECER, TERRAZA, TABERNA, TAPAS, CAFE, BODEGA)
@@ -501,7 +536,8 @@ class Classifier:
                 'cat1': 'Restauración',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #31: Otros en patrón "COMPRA EN" (ROPA, TEATRO, FARMAC, CLINIC, SUPERMERCADO)
@@ -524,7 +560,8 @@ class Classifier:
                      'cat1': cat1,
                      'cat2': cat2_refined,
                      'tipo': tipo,
-                     'capa': 0
+                     'capa': 0,
+                     'merchant_name': merchant_name
                  }
 
         # REGLA #32: Vinos (Vinoseleccion) → ALIMENTACION/Vinos
@@ -535,7 +572,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #33: RevPoints con Redondeo (Revolut cashback/rewards) → INGRESO/Cashback
@@ -546,7 +584,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #34: Aeropuerto o Tienda Travel (WH SMITH AEROPUERTO, LILIENTHAL BERLIN) → VIAJES/Tienda de Viaje
@@ -557,7 +596,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #35: "COMPRAS Y OPERACIONES CON TARJETA 4B" positivas → COMPRAS/Devoluciones
@@ -569,7 +609,8 @@ class Classifier:
                 'cat1': 'Compras',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #36: Transporte/Taxi en "COMPRA EN" (BOLT, UBER, CABIFY, BLABLACAR) → TRANSPORTE/Taxi (12 txs)
@@ -580,7 +621,8 @@ class Classifier:
                 'cat1': 'Transporte',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #37: Transporte/Combustible en "COMPRA EN" (ESTAC, ANDAMUR, BALLENOIL, AREA DE SERVICIO) (16 txs)
@@ -591,7 +633,8 @@ class Classifier:
                 'cat1': 'Transporte',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #38: Restauración en "COMPRA EN" (PIZZA, ASADOR, RESTAUR, BRASERIA, CHIRINGUITO) (20 txs)
@@ -602,7 +645,8 @@ class Classifier:
                 'cat1': 'Restauración',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #39: Deportes en "COMPRA EN" (SPORT, PADEL, NAUTIC, CICLOS) (20 txs)
@@ -613,7 +657,8 @@ class Classifier:
                 'cat1': 'Deportes',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #40: Compras/Libros en "COMPRA EN" (Kindle, XBOX, ELESPANOL) (17 txs)
@@ -625,7 +670,8 @@ class Classifier:
                 'cat1': 'Compras',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #41: Vivienda/Reformas en "COMPRA EN" (FERRETERI, PARQUET, ALUMINIO, PINTURA) (8 txs)
@@ -636,7 +682,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #42: Viajes/Alojamiento en "COMPRA EN" (AIRBNB, CAMPING, HOTEL) (2 txs)
@@ -647,7 +694,8 @@ class Classifier:
                 'cat1': 'Viajes',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #43: Viajes/Aeropuerto en "COMPRA EN" (AEROPORT, AER.) (2 txs)
@@ -658,7 +706,8 @@ class Classifier:
                 'cat1': 'Viajes',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #44: Impuestos/Municipales en "COMPRA EN" (AYTO, EXCMO, AJUNTAMENT) (4 txs)
@@ -669,7 +718,8 @@ class Classifier:
                 'cat1': 'Impuestos',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #45: Vivienda/Mantenimiento en "COMPRA EN" (GARDEN, JARDIN) (2 txs)
@@ -680,7 +730,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
              }
 
         # REGLA #46: Restauración/Restaurante - Keywords restaurantes (PIZZERIA, KEBAB, etc.) (~15 txs)
@@ -691,7 +742,8 @@ class Classifier:
                 'cat1': 'Restauración',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #47: Transporte/Combustible - Estaciones de servicio adicionales (~11 txs)
@@ -702,7 +754,8 @@ class Classifier:
                 'cat1': 'Transporte',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #48: Transporte/Público - Ferrocarriles internacionales (~15 txs)
@@ -714,7 +767,8 @@ class Classifier:
                 'cat1': 'Transporte',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #49: Compras/Alimentación - Productos alimentación específicos (PESCADOS, CARNES, LONJA) (~12 txs)
@@ -725,7 +779,8 @@ class Classifier:
                 'cat1': 'Compras',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #50: Vivienda/Bricolaje - Tiendas bricolaje exclusión (BRICO excluyendo ya clasificadas) (~4 txs)
@@ -736,7 +791,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #51: Vivienda/Decoración - Tiendas muebles y decoración (KAVE HOME, ESPACIO CASA, etc.) (~5 txs)
@@ -747,7 +803,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #52: Ocio y Cultura/Espectáculos - Ticketerías (TICKETMASTER, KINEPOLIS, etc.) (~6 txs)
@@ -758,7 +815,8 @@ class Classifier:
                 'cat1': 'Ocio y Cultura',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #53: Suscripciones/Software - Software y herramientas SaaS (OPENAI, NORDVPN, etc.) (~7 txs)
@@ -769,7 +827,8 @@ class Classifier:
                 'cat1': 'Suscripciones',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #54: Transferencias a Cuenta Común (Yolanda Arroyo) → TRANSFERENCIA/Cuenta Común
@@ -780,7 +839,8 @@ class Classifier:
                 'cat1': 'Cuenta Común',
                 'cat2': '',  # Hogar removed (S51) - redundant descriptor
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #55: MCR Solutions Business (Bankinter) → SERVICIOS CONSULTORÍA/Honorarios
@@ -792,7 +852,8 @@ class Classifier:
                 'cat1': 'Servicios Consultoría',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #56: TRIBUTO (Bankinter) → IMPUESTOS/Otros
@@ -804,7 +865,8 @@ class Classifier:
                 'cat1': 'Impuestos',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #57: LIQ. PROPIA CTA. (Bankinter) → INGRESO/Intereses (cat2 vacío)
@@ -815,7 +877,8 @@ class Classifier:
                 'cat1': 'Intereses',
                 'cat2': '',
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #58: RECTIF. LIQ. CTA. (Bankinter) → INGRESO/Intereses (cat2 vacío)
@@ -826,7 +889,8 @@ class Classifier:
                 'cat1': 'Intereses',
                 'cat2': '',
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #59: BARBERIA CARLOS CONDE (Bankinter) → SALUD Y BELLEZA/Peluquería
@@ -838,7 +902,8 @@ class Classifier:
                 'cat1': 'Salud y Belleza',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #60: CENTRO DEP. ZONA SUR (Bankinter) → DEPORTES/Gimnasio
@@ -850,7 +915,8 @@ class Classifier:
                 'cat1': 'Deportes',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #61: HOUSE DECORACION (Bankinter) → VIVIENDA/Decoración
@@ -862,7 +928,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #62: INGRESO EN TARJ.CREDITO (Bankinter) → FINANZAS/Tarjeta Crédito
@@ -874,7 +941,8 @@ class Classifier:
                 'cat1': 'Finanzas',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #63: TRANSF OTR /tiendadelasalarmas (Bankinter) → COMPRAS/Otros
@@ -886,7 +954,8 @@ class Classifier:
                 'cat1': 'Compras',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #64: COMIS. MANT. (Bankinter) → COMISIONES
@@ -898,7 +967,8 @@ class Classifier:
                 'cat1': 'Comisiones',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #65B: Recibos Ayuntamiento con referencia de impuesto específico
@@ -912,7 +982,8 @@ class Classifier:
                     'cat1': 'Impuestos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # Impuesto de Matriculación (IVTM) — REF. MANDATO 040-...
@@ -923,7 +994,8 @@ class Classifier:
                     'cat1': 'Impuestos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #65: Recibos SEPA Direct Debit (reclasificar por tipo de pago)
@@ -939,7 +1011,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # FELITONA SERVICIOS Y GESTIONES → RECIBOS/Gimnasio (recibo de gimnasio)
@@ -950,7 +1023,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # HIDROGEA S.A. / AGUA → RECIBOS/Agua (ya está correctamente clasificado, pero asegurar)
@@ -961,7 +1035,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # AYUNTAMIENTO → RECIBOS/Plan de pago personalizado
@@ -973,7 +1048,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             # ASOCIACION ESPAÑOLA CONTRA EL... → RECIBOS/Donaciones (ya está, pero asegurar)
@@ -984,7 +1060,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #66: Trade Republic PayOut to transit → TRANSFERENCIA/Externa
@@ -996,7 +1073,8 @@ class Classifier:
                 'cat1': 'Externa',
                 'cat2': 'PayOut',
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #67: Trade Republic Bizum cortos truncados (sin "Outgoing/Incoming transfer")
@@ -1011,7 +1089,8 @@ class Classifier:
                     'cat1': 'Bizum',
                     'cat2': '',
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
          # REGLA #6: Patrón "COMPRA EN" (histórico de Openbank, pero aplicar a todos)
@@ -1113,7 +1192,8 @@ class Classifier:
                 'cat1': 'Seguros',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         if 'LINEA DIRECTA' in desc_upper or 'IATI SEGUROS' in desc_upper:
@@ -1123,7 +1203,8 @@ class Classifier:
                 'cat1': 'Seguros',
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #10: Recibos especiales (vinos, grandes almacenes, gimnasios, etc.)
@@ -1136,7 +1217,8 @@ class Classifier:
                     'cat1': 'Alimentación',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             elif 'GRANDES ALMACENES' in desc_upper:
                 cat2_refined = refine_cat2_by_description("Compras", "Grandes Almacenes", descripcion)
@@ -1145,7 +1227,8 @@ class Classifier:
                     'cat1': 'Compras',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             elif 'JAVISA SPORT' in desc_upper or 'BODY FACTORY' in desc_upper:
                 cat2_refined = refine_cat2_by_description("Ocio y Cultura", "Deporte", descripcion)
@@ -1154,7 +1237,8 @@ class Classifier:
                     'cat1': 'Ocio y Cultura',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             elif 'ENERGIA XXI' in desc_upper:
                 cat2_refined = refine_cat2_by_description("Recibos", "Gas", descripcion)
@@ -1163,7 +1247,8 @@ class Classifier:
                     'cat1': 'Recibos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             elif 'CONTRIB' in desc_upper:
                 cat2_refined = refine_cat2_by_description("Impuestos", "Municipales", descripcion)
@@ -1172,7 +1257,8 @@ class Classifier:
                     'cat1': 'Impuestos',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             elif 'ASOC' in desc_upper and 'DEPORTIVA' in desc_upper:
                 cat2_refined = refine_cat2_by_description("Ocio y Cultura", "Deporte", descripcion)
@@ -1181,7 +1267,8 @@ class Classifier:
                     'cat1': 'Ocio y Cultura',
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #11: Ingresos especiales (INGRESO/Otros con subcategoría)
@@ -1192,7 +1279,8 @@ class Classifier:
                         'cat1': 'Otros',
                         'cat2': 'Prestación',
                         'tipo': 'INGRESO',
-                        'capa': 0
+                        'capa': 0,
+                        'merchant_name': merchant_name
                     }
             
             if 'RETROCESION' in desc_upper:
@@ -1200,7 +1288,8 @@ class Classifier:
                     'cat1': 'Otros',
                     'cat2': 'Devoluciones',
                     'tipo': 'INGRESO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             if 'SINIESTRO' in desc_upper or ('GENERALI' in desc_upper and 'SEGUROS' in desc_upper):
@@ -1208,7 +1297,8 @@ class Classifier:
                     'cat1': 'Otros',
                     'cat2': 'Seguros',
                     'tipo': 'INGRESO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
             
             if desc_upper.strip() in ['DONACIoN', 'DONACION']:
@@ -1216,7 +1306,8 @@ class Classifier:
                     'cat1': 'Otros',
                     'cat2': 'Extraordinario',
                     'tipo': 'INGRESO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #12: Brokers y plataformas de inversión → TRANSFERENCIA/Interna
@@ -1228,7 +1319,8 @@ class Classifier:
                 'cat1': 'Interna',
                 'cat2': '',
                 'tipo': 'TRANSFERENCIA',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         if 'AURIGA' in desc_upper and 'INVESTOR' in desc_upper:
@@ -1237,7 +1329,8 @@ class Classifier:
                 'cat1': 'Interna',
                 'cat2': '',
                 'tipo': 'TRANSFERENCIA',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         if ('Transferencia' in descripcion and 'Revolut' in descripcion) or \
@@ -1248,7 +1341,8 @@ class Classifier:
                  'cat1': 'Interna',
                  'cat2': '',
                  'tipo': 'TRANSFERENCIA',
-                 'capa': 0
+                 'capa': 0,
+                 'merchant_name': merchant_name
              }
         
         # REGLA #13: Recibos de comunidad/garaje (C.P. EDIFICIO) → VIVIENDA/Comunidad
@@ -1257,7 +1351,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': 'Comunidad',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         # REGLA #14: Recibos de seguros de vida (AXA AURORA) → SEGUROS/Seguros Vida
@@ -1266,7 +1361,8 @@ class Classifier:
                 'cat1': 'Seguros',
                 'cat2': 'Seguros Vida',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         # REGLA #15: Recibos de tarjetas de crédito (BANCOPOPULAR) → FINANZAS/Tarjeta Crédito
@@ -1275,7 +1371,8 @@ class Classifier:
                 'cat1': 'Finanzas',
                 'cat2': 'Tarjeta Crédito',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         # REGLA #16: Donaciones (Fundación Polaris, Golf, Rugby, etc.) → GASTO/Ocio y Cultura/Donaciones
@@ -1286,7 +1383,8 @@ class Classifier:
                     'cat1': 'Ocio y Cultura',
                     'cat2': 'Donaciones',
                     'tipo': 'GASTO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
         
         # REGLA #17: Retrocesión de gastos duplicados (Capgemini) → INGRESO/Otros/Retrocesión
@@ -1295,7 +1393,8 @@ class Classifier:
                 'cat1': 'Retrocesión',
                 'cat2': 'Retrocesión',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         # REGLA #18: Recibos de seguros genéricos antiguos → SEGUROS/Seguros Generales
@@ -1305,7 +1404,8 @@ class Classifier:
                 'cat1': 'Seguros',
                 'cat2': 'Seguros Generales',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         
         # REGLA #19: Restaurantes y bares específicos → RESTAURACION/Cat2
@@ -1328,7 +1428,8 @@ class Classifier:
                     'cat1': cat1_value,
                     'cat2': cat2,
                     'tipo': 'GASTO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #20: Alcampo y Aldi específicos → ALIMENTACION/Alcampo o Aldi
@@ -1337,14 +1438,16 @@ class Classifier:
                 'cat1': 'Alimentación',
                 'cat2': 'Alcampo',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         if 'ALDI' in desc_upper:
             return {
                 'cat1': 'Alimentación',
                 'cat2': 'Aldi',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #21: Museos y conciertos → OCIO/Museos o OCIO/Conciertos
@@ -1353,14 +1456,16 @@ class Classifier:
                 'cat1': 'Ocio y Cultura',
                 'cat2': 'Museos',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
         if 'GIRA' in desc_upper or 'CONCIERTO' in desc_upper:
             return {
                 'cat1': 'Ocio y Cultura',
                 'cat2': 'Conciertos',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #22: Tiendas de ropa específicas → ROPA Y CALZADO/Ropa y Accesorios
@@ -1370,7 +1475,8 @@ class Classifier:
                 'cat1': 'Ropa y Calzado',
                 'cat2': 'Ropa y Accesorios',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #23: Obras y reformas de vivienda → VIVIENDA/Reformas
@@ -1380,7 +1486,8 @@ class Classifier:
                 'cat1': 'Vivienda',
                 'cat2': 'Reformas',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #24: Capgemini Salary → INGRESO/Nómina (salario por formato transferencia)
@@ -1390,7 +1497,8 @@ class Classifier:
                 'cat1': 'Nómina',
                 'cat2': '',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #25: Torreblanca del Mediterráneo Sol → INGRESO/Nómina (salario empresa)
@@ -1400,7 +1508,8 @@ class Classifier:
                 'cat1': 'Nómina',
                 'cat2': '',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #26: Streye Smart Devices → INGRESO/Nómina (nómina de consultoría)
@@ -1410,7 +1519,8 @@ class Classifier:
                 'cat1': 'Nómina',
                 'cat2': '',
                 'tipo': 'INGRESO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #27: Intereses cobrados → INGRESO/Intereses (cat2 vacío)
@@ -1421,7 +1531,8 @@ class Classifier:
                     'cat1': 'Intereses',
                     'cat2': '',
                     'tipo': 'INGRESO',
-                    'capa': 0
+                    'capa': 0,
+                    'merchant_name': merchant_name
                 }
 
         # REGLA #28: Patrón histórico "RETR. COMPRA RENTA VARIABLE" (2004) → RENTA VARIABLE
@@ -1431,7 +1542,8 @@ class Classifier:
                 'cat1': 'Renta Variable',
                 'cat2': 'Compra',
                 'tipo': 'INVERSION',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
 
@@ -1442,7 +1554,8 @@ class Classifier:
                 'cat1': 'Suscripciones',
                 'cat2': 'Dominios',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # REGLA #30: GitHub desde Trade Republic → Suscripciones
@@ -1452,7 +1565,8 @@ class Classifier:
                 'cat1': 'Suscripciones',
                 'cat2': 'Otros',
                 'tipo': 'GASTO',
-                'capa': 0
+                'capa': 0,
+                'merchant_name': merchant_name
             }
 
         # === CAPA 1: Exact Match ===
@@ -1468,7 +1582,8 @@ class Classifier:
                     'cat1': cat1,
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 1
+                    'capa': 1,
+                    'merchant_name': merchant_name
                 }
 
         # === CAPA 2: Merchant Lookup ===
@@ -1483,7 +1598,8 @@ class Classifier:
                     'cat1': cat1,
                     'cat2': cat2_refined,
                     'tipo': tipo,
-                    'capa': 2
+                    'capa': 2,
+                    'merchant_name': merchant_name
                 }
 
         # === CAPA 2.5: Merchant Database Lookup (Google Places) ===
@@ -1513,7 +1629,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 3
+                'capa': 3,
+                'merchant_name': merchant_name
             }
 
         # === CAPA 4: Token Heurístico ===
@@ -1528,7 +1645,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 4
+                'capa': 4,
+                'merchant_name': merchant_name
             }
 
         # Segundo: tokens heurísticos generales
@@ -1541,7 +1659,8 @@ class Classifier:
                 'cat1': cat1,
                 'cat2': cat2_refined,
                 'tipo': tipo,
-                'capa': 4
+                'capa': 4,
+                'merchant_name': merchant_name
             }
 
         # === CAPA 5: SIN_CLASIFICAR ===
@@ -1549,5 +1668,6 @@ class Classifier:
             'cat1': 'SIN_CLASIFICAR',
             'cat2': '',
             'tipo': '',
-            'capa': 5
+            'capa': 5,
+            'merchant_name': merchant_name
         }

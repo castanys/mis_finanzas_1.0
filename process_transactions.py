@@ -84,19 +84,24 @@ def create_db_tables(db_path: str = 'finsense.db'):
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS presupuestos (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                categoria TEXT NOT NULL,
-                mes INTEGER,
-                anio INTEGER,
-                monto REAL
+                cat1 TEXT NOT NULL,
+                cat2 TEXT,
+                importe_mensual REAL NOT NULL,
+                activo INTEGER DEFAULT 1,
+                updated_at TEXT DEFAULT (datetime('now'))
             )
         ''')
         
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS cargos_extraordinarios (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                descripcion TEXT,
-                monto REAL,
-                fecha TEXT
+                mes INTEGER NOT NULL,
+                dia INTEGER,
+                descripcion TEXT NOT NULL,
+                importe_estimado REAL,
+                dias_aviso INTEGER DEFAULT 10,
+                activo INTEGER DEFAULT 1,
+                created_at TEXT DEFAULT (datetime('now'))
             )
         ''')
         
@@ -213,16 +218,17 @@ def insert_new_transactions(db_path: str, records: list):
     try:
         inserted = 0
         for r in records:
-            # Incluir source_file en la inserción
+            # Incluir source_file y merchant_name en la inserción
             source_file = r.get('source_file', None)
+            merchant_name = r.get('merchant_name', None)
             
             cursor.execute('''
                 INSERT INTO transacciones 
-                (fecha, importe, descripcion, banco, cuenta, tipo, cat1, cat2, hash, source_file)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                (fecha, importe, descripcion, banco, cuenta, tipo, cat1, cat2, hash, source_file, merchant_name)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 r['fecha'], r['importe'], r['descripcion'], r['banco'],
-                r['cuenta'], r['tipo'], r['cat1'], r['cat2'], r['hash'], source_file
+                r['cuenta'], r['tipo'], r['cat1'], r['cat2'], r['hash'], source_file, merchant_name
             ))
             inserted += 1
         
@@ -235,6 +241,60 @@ def insert_new_transactions(db_path: str, records: list):
         logger.error(f"Error insertando transacciones: {e}")
     finally:
         conn.close()
+
+
+def enrich_new_merchants(db_path: str = 'finsense.db'):
+    """
+    Enriquece merchants no registrados que aparecen en las nuevas transacciones.
+    
+    Busca merchants en transacciones que NO están en la tabla merchants,
+    los inserta, y opcionalmente los enriquece con Google Places (background).
+    
+    Args:
+        db_path: Path a finsense.db
+    """
+    logger = get_logger()
+    
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        # Obtener merchants únicos en transacciones que no están registrados
+        cursor.execute("""
+            SELECT DISTINCT merchant_name 
+            FROM transacciones 
+            WHERE merchant_name IS NOT NULL 
+            AND merchant_name NOT IN (SELECT merchant_name FROM merchants WHERE merchant_name IS NOT NULL)
+            ORDER BY merchant_name
+        """)
+        
+        unregistered = [row[0] for row in cursor.fetchall()]
+        
+        if not unregistered:
+            logger.debug("No hay merchants nuevos para registrar")
+            conn.close()
+            return
+        
+        # Insertar merchants no registrados en tabla merchants
+        logger.info(f"Registrando {len(unregistered)} merchants nuevos...")
+        for merchant_name in unregistered:
+            cursor.execute("""
+                INSERT OR IGNORE INTO merchants 
+                (merchant_name, place_name, cat1, cat2)
+                VALUES (?, ?, NULL, NULL)
+            """, (merchant_name, merchant_name))
+        
+        conn.commit()
+        logger.info(f"✓ {len(unregistered)} merchants registrados (enriquecimiento pendiente)")
+        logger.add_stat('merchants_nuevos_registrados', len(unregistered))
+        
+        conn.close()
+        
+        # Nota: El enriquecimiento con Google Places se hace en background (enrich_background.py)
+        # para no bloquear el procesamiento de transacciones
+        
+    except Exception as e:
+        logger.warning(f"Error enriqueciendo merchants nuevos: {e}")
 
 
 def get_total_in_db(db_path: str = 'finsense.db') -> int:
@@ -456,6 +516,10 @@ def main():
     if records and not args.no_db_insert:
         logger.info("Insertando transacciones en BD...")
         insert_new_transactions(args.db, records)
+        
+        # Registrar merchants nuevos
+        enrich_new_merchants(args.db)
+        
         total_bd_despues = get_total_in_db(args.db)
         logger.set_stat('total_bd', total_bd_despues)
         logger.info(f"Total en BD después: {total_bd_despues}")

@@ -415,6 +415,10 @@ class TransactionPipeline:
                 r['cat2'] = result['cat2']
                 r['tipo'] = result['tipo']
                 r['capa'] = result['capa']
+                
+                # Recoger merchant_name si está disponible
+                if 'merchant_name' in result and result['merchant_name']:
+                    r['merchant_name'] = result['merchant_name']
 
                 # Preservar descripción original (sin normalizar) en el registro
                 # La normalizada solo se usó para clasificar
@@ -453,6 +457,11 @@ class TransactionPipeline:
                 
                 self.logger.set_stat('capas_clasificacion', capas_global)
 
+        # Post-procesamiento: merchants recurrentes
+        if classify and records:
+            from classifier.recurrent_merchants import apply_recurrent_merchants
+            records = apply_recurrent_merchants(records, threshold=15)
+        
         # Archivar PDF si fue procesado exitosamente
         if records and filepath.lower().endswith('.pdf'):
             self.archive_pdf(filepath)
