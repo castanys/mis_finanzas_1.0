@@ -2,13 +2,82 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-27 — Sesión 60 COMPLETADA
+**Última actualización**: 2026-02-27 — Sesión 64 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S64 — 2026-02-27 — ARREGLO 4 GAPS CRÍTICOS DEL PIPELINE ✅
+
+**Contexto**:
+S63 completó auditoría exhaustiva del pipeline y encontró 4 GAPs críticos que impedían que el sistema funcionara correctamente. S64 los arregla todos.
+
+**GAP 1 — CRÍTICO**: `merchant_name` NO se guardaba en BD
+- **Problema**: Engine extraía merchant_name pero NO lo incluía en los returns de `classify()`
+- **Solución**: 
+  1. `engine.py`: mover extracción de merchant_name al inicio (línea 249) para que esté disponible en todos los returns
+  2. Añadir `'merchant_name': merchant_name` a todos los 110 returns (script Python automatizado)
+  3. `pipeline.py`: recoger merchant_name del resultado de clasificación
+  4. `process_transactions.py`: incluir merchant_name en el INSERT
+- **Resultado**: merchant_name se propaga correctamente: extract_merchant() → classify() → pipeline → BD INSERT
+
+**GAP 2 — CRÍTICO**: Schema incorrecto en presupuestos y cargos_extraordinarios
+- **Problema**: Schema antiguo no coincidía con lo que espera el código (advisor.py, bot_telegram.py, streamlit_app)
+- **Solución**:
+  1. Migración BD: DROP + CREATE con schema correcto (tablas estaban vacías)
+  2. Actualizar `create_db_tables()` en process_transactions.py
+  3. presupuestos: `cat1, cat2, importe_mensual, activo, updated_at`
+  4. cargos_extraordinarios: `mes, dia, descripcion, importe_estimado, dias_aviso, activo, created_at`
+- **Verificación**: Schema validado en BD, funciones advisor.py ahora funcionarán correctamente
+
+**GAP 3 — MEDIO**: Merchants nuevos no se registraban automáticamente
+- **Problema**: `enrich_unregistered_merchants.py` era manual, no se llamaba en pipeline
+- **Solución**: Nueva función `enrich_new_merchants()` en process_transactions.py, llamada automáticamente después de INSERT
+- **Resultado**: Merchants nuevos se registran automáticamente para posterior enriquecimiento con Google Places
+
+**GAP 4 — MEDIO**: `apply_recurrent_merchants()` no se aplicaba en `process_file()`
+- **Problema**: Post-procesamiento solo en `process_directory()`, no en `process_file()` (importar PDF individual)
+- **Solución**: Mover llamada a `apply_recurrent_merchants()` a ambos métodos
+- **Resultado**: Recurrent merchants se aplica tanto al procesar directorio como archivo individual
+
+**Verificación**:
+- ✅ Schema BD migrado y validado
+- ✅ Código compila sin errores (py_compile)
+- ✅ Tests de INSERT y clasificación con merchant_name
+- ✅ Todos los 4 GAPs resueltos
+
+**Commits**: `cb9aaffb` (sesión 64: arreglar 4 GAPs críticos del pipeline)
+
+**Decisiones Arquitectónicas (D28-D31)**:
+- D28: merchant_name se propaga al clasificar y se guarda en BD
+- D29: Schema correcto en presupuestos y cargos_extraordinarios migrado
+- D30: Merchants nuevos se registran automáticamente
+- D31: apply_recurrent_merchants se aplica en process_file()
+
+---
+
+### S63 — 2026-02-27 — AUDITORÍA COMPLETA DEL PIPELINE ✅
+
+**Objetivo**: Entender por qué el bot no procesaba merchants correctamente y encontrar todos los GAPs del sistema.
+
+**Auditoría**:
+1. Leí ESTADO.md, SESIONES.md, REGLAS_PROYECTO.md para contexto
+2. Analicé flujo completo: pipeline.py → engine.py (5 capas) → merchants.py, recurrent_merchants.py, enrich_unregistered_merchants.py
+3. Auditoreé toda la conectividad: clasificador → pipeline → process_transactions → BD
+4. Verificué schemas BD vs código esperado
+
+**Descubrimientos — 4 GAPs CRÍTICOS**:
+1. **GAP 1 — CRÍTICO**: merchant_name extraído en engine pero NO se guarda en BD
+2. **GAP 2 — CRÍTICO**: Schema presupuestos/cargos_extraordinarios es antiguo
+3. **GAP 3 — MEDIO**: enrich_unregistered_merchants.py no está integrado en pipeline
+4. **GAP 4 — MEDIO**: recurrent_merchants no se aplica en process_file()
+
+**Resultado**: Documenté todos los gaps con impacto y soluciones propuestas. Esperar instrucción del usuario.
+
+---
 
 ### S62 — 2026-02-27 — RECUPERACIÓN MERCHANTS + GOOGLE PLACES ✅
 

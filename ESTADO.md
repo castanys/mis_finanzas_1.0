@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S62 COMPLETADA (recuperación merchants + Google Places)
+**Última actualización**: 2026-02-27 — S64 COMPLETADA (arreglo 4 GAPs críticos del pipeline)
 
 ---
 
@@ -17,7 +17,7 @@
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 61 |
+| **Sesiones completadas** | 64 |
 | **Merchants enriquecidos** | 824/846 (97.4% cobertura) |
 | **Transacciones con merchant_name** | 6,917/16,020 (43.2%) |
 | **Países únicos** | 27 |
@@ -55,6 +55,10 @@
 | 25 | Análisis asesor siempre al importar | Enviar análisis tras importar PDF (incluso si nuevas_txs=0) | S61 |
 | 26 | Tabla merchants con 13 columnas | Schema correcto: merchant_name, place_id, place_name, address, city, country, lat, lng, cat1, cat2, google_type, confidence, search_scope | S62 |
 | 27 | Enriquecimiento Google Places automático | 824/846 merchants (97.4%) con datos geográficos (city, country, lat, lng) | S62 |
+| 28 | merchant_name se propaga al clasificar y se guarda en BD | Pipeline completo: extract_merchant → classify() → pipeline → INSERT | S64 |
+| 29 | Schema correcto en presupuestos y cargos_extraordinarios | Migrado en BD, actualizado create_db_tables() | S64 |
+| 30 | Merchants nuevos se registran automáticamente | enrich_new_merchants() tras insertar txs nuevas | S64 |
+| 31 | apply_recurrent_merchants se aplica en process_file() | Post-procesamiento en ambos process_file() y process_directory() | S64 |
 
 ---
 
@@ -63,6 +67,7 @@
 | Prioridad | Tarea | Notas |
 |-----------|-------|-------|
 | BAJA | Auditoría Fase 2 duplicados | Openbank 200 pares, Abanca 112, B100 51 |
+| BAJA | Enriquecimiento Google Places en background | Script enrich_background.py procesa merchants nuevos en background |
 
 ---
 
@@ -70,8 +75,9 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
+| S64 | 2026-02-27 | ✅ COMPLETADA | Arreglar 4 GAPs: (1) merchant_name se propaga y guarda en BD, (2) schema presupuestos/cargos_extraordinarios migrado, (3) merchants nuevos registrados automáticamente, (4) recurrent_merchants en process_file() |
+| S63 | 2026-02-27 | ✅ COMPLETADA | Auditoría completa del pipeline: identificar 4 GAPs críticos en merchant_name, schema y post-procesamiento |
 | S62 | 2026-02-27 | ✅ COMPLETADA | Recuperación merchants: 846 merchants únicos, 824 enriquecidos Google Places (97.4%), 6,917 txs (43.2%) con merchant_name |
-| S61 | 2026-02-27 | ✅ COMPLETADA | Fix: análisis del asesor siempre tras importar PDF (bot_telegram.py:639) |
 
 ---
 
