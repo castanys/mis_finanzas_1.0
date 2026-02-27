@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S66 COMPLETADA (fondo caprichos + bloque seguimiento mensual)
+**Última actualización**: 2026-02-27 — S67 COMPLETADA (módulo validator.py con 18 checks de integridad)
 
 ---
 
@@ -17,7 +17,7 @@
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 66 |
+| **Sesiones completadas** | 67 |
 | **Merchants enriquecidos** | 824/846 (97.4% cobertura) |
 | **Transacciones con merchant_name** | 6,917/16,020 (43.2%) |
 | **Países únicos** | 27 |
@@ -62,6 +62,7 @@
 | 32 | AbancaParser soporta formato web/app (separador coma) | Nuevo formato Abanca descarga web con headers Fecha,Concepto,Saldo,Importe | S65 |
 | 33 | Bloque seguimiento mensual se añade en bot_telegram DESPUÉS del LLM | LLM genera comentario, código añade datos reales (LLM no los reescribe) | S66 |
 | 34 | Fondo caprichos en BD (tabla fondo_caprichos) con 6 cats controlables | Presupuestos en BD, acumulado solo meses cerrados, excesos descuentan | S66 |
+| 35 | validator.py como módulo independiente + integrado en process_transactions | 18 checks de integridad, se lanza automáticamente tras cada proceso | S67 |
 
 ---
 
@@ -69,7 +70,10 @@
 
 | Prioridad | Tarea | Notas |
 |-----------|-------|-------|
-| BAJA | Auditoría Fase 2 duplicados | Openbank 200 pares, Abanca 112, B100 51 |
+| ALTA | Arreglar V02: 442 txs con combos Cat1\|Cat2 inválidos | Compras\|Grandes Almacenes, Transporte\|Público/Gasolina, Wallapop\|Venta... — añadir a valid_combos o reclassify |
+| ALTA | Arreglar V12: 77 txs con cat2 no vacío donde debería serlo | Wallapop\|Venta (35), Servicios Consultoría\|Honorarios (6)... |
+| MEDIA | Arreglar V03: 24 txs tipo inconsistente (Dividendos\|INVERSION, Wallapop\|GASTO) | Ver V18b: 2 Wallapop con tipo=GASTO |
+| BAJA | Auditoría Fase 2 duplicados | Openbank 200 pares, Abanca 112, B100 51 — V05 ya los detecta |
 | BAJA | Enriquecimiento Google Places en background | Script enrich_background.py procesa merchants nuevos en background |
 
 ---
@@ -78,9 +82,9 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
+| S67 | 2026-02-27 | ✅ COMPLETADA | validator.py: 18 checks de integridad (V01–V18), integración automática en process_transactions. Encontrados 6 críticos + 7 advertencias reales en BD |
 | S66 | 2026-02-27 | ✅ COMPLETADA | Fondo caprichos: tabla fondo_caprichos, 6 presupuestos en BD, funciones advisor.py, bloque seguimiento en bot (3 puntos) + bloque cierre mensual |
 | S65 | 2026-02-27 | ✅ COMPLETADA | AbancaParser: soporte formato web/app (separador coma, importes con €). Detection automática de formato en pipeline.py |
-| S64 | 2026-02-27 | ✅ COMPLETADA | Arreglar 4 GAPs: (1) merchant_name se propaga y guarda en BD, (2) schema presupuestos/cargos_extraordinarios migrado, (3) merchants nuevos registrados automáticamente, (4) recurrent_merchants en process_file() |
 
 ---
 

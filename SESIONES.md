@@ -2,7 +2,7 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-27 — Sesión 66 COMPLETADA
+**Última actualización**: 2026-02-27 — Sesión 67 COMPLETADA
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
@@ -10,62 +10,31 @@
 
 ## 🟢 Últimas 3 Sesiones
 
-### S64 — 2026-02-27 — ARREGLO 4 GAPS CRÍTICOS DEL PIPELINE ✅
+### S67 — 2026-02-27 — MÓDULO VALIDATOR: 18 CHECKS DE INTEGRIDAD ✅
 
-**Contexto**:
-S63 completó auditoría exhaustiva del pipeline y encontró 4 GAPs críticos que impedían que el sistema funcionara correctamente. S64 los arregla todos.
+**Objetivo**: Crear módulo `validator.py` que se lanza automáticamente tras cualquier carga/clasificación y detecta errores reales en datos y clasificación.
 
-**GAP 1 — CRÍTICO**: `merchant_name` NO se guardaba en BD
-- **Problema**: Engine extraía merchant_name pero NO lo incluía en los returns de `classify()`
-- **Solución**: 
-  1. `engine.py`: mover extracción de merchant_name al inicio (línea 249) para que esté disponible en todos los returns
-  2. Añadir `'merchant_name': merchant_name` a todos los 110 returns (script Python automatizado)
-  3. `pipeline.py`: recoger merchant_name del resultado de clasificación
-  4. `process_transactions.py`: incluir merchant_name en el INSERT
-- **Resultado**: merchant_name se propaga correctamente: extract_merchant() → classify() → pipeline → BD INSERT
+**Checks implementados (V01–V18)**:
+- V01: Cat1 fuera de whitelist | V02: Combos Cat1|Cat2 inválidos | V03: tipo inconsistente con cat1/importe
+- V04: Hashes duplicados | V05: Duplicados sospechosos (misma fecha+importe+desc similar) | V06: SIN_CLASIFICAR
+- V07: merchant_name faltante | V08: Signo incorrecto GASTO/INGRESO | V09: Fechas inválidas
+- V10: Merchants sin cat1 | V11: Banco desconocido | V12: cat2 no vacío donde debería serlo
+- V13: Descripción vacía | V14: Hash NULL | V15: Importe cero
+- V16: Nóminas anómalas (solo últimos 5 años) | V17: Outliers estadísticos por cat1 (3-sigma)
+- V18: Reglas de negocio específicas (D10,D11,D17,D18,D19,D21)
 
-**GAP 2 — CRÍTICO**: Schema incorrecto en presupuestos y cargos_extraordinarios
-- **Solución**: DROP + CREATE con schema correcto. Actualizar create_db_tables() en process_transactions.py
-- presupuestos: `cat1, cat2, importe_mensual, activo, updated_at`
-- cargos_extraordinarios: `mes, dia, descripcion, importe_estimado, dias_aviso, activo, created_at`
+**Resultados contra BD real (16,024 txs)**:
+- 🔴 6 CRÍTICOS: V01 Retrocesión (1tx), V02 442 combos inválidos, V03 24 tipos inconsistentes, V05a 511 pares duplicados mismo banco, V08b 2 ingresos negativos, V18b 2 Wallapop|GASTO
+- 🟡 7 ADVERTENCIAS: V07 500 sin merchant, V08a 146 gastos positivos, V10 1680 merchants sin cat1, V12 77 cat2 incorrectos, V15 9 importes cero, V16 10 nóminas anómalas, V17 36 outliers
 
-**GAP 3 — MEDIO**: Merchants nuevos no se registraban automáticamente
-- **Solución**: Nueva función `enrich_new_merchants()` llamada automáticamente después de INSERT
+**Integración**:
+- `process_transactions.py`: lanza validación automáticamente al final, muestra resumen en logs
+- CLI: `python3 validator.py [--since YYYY-MM] [--json] [--solo-criticas] [--checks V01 V05]`
+- API: `from validator import run_validation; report = run_validation(db_path='finsense.db')`
 
-**GAP 4 — MEDIO**: `apply_recurrent_merchants()` no se aplicaba en `process_file()`
-- **Solución**: Mover llamada a ambos métodos: process_file() y process_directory()
+**Archivos modificados**: `validator.py` (nuevo, 480 líneas), `process_transactions.py` (integración)
 
-**Verificación**: Schema BD ✅ | py_compile ✅ | tests INSERT y clasificación ✅
-
-**Commits**: `cb9aaffb` (sesión 64: arreglar 4 GAPs críticos del pipeline)
-
-**Decisiones Arquitectónicas (D28-D31)**: merchant_name propagado | schema correcto migrado | enrich automático | recurrent en ambos métodos
-
----
-
-### S65 — 2026-02-27 — ABANCA PARSER: SOPORTE FORMATO WEB/APP ✅
-
-**Problema reportado**:
-Usuario sube CSV de Abanca descargado desde web/app y el pipeline no lo reconoce. El formato nuevo usa separador coma (`,`) en vez de punto y coma (`;`) y tiene headers distintos: `Fecha,Concepto,Saldo,Importe,Fecha operación,Fecha valor`. Los importes llevan símbolo `€` y punto decimal: `-4025.0 €`.
-
-**Diagnóstico**:
-- `pipeline.py`: solo detectaba `'Fecha ctble;Fecha valor;Concepto'` como Abanca (formato banco directo)
-- `parsers/abanca.py`: solo parseaba formato `;` (semicolon)
-- Nuevo formato web/app tenía estructura completamente diferente
-
-**Solución**:
-1. **`pipeline.py`**: Añadir detección del formato web/app antes del Mediolanum check:
-   ```python
-   if first_line.startswith('Fecha,Concepto,Saldo,Importe'):
-       return 'abanca'
-   ```
-2. **`parsers/abanca.py`**: Añadir `_detect_format()` que distingue `'semicolon'` vs `'comma'` leyendo la primera línea. Añadir `_parse_euro_amount()` para importes con `€`. El método `parse()` ramifica según formato detectado.
-
-**Verificación**: CSV web/app procesado correctamente, txs insertadas en BD ✅
-
-**Archivos modificados**: `parsers/abanca.py`, `pipeline.py`
-
-**Decisión Arquitectónica (D32)**: AbancaParser soporta 2 formatos (semicolon banco directo + comma web/app)
+**Decisión Arquitectónica (D35)**: validator.py módulo independiente + integrado en process_transactions
 
 ---
 
@@ -106,8 +75,6 @@ Añadir al bot un bloque de datos de seguimiento mensual (presupuesto vs gasto r
 - Bloque diario: Restauración ❌ 247€/200€ | Total 773€/975€ | Fondo: +0€ (desde este mes)
 - Bloque mensual cierre: +202€ este mes (Ropa+100€, Salud+75€, Alim+57€, etc.)
 
-**Nota importante**: Fondo acumulado 2026 arranca en marzo. Cuando llegue el 1/3, febrero (+202€) aparecerá como mes cerrado.
-
 **Verificación**: py_compile advisor.py ✅ | py_compile bot_telegram.py ✅ | Bloque generado con datos reales ✅
 
 **Archivos modificados**: `advisor.py`, `bot_telegram.py`, `process_transactions.py`, `finsense.db`
@@ -115,6 +82,32 @@ Añadir al bot un bloque de datos de seguimiento mensual (presupuesto vs gasto r
 **Decisiones Arquitectónicas (D33-D34)**:
 - D33: Bloque datos se añade en bot_telegram DESPUÉS del LLM (LLM genera comentario, código añade datos)
 - D34: Fondo caprichos en BD con 6 cats controlables, acumulado solo meses cerrados, excesos descuentan
+
+---
+
+### S65 — 2026-02-27 — ABANCA PARSER: SOPORTE FORMATO WEB/APP ✅
+
+**Problema reportado**:
+Usuario sube CSV de Abanca descargado desde web/app y el pipeline no lo reconoce. El formato nuevo usa separador coma (`,`) en vez de punto y coma (`;`) y tiene headers distintos: `Fecha,Concepto,Saldo,Importe,Fecha operación,Fecha valor`. Los importes llevan símbolo `€` y punto decimal: `-4025.0 €`.
+
+**Diagnóstico**:
+- `pipeline.py`: solo detectaba `'Fecha ctble;Fecha valor;Concepto'` como Abanca (formato banco directo)
+- `parsers/abanca.py`: solo parseaba formato `;` (semicolon)
+- Nuevo formato web/app tenía estructura completamente diferente
+
+**Solución**:
+1. **`pipeline.py`**: Añadir detección del formato web/app antes del Mediolanum check:
+   ```python
+   if first_line.startswith('Fecha,Concepto,Saldo,Importe'):
+       return 'abanca'
+   ```
+2. **`parsers/abanca.py`**: Añadir `_detect_format()` que distingue `'semicolon'` vs `'comma'` leyendo la primera línea. Añadir `_parse_euro_amount()` para importes con `€`. El método `parse()` ramifica según formato detectado.
+
+**Verificación**: CSV web/app procesado correctamente, txs insertadas en BD ✅
+
+**Archivos modificados**: `parsers/abanca.py`, `pipeline.py`
+
+**Decisión Arquitectónica (D32)**: AbancaParser soporta 2 formatos (semicolon banco directo + comma web/app)
 
 ---
 
