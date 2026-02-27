@@ -832,3 +832,110 @@ No requiere lectura en cada sesión (costo de tokens: cero). Solo se consulta si
 **Commits**: `dfa23c1e`
 
 ---
+
+### S59 — 2026-02-27 — ENHANCEMENT BOT: ANÁLISIS DIARIO + SERVICIO SYSTEMD ✅
+
+**Objetivo**: 1) Mejorar UX: análisis diario tras importar PDF, 2) Bot permanente: servicio systemd, 3) Documentar servicios del proyecto
+
+**Cambios**:
+1. **Análisis diario**: `bot_telegram.py:documento_handler` — generar + enviar resumen del día si `nuevas_txs > 0`
+2. **Servicio systemd**: `~/.config/systemd/user/mis_finanzas_bot.service` — bot corriendo permanente, reinicia automático en caso de fallo
+3. **loginctl enable-linger**: Servicio sobrevive sin sesión abierta
+4. **SERVICIOS.md**: Documentación centralizada a nivel `/home/pablo/apps/`
+
+**Verificación**: py_compile ✅ | systemctl ✅ | PDF procesado + análisis enviado ✅ | Linger=yes ✅
+
+**Commits**: `c0f6a9c6`, `c4a063db`, `61d5976c`
+
+**Decisión Arquitectónica (D22)**: Bot envía análisis diario tras importar PDF
+
+---
+
+### S60 — 2026-02-27 — 3 FIXES USUARIO: MODELO CLAUDE + RESTAURACIÓN/OTROS ✅
+
+**Problemas reportados**:
+1. Bot envía análisis crudo sin LLM (API key no usada)
+2. Categoría Restauración/Restaurante no aporta valor (197 txs genéricas)
+3. Modelo Claude sonnet lento para push automático
+
+**Solución**:
+1. **Modelo Claude**: `bot_telegram.py:119` → `claude-haiku-4-5`
+2. **Restauración/Otros**: `engine.py:35` + `engine.py:599` → cat2 Restaurante → Otros
+3. **Reclassify**: 197 txs Restauración/Restaurante → Restauración/Otros
+
+**Verificación**: reclassify_all.py ✅ | 0 nuevas, 16,012 total ✅ | bot con nuevo modelo ✅
+
+**Commits**: `89d8747c`
+
+**Decisiones Arquitectónicas (D23-D24)**: Modelo haiku-4-5 | Restauración sin cat2 genérica
+
+---
+
+### S61 — 2026-02-27 — FIX BOT: ANÁLISIS ASESOR SIEMPRE AL IMPORTAR PDF ✅
+
+**Problema**: Usuario no recibía mensaje del asesor tras subir PDFs con 0 txs nuevas.
+
+**Diagnóstico**: Condición `if result.returncode == 0 and nuevas_txs > 0:` → sin análisis si PDFs duplicados.
+
+**Solución**: `bot_telegram.py:639` → `if result.returncode == 0:` (quitar AND nuevas_txs)
+
+**Verificación**: py_compile ✅ | systemctl restart ✅ | PID 1492306 activo
+
+**Decisión Arquitectónica (D25)**: Análisis asesor siempre al importar PDF
+
+---
+
+### S62 — 2026-02-27 — RECUPERACIÓN MERCHANTS + GOOGLE PLACES ✅
+
+**Problema**: Tabla merchants vacía, merchant_name = NULL en todas las txs, dashboard geográfico sin datos.
+
+**Solución**:
+1. Migrar esquema merchants (3 cols → 13 cols con place_id, city, country, lat, lng, etc.)
+2. Poblar merchant_name: 6,917/16,020 txs (43.2%)
+3. Insertar 846 merchants únicos
+4. Enriquecer Google Places: 824/846 (97.4%), 27 países únicos
+
+**Verificación**: sqlite3 ✅ | 6,917 txs con merchant_name | 824 con place_id | Spain 3,693 txs
+
+**Decisiones Arquitectónicas (D26-D27)**: 13 columnas merchants | Enriquecimiento Google Places automático
+
+---
+
+### S63 — 2026-02-27 — AUDITORÍA COMPLETA DEL PIPELINE ✅
+
+**Objetivo**: Encontrar GAPs en el pipeline que impedían funcionamiento correcto.
+
+**Descubrimientos — 4 GAPs CRÍTICOS**:
+1. merchant_name extraído en engine pero NO se guarda en BD
+2. Schema presupuestos/cargos_extraordinarios antiguo
+3. enrich_unregistered_merchants.py no integrado en pipeline
+4. recurrent_merchants no se aplica en process_file()
+
+**Resultado**: Documentados con impacto y soluciones. Esperar instrucción para S64.
+
+---
+
+### S64 — 2026-02-27 — ARREGLO 4 GAPS CRÍTICOS DEL PIPELINE ✅
+
+**GAP 1 — CRÍTICO**: merchant_name NO se guardaba en BD
+- engine.py: mover extracción al inicio, añadir 'merchant_name' a todos los returns
+- pipeline.py: recoger merchant_name del resultado
+- process_transactions.py: incluir en INSERT
+
+**GAP 2 — CRÍTICO**: Schema incorrecto presupuestos y cargos_extraordinarios
+- DROP + CREATE con schema correcto (tablas vacías)
+- Actualizar create_db_tables() en process_transactions.py
+
+**GAP 3 — MEDIO**: enrich_unregistered_merchants.py no integrado
+- Nueva función enrich_new_merchants() llamada automáticamente tras INSERT
+
+**GAP 4 — MEDIO**: recurrent_merchants no en process_file()
+- Mover apply_recurrent_merchants() a ambos process_file() y process_directory()
+
+**Verificación**: Schema BD ✅ | py_compile ✅ | tests INSERT y clasificación ✅
+
+**Commits**: `cb9aaffb`
+
+**Decisiones Arquitectónicas (D28-D31)**: merchant_name propagado | schema correcto | enrich automático | recurrent en ambos métodos
+
+---

@@ -130,6 +130,20 @@ def create_db_tables(db_path: str = 'finsense.db'):
         cursor.execute('CREATE INDEX IF NOT EXISTS idx_country ON merchants(country)')
         
         cursor.execute('''
+            CREATE TABLE IF NOT EXISTS fondo_caprichos (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                anio INTEGER NOT NULL,
+                mes INTEGER NOT NULL,
+                cat1 TEXT NOT NULL,
+                presupuesto REAL NOT NULL,
+                gasto_real REAL NOT NULL,
+                diferencia REAL NOT NULL,
+                updated_at TEXT DEFAULT (datetime('now')),
+                UNIQUE(anio, mes, cat1)
+            )
+        ''')
+
+        cursor.execute('''
             CREATE TABLE IF NOT EXISTS bot_estado (
                 clave TEXT PRIMARY KEY,
                 valor TEXT

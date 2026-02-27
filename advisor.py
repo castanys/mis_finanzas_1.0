@@ -302,7 +302,279 @@ Responde directamente como si fueras el asesor (sin formato especial, sin asteri
     
     return prompt
 
-# ===== FUNCIONES DE EXPORTACIÓN =====
+
+# ===== FONDO DE CAPRICHOS =====
+
+CATS_CONTROLABLES = [
+    'Alimentación', 'Restauración', 'Compras',
+    'Ropa y Calzado', 'Salud y Belleza', 'Ocio y Cultura'
+]
+ANIO_INICIO_FONDO = 2026
+MES_INICIO_FONDO = 2  # Febrero 2026
+
+
+def get_presupuestos_controlables() -> Dict[str, float]:
+    """Lee presupuestos de las categorías controlables desde BD."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT cat1, importe_mensual FROM presupuestos
+            WHERE activo = 1 AND cat1 IN ({})
+        """.format(','.join('?' * len(CATS_CONTROLABLES))), CATS_CONTROLABLES)
+        result = {row[0]: row[1] for row in cursor.fetchall()}
+        conn.close()
+        return result
+    except Exception as e:
+        print(f"❌ Error leyendo presupuestos: {e}", file=sys.stderr)
+        return {}
+
+
+def calcular_fondo_mes(anio: int, mes: int) -> List[Dict]:
+    """
+    Calcula el fondo de caprichos para un mes cerrado.
+    Compara gasto_real vs presupuesto por categoría controlable.
+    Guarda/actualiza en tabla fondo_caprichos.
+    Retorna lista de dicts con detalle por categoría.
+    """
+    try:
+        periodo = f"{anio}-{mes:02d}"
+        presupuestos = get_presupuestos_controlables()
+        if not presupuestos:
+            return []
+
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        resultado = []
+        for cat1 in CATS_CONTROLABLES:
+            presupuesto = presupuestos.get(cat1, 0.0)
+            cursor.execute("""
+                SELECT COALESCE(SUM(ABS(importe)), 0)
+                FROM transacciones
+                WHERE tipo = 'GASTO'
+                  AND cat1 = ?
+                  AND strftime('%Y-%m', fecha) = ?
+            """, (cat1, periodo))
+            gasto_real = cursor.fetchone()[0]
+            diferencia = presupuesto - gasto_real  # positivo = ahorro, negativo = exceso
+
+            # Guardar/actualizar en BD
+            cursor.execute("""
+                INSERT INTO fondo_caprichos (anio, mes, cat1, presupuesto, gasto_real, diferencia, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+                ON CONFLICT(anio, mes, cat1) DO UPDATE SET
+                    presupuesto = excluded.presupuesto,
+                    gasto_real = excluded.gasto_real,
+                    diferencia = excluded.diferencia,
+                    updated_at = excluded.updated_at
+            """, (anio, mes, cat1, presupuesto, gasto_real, diferencia))
+
+            resultado.append({
+                'cat1': cat1,
+                'presupuesto': presupuesto,
+                'gasto_real': gasto_real,
+                'diferencia': diferencia
+            })
+
+        conn.commit()
+        conn.close()
+        return resultado
+
+    except Exception as e:
+        print(f"❌ Error calculando fondo mes {anio}-{mes:02d}: {e}", file=sys.stderr)
+        return []
+
+
+def get_fondo_acumulado_anio(anio: int) -> Dict:
+    """
+    Retorna el fondo acumulado del año desde MES_INICIO_FONDO.
+    Solo incluye meses cerrados (no el mes actual en curso).
+    Retorna dict con: acumulado total, detalle por mes, detalle por categoría.
+    """
+    try:
+        hoy = datetime.now()
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Solo meses cerrados desde el inicio del fondo
+        cursor.execute("""
+            SELECT mes, cat1, presupuesto, gasto_real, diferencia
+            FROM fondo_caprichos
+            WHERE anio = ?
+              AND mes >= ?
+              AND (anio < ? OR mes < ?)
+            ORDER BY mes, cat1
+        """, (anio, MES_INICIO_FONDO, hoy.year, hoy.month))
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        acumulado = 0.0
+        por_mes = {}
+        por_cat = {}
+
+        for mes, cat1, presupuesto, gasto_real, diferencia in rows:
+            acumulado += diferencia
+            if mes not in por_mes:
+                por_mes[mes] = 0.0
+            por_mes[mes] += diferencia
+            if cat1 not in por_cat:
+                por_cat[cat1] = 0.0
+            por_cat[cat1] += diferencia
+
+        return {
+            'acumulado': acumulado,
+            'por_mes': por_mes,
+            'por_cat': por_cat,
+            'meses_incluidos': sorted(por_mes.keys())
+        }
+
+    except Exception as e:
+        print(f"❌ Error leyendo fondo acumulado: {e}", file=sys.stderr)
+        return {'acumulado': 0.0, 'por_mes': {}, 'por_cat': {}, 'meses_incluidos': []}
+
+
+def get_bloque_seguimiento_mes() -> str:
+    """
+    Genera el bloque de texto fijo con seguimiento del mes actual
+    y fondo de caprichos acumulado. Se añade al pie de cada mensaje diario.
+    """
+    try:
+        hoy = datetime.now()
+        anio, mes = hoy.year, hoy.month
+        periodo = f"{anio}-{mes:02d}"
+        dias_mes = (hoy.replace(day=1) + timedelta(days=32)).replace(day=1) - timedelta(days=1)
+        dias_mes = dias_mes.day
+        dia_hoy = hoy.day
+
+        presupuestos = get_presupuestos_controlables()
+        if not presupuestos:
+            return ""
+
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Mes anterior para comparativa
+        if mes == 1:
+            mes_ant, anio_ant = 12, anio - 1
+        else:
+            mes_ant, anio_ant = mes - 1, anio
+        periodo_ant = f"{anio_ant}-{mes_ant:02d}"
+
+        lineas = []
+        total_presup = 0.0
+        total_actual = 0.0
+        total_anterior = 0.0
+
+        for cat1 in CATS_CONTROLABLES:
+            presup = presupuestos.get(cat1, 0.0)
+
+            cursor.execute("""
+                SELECT COALESCE(SUM(ABS(importe)), 0) FROM transacciones
+                WHERE tipo='GASTO' AND cat1=? AND strftime('%Y-%m', fecha)=?
+            """, (cat1, periodo))
+            actual = cursor.fetchone()[0]
+
+            cursor.execute("""
+                SELECT COALESCE(SUM(ABS(importe)), 0) FROM transacciones
+                WHERE tipo='GASTO' AND cat1=? AND strftime('%Y-%m', fecha)=?
+            """, (cat1, periodo_ant))
+            anterior = cursor.fetchone()[0]
+
+            total_presup += presup
+            total_actual += actual
+            total_anterior += anterior
+
+            diferencia = presup - actual
+            if diferencia >= 0:
+                icono = "✅"
+            elif diferencia > -30:
+                icono = "⚠️"
+            else:
+                icono = "❌"
+
+            # Variación vs mes anterior
+            if anterior > 0:
+                pct = ((actual - anterior) / anterior) * 100
+                var = f"{pct:+.0f}%"
+            else:
+                var = "—"
+
+            nombre_corto = cat1.replace(' y ', '/').replace('Restauración', 'Restaurac.')
+            lineas.append(
+                f"{icono} {nombre_corto:<16} {actual:>6.0f}€ / {presup:.0f}€  vs ant: {var}"
+            )
+
+        conn.close()
+
+        # Fondo acumulado (meses cerrados)
+        fondo = get_fondo_acumulado_anio(anio)
+        acumulado = fondo['acumulado']
+        meses_n = len(fondo['meses_incluidos'])
+
+        if acumulado >= 0:
+            fondo_txt = f"+{acumulado:.0f}€ disponibles"
+        else:
+            fondo_txt = f"{acumulado:.0f}€ (en negativo)"
+
+        mes_nombre = get_mes_nombre(mes).capitalize()
+        bloque = (
+            f"\n━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"📊 {mes_nombre} — día {dia_hoy}/{dias_mes}\n"
+            f"\n"
+            + "\n".join(lineas) +
+            f"\n"
+            f"{'─' * 25}\n"
+            f"Total:            {total_actual:>6.0f}€ / {total_presup:.0f}€\n"
+            f"\n"
+            f"💰 Fondo caprichos {anio}: {fondo_txt}"
+            + (f" ({meses_n} mes{'es' if meses_n != 1 else ''} cerrado{'s' if meses_n != 1 else ''})" if meses_n > 0 else " (desde este mes)")
+        )
+        return bloque
+
+    except Exception as e:
+        print(f"❌ Error generando bloque seguimiento: {e}", file=sys.stderr)
+        return ""
+
+
+def get_bloque_fondo_mensual(anio: int, mes_cerrado: int) -> str:
+    """
+    Genera el bloque detallado del fondo de caprichos para el cierre mensual.
+    Muestra desglose por categoría del mes cerrado y acumulado del año.
+    """
+    try:
+        detalle = calcular_fondo_mes(anio, mes_cerrado)
+        fondo = get_fondo_acumulado_anio(anio)
+        mes_nombre = get_mes_nombre(mes_cerrado).capitalize()
+
+        lineas = [f"\n💰 Fondo caprichos — cierre {mes_nombre}\n"]
+        total_mes = 0.0
+        for item in detalle:
+            dif = item['diferencia']
+            total_mes += dif
+            icono = "✅" if dif >= 0 else "❌"
+            lineas.append(
+                f"{icono} {item['cat1']:<18} {dif:>+.0f}€  "
+                f"(gastado {item['gasto_real']:.0f}€ / presup {item['presupuesto']:.0f}€)"
+            )
+
+        acumulado = fondo['acumulado']
+        lineas.append(f"{'─' * 30}")
+        lineas.append(f"Este mes:   {total_mes:>+.0f}€")
+        lineas.append(f"Acumulado {anio}: {acumulado:>+.0f}€")
+
+        if acumulado > 0:
+            lineas.append(f"\n¡Tienes {acumulado:.0f}€ de margen para un capricho!")
+        elif acumulado < 0:
+            lineas.append(f"\nAún {abs(acumulado):.0f}€ por recuperar antes del capricho.")
+
+        return "\n".join(lineas)
+
+    except Exception as e:
+        print(f"❌ Error generando bloque fondo mensual: {e}", file=sys.stderr)
+        return ""
+
 
 def obtener_mensaje_para_bot() -> str:
     """

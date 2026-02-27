@@ -43,7 +43,9 @@ try:
         analizar_presupuestos,
         generate_daily_message,
         generate_monthly_message,
-        generate_annual_message
+        generate_annual_message,
+        get_bloque_seguimiento_mes,
+        get_bloque_fondo_mensual
     )
 except ImportError:
     logger.error("❌ advisor.py no encontrado en la ruta")
@@ -174,10 +176,15 @@ async def resumen_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         # Generar prompt con sistema 3-level (elegir diario)
         prompt = generate_daily_message()
-        
+
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
-        
+
+        # Añadir bloque de seguimiento (datos reales, fuera del LLM)
+        bloque = get_bloque_seguimiento_mes()
+        if bloque:
+            mensaje = mensaje + bloque
+
         # Enviar respuesta
         await update.message.reply_text(mensaje)
         logger.info(f"✅ Resumen enviado a {user_name}")
@@ -389,10 +396,15 @@ async def push_diario(context: ContextTypes.DEFAULT_TYPE):
         # ===== BLOQUE 3: Generar y enviar mensaje diario =====
         # Generar prompt con ángulo aleatorio (BLOQUE 3)
         prompt = generate_daily_message()
-        
+
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
-        
+
+        # Añadir bloque de seguimiento (datos reales, fuera del LLM)
+        bloque = get_bloque_seguimiento_mes()
+        if bloque:
+            mensaje = mensaje + bloque
+
         # Enviar al usuario
         await context.bot.send_message(
             chat_id=int(TELEGRAM_USER_ID),
@@ -427,17 +439,25 @@ async def push_mensual(context: ContextTypes.DEFAULT_TYPE):
     try:
         # Generar prompt mensual con ángulo rotativo (BLOQUE 3)
         prompt = generate_monthly_message()
-        
+
         # Llamar al LLM
         mensaje = generar_mensaje_con_llm(prompt)
-        
+
+        # Añadir bloque de fondo de caprichos del mes cerrado
+        hoy = datetime.now()
+        mes_cerrado = hoy.month - 1 if hoy.month > 1 else 12
+        anio_cerrado = hoy.year if hoy.month > 1 else hoy.year - 1
+        bloque_fondo = get_bloque_fondo_mensual(anio_cerrado, mes_cerrado)
+        if bloque_fondo:
+            mensaje = mensaje + "\n\n" + bloque_fondo
+
         # Enviar al usuario
         await context.bot.send_message(
             chat_id=int(TELEGRAM_USER_ID),
             text=mensaje,
             parse_mode="Markdown"
         )
-        
+
         logger.info(f"✅ Push mensual enviado a {TELEGRAM_USER_ID}")
     
     except TelegramError as e:
@@ -643,10 +663,15 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 
                 # Generar prompt con ángulo aleatorio (igual que push diario)
                 prompt = generate_daily_message()
-                
+
                 # Llamar al LLM
                 mensaje_diario = generar_mensaje_con_llm(prompt)
-                
+
+                # Añadir bloque de seguimiento (datos reales, fuera del LLM)
+                bloque = get_bloque_seguimiento_mes()
+                if bloque:
+                    mensaje_diario = mensaje_diario + bloque
+
                 # Enviar análisis
                 await update.message.reply_text(mensaje_diario, parse_mode="Markdown")
                 logger.info("✅ Análisis del día enviado tras importación")

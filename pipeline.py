@@ -173,6 +173,10 @@ class TransactionPipeline:
                 if first_line.startswith('Fecha ctble;Fecha valor;Concepto'):
                     return 'abanca'
 
+                # Abanca formato web/app: Fecha,Concepto,Saldo,Importe,Fecha operación,Fecha valor
+                if first_line.startswith('Fecha,Concepto,Saldo,Importe'):
+                    return 'abanca'
+
                 # Mediolanum CSV: Fecha Operación;Concepto;Fecha Valor;Pagos;Ingresos;...
                 if 'Pagos' in first_line and 'Ingresos' in first_line and 'Fecha Operación' in first_line:
                     return 'mediolanum_old'
