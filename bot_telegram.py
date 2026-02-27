@@ -635,8 +635,8 @@ async def documento_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             logger.warning(f"⚠️ Error Markdown, enviando sin formato: {markdown_err}")
             await update.message.reply_text(response)
         
-        # ===== BLOQUE NUEVO: Enviar análisis del día si hay nuevas transacciones =====
-        if result.returncode == 0 and nuevas_txs > 0:
+        # ===== BLOQUE NUEVO: Enviar análisis del día siempre (si el proceso fue exitoso) =====
+        if result.returncode == 0:
             try:
                 logger.info("📊 Generando análisis del día tras importación...")
                 await update.message.reply_text("📊 Generando estado financiero del día...")

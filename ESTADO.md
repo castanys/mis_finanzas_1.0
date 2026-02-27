@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S60 COMPLETADA (fixes usuario: modelo Claude + Restauración/Otros)
+**Última actualización**: 2026-02-27 — S61 COMPLETADA (fix: análisis siempre al importar PDF)
 
 ---
 
@@ -49,6 +49,7 @@
 | 22 | Bot envía análisis diario tras importar PDF | Genera resumen del día inmediatamente tras procesar (no espera push 12:00) | S59 |
 | 23 | Modelo Claude para análisis = haiku-4-5 | Respuestas más rápidas, costo menor que sonnet | S60 |
 | 24 | Restauración sin cat2 genérica | Todos RESTAURANTE/ARROCERIA → Otros (no agrupar genérico) | S60 |
+| 25 | Análisis asesor siempre al importar | Enviar análisis tras importar PDF (incluso si nuevas_txs=0) | S61 |
 
 ---
 
@@ -64,7 +65,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S60 | 2026-02-27 | ✅ COMPLETADA | 3 fixes: 1) Modelo Claude haiku-4-5, 2) Restauración/Otros (197 txs reclasificadas), 3) Bot permanente vía systemd |
+| S61 | 2026-02-27 | ✅ COMPLETADA | Fix: análisis del asesor siempre tras importar PDF (bot_telegram.py:639) |
 
 ---
 

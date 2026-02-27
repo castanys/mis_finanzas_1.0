@@ -10,6 +10,31 @@
 
 ## 🟢 Últimas 3 Sesiones
 
+### S61 — 2026-02-27 — FIX BOT: ANÁLISIS ASESOR SIEMPRE AL IMPORTAR PDF ✅
+
+**Problema reportado**:
+Usuario no recibía mensaje del asesor financiero tras subir PDFs. Cuando subía nuevos extractos, el bot decía "0 nuevas transacciones" pero no enviaba el análisis del asesor.
+
+**Diagnóstico**:
+- Condición antigua: `if result.returncode == 0 and nuevas_txs > 0:` solo dispara análisis si hay txs nuevas
+- Problema: PDFs duplicados (mismo contenido que ya estaba en BD) → `nuevas_txs = 0` → sin análisis
+- Usuario espera: análisis siempre tras importar (aunque no haya txs nuevas)
+
+**Solución**:
+- `bot_telegram.py:639` → cambiar condición a `if result.returncode == 0:` (sin AND nuevas_txs)
+- Ahora: análisis se envía siempre que el PDF procese correctamente
+
+**Verificación**:
+- `py_compile bot_telegram.py` ✅
+- `systemctl --user restart mis_finanzas_bot` ✅ (PID 1492306 activo)
+- Logs: bot corriendo con nuevo código
+
+**Commit**: (pendiente git add/commit)
+
+**Decisión Arquitectónica (D25)**: Análisis asesor siempre al importar PDF
+
+---
+
 ### S60 — 2026-02-27 — 3 FIXES USUARIO: MODELO CLAUDE + RESTAURACIÓN/OTROS ✅
 
 **Problemas reportados**:
