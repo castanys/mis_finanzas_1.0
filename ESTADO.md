@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S59 COMPLETADA (bot systemd + análisis diario)
+**Última actualización**: 2026-02-27 — S60 EN PROGRESO (fixes usuario: modelo Claude + Restauración/Otros)
 
 ---
 
@@ -10,7 +10,7 @@
 
 | Métrica | Valor |
 |---------|-------|
-| **Total transacciones** | 15,999 |
+| **Total transacciones** | 16,012 |
 | **SIN_CLASIFICAR** | 0 (100% cobertura) |
 | **Período** | 2004-05-03 → 2026-02-23 |
 | **Hashes únicos** | 15,999 (0 colisiones) |
@@ -47,6 +47,8 @@
 | 20 | RESTAURANTE GRANADINA = Restauración/Otros | Excluida del refinamiento genérico de "Restaurante" | S58 |
 | 21 | Devoluciones Amazon (importe>0) = Compras/Amazon | No son Compras/Devoluciones para análisis neto correcto | S58 |
 | 22 | Bot envía análisis diario tras importar PDF | Genera resumen del día inmediatamente tras procesar (no espera push 12:00) | S59 |
+| 23 | Modelo Claude para análisis = haiku-4-5 | Respuestas más rápidas, costo menor que sonnet | S60 |
+| 24 | Restauración sin cat2 genérica | Todos RESTAURANTE/ARROCERIA → Otros (no agrupar genérico) | S60 |
 
 ---
 
@@ -62,7 +64,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
-| S59 | 2026-02-27 | ✅ COMPLETADA | Enhancement bot: 1) análisis diario tras importar PDF, 2) servicio systemd permanente, 3) SERVICIOS.md a nivel apps |
+| S60 | 2026-02-27 | 🟡 EN PROGRESO | 3 fixes: 1) Modelo Claude haiku-4-5, 2) Restauración/Otros (197 txs reclasificadas), 3) API key añadida |
 
 ---
 

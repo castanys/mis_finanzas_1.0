@@ -2,13 +2,40 @@
 
 **Propósito**: Últimas 3 sesiones completadas (detalle operativo).
 
-**Última actualización**: 2026-02-27 — Sesión 59 COMPLETADA
+**Última actualización**: 2026-02-27 — Sesión 60 EN PROGRESO
 
 **Nota**: Estado mínimo, decisiones y pendientes → leer `ESTADO.md`
 
 ---
 
 ## 🟢 Últimas 3 Sesiones
+
+### S60 — 2026-02-27 — 3 FIXES USUARIO: MODELO CLAUDE + RESTAURACIÓN/OTROS 🟡
+
+**Problemas reportados**:
+1. Bot envía análisis crudo sin LLM (API key no usada)
+2. Categoría Restauración/Restaurante no aporta valor (197 txs genéricas)
+3. Modelo Claude sonnet lento para push automático
+
+**Solución**:
+1. **Modelo Claude**: `bot_telegram.py:119` → cambiar `claude-3-5-sonnet-20241022` a `claude-haiku-4-5` (más rápido, costo menor)
+2. **Restauración/Otros**: 
+   - `engine.py:35` → `refine_cat2_by_description` devuelve Otros (no Restaurante)
+   - `engine.py:599` → REGLA #38 cambiar `cat2_refined = refine_cat2_by_description("Restauración", "Otros", ...)`
+3. **Reclassify**: `reclassify_all.py` → 197 txs Restauración/Restaurante → Restauración/Otros
+
+**Verificación**:
+- `reclassify_all.py` ✅ (197 txs reclasificadas)
+- `process_transactions.py` ✅ (0 nuevas, 16,012 total)
+- `systemctl --user restart mis_finanzas_bot` ✅ (bot con nuevo modelo activo)
+
+**Commits**: `89d8747c` (fix: 3 cambios — modelo Claude + Restauración/Otros)
+
+**Decisiones Arquitectónicas (D23-D24)**:
+- D23: Modelo Claude = haiku-4-5 (respuestas rápidas, costo menor)
+- D24: Restauración sin cat2 genérica (todos RESTAURANTE/ARROCERIA → Otros)
+
+---
 
 ### S59 — 2026-02-27 — ENHANCEMENT BOT: ANÁLISIS DIARIO + SERVICIO SYSTEMD ✅
 
