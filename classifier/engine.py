@@ -30,9 +30,9 @@ def refine_cat2_by_description(cat1, cat2, descripcion):
 
     # Solo aplicar refinamientos a Restauración
     if cat1 == 'Restauración':
-        # RESTAURANTE o ARROCERIA → Restaurante
+        # RESTAURANTE o ARROCERIA → Otros (usuario quiere eliminar esta subcat genérica)
         if ('RESTAURANTE' in desc_upper or 'ARROCERIA' in desc_upper) and 'GRANADINA' not in desc_upper:
-            return 'Restaurante'
+            return 'Otros'
         # CHURRERIA → Churrería
         elif 'CHURRERIA' in desc_upper or 'CHURRERÍA' in desc_upper:
             return 'Churrería'
@@ -596,7 +596,7 @@ class Classifier:
 
         # REGLA #38: Restauración en "COMPRA EN" (PIZZA, ASADOR, RESTAUR, BRASERIA, CHIRINGUITO) (20 txs)
         if "COMPRA EN" in desc_upper and any(kw in desc_upper for kw in ["PIZZA", "ASADOR", "RESTAUR", "BRASERIA", "CHIRINGUITO"]):
-            cat2_refined = refine_cat2_by_description("Restauración", "Restaurante", descripcion)
+            cat2_refined = refine_cat2_by_description("Restauración", "Otros", descripcion)
             tipo = determine_tipo("Restauración", importe, descripcion)
             return {
                 'cat1': 'Restauración',
