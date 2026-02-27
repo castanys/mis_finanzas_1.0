@@ -1,0 +1,932 @@
+2026-02-27 07:40:05,866 - INFO - ============================================================
+2026-02-27 07:40:05,866 - INFO - ENRIQUECIMIENTO DE MERCHANTS - INICIO
+2026-02-27 07:40:05,866 - INFO - ============================================================
+
+2026-02-27 07:40:05,866 - INFO - 📊 Estado inicial:
+2026-02-27 07:40:05,872 - INFO -    Total merchants: 846
+2026-02-27 07:40:05,873 - INFO -    Con place_id: 0
+2026-02-27 07:40:05,873 - INFO -    Con city: 0
+2026-02-27 07:40:05,873 - INFO -    Con country: 0
+2026-02-27 07:40:05,873 - INFO -    Txs con merchant_name: 3165
+2026-02-27 07:40:05,873 - INFO -    Txs sin merchant_name: 12855
+
+2026-02-27 07:40:05,873 - INFO - 🚀 Iniciando proceso de enriquecimiento...
+
+2026-02-27 07:40:05,873 - INFO - 📝 Poblando merchant_name en transacciones...
+2026-02-27 07:40:05,885 - INFO -    Procesando 12855 transacciones...
+2026-02-27 07:40:05,887 - INFO -    Progreso: 500/12855 (0 actualizadas)
+2026-02-27 07:40:05,890 - INFO -    Progreso: 1000/12855 (0 actualizadas)
+2026-02-27 07:40:05,892 - INFO -    Progreso: 1500/12855 (0 actualizadas)
+2026-02-27 07:40:05,894 - INFO -    Progreso: 2000/12855 (0 actualizadas)
+2026-02-27 07:40:05,899 - INFO -    Progreso: 2500/12855 (0 actualizadas)
+2026-02-27 07:40:05,902 - INFO -    Progreso: 3000/12855 (0 actualizadas)
+2026-02-27 07:40:05,906 - INFO -    Progreso: 3500/12855 (0 actualizadas)
+2026-02-27 07:40:05,910 - INFO -    Progreso: 4000/12855 (0 actualizadas)
+2026-02-27 07:40:05,915 - INFO -    Progreso: 4500/12855 (0 actualizadas)
+2026-02-27 07:40:05,924 - INFO -    Progreso: 5000/12855 (103 actualizadas)
+2026-02-27 07:40:05,935 - INFO -    Progreso: 5500/12855 (398 actualizadas)
+2026-02-27 07:40:05,946 - INFO -    Progreso: 6000/12855 (651 actualizadas)
+2026-02-27 07:40:05,958 - INFO -    Progreso: 6500/12855 (956 actualizadas)
+2026-02-27 07:40:05,968 - INFO -    Progreso: 7000/12855 (1184 actualizadas)
+2026-02-27 07:40:05,978 - INFO -    Progreso: 7500/12855 (1396 actualizadas)
+2026-02-27 07:40:05,987 - INFO -    Progreso: 8000/12855 (1619 actualizadas)
+2026-02-27 07:40:05,997 - INFO -    Progreso: 8500/12855 (1847 actualizadas)
+2026-02-27 07:40:06,006 - INFO -    Progreso: 9000/12855 (2124 actualizadas)
+2026-02-27 07:40:06,015 - INFO -    Progreso: 9500/12855 (2478 actualizadas)
+2026-02-27 07:40:06,026 - INFO -    Progreso: 10000/12855 (2832 actualizadas)
+2026-02-27 07:40:06,035 - INFO -    Progreso: 10500/12855 (3184 actualizadas)
+2026-02-27 07:40:06,050 - INFO -    Progreso: 11000/12855 (3483 actualizadas)
+2026-02-27 07:40:06,057 - INFO -    Progreso: 11500/12855 (3621 actualizadas)
+2026-02-27 07:40:06,062 - INFO -    Progreso: 12000/12855 (3675 actualizadas)
+2026-02-27 07:40:06,067 - INFO -    Progreso: 12500/12855 (3702 actualizadas)
+2026-02-27 07:40:06,071 - INFO - ✅ Actualizadas 3752/12855 transacciones con merchant_name
+
+2026-02-27 07:40:06,072 - INFO - 🔍 Enriqueciendo merchants desde Google Places (sin límite)...
+2026-02-27 07:40:06,073 - INFO -    Encontrados 846 merchants sin place_id para enriquecer
+2026-02-27 07:40:06,745 - INFO -    ✅ , → Murcia, Spain
+2026-02-27 07:40:07,488 - INFO -    ✅ 0207-CONSUM B.AVDA. ROMA → Murcia, Spain
+2026-02-27 07:40:08,015 - INFO -    ✅ 029 - CORTE INGLES C → Valencia, Spain
+2026-02-27 07:40:08,427 - INFO -    ✅ 029 - CORTE INGLES CARTAG → Murcia, Spain
+2026-02-27 07:40:09,035 - INFO -    ✅ 0548-CONSUM SANTA POLA → Alicante, Spain
+2026-02-27 07:40:14,132 - INFO -    ✅ 788-ECI C.O.TORREVIEJA → Alicante, Spain
+2026-02-27 07:40:14,663 - INFO -    ✅ A LA BARRA → Valencia, Spain
+2026-02-27 07:40:15,050 - INFO -    ✅ A LA BARRA GASTROBAR → Murcia, Spain
+2026-02-27 07:40:15,571 - INFO -    ✅ A LA BRASA TABERNA MEDITE → Valencia, Spain
+2026-02-27 07:40:15,952 - INFO -    ✅ A.C.E.S.A LIMIT CONC -ACC → Valencia, Spain
+2026-02-27 07:40:16,342 - INFO -    ✅ A.S. BASSELLA S.L. → Lleida, Spain
+2026-02-27 07:40:16,724 - INFO -    ✅ A.S. LAS SALINAS → Murcia, Spain
+2026-02-27 07:40:17,345 - INFO -    ✅ A.T CASA BOTES CUENCA → Cuenca, Spain
+2026-02-27 07:40:17,838 - INFO -    ✅ ACEITUNAS LA MURCIANICA → Murcia, Spain
+2026-02-27 07:40:18,250 - INFO -    ✅ AD DELHAIZE ANSPACH → Bruxelles, Belgium
+2026-02-27 07:40:18,672 - INFO -    ✅ ADC EXECUTIVE CARS → FL, UK
+2026-02-27 07:40:19,081 - INFO -    ✅ ADRIDAN, S.L. → Murcia, Spain
+2026-02-27 07:40:19,187 - INFO -    Progreso: 20/846 (✅ 17, ⏭️  3, ⚠️  0)
+2026-02-27 07:40:19,490 - INFO -    ✅ AELIA RELAY RENFE-ATOCHA → Madrid, Spain
+2026-02-27 07:40:20,034 - INFO -    ✅ AENA PARK COCHES → Valencia, Spain
+2026-02-27 07:40:20,440 - INFO -    ✅ AEROMODELISMO SERPA SL → Madrid, Spain
+2026-02-27 07:40:20,949 - INFO -    ✅ AEROMODELO → Valencia, Spain
+2026-02-27 07:40:21,353 - INFO -    ✅ AEROP. ADOLFO SUAREZ MADR → Madrid, Spain
+2026-02-27 07:40:21,777 - INFO -    ✅ AEROPUERTO ALICANTE PK PR → Alicante, Spain
+2026-02-27 07:40:22,337 - INFO -    ✅ AIR EUROPA LINEAS AERE → Valencia, Spain
+2026-02-27 07:40:22,821 - INFO -    ✅ AIR EUROPA LINEAS AEREAS → Valencia, Spain
+2026-02-27 07:40:23,238 - INFO -    ✅ ALAMEDA TAPAS → Valencia, Spain
+2026-02-27 07:40:23,669 - INFO -    ✅ ALCAMPO CC PLAZA MAR2 → Alicante, Spain
+2026-02-27 07:40:24,145 - INFO -    ✅ ALCAMPO MOTRIL → Granada, Spain
+2026-02-27 07:40:24,657 - INFO -    ✅ ALCAMPO PIO XII → Madrid, Spain
+2026-02-27 07:40:25,033 - INFO -    ✅ ALCHEMIA → Kraków, Poland
+2026-02-27 07:40:25,428 - INFO -    ✅ ALDEASA → Valencia, Spain
+2026-02-27 07:40:26,179 - INFO -    ✅ ALDEASA T4 → Murcia, Spain
+2026-02-27 07:40:26,627 - INFO -    ✅ ALDI CARTAGENA → Murcia, Spain
+2026-02-27 07:40:27,005 - INFO -    ✅ ALE HOP 224 → Valencia, Spain
+2026-02-27 07:40:27,503 - INFO -    ✅ ALI*aliexpress.com → Tarragona, Spain
+2026-02-27 07:40:27,912 - INFO -    ✅ ALIBABA.COM → Valencia, Spain
+2026-02-27 07:40:28,385 - INFO -    ✅ ALICANTE AEROPUERTO → Alicante, Spain
+2026-02-27 07:40:28,489 - INFO -    Progreso: 40/846 (✅ 37, ⏭️  3, ⚠️  0)
+2026-02-27 07:40:28,795 - INFO -    ✅ ALL SPORT EUROPE → Arendonk, Belgium
+2026-02-27 07:40:29,274 - INFO -    ✅ ALORATURIAVENTUR → Málaga, Spain
+2026-02-27 07:40:29,711 - INFO -    ✅ AMAZON MKTPLACE PMTS → Valencia, Spain
+2026-02-27 07:40:30,152 - INFO -    ✅ AMAZON SPAIN RETAIL AM → Valencia, Spain
+2026-02-27 07:40:30,683 - INFO -    ✅ AMAZON.ES AMAZON.ES → Valencia, Spain
+2026-02-27 07:40:31,141 - INFO -    ✅ AMAZON.ES COMPRA → Valencia, Spain
+2026-02-27 07:40:31,607 - INFO -    ✅ AMAZON.ES COMPRA AMAZO → Valencia, Spain
+2026-02-27 07:40:32,113 - INFO -    ✅ AMAZON.ES*MB5EI5MH4 AM → Valencia, Spain
+2026-02-27 07:40:32,629 - INFO -    ✅ AMAZON.ES*MN2ZI0W84 AM → Valencia, Spain
+2026-02-27 07:40:33,023 - INFO -    ✅ AMAZON.ES*MO6TR2NG4 AM → Valencia, Spain
+2026-02-27 07:40:33,429 - INFO -    ✅ AMAZON.ES*MZ6XN3M84 AM → Valencia, Spain
+2026-02-27 07:40:33,928 - INFO -    ✅ AMAZON.ES*SB8EE43S5 AM → Valencia, Spain
+2026-02-27 07:40:34,343 - INFO -    ✅ AMAZON.UK PAYMENTS → JQ, UK
+2026-02-27 07:40:35,067 - INFO -    ✅ AMERICAN ROCK BAR → Alicante, Spain
+2026-02-27 07:40:38,000 - INFO -    ✅ AMZN MKTP ES*MA5932914 → Madrid, Spain
+2026-02-27 07:40:40,574 - INFO -    ✅ AMZN MKTP ES*MA8JG1904 → Madrid, Spain
+2026-02-27 07:40:41,358 - INFO -    ✅ AMZN Mktp ES → Murcia, Spain
+2026-02-27 07:40:42,428 - INFO -    ✅ AMZN Mktp ES*179172ZU5 → Madrid, Spain
+2026-02-27 07:40:42,532 - INFO -    Progreso: 60/846 (✅ 55, ⏭️  5, ⚠️  0)
+2026-02-27 07:40:43,633 - INFO -    ✅ AMZN Mktp ES*1F8YJ4JV5 → Madrid, Spain
+2026-02-27 07:40:44,813 - INFO -    ✅ AMZN Mktp ES*1P7UG4AY5 → Madrid, Spain
+2026-02-27 07:40:45,988 - INFO -    ✅ AMZN Mktp ES*610ZB4BS5 → Madrid, Spain
+2026-02-27 07:40:48,738 - INFO -    ✅ AMZN Mktp ES*6I0WW5RV5 → Madrid, Spain
+2026-02-27 07:40:49,821 - INFO -    ✅ AMZN Mktp ES*7R4880XQ5 → Madrid, Spain
+2026-02-27 07:40:51,003 - INFO -    ✅ AMZN Mktp ES*9I6GJ51T5 → Madrid, Spain
+2026-02-27 07:40:52,268 - INFO -    ✅ AMZN Mktp ES*AL1HF4PE5 → Madrid, Spain
+2026-02-27 07:40:53,417 - INFO -    ✅ AMZN Mktp ES*BV2TI0BV5 → Madrid, Spain
+2026-02-27 07:40:54,710 - INFO -    ✅ AMZN Mktp ES*EA1JK1GR5 → Madrid, Spain
+2026-02-27 07:40:57,302 - INFO -    ✅ AMZN Mktp ES*M02XM4BP4 → Madrid, Spain
+2026-02-27 07:40:58,448 - INFO -    ✅ AMZN Mktp ES*M030T0014 → Madrid, Spain
+2026-02-27 07:40:59,614 - INFO -    ✅ AMZN Mktp ES*M04OA04I4 → Madrid, Spain
+2026-02-27 07:41:00,684 - INFO -    ✅ AMZN Mktp ES*M05N21N74 → Madrid, Spain
+2026-02-27 07:41:02,036 - INFO -    ✅ AMZN Mktp ES*M67AI9YV4 → Madrid, Spain
+2026-02-27 07:41:03,127 - INFO -    ✅ AMZN Mktp ES*MA4ZH3NS5 → Madrid, Spain
+2026-02-27 07:41:04,500 - INFO -    ✅ AMZN Mktp ES*MB1SP2XI4 → Madrid, Spain
+2026-02-27 07:41:05,667 - INFO -    ✅ AMZN Mktp ES*MB4J55YQ4 → Madrid, Spain
+2026-02-27 07:41:06,974 - INFO -    ✅ AMZN Mktp ES*MI0645EK4 → Madrid, Spain
+2026-02-27 07:41:07,076 - INFO -    Progreso: 80/846 (✅ 73, ⏭️  7, ⚠️  0)
+2026-02-27 07:41:08,221 - INFO -    ✅ AMZN Mktp ES*MI7LJ61T4 → Madrid, Spain
+2026-02-27 07:41:09,496 - INFO -    ✅ AMZN Mktp ES*MO3G68ZN4 → Madrid, Spain
+2026-02-27 07:41:10,652 - INFO -    ✅ AMZN Mktp ES*MO3GF7Z64 → Madrid, Spain
+2026-02-27 07:41:11,885 - INFO -    ✅ AMZN Mktp ES*MO3OR0174 → Madrid, Spain
+2026-02-27 07:41:13,282 - INFO -    ✅ AMZN Mktp ES*MO6EB9TL4 → Madrid, Spain
+2026-02-27 07:41:14,555 - INFO -    ✅ AMZN Mktp ES*MO6GE2ZT4 → Madrid, Spain
+2026-02-27 07:41:15,744 - INFO -    ✅ AMZN Mktp ES*MO7NA86B4 → Madrid, Spain
+2026-02-27 07:41:18,412 - INFO -    ✅ AMZN Mktp ES*MT1NE9V34 → Madrid, Spain
+2026-02-27 07:41:19,589 - INFO -    ✅ AMZN Mktp ES*MT6Y09184 → Madrid, Spain
+2026-02-27 07:41:22,125 - INFO -    ✅ AMZN Mktp ES*MZ0IR3224 → Madrid, Spain
+2026-02-27 07:41:23,373 - INFO -    ✅ AMZN Mktp ES*MZ4Y04744 → Madrid, Spain
+2026-02-27 07:41:24,641 - INFO -    ✅ AMZN Mktp ES*P704W9Q85 → Madrid, Spain
+2026-02-27 07:41:26,000 - INFO -    ✅ AMZN Mktp ES*PI5QC9YI5 → Madrid, Spain
+2026-02-27 07:41:28,940 - INFO -    ✅ AMZN Mktp ES*U53FL6285 → Madrid, Spain
+2026-02-27 07:41:29,320 - INFO -    ✅ ANDAMUR LIMITE → Almería, Spain
+2026-02-27 07:41:29,719 - INFO -    ✅ ANDORRA 2000 → Andorra la Vella, Andorra
+2026-02-27 07:41:30,147 - INFO -    ✅ AP.EST.ALICANTE → Alicante, Spain
+2026-02-27 07:41:30,250 - INFO -    Progreso: 100/846 (✅ 90, ⏭️  10, ⚠️  0)
+2026-02-27 07:41:30,597 - INFO -    ✅ APARCAMENT CENTRE VILA → Barcelona, Spain
+2026-02-27 07:41:31,006 - INFO -    ✅ APARCAMENT ILLA CARLEM → Escaldes-Engordany, Andorra
+2026-02-27 07:41:31,535 - INFO -    ✅ APARCAMENT PRAT DE LES → Barcelona, Spain
+2026-02-27 07:41:32,013 - INFO -    ✅ APARCAMIENTO GLORIETA → Valencia, Spain
+2026-02-27 07:41:32,402 - INFO -    ✅ APARCAMIENTOS EUROPEOS → Madrid, Spain
+2026-02-27 07:41:32,782 - INFO -    ✅ APARTHOTEL SANT ANDREU → Arinsal, Andorra
+2026-02-27 07:41:33,198 - INFO -    ✅ APPLE COMPUTER INTL → Valencia, Spain
+2026-02-27 07:41:33,638 - INFO -    ✅ AREAS SIBARIUM DELICATESS → Barcelona, Spain
+2026-02-27 07:41:34,087 - INFO -    ✅ AREAS, S.A. → Barcelona, Spain
+2026-02-27 07:41:34,489 - INFO -    ✅ ARO AQUA FITNESS → Alicante, Spain
+2026-02-27 07:41:35,048 - INFO -    ✅ ARROCERIA EL LIMONERO → Murcia, Spain
+2026-02-27 07:41:35,452 - INFO -    ✅ ASADOR LA HERRADURA → Valencia, Spain
+2026-02-27 07:41:35,937 - INFO -    ✅ ASOC.DEPORTIVAS → Valencia, Spain
+2026-02-27 07:41:36,687 - INFO -    ✅ ASP 2011 - ANDORRA CHA → Murcia, Spain
+2026-02-27 07:41:38,155 - INFO -    ✅ ASP 2011 ANDORRA CHALE → Soldeu, Andorra
+2026-02-27 07:41:38,693 - INFO -    ✅ ATM-PORTAL INSCRIPCIONES → Valencia, Spain
+2026-02-27 07:41:39,053 - INFO -    ✅ ATX BRANDS → TX 78758, USA
+2026-02-27 07:41:39,772 - INFO -    ✅ AUCOSTA → Murcia, Spain
+2026-02-27 07:41:40,144 - INFO -    ✅ AUDITORIO EL BATEL → Murcia, Spain
+2026-02-27 07:41:41,016 - INFO -    ✅ AUSURMONTESINOS → Alicante, Spain
+2026-02-27 07:41:41,119 - INFO -    Progreso: 120/846 (✅ 110, ⏭️  10, ⚠️  0)
+2026-02-27 07:41:41,768 - INFO -    ✅ AUSURZENIA TRON → Murcia, Spain
+2026-02-27 07:41:42,239 - INFO -    ✅ AUTOMAT MOBILNY MKA 11 → Valencia, Spain
+2026-02-27 07:41:42,643 - INFO -    ✅ AUTOPISTA AP-7 SEITT → Madrid, Spain
+2026-02-27 07:41:43,135 - INFO -    ✅ AUTOPISTA COSTA CALIDA → Alicante, Spain
+2026-02-27 07:41:43,577 - INFO -    ✅ AUTOPISTA DEL SURESTE (AU → Alicante, Spain
+2026-02-27 07:41:44,029 - INFO -    ✅ AUTOPISTA MARE NOSTRUM → Valencia, Spain
+2026-02-27 07:41:44,479 - INFO -    ✅ AUTOPISTAS DEL SURESTE → Alicante, Spain
+2026-02-27 07:41:44,884 - INFO -    ✅ AUTOS PABLO SANCHEZ, S.L. → Valencia, Spain
+2026-02-27 07:41:45,275 - INFO -    ✅ AUTPTA.SURESTE → Valencia, Spain
+2026-02-27 07:41:45,671 - INFO -    ✅ AYALA AUTOMOCION → Murcia, Spain
+2026-02-27 07:41:46,252 - INFO -    ✅ AYUNTAMIENTO DE CARTAGEN → Murcia, Spain
+2026-02-27 07:41:46,646 - INFO -    ✅ AliExpress → Valencia, Spain
+2026-02-27 07:41:47,125 - INFO -    ✅ Alternate Ordenadores → Valencia, Spain
+2026-02-27 07:41:47,618 - INFO -    ✅ Amazon *Mktplce EU-ES → Valencia, Spain
+2026-02-27 07:41:48,131 - INFO -    ✅ Amazon *Mktplce EU-UK → ET, UK
+2026-02-27 07:41:48,551 - INFO -    ✅ Amazon Digital Dwnlds → Valencia, Spain
+2026-02-27 07:41:49,027 - INFO -    ✅ Amazon EU → Valencia, Spain
+2026-02-27 07:41:49,459 - INFO -    ✅ Amazon Premium Cuota → Valencia, Spain
+2026-02-27 07:41:50,212 - INFO -    ✅ Amazon Prime*MZ2A312Z4 → Murcia, Spain
+2026-02-27 07:41:50,591 - INFO -    ✅ Amazon Svcs EU-ES → Valencia, Spain
+2026-02-27 07:41:50,695 - INFO -    Progreso: 140/846 (✅ 130, ⏭️  10, ⚠️  0)
+2026-02-27 07:41:51,003 - INFO -    ✅ Amazon.es*7F92A6Y25 → Valencia, Spain
+2026-02-27 07:41:51,436 - INFO -    ✅ Amazon.es*FY3841A75 → Valencia, Spain
+2026-02-27 07:41:51,918 - INFO -    ✅ Amazon.es*J66PQ3U85 → Valencia, Spain
+2026-02-27 07:41:52,408 - INFO -    ✅ Amazon.es*MO3X26LR4 → Valencia, Spain
+2026-02-27 07:41:52,816 - INFO -    ✅ Amazon.es*SF8DZ3AK5 → Valencia, Spain
+2026-02-27 07:41:53,303 - INFO -    ✅ Amazon.es*U992O5415 → Valencia, Spain
+2026-02-27 07:41:53,728 - INFO -    ✅ Ap. Maisonnave → Navarra, Spain
+2026-02-27 07:41:54,374 - INFO -    ✅ Aviflora, Lounge 1 → Murcia, Spain
+2026-02-27 07:41:54,919 - INFO -    ✅ B.K. ESPARRAGERA REPSOL → Barcelona, Spain
+2026-02-27 07:41:55,446 - INFO -    ✅ BANCOPOPULAR-E → Valencia, Spain
+2026-02-27 07:41:55,921 - INFO -    ✅ BANCOPOPULAR-E -TARJETAS DE CREDITO → Valencia, Spain
+2026-02-27 07:41:56,431 - INFO -    ✅ BAR - RTE. LOS CURROS → Alicante, Spain
+2026-02-27 07:41:56,838 - INFO -    ✅ BAR RESTAURANTE BAHIA → Valencia, Spain
+2026-02-27 07:41:57,346 - INFO -    ✅ BASTION HOTEL BOP 28 → AW Groningen, Netherlands
+2026-02-27 07:41:57,715 - INFO -    ✅ BEET-VEGETARIANO → Alicante, Spain
+2026-02-27 07:41:58,191 - INFO -    ✅ BEIN CONNECT → Doha, Qatar
+2026-02-27 07:41:58,745 - INFO -    ✅ BELVEDAIR CAFE REST → RH, UK
+2026-02-27 07:41:59,129 - INFO -    ✅ BENETTON CARTAGENA → Murcia, Spain
+2026-02-27 07:41:59,637 - INFO -    ✅ BENETTON CARTAGENA UCB → Murcia, Spain
+2026-02-27 07:42:00,048 - INFO -    ✅ BERTALO & URDIALES S.L. → Valencia, Spain
+2026-02-27 07:42:00,151 - INFO -    Progreso: 160/846 (✅ 150, ⏭️  10, ⚠️  0)
+2026-02-27 07:42:01,279 - INFO -    ✅ BEST BUY MHT 00002568 → Madrid, Spain
+2026-02-27 07:42:01,698 - INFO -    ✅ BIENMESABE → Valencia, Spain
+2026-02-27 07:42:02,209 - INFO -    ✅ BODEGA ANTONIO PEREZ → Murcia, Spain
+2026-02-27 07:42:02,620 - INFO -    ✅ BODEGA EL ATROJE → Granada, Spain
+2026-02-27 07:42:03,005 - INFO -    ✅ BODEGAS ANTONIO PEREZ → Murcia, Spain
+2026-02-27 07:42:03,383 - INFO -    ✅ BODEGAS ARRAEZ → Valencia, Spain
+2026-02-27 07:42:03,895 - INFO -    ✅ BODY FACTORY → Valencia, Spain
+2026-02-27 07:42:04,639 - INFO -    ✅ BOLUMERCA S.A.U. → Murcia, Spain
+2026-02-27 07:42:05,091 - INFO -    ✅ BONDI BEACH → NSW 2026, Australia
+2026-02-27 07:42:05,813 - INFO -    ✅ BOOTS 1231 → Murcia, Spain
+2026-02-27 07:42:07,318 - INFO -    ✅ BRAINTREECHARGE COM → Berlin, Germany
+2026-02-27 07:42:07,802 - INFO -    ✅ BRICOR CARTAGENA → Murcia, Spain
+2026-02-27 07:42:08,316 - INFO -    ✅ BURGER KING - ZONA TIERRA → Valencia, Spain
+2026-02-27 07:42:08,723 - INFO -    ✅ Bios Personenvervoer → WC Rotterdam, Netherlands
+2026-02-27 07:42:09,219 - INFO -    ✅ Brasserie des Alpes → Tencin, France
+2026-02-27 07:42:10,063 - INFO -    ✅ C.P. EDIFICIO EL FARO DE CARTAGENA II → Murcia, Spain
+2026-02-27 07:42:10,451 - INFO -    ✅ CABIFY → Madrid, Spain
+2026-02-27 07:42:10,932 - INFO -    ✅ CAFE DE LA ESTACION → Valencia, Spain
+2026-02-27 07:42:11,421 - INFO -    ✅ CAFESTORE ALBERIQUE MONTE → Valencia, Spain
+2026-02-27 07:42:11,921 - INFO -    ✅ CAFETERIA MAGANI → Alicante, Spain
+2026-02-27 07:42:12,025 - INFO -    Progreso: 180/846 (✅ 170, ⏭️  10, ⚠️  0)
+2026-02-27 07:42:12,408 - INFO -    ✅ CALDEA-BOTIGA AQUATICA → Escaldes-Engordany, Andorra
+2026-02-27 07:42:12,897 - INFO -    ✅ CALZADOS MATO → Valencia, Spain
+2026-02-27 07:42:13,346 - INFO -    ✅ CALZEDONIA → Valencia, Spain
+2026-02-27 07:42:13,904 - INFO -    ✅ CAMMPILLO → Valencia, Spain
+2026-02-27 07:42:14,405 - INFO -    ✅ CANCUN T3 SALID DF 892 → Q.R., Mexico
+2026-02-27 07:42:14,814 - INFO -    ✅ CAPGEMINI ESPANA SLU → Valencia, Spain
+2026-02-27 07:42:15,277 - INFO -    ✅ CARNICAS CAMPILLO → Murcia, Spain
+2026-02-27 07:42:15,716 - INFO -    ✅ CARNICAS CAMPILLO SA → Murcia, Spain
+2026-02-27 07:42:16,427 - INFO -    ✅ CARNICERIA LA ESTANCIA → Jal., Mexico
+2026-02-27 07:42:16,829 - INFO -    ✅ CARNISSERIA XARCUTERIA BA → Barcelona, Spain
+2026-02-27 07:42:17,369 - INFO -    ✅ CARREFOUR CARTA → Valencia, Spain
+2026-02-27 07:42:17,884 - INFO -    ✅ CARREFOUR ELCHE → Alicante, Spain
+2026-02-27 07:42:18,481 - INFO -    ✅ CARREFOUR EXPRESS GENERAL → Valencia, Spain
+2026-02-27 07:42:18,950 - INFO -    ✅ CARREFOUR GRVIA → Valencia, Spain
+2026-02-27 07:42:19,396 - INFO -    ✅ CARREFOUR MARKET CUATRO C → Madrid, Spain
+2026-02-27 07:42:19,817 - INFO -    ✅ CARREFOUR MARKET GRANADA → Granada, Spain
+2026-02-27 07:42:20,271 - INFO -    ✅ CARREFOUR MEDIT → Valencia, Spain
+2026-02-27 07:42:20,742 - INFO -    ✅ CARREFOUR P ALFONSO XIII → Murcia, Spain
+2026-02-27 07:42:21,114 - INFO -    ✅ CARREFOUR SPOLA → Valencia, Spain
+2026-02-27 07:42:21,776 - INFO -    ✅ CARREFOUR TRVJA → Valencia, Spain
+2026-02-27 07:42:21,878 - INFO -    Progreso: 200/846 (✅ 190, ⏭️  10, ⚠️  0)
+2026-02-27 07:42:22,292 - INFO -    ✅ CARREFOUR ZARAICHE → Murcia, Spain
+2026-02-27 07:42:22,768 - INFO -    ✅ CARROT CAFE → Valencia, Spain
+2026-02-27 07:42:23,320 - INFO -    ✅ CARTAGENA → Bolivar, Colombia
+2026-02-27 07:42:23,900 - INFO -    ✅ CASA → Valencia, Spain
+2026-02-27 07:42:24,311 - INFO -    ✅ CASA AZZURRI CARTAGENA → Murcia, Spain
+2026-02-27 07:42:24,816 - INFO -    ✅ CASA CEGARRA E HIJOS SL → Murcia, Spain
+2026-02-27 07:42:25,376 - INFO -    ✅ CASA DEL LIBRO → Valencia, Spain
+2026-02-27 07:42:25,894 - INFO -    ✅ CATERING EXPRESS II → Valencia, Spain
+2026-02-27 07:42:26,381 - INFO -    ✅ CEDIPSA 05714-1 EL CRUCE → Alicante, Spain
+2026-02-27 07:42:26,768 - INFO -    ✅ CEDIPSA 11698-2 SABINAR I → Valencia, Spain
+2026-02-27 07:42:27,271 - INFO -    ✅ CEDIPSA 13254-1 ALFAMURCI → Murcia, Spain
+2026-02-27 07:42:27,655 - INFO -    ✅ CEDIPSA 16346 S → Valencia, Spain
+2026-02-27 07:42:28,006 - INFO -    ✅ CEDIPSA 16346-1 SUBMARINO → Valencia, Spain
+2026-02-27 07:42:28,491 - INFO -    ✅ CEDIPSA EL ALGAR → Murcia, Spain
+2026-02-27 07:42:28,941 - INFO -    ✅ CEDIPSA LA MARINA II → Alicante, Spain
+2026-02-27 07:42:29,394 - INFO -    ✅ CEDIPSA LA RIBERA → Valencia, Spain
+2026-02-27 07:42:29,865 - INFO -    ✅ CERVECERIA GAS → Murcia, Spain
+2026-02-27 07:42:30,265 - INFO -    ✅ CERVECERIA LA MEJILLONERA → Gipuzkoa, Spain
+2026-02-27 07:42:30,771 - INFO -    ✅ CHOCOLATES VALOR → Valencia, Spain
+2026-02-27 07:42:31,256 - INFO -    ✅ CINES MANDARACHE → Murcia, Spain
+2026-02-27 07:42:31,360 - INFO -    Progreso: 220/846 (✅ 210, ⏭️  10, ⚠️  0)
+2026-02-27 07:42:31,634 - INFO -    ✅ CINES PANORAMIS → Alicante, Spain
+2026-02-27 07:42:32,032 - INFO -    ✅ CIRALSA SA CONCESIONARIA → Valencia, Spain
+2026-02-27 07:42:32,512 - INFO -    ✅ CITIBANK -TARJETAS DE CREDITO- → Valencia, Spain
+2026-02-27 07:42:33,054 - INFO -    ✅ CIUDAD ARTE CIENCIAS → Valencia, Spain
+2026-02-27 07:42:33,458 - INFO -    ✅ CLARKS.CO.UK-EUR → EQ, UK
+2026-02-27 07:42:35,408 - INFO -    ✅ CLUB DE RUGBY U CARTAGENA → Murcia, Spain
+2026-02-27 07:42:35,807 - INFO -    ✅ COLINAS GREEN GOLF → Alicante, Spain
+2026-02-27 07:42:36,270 - INFO -    ✅ COLLADOS TROFEOS → Murcia, Spain
+2026-02-27 07:42:36,770 - INFO -    ✅ COMERC SABA AP. → Barcelona, Spain
+2026-02-27 07:42:37,305 - INFO -    ✅ COMERCIAL CARNES CARTAGEN → Bolívar, Colombia
+2026-02-27 07:42:37,834 - INFO -    ✅ COMFERSA ALICANTE I → Alicante, Spain
+2026-02-27 07:42:38,294 - INFO -    ✅ COMPLEX ESPORTIU LES CORT → Valencia, Spain
+2026-02-27 07:42:38,779 - INFO -    ✅ CONFETTI CLASSICS → Alicante, Spain
+2026-02-27 07:42:39,181 - INFO -    ✅ CONSUM AGUILAS → Murcia, Spain
+2026-02-27 07:42:39,646 - INFO -    ✅ CONTRIB.MUNICIPAL → Valencia, Spain
+2026-02-27 07:42:40,210 - INFO -    ✅ CORTEFIEL → Valencia, Spain
+2026-02-27 07:42:40,776 - INFO -    ✅ COSTA COFFEE → Valencia, Spain
+2026-02-27 07:42:41,243 - INFO -    ✅ COSTABLANCA TAPAS → Alicante, Spain
+2026-02-27 07:42:41,657 - INFO -    ✅ CREST OF EDINBURGH → PE, UK
+2026-02-27 07:42:41,761 - INFO -    Progreso: 240/846 (✅ 229, ⏭️  11, ⚠️  0)
+2026-02-27 07:42:42,702 - INFO -    ✅ CROCANTICKETS → Murcia, Spain
+2026-02-27 07:42:43,128 - INFO -    ✅ CRYSTAL MEDIA SHOPS → Dubai Office No.502, 5th floor - Crystal Building - نايف - ديرة - دبي - United Arab Emirates
+2026-02-27 07:42:43,634 - INFO -    ✅ Capi, 20018 Gadgetshop → C-gates, Terminal A - Departures - BU 2100 - Al Matar - Zayed International Airport - Abu Dhabi - United Arab Emirates
+2026-02-27 07:42:44,464 - INFO -    ✅ Coop-1962 GE Serve → Murcia, Spain
+2026-02-27 07:42:44,958 - INFO -    ✅ Cuota Amazon Prime → Valencia, Spain
+2026-02-27 07:42:45,458 - INFO -    ✅ D'COYSA → Madrid, Spain
+2026-02-27 07:42:46,230 - INFO -    ✅ DALVIR SIDHU → Murcia, Spain
+2026-02-27 07:42:46,655 - INFO -    ✅ DANIEL GONZALEZ SANCHEZ → Valencia, Spain
+2026-02-27 07:42:47,019 - INFO -    ✅ DE BASSUS BAVARIA SL → Alicante, Spain
+2026-02-27 07:42:47,394 - INFO -    ✅ DECATHLON CARTAGENA → Murcia, Spain
+2026-02-27 07:42:47,777 - INFO -    ✅ DECATHLON ELCHE → Alicante, Spain
+2026-02-27 07:42:48,270 - INFO -    ✅ DECATHLON GRANADA → Granada, Spain
+2026-02-27 07:42:48,678 - INFO -    ✅ DECATHLON MURCIA → Murcia, Spain
+2026-02-27 07:42:49,069 - INFO -    ✅ DEVON CARS → BB, UK
+2026-02-27 07:42:49,447 - INFO -    ✅ DGT SANCIONES INTERNET → Valencia, Spain
+2026-02-27 07:42:49,949 - INFO -    ✅ DIA, S.A. → Valencia, Spain
+2026-02-27 07:42:50,475 - INFO -    ✅ DIA, SA → Valencia, Spain
+2026-02-27 07:42:50,873 - INFO -    ✅ DIAMARKET MARFAGONES, S.L → Murcia, Spain
+2026-02-27 07:42:51,368 - INFO -    ✅ DINASA REPARACIONES → Málaga, Spain
+2026-02-27 07:42:51,751 - INFO -    ✅ DIXONS → Valencia, Spain
+2026-02-27 07:42:51,855 - INFO -    Progreso: 260/846 (✅ 249, ⏭️  11, ⚠️  0)
+2026-02-27 07:42:52,135 - INFO -    ✅ DNH*GODADDY.COM EUROPE → HA, UK
+2026-02-27 07:42:52,843 - INFO -    ✅ DOMICILIADO → Murcia, Spain
+2026-02-27 07:42:53,457 - INFO -    ✅ DOMINO'S PIZZA → Valencia, Spain
+2026-02-27 07:42:54,335 - INFO -    ✅ DT BY HILTON DAL GALLE → Murcia, Spain
+2026-02-27 07:42:54,724 - INFO -    ✅ DUFFIN DAGELS → Valencia, Spain
+2026-02-27 07:42:55,198 - INFO -    ✅ Deichmann Cartagena 03 → Murcia, Spain
+2026-02-27 07:42:55,711 - INFO -    ✅ E S SAN JAVIER → Murcia, Spain
+2026-02-27 07:42:56,120 - INFO -    ✅ E. S. ROYMAGA, S.L. → Murcia, Spain
+2026-02-27 07:42:56,516 - INFO -    ✅ E.S LAS TEJERAS → Madrid, Spain
+2026-02-27 07:42:56,926 - INFO -    ✅ E.S. ALCAMPO LA ZENIA → Alicante, Spain
+2026-02-27 07:42:57,316 - INFO -    ✅ E.S. ALCAMPO MOTRIL → Granada, Spain
+2026-02-27 07:42:57,729 - INFO -    ✅ E.S. ANGEL BRUNA → Murcia, Spain
+2026-02-27 07:42:58,242 - INFO -    ✅ E.S. BARRIO PERAL → Murcia, Spain
+2026-02-27 07:42:58,732 - INFO -    ✅ E.S. CABEZO GAS → Murcia, Spain
+2026-02-27 07:42:59,248 - INFO -    ✅ E.S. CAUDETE → Albacete, Spain
+2026-02-27 07:42:59,714 - INFO -    ✅ E.S. EL ALTET → Alicante, Spain
+2026-02-27 07:43:00,189 - INFO -    ✅ E.S. EL ALTET S.L → Alicante, Spain
+2026-02-27 07:43:00,592 - INFO -    ✅ E.S. F JIMENEZ CONESA → Valencia, Spain
+2026-02-27 07:43:01,370 - INFO -    ✅ E.S. F. JIMENEZ CONESA → Murcia, Spain
+2026-02-27 07:43:01,736 - INFO -    ✅ E.S. JUNCADIESEL → Granada, Spain
+2026-02-27 07:43:01,839 - INFO -    Progreso: 280/846 (✅ 269, ⏭️  11, ⚠️  0)
+2026-02-27 07:43:02,282 - INFO -    ✅ E.S. LAS CUMBRES S.L. → Murcia, Spain
+2026-02-27 07:43:02,664 - INFO -    ✅ E.S. LAS CUMBRES SL → Murcia, Spain
+2026-02-27 07:43:03,099 - INFO -    ✅ E.S. PL ESPANA SL POZO AN → Barcelona, Spain
+2026-02-27 07:43:03,496 - INFO -    ✅ E.S. RACC → Valencia, Spain
+2026-02-27 07:43:05,496 - INFO -    ✅ E.S. RODRIGUEZ Y CORCOLES → Albacete, Spain
+2026-02-27 07:43:05,956 - INFO -    ✅ E.S. STO. DOMINGO → Valencia, Spain
+2026-02-27 07:43:06,386 - INFO -    ✅ E.S. SUBMARINO PERAL → Murcia, Spain
+2026-02-27 07:43:06,876 - INFO -    ✅ E.S.ALCAMPO VISTAHERMOSA → Alicante, Spain
+2026-02-27 07:43:07,398 - INFO -    ✅ E.S.CASA GRANDE → Valencia, Spain
+2026-02-27 07:43:07,811 - INFO -    ✅ E.S.EROSKI LA CENUELA → Valencia, Spain
+2026-02-27 07:43:08,284 - INFO -    ✅ E.S.HNOS.BLAZQUEZ → Murcia, Spain
+2026-02-27 07:43:08,676 - INFO -    ✅ E.S.LAS CUMBRES III → Murcia, Spain
+2026-02-27 07:43:09,050 - INFO -    ✅ E.S.TRAZOIL → Valencia, Spain
+2026-02-27 07:43:09,406 - INFO -    ✅ EASYGAS → Valencia, Spain
+2026-02-27 07:43:09,947 - INFO -    ✅ EAT AEROPUERTO ALICANTE → Alicante, Spain
+2026-02-27 07:43:10,296 - INFO -    ✅ EBAY EUROPE SARL → Bd Royal, 2449 Ville-Haute Luxembourg
+2026-02-27 07:43:10,703 - INFO -    ✅ EDMUNDO HOSTELERIA → Alicante, Spain
+2026-02-27 07:43:11,136 - INFO -    ✅ EESS CARREFOUR SAN JAVIER → Murcia, Spain
+2026-02-27 07:43:11,561 - INFO -    ✅ EESS LAS CUMBRES I → Murcia, Spain
+2026-02-27 07:43:11,665 - INFO -    Progreso: 300/846 (✅ 288, ⏭️  12, ⚠️  0)
+2026-02-27 07:43:12,033 - INFO -    ✅ EL BARETO SETABENSE → Valencia, Spain
+2026-02-27 07:43:12,430 - INFO -    ✅ EL BRILLANTE → Madrid, Spain
+2026-02-27 07:43:12,796 - INFO -    ✅ EL CHANQUETE → Valencia, Spain
+2026-02-27 07:43:13,285 - INFO -    ✅ EL CORTE INGLES → Valencia, Spain
+2026-02-27 07:43:13,699 - INFO -    ✅ EL CORTE INGLES CARTAGEN A → Murcia, Spain
+2026-02-27 07:43:14,173 - INFO -    ✅ EL CORTE INGLES CARTAGENA → Murcia, Spain
+2026-02-27 07:43:14,552 - INFO -    ✅ EL CORTE INGLES DEPARTAM. → Valencia, Spain
+2026-02-27 07:43:14,909 - INFO -    ✅ EL CORTE INGLES-DEPA → Valencia, Spain
+2026-02-27 07:43:15,401 - INFO -    ✅ EL CORTE INGLES-DEPARTAM. → Valencia, Spain
+2026-02-27 07:43:15,921 - INFO -    ✅ EL CORTE INGLES-SUPE → Valencia, Spain
+2026-02-27 07:43:16,368 - INFO -    ✅ EL CORTE INGLES-SUPERMERC → Valencia, Spain
+2026-02-27 07:43:16,910 - INFO -    ✅ EL FRESCO → Valencia, Spain
+2026-02-27 07:43:17,384 - INFO -    ✅ EL GANSO - NEVADA → Granada, Spain
+2026-02-27 07:43:17,903 - INFO -    ✅ EL KILO → Valencia, Spain
+2026-02-27 07:43:18,481 - INFO -    ✅ EL RANCHO → Valencia, Spain
+2026-02-27 07:43:18,977 - INFO -    ✅ EL RANCHO CARTAGENA → Murcia, Spain
+2026-02-27 07:43:19,360 - INFO -    ✅ ELECTRONICARRC.COM → Valencia, Spain
+2026-02-27 07:43:19,902 - INFO -    ✅ ENDESA ENERGIA SAU → Valencia, Spain
+2026-02-27 07:43:20,310 - INFO -    ✅ ENTRADAS.COM → Madrid, Spain
+2026-02-27 07:43:20,777 - INFO -    ✅ ENVALIA GROUP → Valencia, Spain
+2026-02-27 07:43:20,881 - INFO -    Progreso: 320/846 (✅ 308, ⏭️  12, ⚠️  0)
+2026-02-27 07:43:21,254 - INFO -    ✅ ERAMNSA → Alicante, Spain
+2026-02-27 07:43:21,644 - INFO -    ✅ EROSKI MURCIA INFANTE → Murcia, Spain
+2026-02-27 07:43:22,105 - INFO -    ✅ ES ESPINADRO AGRUP → Murcia, Spain
+2026-02-27 07:43:22,563 - INFO -    ✅ ES HNOS BLAZQUEZ → Murcia, Spain
+2026-02-27 07:43:22,978 - INFO -    ✅ ES LOURDES SL → Valencia, Spain
+2026-02-27 07:43:23,376 - INFO -    ✅ ESPAHOTEL BASILICA → Madrid, Spain
+2026-02-27 07:43:23,767 - INFO -    ✅ ESPIGAS → Valencia, Spain
+2026-02-27 07:43:24,179 - INFO -    ✅ ESSO COINTRIN → Aéroport, Switzerland
+2026-02-27 07:43:24,547 - INFO -    ✅ EST ALICANTE → Alicante, Spain
+2026-02-27 07:43:24,965 - INFO -    ✅ EST SERV PATRICIO NAVARRO → Valencia, Spain
+2026-02-27 07:43:25,363 - INFO -    ✅ EST. SERVICIO ANGOSTO GAR → Murcia, Spain
+2026-02-27 07:43:25,818 - INFO -    ✅ EST.SERV.VENTA DE LA VIRG → Murcia, Spain
+2026-02-27 07:43:26,229 - INFO -    ✅ ESTA DE SERV ROYMAGA S L → Murcia, Spain
+2026-02-27 07:43:26,765 - INFO -    ✅ ESTABLECIMIENTOS ALFARO → Valencia, Spain
+2026-02-27 07:43:27,324 - INFO -    ✅ ESTACIO SERVEI SANT MA → Barcelona, Spain
+2026-02-27 07:43:27,710 - INFO -    ✅ ESTACIO SERVEI TARRADO → Canillo, Andorra
+2026-02-27 07:43:28,220 - INFO -    ✅ ESTACION DE SERVICIO POZO → Cuenca, Spain
+2026-02-27 07:43:28,725 - INFO -    ✅ ESTACION SER CERRABA SL → Málaga, Spain
+2026-02-27 07:43:29,234 - INFO -    ✅ ESTACION SERVICIO EL BADE → Valencia, Spain
+2026-02-27 07:43:29,593 - INFO -    ✅ ESTACIONAMIENTOS IBERPARK → Madrid, Spain
+2026-02-27 07:43:29,696 - INFO -    Progreso: 340/846 (✅ 328, ⏭️  12, ⚠️  0)
+2026-02-27 07:43:30,054 - INFO -    ✅ ESTANCO ZONA ESTACION → Valencia, Spain
+2026-02-27 07:43:30,509 - INFO -    ✅ EUROPOLIS LES CORTS → Barcelona, Spain
+2026-02-27 07:43:30,905 - INFO -    ✅ Eventim/ Entradas Cine → Madrid, Spain
+2026-02-27 07:43:31,360 - INFO -    ✅ FARMACIA EN CASA ON LINE → Madrid, Spain
+2026-02-27 07:43:31,725 - INFO -    ✅ FARMACIA ENRIQUE CELDRAN → Murcia, Spain
+2026-02-27 07:43:32,108 - INFO -    ✅ FARMACIA GUTIERREZ → Valencia, Spain
+2026-02-27 07:43:32,592 - INFO -    ✅ FARMACIA GUTIERREZ PEREZ → Murcia, Spain
+2026-02-27 07:43:32,989 - INFO -    ✅ FARMACIA JOSE LUIS ANUNCI → Murcia, Spain
+2026-02-27 07:43:33,472 - INFO -    ✅ FARMACIA JULIA → Valencia, Spain
+2026-02-27 07:43:33,846 - INFO -    ✅ FARMACIA JULIA VALORIA → Alicante, Spain
+2026-02-27 07:43:34,251 - INFO -    ✅ FARMACIA M. DOLORES CRESP → Murcia, Spain
+2026-02-27 07:43:34,631 - INFO -    ✅ FARMACIA M.CECILIA M → Valencia, Spain
+2026-02-27 07:43:36,778 - INFO -    ✅ FARMACIA OBACH → Valencia, Spain
+2026-02-27 07:43:37,155 - INFO -    ✅ FARMACIA ROSA MARIA JARAI → Valencia, Spain
+2026-02-27 07:43:37,939 - INFO -    ✅ FGW SELF SERVICE → Murcia, Spain
+2026-02-27 07:43:38,640 - INFO -    ✅ FILEPOST → Murcia, Spain
+2026-02-27 07:43:39,088 - INFO -    ✅ FINANCIAL SOPORTES TPV → Valencia, Spain
+2026-02-27 07:43:39,463 - INFO -    ✅ FINANCIERA EL CORTE INGLES E.F.C., S.A. → Madrid, Spain
+2026-02-27 07:43:41,284 - INFO -    Progreso: 360/846 (✅ 346, ⏭️  14, ⚠️  0)
+2026-02-27 07:43:41,678 - INFO -    ✅ FNAC → Valencia, Spain
+2026-02-27 07:43:42,128 - INFO -    ✅ FNAC ESPAGNE → Valencia, Spain
+2026-02-27 07:43:42,712 - INFO -    ✅ FOOD VILLAGE SCHIPHOL → AS Schiphol, Netherlands
+2026-02-27 07:43:43,082 - INFO -    ✅ FOODTOPIA SL → Murcia, Spain
+2026-02-27 07:43:43,486 - INFO -    ✅ FORUM SPORT CARTAGENA → Alicante, Spain
+2026-02-27 07:43:43,927 - INFO -    ✅ FPH STESKAL → Kraków, Poland
+2026-02-27 07:43:44,302 - INFO -    ✅ FUNDACION POLARIS WORLD PARA LA COOP. → Murcia, Spain
+2026-02-27 07:43:44,802 - INFO -    ✅ FUTBOL CENTER → Valencia, Spain
+2026-02-27 07:43:45,235 - INFO -    ✅ GARVALIN CALZADOS → Valencia, Spain
+2026-02-27 07:43:46,061 - INFO -    ✅ GASOLINERA AUCOSTA → Murcia, Spain
+2026-02-27 07:43:46,584 - INFO -    ✅ GASOLINERA MAS CAMARENA → Valencia, Spain
+2026-02-27 07:43:46,952 - INFO -    ✅ GATE GROUP INFLIGHT → Madrid, Spain
+2026-02-27 07:43:47,445 - INFO -    ✅ GATWICK EXPRESS → SJ, UK
+2026-02-27 07:43:47,824 - INFO -    ✅ GESTIPRAT S L → Valencia, Spain
+2026-02-27 07:43:48,293 - INFO -    ✅ GESTIPRAT S.L. → Valencia, Spain
+2026-02-27 07:43:48,740 - INFO -    ✅ GINES HUERTAS CERVANTES,S → Murcia, Spain
+2026-02-27 07:43:49,154 - INFO -    ✅ GLH CARTAGENA 1 → Bolívar, Colombia
+2026-02-27 07:43:49,578 - INFO -    ✅ GLORIAS RESTAURANT #4 → Valencia, Spain
+2026-02-27 07:43:49,960 - INFO -    ✅ GM OIL ALACANT → Alicante, Spain
+2026-02-27 07:43:50,490 - INFO -    ✅ GM OIL CARTAGENA → Murcia, Spain
+2026-02-27 07:43:50,594 - INFO -    Progreso: 380/846 (✅ 366, ⏭️  14, ⚠️  0)
+2026-02-27 07:43:50,911 - INFO -    ✅ GO METRO ST CATHERINE → QC H3W, Canada
+2026-02-27 07:43:51,264 - INFO -    ✅ GODADDY COM EUROPE → HA, UK
+2026-02-27 07:43:51,656 - INFO -    ✅ GOIKO GOURMET S.L → Valencia, Spain
+2026-02-27 07:43:52,031 - INFO -    ✅ GOSPODA KOKO → Kraków, Poland
+2026-02-27 07:43:52,614 - INFO -    ✅ GRAN TEA SL → Valencia, Spain
+2026-02-27 07:43:53,058 - INFO -    ✅ GRAND LUX CAFE/DALLAS → TX 75240, USA
+2026-02-27 07:43:53,533 - INFO -    ✅ GRANDES ALMACENES → Valencia, Spain
+2026-02-27 07:43:53,897 - INFO -    ✅ GROS MERCAT CARTAGENA. → Murcia, Spain
+2026-02-27 07:43:54,393 - INFO -    ✅ GROSVENOR CHAUFFER CAR → BD, UK
+2026-02-27 07:43:54,836 - INFO -    ✅ GRUPO MASMOVIL XFERA → Valencia, Spain
+2026-02-27 07:43:55,246 - INFO -    ✅ GVB Amstel → XV Amsterdam, Netherlands
+2026-02-27 07:43:55,731 - INFO -    ✅ GVB Gaasperplas → AX Amsterdam, Netherlands
+2026-02-27 07:43:56,166 - INFO -    ✅ GVB Ouderkerkerlaan → AG Amstelveen, Netherlands
+2026-02-27 07:43:56,548 - INFO -    ✅ GVB RAI → Amsterdam, Netherlands
+2026-02-27 07:43:57,030 - INFO -    ✅ GVB Spinnerij → BE Enschede, Netherlands
+2026-02-27 07:43:57,446 - INFO -    ✅ GVB Sportlaan → EA Amstelveen, Netherlands
+2026-02-27 07:43:59,055 - INFO -    ✅ Gall & Gall 6795 → RR Amsterdam, Netherlands
+2026-02-27 07:43:59,551 - INFO -    ✅ Giroud Vins SA → Uchizy, France
+2026-02-27 07:43:59,905 - INFO -    ✅ Grodzka 6 → Kraków, Poland
+2026-02-27 07:44:00,461 - INFO -    ✅ H tel Ibis Gen ve-A ro → Genève, Switzerland
+2026-02-27 07:44:00,566 - INFO -    Progreso: 400/846 (✅ 386, ⏭️  14, ⚠️  0)
+2026-02-27 07:44:00,862 - INFO -    ✅ H10 ITACA → Barcelona, Spain
+2026-02-27 07:44:01,343 - INFO -    ✅ HAMSA RESTOBAR → Kraków, Poland
+2026-02-27 07:44:01,745 - INFO -    ✅ HC CARNES → Q.R., Mexico
+2026-02-27 07:44:02,253 - INFO -    ✅ HELADERIA LA JIJONENCA → Valencia, Spain
+2026-02-27 07:44:02,781 - INFO -    ✅ HELLO SUSHI RTE → TN 37211, USA
+2026-02-27 07:44:03,191 - INFO -    ✅ HENNES & MAURITZ SL 03011 → Barcelona, Spain
+2026-02-27 07:44:03,592 - INFO -    ✅ HIDROGEA, GEST INTEGRAL AGUAS DE MURCIA → Murcia, Spain
+2026-02-27 07:44:04,121 - INFO -    ✅ HIJOS DE NAVARRO ROBLES S → Murcia, Spain
+2026-02-27 07:44:04,812 - INFO -    ✅ HILTON HOTEL → Valencia, Spain
+2026-02-27 07:44:05,303 - INFO -    ✅ HIPER ANDORRA 2 → Andorra la Vella, Andorra
+2026-02-27 07:44:05,766 - INFO -    ✅ HIPER HF. → Valencia, Spain
+2026-02-27 07:44:06,160 - INFO -    ✅ HIPERMERCADO MANDARACHE → Murcia, Spain
+2026-02-27 07:44:06,571 - INFO -    ✅ HMS HOST → MD 20817, USA
+2026-02-27 07:44:06,992 - INFO -    ✅ HOBBY MODELISMO → Valencia, Spain
+2026-02-27 07:44:07,691 - INFO -    ✅ HOLIDAY INNS → Valencia, Spain
+2026-02-27 07:44:08,103 - INFO -    ✅ HOPDODDY SOCO → TX 78704, USA
+2026-02-27 07:44:08,481 - INFO -    ✅ HORIZONTALIA → Murcia, Spain
+2026-02-27 07:44:09,041 - INFO -    ✅ HOSTAL BIENVENIDO → Valencia, Spain
+2026-02-27 07:44:09,448 - INFO -    ✅ HOSTELERIA CASA MOLINA → Alicante, Spain
+2026-02-27 07:44:09,885 - INFO -    ✅ HOSTELERIA DE LA ORDEN → Valencia, Spain
+2026-02-27 07:44:09,989 - INFO -    Progreso: 420/846 (✅ 406, ⏭️  14, ⚠️  0)
+2026-02-27 07:44:10,482 - INFO -    ✅ HOTEL ALPES PERDTEMPS → Nyon, Switzerland
+2026-02-27 07:44:11,123 - INFO -    ✅ HOTEL CUEVAS I Y II → Cantabria, Spain
+2026-02-27 07:44:11,831 - INFO -    ✅ HOTEL ESTRELLA DEL MAR CB → Granada, Spain
+2026-02-27 07:44:12,476 - INFO -    ✅ HOTEL LA PALMERA → Girona, Spain
+2026-02-27 07:44:12,982 - INFO -    ✅ HUGO BOSS ESPAãA SA. → Valencia, Spain
+2026-02-27 07:44:13,436 - INFO -    ✅ IBER SWISS CATERING,S.A. → Valencia, Spain
+2026-02-27 07:44:13,992 - INFO -    ✅ IBERIA → Valencia, Spain
+2026-02-27 07:44:14,486 - INFO -    ✅ IKEA L HOSPITALET → Barcelona, Spain
+2026-02-27 07:44:14,880 - INFO -    ✅ IKEA MURCIA → Murcia, Spain
+2026-02-27 07:44:15,386 - INFO -    ✅ ILC -Transavia NL → CG Vlijmen, Netherlands
+2026-02-27 07:44:15,817 - INFO -    ✅ IMAGINARIUM → Valencia, Spain
+2026-02-27 07:44:16,221 - INFO -    ✅ IMPERIO ROJO → Murcia, Spain
+2026-02-27 07:44:16,604 - INFO -    ✅ INERCIA → Barcelona, Spain
+2026-02-27 07:44:17,102 - INFO -    ✅ INMACULADA CONCEPCIOQUINT → IL 60632, USA
+2026-02-27 07:44:17,568 - INFO -    ✅ INSTANT GAMING → Valencia, Spain
+2026-02-27 07:44:17,998 - INFO -    ✅ INTERMANDARACHE → Valencia, Spain
+2026-02-27 07:44:18,402 - INFO -    ✅ INTRAWOLRD 2005S.L. → Gujarat 390009, India
+2026-02-27 07:44:18,808 - INFO -    ✅ IRCO SL → Valencia, Spain
+2026-02-27 07:44:19,290 - INFO -    ✅ ITV CARTAGENA → Murcia, Spain
+2026-02-27 07:44:19,968 - INFO -    ✅ JAKOSC JAGODA KOSC → Murcia, Spain
+2026-02-27 07:44:20,072 - INFO -    Progreso: 440/846 (✅ 426, ⏭️  14, ⚠️  0)
+2026-02-27 07:44:20,365 - INFO -    ✅ JAVISA SPORT, S.L.U. (BODY FACTORY) → Valencia, Spain
+2026-02-27 07:44:20,876 - INFO -    ✅ JEN'S PLACE BAKERY & C → TX 75244, USA
+2026-02-27 07:44:21,296 - INFO -    ✅ JET 2 → Illes Balears, Spain
+2026-02-27 07:44:21,719 - INFO -    ✅ JOAQUIN BOJ CASA DE LAS E → Murcia, Spain
+2026-02-27 07:44:22,204 - INFO -    ✅ JOSE MANUEL MARTINEZ TAXI → Illes Balears, Spain
+2026-02-27 07:44:22,576 - INFO -    ✅ JOYAN JOYEROS, SL → Ciudad Real, Spain
+2026-02-27 07:44:23,399 - INFO -    ✅ JUAN LUIS PEREZ AZNAR → Murcia, Spain
+2026-02-27 07:44:23,980 - INFO -    ✅ JUGUETILANDIA → Valencia, Spain
+2026-02-27 07:44:24,388 - INFO -    ✅ KEFIREK S.A. → aw, Poland
+2026-02-27 07:44:24,748 - INFO -    ✅ KEY PUBLISHING LTD → XP, UK
+2026-02-27 07:44:25,265 - INFO -    ✅ KILOMETROS DE PIZZA → Valencia, Spain
+2026-02-27 07:44:25,647 - INFO -    ✅ KINEPOLIS → Valencia, Spain
+2026-02-27 07:44:26,045 - INFO -    ✅ KIOSKO RAFAEL → Alicante, Spain
+2026-02-27 07:44:26,699 - INFO -    ✅ Kindle Svcs → Murcia, Spain
+2026-02-27 07:44:27,512 - INFO -    ✅ Kindle Svcs*M04E03P54 → Murcia, Spain
+2026-02-27 07:44:28,219 - INFO -    ✅ Kindle Svcs*M87LR0X64 → Murcia, Spain
+2026-02-27 07:44:28,900 - INFO -    ✅ Kindle Svcs*MZ8MS8VQ4 → Murcia, Spain
+2026-02-27 07:44:29,490 - INFO -    ✅ Kindle Svcs*P38H84R25 → Murcia, Spain
+2026-02-27 07:44:30,176 - INFO -    ✅ Kindle Svcs*XO1IU7KM5 → Murcia, Spain
+2026-02-27 07:44:30,725 - INFO -    ✅ LA HERRADURA → Valencia, Spain
+2026-02-27 07:44:30,827 - INFO -    Progreso: 460/846 (✅ 446, ⏭️  14, ⚠️  0)
+2026-02-27 07:44:31,136 - INFO -    ✅ LA HERRADURA ASADOR ARGEN → Murcia, Spain
+2026-02-27 07:44:31,657 - INFO -    ✅ LA JIJONENCA CENTRO → Valencia, Spain
+2026-02-27 07:44:32,104 - INFO -    ✅ LA LAGUNA DE U¥A → Mérida, Venezuela
+2026-02-27 07:44:32,509 - INFO -    ✅ LA MANCHEGUITA 1978,S.L. → Madrid, Spain
+2026-02-27 07:44:33,000 - INFO -    ✅ LA MANGA CLUB S.L. → Murcia, Spain
+2026-02-27 07:44:33,495 - INFO -    ✅ LA MARINA I → Valencia, Spain
+2026-02-27 07:44:33,923 - INFO -    ✅ LA MILLA → Valencia, Spain
+2026-02-27 07:44:34,333 - INFO -    ✅ LA TAULA DELS AMICS → Canillo, Andorra
+2026-02-27 07:44:34,720 - INFO -    ✅ LA UVA JUMILLANA → Murcia, Spain
+2026-02-27 07:44:35,241 - INFO -    ✅ LA VERDAD DIGITAL → Murcia, Spain
+2026-02-27 07:44:35,987 - INFO -    ✅ LAIE SF MARINA → Barcelona, Spain
+2026-02-27 07:44:36,656 - INFO -    ✅ LDO PABLO CERVANTES LAN → Murcia, Spain
+2026-02-27 07:44:37,161 - INFO -    ✅ LDO.ALFONSO MARTINEZ GOME → Valencia, Spain
+2026-02-27 07:44:37,665 - INFO -    ✅ LDO.PEDRO ANGEL PEREZ MAR → Valencia, Spain
+2026-02-27 07:44:38,127 - INFO -    ✅ LEROY MERLIN → Valencia, Spain
+2026-02-27 07:44:38,615 - INFO -    ✅ LEROY MERLIN CARTAGENA → Murcia, Spain
+2026-02-27 07:44:39,101 - INFO -    ✅ LEROY MERLIN ELCHE → Alicante, Spain
+2026-02-27 07:44:39,604 - INFO -    ✅ LEROY MERLIN ESPA#A SL → Valencia, Spain
+2026-02-27 07:44:40,162 - INFO -    ✅ LEROY MERLIN ESPA/A SL → Valencia, Spain
+2026-02-27 07:44:40,611 - INFO -    ✅ LIBRERIA UNIVERSITARIA → Valencia, Spain
+2026-02-27 07:44:40,714 - INFO -    Progreso: 480/846 (✅ 466, ⏭️  14, ⚠️  0)
+2026-02-27 07:44:41,197 - INFO -    ✅ LIDL CARTAGENA AV AMERICA → Murcia, Spain
+2026-02-27 07:44:41,631 - INFO -    ✅ LIDL LA CAROLINA → Valencia, Spain
+2026-02-27 07:44:42,082 - INFO -    ✅ LIDL SANTA POLA → Alicante, Spain
+2026-02-27 07:44:42,590 - INFO -    ✅ LINEA DIRECTA ASEGURADORA CIA SEGU → Madrid, Spain
+2026-02-27 07:44:42,915 - INFO -    ✅ LINEA DIRECTA ASEGURADORA S.A. → Madrid, Spain
+2026-02-27 07:44:43,286 - INFO -    ✅ LOCKHEED MARTIN GTL → FL 32542, USA
+2026-02-27 07:44:43,692 - INFO -    ✅ LOS CURROS → Alicante, Spain
+2026-02-27 07:44:44,178 - INFO -    ✅ LOTERIAS Y APUESTAS DEL E → Valencia, Spain
+2026-02-27 07:44:44,685 - INFO -    ✅ LOW STATION → Valencia, Spain
+2026-02-27 07:44:45,168 - INFO -    ✅ LOW STATION SL → Valencia, Spain
+2026-02-27 07:44:45,811 - INFO -    ✅ LUL TICKET MACHINE → Murcia, Spain
+2026-02-27 07:44:47,641 - INFO -    ✅ MANO A MANO CARTAGENA → Murcia, Spain
+2026-02-27 07:44:48,054 - INFO -    ✅ MANPER E HIJOS ALIMENTAC → Alicante, Spain
+2026-02-27 07:44:48,419 - INFO -    ✅ MANPER E HIJOS ALIMENTACI → Alicante, Spain
+2026-02-27 07:44:48,864 - INFO -    ✅ MARCOS MOTOR TORREVIEJA → Alicante, Spain
+2026-02-27 07:44:49,218 - INFO -    ✅ MARIA DOLORES CRESPO GAL → Murcia, Spain
+2026-02-27 07:44:49,597 - INFO -    ✅ MARIA FERNANDEZ PAVON → Valencia, Spain
+2026-02-27 07:44:50,089 - INFO -    ✅ MARISCAL DELICATESSEN TAP → Granada, Spain
+2026-02-27 07:44:50,481 - INFO -    ✅ MARKS & SPENCER SSPLTD → SA, UK
+2026-02-27 07:44:50,584 - INFO -    Progreso: 500/846 (✅ 485, ⏭️  15, ⚠️  0)
+2026-02-27 07:44:51,082 - INFO -    ✅ MARVIMUNDO PERFUMERIAS → Valencia, Spain
+2026-02-27 07:44:51,798 - INFO -    ✅ MARVIMUNDO T9 → Murcia, Spain
+2026-02-27 07:44:52,247 - INFO -    ✅ MASSIMO DUTTI → Valencia, Spain
+2026-02-27 07:44:52,603 - INFO -    ✅ MASSIMO DUTTI, S.A. → Valencia, Spain
+2026-02-27 07:44:53,144 - INFO -    ✅ MC AUTO CARTAGENA → Murcia, Spain
+2026-02-27 07:44:53,731 - INFO -    ✅ MCDONALDS SANTA POLA → Alicante, Spain
+2026-02-27 07:44:54,127 - INFO -    ✅ MEDIA MARK CARTAGENA → Murcia, Spain
+2026-02-27 07:44:54,559 - INFO -    ✅ MEDIA MARK GRANADA → Granada, Spain
+2026-02-27 07:44:55,054 - INFO -    ✅ MEDIA MARKT ALACANT → Alicante, Spain
+2026-02-27 07:44:55,442 - INFO -    ✅ MEDIA MARKT CARTAGENA → Murcia, Spain
+2026-02-27 07:44:55,806 - INFO -    ✅ MEDIA MARKT CARTAGENA VID → Murcia, Spain
+2026-02-27 07:44:56,185 - INFO -    ✅ MEDIA MARKT CASTAGENA → Murcia, Spain
+2026-02-27 07:44:56,670 - INFO -    ✅ MENAJE DEL HOGAR 044 → Valencia, Spain
+2026-02-27 07:44:57,060 - INFO -    ✅ MENTA Y FRESA → Alicante, Spain
+2026-02-27 07:44:57,582 - INFO -    ✅ MERCADONA AUSIAS MARCH → Valencia, Spain
+2026-02-27 07:44:58,089 - INFO -    ✅ MERCADONA GRAN ALACANT → Alicante, Spain
+2026-02-27 07:44:58,500 - INFO -    ✅ MERCADONA PORT HALLEY → Tarragona, Spain
+2026-02-27 07:44:58,980 - INFO -    ✅ MERCADONA PROL. ANGEL BRU → Valencia, Spain
+2026-02-27 07:44:59,525 - INFO -    ✅ MERCADONA PROLONGACION AN → Valencia, Spain
+2026-02-27 07:44:59,912 - INFO -    ✅ MERCHANDTOUR → Madrid, Spain
+2026-02-27 07:45:00,015 - INFO -    Progreso: 520/846 (✅ 505, ⏭️  15, ⚠️  0)
+2026-02-27 07:45:00,332 - INFO -    ✅ MESON EL GALGO → Murcia, Spain
+2026-02-27 07:45:00,741 - INFO -    ✅ MESON PENELOPE SL → Murcia, Spain
+2026-02-27 07:45:01,357 - INFO -    ✅ METRO DE MADRID → Madrid, Spain
+2026-02-27 07:45:01,882 - INFO -    ✅ METRO DE MADRID, S.A. 2 → Madrid, Spain
+2026-02-27 07:45:02,542 - INFO -    ✅ MICROSOFT *ACCOUNT → Murcia, Spain
+2026-02-27 07:45:03,012 - INFO -    ✅ MOVELIA BILLETES AUTOBUS → Madrid, Spain
+2026-02-27 07:45:03,498 - INFO -    ✅ MOVISTAR → Valencia, Spain
+2026-02-27 07:45:03,953 - INFO -    ✅ MUNDOPDA.COM → Valencia, Spain
+2026-02-27 07:45:04,342 - INFO -    ✅ MUU STEAK HOUSE → Porto, Portugal
+2026-02-27 07:45:04,978 - INFO -    ✅ Microsoft *Store → Valencia, Spain
+2026-02-27 07:45:05,391 - INFO -    ✅ Migros Forum Montreux → Montreux, Switzerland
+2026-02-27 07:45:05,789 - INFO -    ✅ Migros MM Eaux-Vives → Genève, Switzerland
+2026-02-27 07:45:06,171 - INFO -    ✅ Migros MM Servette → Genève, Switzerland
+2026-02-27 07:45:06,722 - INFO -    ✅ NATIONAL EXPRESS → DD, UK
+2026-02-27 07:45:07,171 - INFO -    ✅ NATIONAL EXPRESS LTD → UH, UK
+2026-02-27 07:45:07,542 - INFO -    ✅ NEOCINE MANDARACHE → Murcia, Spain
+2026-02-27 07:45:08,032 - INFO -    ✅ NEUHAUS VLEZENBEEK → Sint-Pieters-Leeuw, Belgium
+2026-02-27 07:45:08,501 - INFO -    ✅ NEW KING CHIN REST → Valencia, Spain
+2026-02-27 07:45:08,938 - INFO -    ✅ NEW SOUTHERN RAILW → GA, UK
+2026-02-27 07:45:09,584 - INFO -    ✅ NH PRIVATE EQUITY BV → Murcia, Spain
+2026-02-27 07:45:09,689 - INFO -    Progreso: 540/846 (✅ 525, ⏭️  15, ⚠️  0)
+2026-02-27 07:45:11,546 - INFO -    ✅ NUEVA BAHIA C.B. → Cádiz, Spain
+2026-02-27 07:45:11,927 - INFO -    ✅ NYON BILLETT TPN → Nyon, Switzerland
+2026-02-27 07:45:12,313 - INFO -    ✅ OAGRC AYUNTAMIENTO CARTAG → Murcia, Spain
+2026-02-27 07:45:13,113 - INFO -    ✅ OFERPLAN - LA VERDAD DIGI → Murcia, Spain
+2026-02-27 07:45:13,513 - INFO -    ✅ OHANA GASTROBAR → Valencia, Spain
+2026-02-27 07:45:13,952 - INFO -    ✅ OLEAJE PLAYA GRANADA → Granada, Spain
+2026-02-27 07:45:14,330 - INFO -    ✅ OLYMPIA CANILLO II → Canillo, Andorra
+2026-02-27 07:45:14,828 - INFO -    ✅ OLYMPIA ESPORTS → Andorra la Vella, Andorra
+2026-02-27 07:45:15,210 - INFO -    ✅ OLYMPUS SPORT NUTRICION S → Valencia, Spain
+2026-02-27 07:45:15,774 - INFO -    ✅ OPTICA → Valencia, Spain
+2026-02-27 07:45:16,151 - INFO -    ✅ OPTICA OPTIPRIX → Granada, Spain
+2026-02-27 07:45:16,532 - INFO -    ✅ ORANGE ESPA VIRTUAL SLU → Madrid, Spain
+2026-02-27 07:45:17,777 - INFO -    ✅ ORBXSYSTEMS.COM → Jaén, Spain
+2026-02-27 07:45:18,183 - INFO -    ✅ OYSHO → Valencia, Spain
+2026-02-27 07:45:18,598 - INFO -    ✅ P.C. BOX CARTAGENA → Murcia, Spain
+2026-02-27 07:45:19,031 - INFO -    ✅ PA.OS INTERSPORT, S.L. → Valencia, Spain
+2026-02-27 07:45:19,621 - INFO -    ✅ PACKLINK SHIPPING → EN, UK
+2026-02-27 07:45:20,169 - INFO -    ✅ PAPPADEAUX SEAFOOD KIT → TX 77054, USA
+2026-02-27 07:45:20,598 - INFO -    ✅ PAPPAS BROTHERS STKHSE → TX 77057, USA
+2026-02-27 07:45:20,700 - INFO -    Progreso: 560/846 (✅ 544, ⏭️  16, ⚠️  0)
+2026-02-27 07:45:21,053 - INFO -    ✅ PAPPASITO'S CANTINA #0 → TX 77024, USA
+2026-02-27 07:45:21,599 - INFO -    ✅ PARKING 10 → Valencia, Spain
+2026-02-27 07:45:22,199 - INFO -    ✅ PARKING AEROPUERTO ALICAN → Alicante, Spain
+2026-02-27 07:45:22,599 - INFO -    ✅ PARKING AVDA LIBERTAD → Murcia, Spain
+2026-02-27 07:45:23,011 - INFO -    ✅ PARKING EXPRESS → Valencia, Spain
+2026-02-27 07:45:23,401 - INFO -    ✅ PARKING GORRION → Alicante, Spain
+2026-02-27 07:45:23,829 - INFO -    ✅ PARKING VIALIA ALBACET.ES → Albacete, Spain
+2026-02-27 07:45:24,216 - INFO -    ✅ PAYPAL → Madrid, Spain
+2026-02-27 07:45:25,537 - INFO -    ✅ PAYPAL *COOLMODINFO → Madrid, Spain
+2026-02-27 07:45:25,979 - INFO -    ✅ PAYPAL *CORREOSYTEL → Madrid, Spain
+2026-02-27 07:45:26,334 - INFO -    ✅ PAYPAL *DIGITALMICR → Madrid, Spain
+2026-02-27 07:45:26,654 - INFO -    ✅ PAYPAL *EBAYEUROPES → Madrid, Spain
+2026-02-27 07:45:27,681 - INFO -    ✅ PAYPAL *FFMAGNATLIM → Madrid, Spain
+2026-02-27 07:45:28,858 - INFO -    ✅ PAYPAL *FOTOVISTA → Madrid, Spain
+2026-02-27 07:45:30,503 - INFO -    ✅ PAYPAL *HOBBYEIBAR → Bd Royal, 2449 Ville-Haute Luxembourg
+2026-02-27 07:45:30,872 - INFO -    ✅ PAYPAL *INFORSETXXI → Madrid, Spain
+2026-02-27 07:45:31,529 - INFO -    ✅ PAYPAL *MEGASTORERC → Murcia, Spain
+2026-02-27 07:45:32,582 - INFO -    ✅ PAYPAL *O2MEDIA → Madrid, Spain
+2026-02-27 07:45:33,830 - INFO -    ✅ PAYPAL *PROSHOPCN → Madrid, Spain
+2026-02-27 07:45:34,605 - INFO -    ✅ PAYPAL *RAFA SANTA → Murcia, Spain
+2026-02-27 07:45:34,709 - INFO -    Progreso: 580/846 (✅ 564, ⏭️  16, ⚠️  0)
+2026-02-27 07:45:35,981 - INFO -    ✅ PAYPAL *ZIMPORTS → Madrid, Spain
+2026-02-27 07:45:36,380 - INFO -    ✅ PAYPAL PTE → Suntec Tower Five, Singapore 038985
+2026-02-27 07:45:36,857 - INFO -    ✅ PC BOX → Valencia, Spain
+2026-02-27 07:45:37,369 - INFO -    ✅ PC COMPONENTES → Valencia, Spain
+2026-02-27 07:45:37,925 - INFO -    ✅ PC Componentes y Multi → Murcia, Spain
+2026-02-27 07:45:38,566 - INFO -    ✅ PEDRO RODRIGUEZ LUQUE → Murcia, Spain
+2026-02-27 07:45:39,351 - INFO -    ✅ PELEGRINI SPORT.IN, S.L. → Murcia, Spain
+2026-02-27 07:45:39,757 - INFO -    ✅ PERFUMERIAS AQUABEL 9 → Murcia, Spain
+2026-02-27 07:45:40,223 - INFO -    ✅ PERFUMERIAS LAGUNA RI → Valencia, Spain
+2026-02-27 07:45:40,615 - INFO -    ✅ PETROPAY, SL → Murcia, Spain
+2026-02-27 07:45:41,097 - INFO -    ✅ PETROPRIX SALOBRE¥A → Valencia, Spain
+2026-02-27 07:45:44,675 - INFO -    ✅ PISANO SAN MIGUEL → Provincia de Buenos Aires, Argentina
+2026-02-27 07:45:45,159 - INFO -    ✅ PIZZERIA ANGELO → Valencia, Spain
+2026-02-27 07:45:45,666 - INFO -    ✅ PIZZERIA SAPRI SALOU → Tarragona, Spain
+2026-02-27 07:45:46,070 - INFO -    ✅ PIZZERIA ¥AM ¥AM → Milano MI, Italy
+2026-02-27 07:45:46,639 - INFO -    ✅ PK AEROPUERTO ALICANTE → Alicante, Spain
+2026-02-27 07:45:49,952 - INFO -    Progreso: 600/846 (✅ 580, ⏭️  20, ⚠️  0)
+2026-02-27 07:45:50,209 - INFO -    ✅ PKP Intercity → Warszawa, Poland
+2026-02-27 07:45:50,676 - INFO -    ✅ POLICLINICA NEUROFISIO SL → Murcia, Spain
+2026-02-27 07:45:51,145 - INFO -    ✅ POLLO DORADO ASADORES SL → Murcia, Spain
+2026-02-27 07:45:51,654 - INFO -    ✅ PORT AVENTURA TIENDAS → Tarragona, Spain
+2026-02-27 07:45:52,421 - INFO -    ✅ PORTAVENTURA HOTELS → Tarragona, Spain
+2026-02-27 07:45:53,179 - INFO -    ✅ PP *2668 EXPUSE → Murcia, Spain
+2026-02-27 07:45:53,905 - INFO -    ✅ PP *5140 EXPUSE → Murcia, Spain
+2026-02-27 07:45:54,690 - INFO -    ✅ PP*0231CODE → Murcia, Spain
+2026-02-27 07:45:55,434 - INFO -    ✅ PP*3486CODE → Murcia, Spain
+2026-02-27 07:45:56,366 - INFO -    ✅ PP*7095CODE → Murcia, Spain
+2026-02-27 07:45:57,142 - INFO -    ✅ PP*7568CODE → Murcia, Spain
+2026-02-27 07:45:57,937 - INFO -    ✅ PP*7606CODE → Murcia, Spain
+2026-02-27 07:45:58,463 - INFO -    ✅ PREMIUM FOOD → TN 37172, USA
+2026-02-27 07:45:59,181 - INFO -    ✅ PRICEMINISTER → Murcia, Spain
+2026-02-27 07:45:59,590 - INFO -    ✅ PRIMARK ESPACIO MEDITE → Murcia, Spain
+2026-02-27 07:45:59,975 - INFO -    ✅ PROGRAMER, SL. → Valencia, Spain
+2026-02-27 07:46:00,349 - INFO -    ✅ PROMOFARMA → Valencia, Spain
+2026-02-27 07:46:00,749 - INFO -    ✅ Passaggio Restaurant B → AZ 85745, USA
+2026-02-27 07:46:01,090 - INFO -    ✅ PayPal (Europe) S.a.r.l. et Cie., S.C.A. → Bd Royal, 2449 Ville-Haute Luxembourg
+2026-02-27 07:46:01,409 - INFO -    ✅ PayPal Europe S.a.r.l. et Cie S.C.A → Bd Royal, 2449 Ville-Haute Luxembourg
+2026-02-27 07:46:01,513 - INFO -    Progreso: 620/846 (✅ 600, ⏭️  20, ⚠️  0)
+2026-02-27 07:46:01,828 - INFO -    ✅ Pharm Plus Orthoped → TX 75071, USA
+2026-02-27 07:46:02,222 - INFO -    ✅ QUAI 23 SARL → Nyon, Switzerland
+2026-02-27 07:46:02,726 - INFO -    ✅ QUITAPENAS → Castelló, Spain
+2026-02-27 07:46:03,103 - INFO -    ✅ QUO FITNESS CARTAGENA SL → Murcia, Spain
+2026-02-27 07:46:03,441 - INFO -    ✅ QUO FITNESS CARTAGENA, S.L. → Murcia, Spain
+2026-02-27 07:46:03,933 - INFO -    ✅ QUO. VORTICE ESPACIO TIEM → Valencia, Spain
+2026-02-27 07:46:04,372 - INFO -    ✅ RADIO BAR CARTAGENA ASOCI → Murcia, Spain
+2026-02-27 07:46:04,776 - INFO -    ✅ RAESA AEROPUERTO BARAJAS → Palencia, Spain
+2026-02-27 07:46:05,176 - INFO -    ✅ RAKUTEN → UT 84047, USA
+2026-02-27 07:46:05,670 - INFO -    ✅ REAL FED ESPAÑOLA DE GOLF → Madrid, Spain
+2026-02-27 07:46:06,162 - INFO -    ✅ REC.AYTMO. CARTAGENA IMP. VEHICULOS → Murcia, Spain
+2026-02-27 07:46:06,581 - INFO -    ✅ RED LION NORTH T → Valencia, Spain
+2026-02-27 07:46:07,939 - INFO -    ✅ RED LOBSTER US00008847 → CDMX, Mexico
+2026-02-27 07:46:08,362 - INFO -    ✅ REST LA PIAZZENZA → Barcelona, Spain
+2026-02-27 07:46:08,787 - INFO -    ✅ REST. CASA AZZURRI → Murcia, Spain
+2026-02-27 07:46:09,208 - INFO -    ✅ REST.AVENIDA HOXTESAR S.L → Valencia, Spain
+2026-02-27 07:46:09,634 - INFO -    ✅ REST.MOLI DEL PEANO → Canillo, Andorra
+2026-02-27 07:46:10,120 - INFO -    ✅ RESTAUR.EL PINCHO DE CAST → Valencia, Spain
+2026-02-27 07:46:10,508 - INFO -    ✅ RESTAURACJA STARKA → Kraków, Poland
+2026-02-27 07:46:10,981 - INFO -    ✅ RESTAURACJA U BABCI → Kraków, Poland
+2026-02-27 07:46:11,085 - INFO -    Progreso: 640/846 (✅ 620, ⏭️  20, ⚠️  0)
+2026-02-27 07:46:11,623 - INFO -    ✅ RESTAURANTE COCINA ASIATI → Valencia, Spain
+2026-02-27 07:46:12,103 - INFO -    ✅ RESTAURANTE DALMANSA → Murcia, Spain
+2026-02-27 07:46:12,695 - INFO -    ✅ RESTAURANTE EL MUELLE → Valencia, Spain
+2026-02-27 07:46:13,205 - INFO -    ✅ RESTAURANTE EL PINCHO DE → Valencia, Spain
+2026-02-27 07:46:13,676 - INFO -    ✅ RESTAURANTE GREEN → Valencia, Spain
+2026-02-27 07:46:14,139 - INFO -    ✅ RESTAURANTE INFERNUM → Valencia, Spain
+2026-02-27 07:46:14,588 - INFO -    ✅ RESTAURANTE KATY → Valencia, Spain
+2026-02-27 07:46:15,146 - INFO -    ✅ RESTAURANTE LA CASONA → Valencia, Spain
+2026-02-27 07:46:15,532 - INFO -    ✅ RESTAURANTE LA SELLA → Murcia, Spain
+2026-02-27 07:46:15,915 - INFO -    ✅ RESTAURANTE LA TANA → Murcia, Spain
+2026-02-27 07:46:16,299 - INFO -    ✅ RESTAURANTE MAGOGA → Murcia, Spain
+2026-02-27 07:46:16,977 - INFO -    ✅ RESTAURANTE SARMIENTO → Málaga, Spain
+2026-02-27 07:46:17,499 - INFO -    ✅ RESTAURANTE SUESJO → Valencia, Spain
+2026-02-27 07:46:18,032 - INFO -    ✅ RESTAURANTE VEGETARIANO → Valencia, Spain
+2026-02-27 07:46:18,568 - INFO -    ✅ RESTAURANTE VINAROZ 28 → Madrid, Spain
+2026-02-27 07:46:19,081 - INFO -    ✅ RESTAUTANTE ARCONADA → Madrid, Spain
+2026-02-27 07:46:20,868 - INFO -    ✅ ROCK BAR FRONTERA → Alicante, Spain
+2026-02-27 07:46:21,233 - INFO -    ✅ ROYMAGA PETROLEOS S.L. → Murcia, Spain
+2026-02-27 07:46:21,665 - INFO -    ✅ ROYMAGA PETROLEOS SL → Murcia, Spain
+2026-02-27 07:46:21,769 - INFO -    Progreso: 660/846 (✅ 639, ⏭️  21, ⚠️  0)
+2026-02-27 07:46:22,167 - INFO -    ✅ RTE LIZARRAN-SERRANO GALV → Valencia, Spain
+2026-02-27 07:46:22,936 - INFO -    ✅ RTE. FERNANDEZ → Murcia, Spain
+2026-02-27 07:46:23,323 - INFO -    ✅ RUGBY HEAVEN → BY, UK
+2026-02-27 07:46:23,704 - INFO -    ✅ RYANAIR C8S0 → Madrid, Spain
+2026-02-27 07:46:24,427 - INFO -    ✅ RYANAIR PYP0 → Murcia, Spain
+2026-02-27 07:46:24,811 - INFO -    ✅ Residence St James → Genève, Switzerland
+2026-02-27 07:46:25,222 - INFO -    ✅ Restaurante Mare e Monti → Valencia, Spain
+2026-02-27 07:46:25,771 - INFO -    ✅ Restaurante Porto Giglio → Giglio Porto GR, Italy
+2026-02-27 07:46:26,845 - INFO -    ✅ Revolut**0537* → Madrid, Spain
+2026-02-27 07:46:28,159 - INFO -    ✅ Revolut**0574* → Madrid, Spain
+2026-02-27 07:46:29,213 - INFO -    ✅ Revolut**0688* → Madrid, Spain
+2026-02-27 07:46:30,519 - INFO -    ✅ Revolut**0844* → Madrid, Spain
+2026-02-27 07:46:30,982 - INFO -    ✅ Revolut**1054* → HX, UK
+2026-02-27 07:46:31,427 - INFO -    ✅ Revolut**1149* → HX, UK
+2026-02-27 07:46:32,555 - INFO -    ✅ Revolut**1291* → Madrid, Spain
+2026-02-27 07:46:32,941 - INFO -    ✅ Revolut**1350* → HX, UK
+2026-02-27 07:46:34,056 - INFO -    ✅ Revolut**1699* → Madrid, Spain
+2026-02-27 07:46:35,190 - INFO -    ✅ Revolut**1833* → Madrid, Spain
+2026-02-27 07:46:35,635 - INFO -    ✅ Revolut**2085* → HX, UK
+2026-02-27 07:46:36,680 - INFO -    ✅ Revolut**2098* → Madrid, Spain
+2026-02-27 07:46:36,785 - INFO -    Progreso: 680/846 (✅ 659, ⏭️  21, ⚠️  0)
+2026-02-27 07:46:37,755 - INFO -    ✅ Revolut**2410* → Madrid, Spain
+2026-02-27 07:46:38,162 - INFO -    ✅ Revolut**2702* → HX, UK
+2026-02-27 07:46:39,314 - INFO -    ✅ Revolut**2764* → Madrid, Spain
+2026-02-27 07:46:39,649 - INFO -    ✅ Revolut**3075* → HX, UK
+2026-02-27 07:46:40,738 - INFO -    ✅ Revolut**3185* → Madrid, Spain
+2026-02-27 07:46:41,986 - INFO -    ✅ Revolut**3219* → Madrid, Spain
+2026-02-27 07:46:43,230 - INFO -    ✅ Revolut**3344* → Madrid, Spain
+2026-02-27 07:46:44,473 - INFO -    ✅ Revolut**3570* → Madrid, Spain
+2026-02-27 07:46:45,676 - INFO -    ✅ Revolut**3754* → Madrid, Spain
+2026-02-27 07:46:46,928 - INFO -    ✅ Revolut**3787* → Madrid, Spain
+2026-02-27 07:46:48,247 - INFO -    ✅ Revolut**4107* → Madrid, Spain
+2026-02-27 07:46:49,553 - INFO -    ✅ Revolut**4153* → Madrid, Spain
+2026-02-27 07:46:50,565 - INFO -    ✅ Revolut**4299* → Madrid, Spain
+2026-02-27 07:46:51,599 - INFO -    ✅ Revolut**4321* → Madrid, Spain
+2026-02-27 07:46:52,657 - INFO -    ✅ Revolut**4385* → Madrid, Spain
+2026-02-27 07:46:52,999 - INFO -    ✅ Revolut**4548* → HX, UK
+2026-02-27 07:46:53,340 - INFO -    ✅ Revolut**4636* → Madrid, Spain
+2026-02-27 07:46:54,595 - INFO -    ✅ Revolut**4853* → Madrid, Spain
+2026-02-27 07:46:54,949 - INFO -    ✅ Revolut**4884* → HX, UK
+2026-02-27 07:46:56,179 - INFO -    ✅ Revolut**5000* → Madrid, Spain
+2026-02-27 07:46:56,282 - INFO -    Progreso: 700/846 (✅ 679, ⏭️  21, ⚠️  0)
+2026-02-27 07:46:57,415 - INFO -    ✅ Revolut**5186* → Madrid, Spain
+2026-02-27 07:46:58,446 - INFO -    ✅ Revolut**6027* → Madrid, Spain
+2026-02-27 07:46:59,622 - INFO -    ✅ Revolut**6096* → Madrid, Spain
+2026-02-27 07:47:00,745 - INFO -    ✅ Revolut**6135* → Madrid, Spain
+2026-02-27 07:47:01,832 - INFO -    ✅ Revolut**6267* → Madrid, Spain
+2026-02-27 07:47:02,987 - INFO -    ✅ Revolut**6346* → Madrid, Spain
+2026-02-27 07:47:04,140 - INFO -    ✅ Revolut**6355* → Madrid, Spain
+2026-02-27 07:47:05,457 - INFO -    ✅ Revolut**6369* → Madrid, Spain
+2026-02-27 07:47:06,681 - INFO -    ✅ Revolut**6914* → Madrid, Spain
+2026-02-27 07:47:07,913 - INFO -    ✅ Revolut**7204* → Madrid, Spain
+2026-02-27 07:47:09,107 - INFO -    ✅ Revolut**7256* → Madrid, Spain
+2026-02-27 07:47:09,450 - INFO -    ✅ Revolut**7414* → HX, UK
+2026-02-27 07:47:10,573 - INFO -    ✅ Revolut**7613* → Madrid, Spain
+2026-02-27 07:47:11,020 - INFO -    ✅ Revolut**8086* → HX, UK
+2026-02-27 07:47:11,486 - INFO -    ✅ Revolut**8355* → Madrid, Spain
+2026-02-27 07:47:11,834 - INFO -    ✅ Revolut**8438* → HX, UK
+2026-02-27 07:47:12,277 - INFO -    ✅ Revolut**8611* → HX, UK
+2026-02-27 07:47:12,660 - INFO -    ✅ Revolut**8618* → 09306 Vilniaus m. sav., Lithuania
+2026-02-27 07:47:13,813 - INFO -    ✅ Revolut**8798* → Madrid, Spain
+2026-02-27 07:47:14,946 - INFO -    ✅ Revolut**8856* → Madrid, Spain
+2026-02-27 07:47:15,050 - INFO -    Progreso: 720/846 (✅ 699, ⏭️  21, ⚠️  0)
+2026-02-27 07:47:16,081 - INFO -    ✅ Revolut**8872* → Madrid, Spain
+2026-02-27 07:47:17,191 - INFO -    ✅ Revolut**8992* → Madrid, Spain
+2026-02-27 07:47:18,316 - INFO -    ✅ Revolut**9326* → Madrid, Spain
+2026-02-27 07:47:19,436 - INFO -    ✅ Revolut**9434* → Madrid, Spain
+2026-02-27 07:47:20,540 - INFO -    ✅ Revolut**9770* → Madrid, Spain
+2026-02-27 07:47:21,103 - INFO -    ✅ S.E. DE CORREOS Y TELEGRA → Valencia, Spain
+2026-02-27 07:47:21,965 - INFO -    ✅ SALTGRASS - VALLEY VW → Murcia, Spain
+2026-02-27 07:47:22,363 - INFO -    ✅ SALUD DEL SUR CB → Nuevo Chimbote 02711, Peru
+2026-02-27 07:47:22,947 - INFO -    ✅ SANITAS S A DE SEGUROS → Valencia, Spain
+2026-02-27 07:47:23,388 - INFO -    ✅ SANTIVERI → Valencia, Spain
+2026-02-27 07:47:23,845 - INFO -    ✅ SANTIVERI TURISME S.L. → Barcelona, Spain
+2026-02-27 07:47:25,140 - INFO -    ✅ SAR Lounge 1, Zuid → Málaga, Spain
+2026-02-27 07:47:26,538 - INFO -    ✅ SBB CFF FFS Mobile Tic → Urtenen-Schönbühl, Switzerland
+2026-02-27 07:47:26,947 - INFO -    ✅ SBB/Bats Geneve-Aeropo → Le Grand-Saconnex, Switzerland
+2026-02-27 07:47:27,435 - INFO -    ✅ SBB/Bats Montreux → Montreux, Switzerland
+2026-02-27 07:47:28,195 - INFO -    ✅ SBBB2C → Murcia, Spain
+2026-02-27 07:47:28,677 - INFO -    ✅ SCHWEIZ. BUNDESBAHN → Bern, Switzerland
+2026-02-27 07:47:29,032 - INFO -    ✅ SCOTCH HOUSE EDINBURGH → AA, UK
+2026-02-27 07:47:29,597 - INFO -    ✅ SCOTLAND T SHIRT CO. → DY, UK
+2026-02-27 07:47:30,167 - INFO -    ✅ SEGURO → Valencia, Spain
+2026-02-27 07:47:30,269 - INFO -    Progreso: 740/846 (✅ 719, ⏭️  21, ⚠️  0)
+2026-02-27 07:47:30,513 - INFO -    ✅ SERVIAREAS 2000 → Madrid, Spain
+2026-02-27 07:47:31,067 - INFO -    ✅ SERVIDOR SPAIN.COM → Valencia, Spain
+2026-02-27 07:47:31,562 - INFO -    ✅ SHELL OIL → Valencia, Spain
+2026-02-27 07:47:32,088 - INFO -    ✅ SIMPLY GENERAL MOSCA → Valencia, Spain
+2026-02-27 07:47:32,898 - INFO -    ✅ SIMPLY GENERAL MOSCARDO → Murcia, Spain
+2026-02-27 07:47:33,419 - INFO -    ✅ SIMYO → Valencia, Spain
+2026-02-27 07:47:33,828 - INFO -    ✅ SKI SERVEIS → Encamp, Andorra
+2026-02-27 07:47:34,343 - INFO -    ✅ SORIANA170 CENTRO MAYA → Q.R., Mexico
+2026-02-27 07:47:34,718 - INFO -    ✅ SPACE DESIGNER 3D → 13290 Aix-en-Provence Cedex 2, France
+2026-02-27 07:47:35,609 - INFO -    ✅ SPANAIR, S.A. → Murcia, Spain
+2026-02-27 07:47:36,074 - INFO -    ✅ SPAZIO MOTOR → Alicante, Spain
+2026-02-27 07:47:36,528 - INFO -    ✅ SPECS LIQUOR #128 → TX 77006, USA
+2026-02-27 07:47:37,244 - INFO -    ✅ SPORT BUSTOS → Murcia, Spain
+2026-02-27 07:47:37,648 - INFO -    ✅ SPRINTER CARTAGENA → Murcia, Spain
+2026-02-27 07:47:38,038 - INFO -    ✅ SPRINTER TORREVIEJA 951 → Alicante, Spain
+2026-02-27 07:47:38,661 - INFO -    ✅ STUKA MODELISMO → Murcia, Spain
+2026-02-27 07:47:39,075 - INFO -    ✅ SUBWAY 00124271 → Valencia, Spain
+2026-02-27 07:47:39,599 - INFO -    ✅ SUMA GESTION TRIBUTARIA A → Valencia, Spain
+2026-02-27 07:47:39,997 - INFO -    ✅ SUPER KEISY 4 → Barcelona, Spain
+2026-02-27 07:47:40,717 - INFO -    ✅ SUPER UPPER 643 → Murcia, Spain
+2026-02-27 07:47:40,822 - INFO -    Progreso: 760/846 (✅ 739, ⏭️  21, ⚠️  0)
+2026-02-27 07:47:41,263 - INFO -    ✅ SUPERCOR EXPRESS AVD → Valencia, Spain
+2026-02-27 07:47:42,315 - INFO -    ✅ SUPERDRY 203 → Alicante, Spain
+2026-02-27 07:47:42,705 - INFO -    ✅ SUPERMERCADO UPPER 948 → Valencia, Spain
+2026-02-27 07:47:43,112 - INFO -    ✅ SUSHI WU → Göteborg, Sweden
+2026-02-27 07:47:43,941 - INFO -    ✅ Satelite 20 → Murcia, Spain
+2026-02-27 07:47:44,433 - INFO -    ✅ Simyo → Valencia, Spain
+2026-02-27 07:47:44,808 - INFO -    ✅ Sushi Wu → Göteborg, Sweden
+2026-02-27 07:47:45,432 - INFO -    ✅ Swisscom Internet NL → Murcia, Spain
+2026-02-27 07:47:45,838 - INFO -    ✅ T.L.I. BARCELONA → Barcelona, Spain
+2026-02-27 07:47:46,235 - INFO -    ✅ TABERNA ARZABAL → Madrid, Spain
+2026-02-27 07:47:46,711 - INFO -    ✅ TABERNA IRLANDESA → Valencia, Spain
+2026-02-27 07:47:47,114 - INFO -    ✅ TALLER AIXOVALL → Aixovall, Andorra
+2026-02-27 07:47:47,593 - INFO -    ✅ TALMS ZAVENTEM AIRPOR → Zaventem, Belgium
+2026-02-27 07:47:48,504 - INFO -    ✅ TAXI 15598 → Murcia, Spain
+2026-02-27 07:47:49,024 - INFO -    ✅ TEATRO CIRCO → Murcia, Spain
+2026-02-27 07:47:49,493 - INFO -    ✅ TELEFONO → Valencia, Spain
+2026-02-27 07:47:50,480 - INFO -    ✅ TESCO METRO 2927 → BP, UK
+2026-02-27 07:47:51,083 - INFO -    ✅ THE DAYAEL → Murcia, Spain
+2026-02-27 07:47:51,470 - INFO -    ✅ THE NUANCE GROUP AG/E. → Opfikon, Switzerland
+2026-02-27 07:47:51,896 - INFO -    ✅ THE SQUARE BAR & G → EY, UK
+2026-02-27 07:47:51,999 - INFO -    Progreso: 780/846 (✅ 759, ⏭️  21, ⚠️  0)
+2026-02-27 07:47:52,406 - INFO -    ✅ TIENDAS PRINK → Valencia, Spain
+2026-02-27 07:47:52,829 - INFO -    ✅ TOC MADRID → Madrid, Spain
+2026-02-27 07:47:53,191 - INFO -    ✅ TODOHOBBY.NET → Cádiz, Spain
+2026-02-27 07:47:54,174 - INFO -    ✅ TODOSPORT CARTEJENA 1 → Murcia, Spain
+2026-02-27 07:47:54,561 - INFO -    ✅ TOMAS GUILLEN GUILLEN, S. → Murcia, Spain
+2026-02-27 07:47:55,064 - INFO -    ✅ TOTAL SANT ELOI CANILL → Girona, Spain
+2026-02-27 07:47:55,531 - INFO -    ✅ TOVARSPORT S.A. → Murcia, Spain
+2026-02-27 07:47:56,037 - INFO -    ✅ TOYS R US CARTAGENA → Murcia, Spain
+2026-02-27 07:47:56,442 - INFO -    ✅ TOYS R US IBERIA T3445 → Valencia, Spain
+2026-02-27 07:47:56,954 - INFO -    ✅ TUV RHEINLAND IBERICA → Madrid, Spain
+2026-02-27 07:47:57,537 - INFO -    ✅ Tax Free CHGF → Murcia, Spain
+2026-02-27 07:47:58,026 - INFO -    ✅ Taxi Jappie Mid.-Kenn. → TA Zwanenburg, Netherlands
+2026-02-27 07:47:58,424 - INFO -    ✅ Taxis Verts → Bruxelles, Belgium
+2026-02-27 07:47:58,919 - INFO -    ✅ The Kitchen → Valencia, Spain
+2026-02-27 07:47:59,438 - INFO -    ✅ The blue Tower Hotel → JE Amsterdam, Netherlands
+2026-02-27 07:47:59,933 - INFO -    ✅ Transavia OnboardSales → Madrid, Spain
+2026-02-27 07:48:00,684 - INFO -    ✅ UPPER 546 → Murcia, Spain
+2026-02-27 07:48:02,578 - INFO -    ✅ USD EUROPCAR → Valencia, Spain
+2026-02-27 07:48:02,959 - INFO -    ✅ UTE VECTALIA PAVAP PARK L → Valencia, Spain
+2026-02-27 07:48:03,063 - INFO -    Progreso: 800/846 (✅ 778, ⏭️  22, ⚠️  0)
+2026-02-27 07:48:03,419 - INFO -    ✅ VELA BEACH → Alicante, Spain
+2026-02-27 07:48:03,991 - INFO -    ✅ VIAJES BARCELO → Valencia, Spain
+2026-02-27 07:48:04,410 - INFO -    ✅ VILADOMAT ESPORTS → Andorra la Vella, Andorra
+2026-02-27 07:48:04,894 - INFO -    ✅ VINISSIMUS SL → Barcelona, Spain
+2026-02-27 07:48:05,379 - INFO -    ✅ VINO Y MAS → Alicante, Spain
+2026-02-27 07:48:05,817 - INFO -    ✅ VISIONLAB → Valencia, Spain
+2026-02-27 07:48:06,297 - INFO -    ✅ VISTAPR*VISTAPRINT.FR → Paris, France
+2026-02-27 07:48:06,811 - INFO -    ✅ VODAFONE → Valencia, Spain
+2026-02-27 07:48:07,317 - INFO -    ✅ VODAFONE ESPANA S.A.U. → Valencia, Spain
+2026-02-27 07:48:07,793 - INFO -    ✅ VODAFONE ESPAÑA S.A. → Madrid, Spain
+2026-02-27 07:48:08,168 - INFO -    ✅ VODAFONE ESPAÑA SA → Madrid, Spain
+2026-02-27 07:48:08,649 - INFO -    ✅ VORTICE ESPACIO TIEMPO S.L. → Valencia, Spain
+2026-02-27 07:48:09,115 - INFO -    ✅ Virgin → Valencia, Spain
+2026-02-27 07:48:09,554 - INFO -    ✅ Vodafone → Valencia, Spain
+2026-02-27 07:48:10,027 - INFO -    ✅ Vodefone → Valencia, Spain
+2026-02-27 07:48:10,441 - INFO -    ✅ WAL-MART #2105 → TX 75244, USA
+2026-02-27 07:48:10,853 - INFO -    ✅ WALGREENS #3731 → NJ 08110, USA
+2026-02-27 07:48:11,309 - INFO -    ✅ WAREHOUSE → Valencia, Spain
+2026-02-27 07:48:11,835 - INFO -    ✅ WASI FUSION → Alicante, Spain
+2026-02-27 07:48:12,345 - INFO -    ✅ WDFE → WA 98501, USA
+2026-02-27 07:48:12,452 - INFO -    Progreso: 820/846 (✅ 798, ⏭️  22, ⚠️  0)
+2026-02-27 07:48:12,756 - INFO -    ✅ WDFG ALICANTE → Alicante, Spain
+2026-02-27 07:48:13,135 - INFO -    ✅ WDFG MADRID T123 → Madrid, Spain
+2026-02-27 07:48:13,635 - INFO -    ✅ WELLNESSPORT HOTEL → Valencia, Spain
+2026-02-27 07:48:14,183 - INFO -    ✅ WH SMITH → Valencia, Spain
+2026-02-27 07:48:14,679 - INFO -    ✅ WHAREHOUSE → Valencia, Spain
+2026-02-27 07:48:15,380 - INFO -    ✅ WHOLEFDS ADN #10473 → Murcia, Spain
+2026-02-27 07:48:15,738 - INFO -    ✅ WIZINK BANK → Madrid, Spain
+2026-02-27 07:48:16,275 - INFO -    ✅ WOD HOLLAND GIFTS → JA Schiedam, Netherlands
+2026-02-27 07:48:16,712 - INFO -    ✅ WORLD DUTY FREE HEATHR → GA, UK
+2026-02-27 07:48:17,122 - INFO -    ✅ WORLD-BOOKING.com → Valencia, Spain
+2026-02-27 07:48:17,642 - INFO -    ✅ WORTEN → Valencia, Spain
+2026-02-27 07:48:18,058 - INFO -    ✅ WORTEN CARTAGENA → Beja, Portugal
+2026-02-27 07:48:18,440 - INFO -    ✅ WWW.ALIEXPRESS.COM → Valencia, Spain
+2026-02-27 07:48:18,816 - INFO -    ✅ WWW.LOCKON.RU CURR → Valencia, Spain
+2026-02-27 07:48:19,198 - INFO -    ✅ World of Delights → RD Lijnden, Netherlands
+2026-02-27 07:48:19,559 - INFO -    ✅ World of Delights Shop → AP Schiphol, Netherlands
+2026-02-27 07:48:20,076 - INFO -    ✅ ZARA → Valencia, Spain
+2026-02-27 07:48:20,624 - INFO -    ✅ ZARA ALICANTE CC PZA.MAR → Alicante, Spain
+2026-02-27 07:48:21,143 - INFO -    ✅ costa → Valencia, Spain
+2026-02-27 07:48:21,847 - INFO -    ✅ eDreams → Murcia, Spain
+2026-02-27 07:48:21,951 - INFO -    Progreso: 840/846 (✅ 818, ⏭️  22, ⚠️  0)
+2026-02-27 07:48:22,370 - INFO -    ✅ parking plaza del rey → Madrid, Spain
+2026-02-27 07:48:23,006 - INFO -    ✅ pcloud → Baar, Switzerland
+2026-02-27 07:48:23,416 - INFO -    ✅ supermercados zamanillo → Valencia, Spain
+2026-02-27 07:48:23,883 - INFO -    ✅ telefono → Valencia, Spain
+2026-02-27 07:48:24,388 - INFO -    ✅ vodafone Septiembre 2014 → Valencia, Spain
+2026-02-27 07:48:25,150 - INFO -    ✅ www.europlexcinemas.ch → Murcia, Spain
+2026-02-27 07:48:25,255 - INFO - ✅ Enriquecimiento completado:
+2026-02-27 07:48:25,255 - INFO -    - Enriquecidos: 824/846
+2026-02-27 07:48:25,255 - INFO -    - No encontrados: 22
+2026-02-27 07:48:25,255 - INFO -    - Errores: 0
+
+2026-02-27 07:48:25,256 - INFO - 🔗 Estadísticas de vinculación txs-merchants...
+2026-02-27 07:48:25,269 - INFO -    ✅ 4181 transacciones vinculadas con city
+2026-02-27 07:48:25,269 - INFO -    ✅ 4181 transacciones vinculadas con country
+
+2026-02-27 07:48:25,269 - INFO - 📊 Estado final:
+2026-02-27 07:48:25,275 - INFO -    Total merchants: 846
+2026-02-27 07:48:25,275 - INFO -    Con place_id: 824 (Δ +824)
+2026-02-27 07:48:25,275 - INFO -    Con city: 824 (Δ +824)
+2026-02-27 07:48:25,275 - INFO -    Con country: 824 (Δ +824)
+2026-02-27 07:48:25,275 - INFO -    Txs con merchant_name: 6917 (Δ +3752)
+
+2026-02-27 07:48:25,275 - INFO - ============================================================
+2026-02-27 07:48:25,275 - INFO - ✅ ENRIQUECIMIENTO COMPLETADO
+2026-02-27 07:48:25,275 - INFO - ============================================================
+✓ Cargados 552 merchants de Google Places
+✓ Cargados 245 merchants por nombre completo

@@ -1,7 +1,9 @@
 {
-  "$schema": "https://opencode.ai/config.json",
+  
+"$schema": "https://opencode.ai/config.json",
 
   // Instrucciones del proyecto para el agente
+  "autoupdate": false,
   "instructions": ["AGENTS.md"],
 
   // Los modelos se heredan del global. Descomentar solo si querés sobreescribir en este proyecto:

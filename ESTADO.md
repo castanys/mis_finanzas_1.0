@@ -2,7 +2,7 @@
 
 **Propósito**: Estado mínimo del proyecto — lo que todo agente debe saber antes de empezar una sesión.
 
-**Última actualización**: 2026-02-27 — S61 COMPLETADA (fix: análisis siempre al importar PDF)
+**Última actualización**: 2026-02-27 — S62 COMPLETADA (recuperación merchants + Google Places)
 
 ---
 
@@ -17,7 +17,10 @@
 | **Duplicados legítimos** | 249 txs (cargos provisionales + reversiones) |
 | **Categorías Cat1** | 23 únicas |
 | **Combinaciones Cat1\|Cat2** | 188 válidas |
-| **Sesiones completadas** | 60 |
+| **Sesiones completadas** | 61 |
+| **Merchants enriquecidos** | 824/846 (97.4% cobertura) |
+| **Transacciones con merchant_name** | 6,917/16,020 (43.2%) |
+| **Países únicos** | 27 |
 
 ---
 
@@ -50,6 +53,8 @@
 | 23 | Modelo Claude para análisis = haiku-4-5 | Respuestas más rápidas, costo menor que sonnet | S60 |
 | 24 | Restauración sin cat2 genérica | Todos RESTAURANTE/ARROCERIA → Otros (no agrupar genérico) | S60 |
 | 25 | Análisis asesor siempre al importar | Enviar análisis tras importar PDF (incluso si nuevas_txs=0) | S61 |
+| 26 | Tabla merchants con 13 columnas | Schema correcto: merchant_name, place_id, place_name, address, city, country, lat, lng, cat1, cat2, google_type, confidence, search_scope | S62 |
+| 27 | Enriquecimiento Google Places automático | 824/846 merchants (97.4%) con datos geográficos (city, country, lat, lng) | S62 |
 
 ---
 
@@ -65,6 +70,7 @@
 
 | Sesión | Fecha | Resultado | Cambios |
 |--------|-------|-----------|---------|
+| S62 | 2026-02-27 | ✅ COMPLETADA | Recuperación merchants: 846 merchants únicos, 824 enriquecidos Google Places (97.4%), 6,917 txs (43.2%) con merchant_name |
 | S61 | 2026-02-27 | ✅ COMPLETADA | Fix: análisis del asesor siempre tras importar PDF (bot_telegram.py:639) |
 
 ---

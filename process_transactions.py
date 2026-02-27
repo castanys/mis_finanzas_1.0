@@ -103,10 +103,26 @@ def create_db_tables(db_path: str = 'finsense.db'):
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS merchants (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nombre TEXT UNIQUE,
-                categoria TEXT
+                merchant_name TEXT UNIQUE,
+                place_id TEXT,
+                place_name TEXT,
+                address TEXT,
+                city TEXT,
+                country TEXT,
+                lat REAL,
+                lng REAL,
+                cat1 TEXT,
+                cat2 TEXT,
+                google_type TEXT,
+                confidence REAL,
+                search_scope TEXT
             )
         ''')
+        
+        # Crear índices para merchants si no existen
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_merchant_name ON merchants(merchant_name)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_city ON merchants(city)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_country ON merchants(country)')
         
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS bot_estado (

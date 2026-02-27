@@ -10,6 +10,36 @@
 
 ## 🟢 Últimas 3 Sesiones
 
+### S62 — 2026-02-27 — RECUPERACIÓN MERCHANTS + GOOGLE PLACES ✅
+
+**Problema reportado**:
+Usuario reporta que la tabla merchants estaba vacía y el bot no podía analizar con datos geográficos. El asesor necesita merchants enriquecidos para funciones como `get_merchants_para_mapa()` y `get_gastos_por_ubicacion()`.
+
+**Diagnóstico**:
+1. Tabla `merchants` con esquema incorrecto (3 columnas: id, nombre, categoria) vs 13 esperadas
+2. Columna `merchant_name` en transacciones = NULL (todas 16,020 filas)
+3. 846 merchants únicos no extraídos ni enriquecidos
+4. Dashboard geográfico (página 07) sin datos
+
+**Solución implementada**:
+1. **Migrar esquema**: `ALTER TABLE merchants` → crear nueva tabla con 13 columnas correctas (merchant_name, place_id, place_name, address, city, country, lat, lng, cat1, cat2, google_type, confidence, search_scope)
+2. **Poblar merchant_name**: 3,752 txs procesadas con `extract_merchant()`, 6,917/16,020 con merchant_name (43.2%)
+3. **Insertar merchants**: 846 merchants únicos en tabla merchants
+4. **Enriquecer Google Places**: `enrich_merchants.py` en background → 824/846 enriquecidos (97.4%), 0 errores, 22 no encontrados
+
+**Verificación**:
+- `sqlite3 finsense.db`: 6,917 txs con merchant_name, 824 merchants con place_id, 27 países únicos
+- Dashboard ahora tiene datos geográficos (Spain 3,693 txs, Luxembourg 229, UK 49, etc.)
+- Funciones `advisor.py` como `get_merchants_para_mapa()`, `get_gastos_por_ubicacion()` ahora funcionan
+
+**Commits**: Pendiente (se hace después)
+
+**Decisiones Arquitectónicas (D26-D27)**:
+- D26: Tabla merchants con 13 columnas correctas (esquema coherente con enriquecimiento Google Places)
+- D27: Enriquecimiento automático Google Places para todos los merchants únicos (97.4% cobertura)
+
+---
+
 ### S61 — 2026-02-27 — FIX BOT: ANÁLISIS ASESOR SIEMPRE AL IMPORTAR PDF ✅
 
 **Problema reportado**:
