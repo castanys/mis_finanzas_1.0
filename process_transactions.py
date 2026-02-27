@@ -568,6 +568,28 @@ def main():
     if not args.no_stats and records:
         pipeline.print_statistics(records)
 
+    # ── VALIDACIÓN AUTOMÁTICA POST-PROCESO ────────────────────────────────
+    try:
+        from validator import run_validation
+        logger.info("")
+        logger.info("Ejecutando validación de integridad...")
+        report = run_validation(db_path=args.db, silent=True)
+        criticas = len(report.criticas)
+        advertencias = len(report.advertencias)
+        if criticas > 0:
+            logger.warning(f"⚠️  VALIDACIÓN: {criticas} errores críticos, {advertencias} advertencias")
+            for issue in report.criticas:
+                logger.warning(f"   🔴 {issue}")
+        elif advertencias > 0:
+            logger.info(f"✅ Validación OK — {advertencias} advertencias (sin errores críticos)")
+            for issue in report.advertencias:
+                logger.info(f"   🟡 {issue}")
+        else:
+            logger.info(f"✅ Validación OK — sin problemas ({report.total_txs_analizadas} txs analizadas)")
+    except Exception as e:
+        logger.warning(f"Validación no ejecutada: {e}")
+    # ─────────────────────────────────────────────────────────────────────
+
     # Mostrar resumen final
     logger.print_summary()
 
